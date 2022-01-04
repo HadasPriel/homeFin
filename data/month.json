@@ -1,0 +1,228 @@
+[
+    {
+        "_id": "m101",
+        "time": "11/2021",
+        "members": [
+            {
+                "_id": "u102",
+                "username": "noam",
+                "imgUrl": "..."
+            }
+        ],
+        "categories": [
+            {
+                "id": "c101",
+                "title": "food",
+                "description": "",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": false,
+                "expenses": [
+                    {
+                        "id": "e101",
+                        "cratedAt": 1639565969965,
+                        "description": "",
+                        "repeat": {
+                            "ammount": 1,
+                            "period": "month"
+                        },
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food"
+                    }
+                ]
+            },
+            {
+                "id": "c102",
+                "title": "the dog",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": false,
+                "expenses": [
+                    {
+                        "id": "e102",
+                        "cratedAt": 1639565969965,
+                        "description": "toys",
+                        "repeat": null,
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food",
+                        "labelsId": [
+                            "l101",
+                            "l102"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c103",
+                "title": "rent",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": false,
+                "expenses": [
+                    {
+                        "id": "e103",
+                        "cratedAt": 1639565969965,
+                        "description": "",
+                        "isRepeat": false,
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food",
+                        "labelsId": [
+                            "l101",
+                            "l103"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c104",
+                "title": "fun",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": false,
+                "expenses": [
+                    {
+                        "id": "e104",
+                        "cratedAt": 1639565969965,
+                        "description": "coffee at work",
+                        "repeat": {
+                            "ammount": 3,
+                            "period": "day"
+                        },
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food"
+                    }
+                ]
+            },
+            {
+                "id": "c105",
+                "title": "hobbies",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": false,
+                "expenses": [
+                    {
+                        "id": "e105",
+                        "cratedAt": 1639565969965,
+                        "description": "plants for the house",
+                        "repeat": null,
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food"
+                    },
+                    {
+                        "id": "e107",
+                        "cratedAt": 1639565969965,
+                        "description": "one more expense",
+                        "repeat": null,
+                        "sum": {
+                            "amount": 20,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        },
+                        "method": {
+                            "_id": "1",
+                            "type": "creditCard",
+                            "code": "2244"
+                        },
+                        "category": "food"
+                    }
+                ]
+            },
+            {
+                "id": "c106",
+                "title": "salary",
+                "expacted": 500,
+                "actual": 600,
+                "isIncome": true,
+                "expenses": [
+                    {
+                        "id": "e106",
+                        "cratedAt": 1639565969965,
+                        "description": "hadas monthly salary",
+                        "repeat": {
+                            "ammount": 1,
+                            "period": "month"
+                        },
+                        "sum": {
+                            "amount": 15,
+                            "currency": "USA"
+                        },
+                        "byUser": {
+                            "_id": "u101",
+                            "username": "hadas",
+                            "imgUrl": "..."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

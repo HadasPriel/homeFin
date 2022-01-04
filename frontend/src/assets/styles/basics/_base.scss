@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: roboto-r;
+    margin: 0;
+    color: $clr3;
+    font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+textarea {
+    resize: none;
+    outline: none;
+}
+input {
+    outline: none;
+}
+
+.app-main {
+    background-color: $clr2;
+    flex-grow: 1;
+}

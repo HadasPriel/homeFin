@@ -1,0 +1,96 @@
+.add-expense {
+    display: flex;
+    background-color: $clr6;
+    padding-inline-start: 25px;
+    .first-cell {
+        border: 1px solid $clr4;
+        border-inline-end: none;
+    }
+    .btn-container {
+        position: relative;
+        right: 1px;
+        border: 1px solid $clr4;
+        border-inline-start: none;
+        background-color: $clr2;
+    }
+    .btn {
+        height: 100%;
+        position: relative;
+        right: 39px;
+        // width: 100px;
+    }
+    .first-cell {
+        input.description {
+            margin-inline-start: 0;
+            padding-inline-start: 15px;
+            background-color: transparent;
+            border: none;
+            width: 50%;
+            height: 100%;
+            border: 1px solid transparent;
+
+            &:hover,
+            &:focus {
+                border: 1px solid $clr3;
+            }
+        }
+    }
+
+    &:hover {
+        cursor: text;
+        background-color: $clr6;
+    }
+}
+
+// room = {
+// 	id: string,
+// 	title: string,
+// 	crowds: corwd[],
+//   speakers: speaker[],
+//   speakerIds:[]
+// }
+
+// corwd = {
+// 	name: string,
+// }
+
+// speaker = {
+// 	name: string,
+//   following: user[],
+//   isAdmin: boolean
+// }
+
+// function reqToSpeak(){
+// 	room.users.forEach(user =>{
+// 		if(user.isSpeaker)
+// 	})
+// }
+
+// const room = {
+// 	id: 1,
+//   title: 'Room 1',
+//   users: [
+//      { id: 1, status: 'crowd'}, {id: 2, status: 'speaker', following_ids: [1] }, {id: 3, status: 'crowd'}
+//   ]
+// }
+
+// function Room({room}) {
+
+// const speakerStatusMap =  room.users.reduce((acc,user)=>{
+// 		if(user.status === "speaker" || "admin") acc.speaker.push(user)
+//     else if (room.users.some(currUser => currUser.status.following_ids && user.status.following_ids.contains(user.id))){
+//     acc.followedBy.push(user)
+//     } else acc.crowd.push(user)
+//     return acc
+// }, { speaker: [], crowd: [], followedBy: []})
+
+//   return(
+// 		< section/>
+// 			<Section title:"Speakers" users:{speakerStatusMap.speaker} />
+//  			<Section title:"Speakers" users:{followings} />
+//  			<Section title:"Crowd" users:{speakerStatusMap.crowd} />
+
+// 		< section/>
+
+//   )
+// }

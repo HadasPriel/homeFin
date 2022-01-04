@@ -1,0 +1,25 @@
+.category-preview,
+.expense-preview {
+    .row-container {
+        height: 40px;
+        width: 100%;
+    }
+    .first-cell {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .cell {
+        cursor: pointer;
+        height: 100%;
+        width: $cell-width;
+    }
+}
+
+.headers {
+    .cell {
+        &:hover {
+            background-color: $clr2;
+        }
+    }
+}

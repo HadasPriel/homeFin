@@ -1,0 +1,24 @@
+.account-details {
+    padding: $inline-padding 30px 0;
+    background-color: $clr6;
+    min-height: 100%;
+
+    .account-header {
+        border-bottom: 1px solid $clr4;
+        padding: 12px 0;
+    }
+
+    main {
+        margin-bottom: 15px;
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .btn {
+            padding: 8px;
+            // &:hover {
+            //     background-color: $clr4;
+            // }
+        }
+    }
+}

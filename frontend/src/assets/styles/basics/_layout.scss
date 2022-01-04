@@ -1,0 +1,74 @@
+// Breakpoints
+$mobile-breakpoint: 460px;
+$narrow-breakpoint: 850px;
+$normal-breakpoint: 1200px;
+$wide-breakpoint: 1500px;
+
+/* Breakpoint mixins */
+
+@mixin for-mobile-layout {
+    @media (max-width: $mobile-breakpoint + 40) {
+        @content;
+    }
+}
+
+@mixin for-narrow-layout {
+    @media (min-width: $mobile-breakpoint + 40) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (min-width: $narrow-breakpoint + 40) {
+        @content;
+    }
+}
+
+@mixin for-wide-layout {
+    @media (min-width: $normal-breakpoint + 40) {
+        @content;
+    }
+}
+@mixin for-wider-layout {
+    @media (min-width: $wide-breakpoint + 40) {
+        @content;
+    }
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+
+    > * {
+        grid-column: 2;
+
+        &.full {
+            grid-column: 1 /-1;
+        }
+    }
+
+    @include for-narrow-layout {
+        grid-template-columns:
+            minmax(20px, 1fr)
+            minmax(auto, $mobile-breakpoint)
+            minmax(20px, 1fr);
+    }
+    @include for-normal-layout {
+        grid-template-columns:
+            minmax(20px, 1fr)
+            minmax(auto, $narrow-breakpoint)
+            minmax(20px, 1fr);
+    }
+    @include for-wide-layout {
+        grid-template-columns:
+            minmax(20px, 1fr)
+            minmax(auto, $normal-breakpoint)
+            minmax(20px, 1fr);
+    }
+    @include for-wider-layout {
+        grid-template-columns:
+            minmax(20px, 1fr)
+            minmax(auto, $wide-breakpoint)
+            minmax(20px, 1fr);
+    }
+}

@@ -1,0 +1,50 @@
+.expense-preview {
+    background-color: $clr2;
+    border-bottom: 1px solid $clr6;
+    cursor: pointer;
+
+    .menu-wrapper {
+        background-color: $clr6;
+    }
+
+    .menu {
+        opacity: 0;
+        height: 18px;
+        width: 18px;
+        background-color: $clr2;
+        border-radius: 4px;
+        margin-inline-end: 7px;
+        &::before {
+            font-family: fa;
+            content: "\f0dd";
+            position: relative;
+            bottom: 3px;
+        }
+    }
+
+    .first-cell {
+        .description {
+            margin-inline-start: 15px;
+            line-height: 24px;
+        }
+
+        &::before {
+            content: "";
+            width: 8px;
+            height: 100%;
+            background-color: $lb1;
+        }
+    }
+    .cell,
+    .first-cell {
+        border-bottom: 1px solid $clr4;
+        border-right: 1px solid $clr6;
+    }
+    &:hover {
+        background-color: #e6e9ef;
+
+        .menu {
+            opacity: 1;
+        }
+    }
+}

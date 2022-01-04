@@ -1,0 +1,60 @@
+[
+    {
+        "_id": "a101",
+        "title": "home",
+        "description": "hii bebe i want us to be responsible so i build a little app for us!",
+        "byUser": {
+            "_id": "u101",
+            "username": "hadas",
+            "imgUrl": "..."
+        },
+        "members": [
+            {
+                "_id": "u102",
+                "username": "noam",
+                "imgUrl": "..."
+            }
+        ],
+        "methods": [
+            {
+                "_id": "1",
+                "type": "creditCard",
+                "code": "2244"
+            },
+            {
+                "_id": "2",
+                "type": "creditCard",
+                "code": "1111"
+            },
+            {
+                "_id": "3",
+                "type": "cash",
+                "code": ""
+            }
+        ],
+        "labels": [
+            {
+                "id": "l101",
+                "color": "#ffff",
+                "title": "important"
+            },
+            {
+                "id": "l102",
+                "color": "#ffff",
+                "title": "treat"
+            },
+            {
+                "id": "l103",
+                "color": "#ffff",
+                "title": "once a year"
+            }
+        ],
+        "mainCurrency": "USA",
+        "months": [
+            {
+                "_id": "61b8f0264a39b6bab8ef5c8b",
+                "time": "11/2021"
+            }
+        ]
+    }
+]
