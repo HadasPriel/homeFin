@@ -4,14 +4,21 @@
 @import "basics/helpers";
 @import "basics/layout";
 @import "basics/base";
+@import "basics/labels";
 
 // Components
 @import "cmps/appHeader";
 @import "cmps/month/month-header";
 @import "cmps/month/table-layout";
-@import "cmps/month/category-preview";
-@import "cmps/month/expense-preview";
-@import "cmps/month/add-expense";
+@import "cmps/category/category-preview";
+@import "cmps/category/category-menu";
+@import "cmps/category/category-color";
+@import "cmps/category/expected-preview";
+@import "cmps/category/edit-expected";
+@import "cmps/expense/expense-preview";
+@import "cmps/expense/add-expense";
+@import "cmps/date-picker";
+@import "cmps/ui/user";
 
 // Views
 @import "views/accountDetails";

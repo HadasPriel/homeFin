@@ -92,6 +92,30 @@
         content: "\f141";
     }
 }
+.decline {
+    &::after {
+        font-family: fa;
+        content: "\f00d";
+    }
+}
+.confirme {
+    &::after {
+        font-family: fa;
+        content: "\f00c";
+    }
+}
+.prev {
+    &::after {
+        font-family: fa;
+        content: "\f104";
+    }
+}
+.next {
+    &::after {
+        font-family: fa;
+        content: "\f105";
+    }
+}
 
 .btn {
     padding: 4px 8px;

@@ -23,6 +23,7 @@ async function query(filterBy) {
 async function getById(monthId) {
     return httpService.get(`month/${monthId}`)
 }
+
 async function getPrevNext(monthId, diff) {
     return httpService.get(`month/${monthId}/prevNext/${diff}`)
 }
@@ -33,9 +34,9 @@ function remove(monthId) {
 
 }
 
-async function add(accountId, prevMonth, diff = 1) {
+async function add(accountId, time) {
     // month.byUser = userService.getLoggedinUser()
-    return await httpService.post('month', { accountId, prevMonth, diff })
+    return await httpService.post('month', { accountId, time })
 }
 
 async function addCtegory(monthId) {

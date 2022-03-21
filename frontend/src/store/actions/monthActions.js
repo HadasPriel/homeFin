@@ -1,12 +1,12 @@
 import { monthService } from '../../services/month.service'
+// import { utilService } from '../../services/util.service'
 import { store } from '../store'
 // import { userService } from '../../services/user.service'
 
 const monthActions = {
   loadMonths,
   loadMonth,
-  loadPrevNextMonth,
-  // addMonth,
+  loadMonthByTime,
   addCtegory,
   updateCtegory,
   removeCategory,
@@ -32,26 +32,33 @@ export function loadMonths() {
 export function loadMonth(monthId) {
   return async dispatch => {
     try {
-      const month = await monthService.getById(monthId)
-      dispatch({ type: 'SET_MONTH', month })
-
+      if (monthId) {
+        const month = await monthService.getById(monthId)
+        dispatch({ type: 'SET_MONTH', month })
+      }
+      else {
+        dispatch({ type: 'SET_MONTH', month: null })
+      }
     } catch (err) {
       console.log('MonthActions: err in loadMonths', err)
     }
   }
 }
 
-export function loadPrevNextMonth(prevMonth, diff) {
+export function loadMonthByTime(time) {
   return async dispatch => {
     try {
       const currAcount = store.getState().accountModule.currAcount
       const months = currAcount.months
 
-      const monthIdx = months.findIndex(currMonth => prevMonth._id === currMonth._id)
-      const PrevNextMonthId = months[monthIdx + diff]?._id
-      if (!PrevNextMonthId) var month = await monthService.add(currAcount._id, prevMonth, diff)
-      else month = await monthService.getById(PrevNextMonthId)
-      console.log('**********', month);
+      let miniMonth = months.find(currMonth => time === currMonth.time)
+      if (miniMonth) var month = await monthService.getById(miniMonth._id)
+      else {
+        console.log('need to cerate new month!')
+        month = await monthService.add(currAcount._id, time)
+        miniMonth = { _id: month._id, time: month.time }
+        dispatch({ type: 'ADD_ACCOUNT_MONTH', miniMonth })
+      }
       dispatch({ type: 'SET_MONTH', month })
     } catch (err) {
       console.log('MonthActions: err in loadMonths', err)
@@ -59,21 +66,6 @@ export function loadPrevNextMonth(prevMonth, diff) {
   }
 }
 
-
-// export function addMonth(month) {
-//   return async dispatch => {
-//     try {
-//       const addedMonth = await monthService.add(month)
-//       dispatch({ type: 'ADD_MONTH', month: addedMonth })
-
-//       const score = await userService.increaseScore()
-//       dispatch({ type: 'SET_SCORE', score })
-
-//     } catch (err) {
-//       console.log('MonthActions: err in addMonth', err)
-//     }
-//   }
-// }
 
 export function addCtegory(monthId, category) {
   return async dispatch => {

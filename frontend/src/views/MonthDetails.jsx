@@ -1,30 +1,41 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from "react-router-dom";
-import { CategoryPreview } from '../cmps/month/CategoryPreview';
+import { useParams, useHistory } from "react-router-dom";
+import { CategoryPreview } from '../cmps/category/CategoryPreview';
 import { MonthHeader } from '../cmps/month/MonthHeader';
-
+import { utilService } from '../services/util.service.js';
 import actions from '../store/actions';
 
 
 
 export const MonthDetails = () => {
 
-    let { monthId } = useParams();
-    const dispatch = useDispatch();
+    let { accountId, monthId } = useParams();
+    let history = useHistory();
     const elCategoryTitle = useRef(null)
+    const dispatch = useDispatch();
     const month = useSelector(state => state.monthModule.currMonth)
 
     useEffect(() => {
+        if (monthId === 'null') return
         dispatch(actions.monthActions.loadMonth(monthId))
-    }, [dispatch, monthId]);
+
+        return () => {
+            dispatch(actions.monthActions.loadMonth(null))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!month || !month._id || monthId === month._id) return
+
+        history.push(`/account/${accountId}/${month._id}`)
+    }, [month])
+
 
     const addCtegory = async (category) => {
         try {
             await dispatch(actions.monthActions.addCtegory(monthId, category))
-            console.log('elCategoryPreview', elCategoryTitle.current.innerText);
             elCategoryTitle.current.focus()
-            // elCategoryTitle.current.setSelectionRange(0, elCategoryTitle.current.innerText.length)
         } catch (err) {
             console.log(err);
         }
@@ -46,6 +57,7 @@ export const MonthDetails = () => {
         }
     }
 
+
     const addExpense = async (categoryId, expense) => {
         try {
             dispatch(actions.monthActions.addExpense(monthId, categoryId, expense))
@@ -62,23 +74,27 @@ export const MonthDetails = () => {
         }
     }
 
-    const updateExpense = async (categoryId, expense) => {
+    const updateExpense = useCallback(async (categoryId, expense) => {
         try {
+            if (monthId === 'null') return
             dispatch(actions.monthActions.updateExpense(monthId, categoryId, expense))
         } catch (err) {
             console.log(err);
         }
-    }
+    }, [dispatch])
 
     const onPrevNextMonth = async (diff = 1) => {
+
         try {
-            dispatch(actions.monthActions.loadPrevNextMonth(month, diff))
+            let nextPrevTime = utilService.getNextPrevTime(month.time, diff)
+            dispatch(actions.monthActions.loadMonthByTime(nextPrevTime))
+
         } catch (err) {
             console.log(err);
         }
     }
 
-    if (!month) return <div>Loading...</div>
+    if (!month || !month.time) return <div>Loading...</div>
     return (
         <section className="month-details">
             <MonthHeader month={month}

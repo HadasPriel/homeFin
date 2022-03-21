@@ -1,7 +1,7 @@
 .category-preview {
+    position: relative;
     margin-block-end: 90px;
     .first-cell-title {
-        color: $lb1;
         line-height: 27px;
         h1 {
             font-weight: 300;
@@ -9,15 +9,10 @@
             padding-inline-start: 15px;
             text-transform: capitalize;
         }
-        // &::before {
-        //     font-family: fa;
-        //     content: "\f0dd";
-        // }
     }
 
     header .menu {
         cursor: pointer;
-        background-color: $lb1;
         width: 18px;
         height: 18px;
         border-radius: 1em;

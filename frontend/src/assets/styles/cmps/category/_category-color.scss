@@ -1,0 +1,24 @@
+.category-color-list.menu-item {
+    position: absolute;
+    z-index: 30;
+    left: 257px;
+    padding: 5px;
+    width: 140px;
+    background-color: $clr6;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background-color: $clr6;
+    }
+
+    .color-label {
+        width: 20px;
+        height: 20px;
+        border-radius: 2em;
+        margin: 3px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

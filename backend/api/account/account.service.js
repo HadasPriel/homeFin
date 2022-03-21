@@ -56,15 +56,18 @@ async function add(account) {
     }
 }
 
-async function addMonth(accountId, month, diff) {
+async function addMonth(accountId, month) {
     try {
-        // peek only updatable fields!
         const monthToAdd = {
             _id: month._id,
             time: month.time
         }
-        const account = await getById(accountId)
-        return accountToAdd;
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        account.months.push(monthToAdd)
+        console.log(account);
+        await collection.updateOne({ _id: account._id }, { $set: account })
+        console.log('after!');
     } catch (err) {
         logger.error('cannot insert account', err)
         throw err

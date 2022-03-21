@@ -13,6 +13,8 @@ export function accountReducer(state = initialState, action = {}) {
       return { ...state, accounts: [...state.accounts, action.account] }
     case 'REMOVE_ACCOUNT':
       return { ...state, accounts: state.accounts.filter(account => account._id !== action.accountId) }
+    case 'ADD_ACCOUNT_MONTH':
+      return { ...state, currAcount: { ...state.currAcount, months: [...state.currAcount.months, action.miniMonth] } }
     case 'UPDATE_ACCOUNT':
       return {
         ...state,

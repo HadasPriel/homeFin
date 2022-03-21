@@ -1,0 +1,32 @@
+.profile-img {
+    border-radius: 2em;
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+}
+
+.user-list {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 20;
+    background-color: $clr6;
+    min-width: 220px;
+    padding: 10px;
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.user-preview {
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 8px;
+
+    .user-name {
+        margin-inline-start: 14px;
+    }
+
+    &:hover {
+        background-color: $clr5;
+        color: $clr6;
+    }
+}

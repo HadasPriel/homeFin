@@ -4,6 +4,8 @@ import lotus from "../assets/img/lotus.png"
 
 export const AppHeader = () => {
 
+
+
     return (
         <header className="app-header flex col">
             <Link to="/">

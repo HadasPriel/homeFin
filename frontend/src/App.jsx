@@ -10,7 +10,7 @@ import { AccountDetails } from './views/AccountDetails'
 
 function App() {
   return (
-    <div className="App flex">
+    <div className="App flex ">
       <Router>
         <AppHeader />
         <main className='app-main'>

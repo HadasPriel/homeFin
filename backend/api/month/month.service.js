@@ -3,6 +3,7 @@ const accountService = require('../account/account.service')
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const asyncLocalStorage = require('../../services/als.service')
+const utilService = require('../../services/util.service')
 
 async function query(filterBy = {}) {
     try {
@@ -41,13 +42,14 @@ async function remove(monthId) {
     }
 }
 
-async function add(accountId, prevMonth, diff) {
+async function add(accountId, time) {
     try {
-        const monthToAdd = _createMonth(prevMonth, diff)
+        const lastMonth = await _getLastMonth(accountId)
+        const monthToAdd = _createMonth(time, lastMonth)
         const collection = await dbService.getCollection('month')
         let month = await collection.insertOne(monthToAdd)
         month = month.ops[0]
-        accountService.addMonth(accountId, month, diff)
+        accountService.addMonth(accountId, month)
         return month;
     } catch (err) {
         logger.error('cannot insert month', err)
@@ -155,8 +157,8 @@ function _buildCriteria(filterBy) {
 
 function _createExpense({ description, sum }) {
     return {
-        id: _makeId(),
-        cratedAt: Date.now(),
+        id: utilService.makeId(),
+        cratedAt: new Date(),
         description,
         repeat: null,
         sum: {
@@ -166,27 +168,27 @@ function _createExpense({ description, sum }) {
         byUser: {
             _id: 'u101',
             username: 'hadas',
-            imgUrl: '...'
+            imgUrl: 'https://res.cloudinary.com/dtg8d5gnc/image/upload/v1641632564/homeFin/profile1_qvcffx.jpg'
         }
     }
 }
 
 function _createCategory() {
     return {
-        id: _makeId(),
+        id: utilService.makeId(),
         title: "New Category",
-        color: _getRandomColor(),
+        color: 'lb' + utilService.getRandomIntInclusive(1, 20),
         description: "",
-        expacted: 0,
+        expected: 0,
         actual: 0,
         isIncome: false,
         expenses: []
     }
 }
 
-function _createMonth(prevMonth, diff) {
-    const time = _getTime(prevMonth, diff)
-    const categories = getCategories(prevMonth)
+function _createMonth(time, prevMonth) {
+
+    const categories = _getCategories(prevMonth)
     return {
         time,
         members: prevMonth.members,
@@ -194,44 +196,28 @@ function _createMonth(prevMonth, diff) {
     }
 }
 
-function _getTime(prevMonth, diff) {
-    let [month, year] = prevMonth.time.split('/')
-    month = parseInt(month) + diff
-    if (month > 12) {
-        console.log('month bigger then 12');
-        month = 1
-        year = parseInt(year)++
-    }
-    else if (month < 1) {
-        month = 12
-        year = parseInt(year)--
-    }
-    if (month < 10) month = '0' + month
-
-    console.log(`New month time: ${month}/${year} !!!`);
-    return `${month}/${year}`
-}
-
-function getCategories(prevMonth) {
-    return prevMonth.categories.map(categ => {
+function _getCategories(month) {
+    return month.categories.map(categ => {
         categ.expenses = categ.expenses.filter((expense => expense.repeat))
         return categ
     })
 }
 
-function _makeId(length = 5) {
-    var txt = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < length; i++) {
-        txt += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return txt;
+async function _getLastMonth(accountId) {
+    const account = await accountService.getById(accountId)
+    months = account.months
+
+    const miniMinth = months.reduce((acc, currMonth) => {
+        let [month, year] = currMonth.time.split('/')
+        let [accMonth, accYear] = acc.time.split('/')
+        if (+year >= +accYear && +month > +accMonth) acc = currMonth
+        return acc
+    }, { time: '00/00' })
+
+    const lastMonth = await getById(miniMinth._id)
+    return lastMonth
 }
 
-function _getRandomColor() {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
-
-}
 
 module.exports = {
     query,

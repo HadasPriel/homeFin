@@ -1,0 +1,22 @@
+.category-menu {
+    position: absolute;
+    z-index: 20;
+    top: 35px;
+    background-color: $clr6;
+    border-radius: 8px;
+    width: 265px;
+    padding: 8px;
+    box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+
+    .menu-item {
+        line-height: 24px;
+        padding: 4px 8px;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $clr4;
+        }
+    }
+}

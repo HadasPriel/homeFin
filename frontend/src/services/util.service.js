@@ -3,7 +3,9 @@ export const utilService = {
     delay,
     getRandomInt,
     makeId,
-    getVerbalTime
+    getVerbalTime,
+    getMMYYYY,
+    getNextPrevTime
 }
 
 function delay(ms = 1500) {
@@ -27,7 +29,7 @@ function makeId(length = 5) {
     return txt;
 }
 
-// from '11/2021' to ''
+// from '11/2021' to 'Nov 2021'
 function getVerbalTime(numDate) {
     const [month, year] = numDate.split('/')
     const numWordMap = {
@@ -45,5 +47,28 @@ function getVerbalTime(numDate) {
         '12': 'Dec',
     }
     return `${numWordMap[month]} ${year}`
+}
 
+// from new Date() to '11/2021'
+function getMMYYYY(date){
+    let month = (date.getMonth() +1).toString().padStart(2, '0')
+    let year = date.getFullYear()
+    console.log(`${month}/${year}`);
+    return `${month}/${year}`
+  }
+
+function getNextPrevTime(time, diff) {
+    let [month, year] = time.split('/')
+    month = (+month) + diff
+    if (month > 12) {
+        month = 1
+        year = parseInt(year) + 1
+    }
+    if (month < 1) {
+        month = 12
+        year = parseInt(year) - 1
+    }
+    month = (month.toString())
+    month = month.padStart(2, '0')
+    return `${month}/${year}`
 }

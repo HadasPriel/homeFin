@@ -1,7 +1,9 @@
 .expense-preview {
+    position: relative;
     background-color: $clr2;
     border-bottom: 1px solid $clr6;
     cursor: pointer;
+    user-select: none;
 
     .menu-wrapper {
         background-color: $clr6;
@@ -28,11 +30,9 @@
             line-height: 24px;
         }
 
-        &::before {
-            content: "";
+        .before {
             width: 8px;
             height: 100%;
-            background-color: $lb1;
         }
     }
     .cell,
@@ -40,6 +40,12 @@
         border-bottom: 1px solid $clr4;
         border-right: 1px solid $clr6;
     }
+
+    .date {
+        height: 100%;
+        width: 100%;
+    }
+
     &:hover {
         background-color: #e6e9ef;
 
