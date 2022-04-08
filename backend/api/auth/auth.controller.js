@@ -2,6 +2,7 @@ const authService = require('./auth.service')
 const logger = require('../../services/logger.service')
 
 async function login(req, res) {
+    console.log(req.body);
     const { username, password } = req.body
     try {
         const user = await authService.login(username, password)
@@ -29,7 +30,7 @@ async function signup(req, res) {
     }
 }
 
-async function logout(req, res){
+async function logout(req, res) {
     try {
         // req.session.destroy()
         req.session.user = null;

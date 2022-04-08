@@ -14,6 +14,9 @@ export const AppHeader = () => {
             <Link to="/account">
                 <span className='account'></span>
             </Link>
+            <Link to="/login">
+                <span>login</span>
+            </Link>
         </header>
     )
 }

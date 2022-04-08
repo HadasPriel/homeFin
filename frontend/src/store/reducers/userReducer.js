@@ -15,10 +15,6 @@ export function userReducer(state = initialState, action = {}) {
         ...state,
         users: state.users.filter(user => user._id !== action.userId)
       }
-    case 'SET_USERS':
-      return { ...state, users: action.users }
-    case 'SET_SCORE':
-      return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
     default:
       return state
   }

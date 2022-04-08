@@ -17,7 +17,7 @@ const monthActions = {
 }
 
 
-export function loadMonths() {
+function loadMonths() {
   return async dispatch => {
     try {
       const months = await monthService.query()
@@ -29,7 +29,7 @@ export function loadMonths() {
   }
 }
 
-export function loadMonth(monthId) {
+function loadMonth(monthId) {
   return async dispatch => {
     try {
       if (monthId) {
@@ -45,7 +45,7 @@ export function loadMonth(monthId) {
   }
 }
 
-export function loadMonthByTime(time) {
+function loadMonthByTime(time) {
   return async dispatch => {
     try {
       const currAcount = store.getState().accountModule.currAcount
@@ -67,7 +67,7 @@ export function loadMonthByTime(time) {
 }
 
 
-export function addCtegory(monthId, category) {
+function addCtegory(monthId, category) {
   return async dispatch => {
     try {
       const month = await monthService.addCtegory(monthId, category)
@@ -79,7 +79,7 @@ export function addCtegory(monthId, category) {
   }
 }
 
-export function updateCtegory(monthId, category) {
+function updateCtegory(monthId, category) {
   return async dispatch => {
     try {
       const month = await monthService.updateCtegory(monthId, category)
@@ -91,7 +91,7 @@ export function updateCtegory(monthId, category) {
   }
 }
 
-export function removeCategory(monthId, categoryId) {
+function removeCategory(monthId, categoryId) {
   return async dispatch => {
     try {
       const month = await monthService.removeCategory(monthId, categoryId)
@@ -103,7 +103,7 @@ export function removeCategory(monthId, categoryId) {
   }
 }
 
-export function addExpense(monthId, categoryId, expense) {
+function addExpense(monthId, categoryId, expense) {
   return async dispatch => {
     try {
       const month = await monthService.addExpense(monthId, categoryId, expense)
@@ -115,7 +115,7 @@ export function addExpense(monthId, categoryId, expense) {
   }
 }
 
-export function removeExpense(monthId, categoryId, expenseId) {
+function removeExpense(monthId, categoryId, expenseId) {
   return async dispatch => {
     try {
       const month = await monthService.removeExpense(monthId, categoryId, expenseId)
@@ -127,7 +127,7 @@ export function removeExpense(monthId, categoryId, expenseId) {
   }
 }
 
-export function updateExpense(monthId, categoryId, expense) {
+function updateExpense(monthId, categoryId, expense) {
   return async dispatch => {
     try {
       const month = await monthService.updateExpense(monthId, categoryId, expense)
@@ -140,7 +140,7 @@ export function updateExpense(monthId, categoryId, expense) {
 }
 
 
-export function removeMonth(monthId) {
+function removeMonth(monthId) {
   return async dispatch => {
     try {
       await monthService.remove(monthId)

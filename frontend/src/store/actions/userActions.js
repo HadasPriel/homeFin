@@ -1,9 +1,18 @@
-import { userService } from '../../services/userService'
+import { userService } from '../../services/user.service'
 
 // THUNK action creators
 // Work asynchronously with the service and dispatch actions to the reducers 
 
-export function loadUsers() {
+const userActions = {
+  loadUsers,
+  removeUser,
+  login,
+  signup,
+  logout
+}
+
+
+function loadUsers() {
   return async dispatch => {
     try {
       dispatch({ type: 'LOADING_START' })
@@ -17,7 +26,7 @@ export function loadUsers() {
   }
 }
 
-export function removeUser(userId) {
+function removeUser(userId) {
   return async dispatch => {
     try {
       await userService.remove(userId)
@@ -29,7 +38,7 @@ export function removeUser(userId) {
 }
 
 
-export function login(userCreds) {
+function login(userCreds) {
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
@@ -39,7 +48,7 @@ export function login(userCreds) {
     }
   }
 }
-export function signup(userCreds) {
+function signup(userCreds) {
   return async dispatch => {
     try {
       const user = await userService.signup(userCreds)
@@ -49,7 +58,7 @@ export function signup(userCreds) {
     }
   }
 }
-export function logout() {
+function logout() {
   return async dispatch => {
     try {
       await userService.logout()
@@ -59,3 +68,5 @@ export function logout() {
     }
   }
 }
+
+export default userActions

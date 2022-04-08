@@ -41,12 +41,7 @@ async function addAccount(req, res) {
         account.byUserId = req.session.user._id
         account = await accountService.add(account)
 
-        // prepare the updated account for sending out
-        account.aboutUser = await userService.getById(account.aboutUserId)
-
-        // Give the user credit for adding a account
         var user = await userService.getById(account.byUserId)
-        user.score += 10;
         user = await userService.update(user)
         account.byUser = user
         const fullUser = await userService.getById(user._id)

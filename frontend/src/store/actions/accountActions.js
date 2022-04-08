@@ -4,7 +4,7 @@ import { accountService } from '../../services/account.service'
 const accountActions = {
   loadAccounts,
   loadAccount,
-  // addAccount,
+  addAccount,
   removeAccount
 }
 
@@ -33,20 +33,18 @@ export function loadAccount(accountId) {
   }
 }
 
-// export function addAccount(account) {
-//   return async dispatch => {
-//     try {
-//       const addedAccount = await accountService.add(account)
-//       dispatch({ type: 'ADD_ACCOUNT', account: addedAccount })
+export function addAccount(account) {
+  return async dispatch => {
+    try {
+      const addedAccount = await accountService.add(account)
+      dispatch({ type: 'ADD_ACCOUNT', account: addedAccount })
 
-//       const score = await userService.increaseScore()
-//       dispatch({ type: 'SET_SCORE', score })
 
-//     } catch (err) {
-//       console.log('AccountActions: err in addAccount', err)
-//     }
-//   }
-// }
+    } catch (err) {
+      console.log('AccountActions: err in addAccount', err)
+    }
+  }
+}
 
 export function removeAccount(accountId) {
   return async dispatch => {
