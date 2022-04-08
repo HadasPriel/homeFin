@@ -8,8 +8,6 @@ async function query(loggedinUser, filterBy = {}) {
         const criteria = _buildCriteria(loggedinUser, filterBy)
         const collection = await dbService.getCollection('account')
         const accounts = await collection.find(criteria).toArray()
-        console.log('accounts', accounts);
-        console.log('criteria', criteria);
         return accounts
     } catch (err) {
         logger.error('cannot find accounts', err)
