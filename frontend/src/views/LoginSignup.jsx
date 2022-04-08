@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux'
 
 import actions from '../store/actions';
 
-import { userService } from "../services/user.service.js";
 
 export const LoginSignup = () => {
 
     const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '' });
     const [loginCred, setLoginCred] = useState({ username: '', password: '' });
+    const [isLoginShow, setIsLoginShow] = useState(true);
     const dispatch = useDispatch();
 
     const doSignup = (ev) => {
@@ -33,65 +33,74 @@ export const LoginSignup = () => {
         const { name, value } = ev.target
         setLoginCred(prevState => { return { ...prevState, [name]: value } })
     }
+    const toggleIsLoginShow = (ev) => {
+        setIsLoginShow(prevState => !prevState)
+    }
+
 
     let loginSection =
-        <form className="frm" onSubmit={doLogin}>
-            <h2>Login</h2>
-            <input
-                type="text"
-                name="username"
-                value={loginCred.username}
-                onChange={loginHandleChange}
-                placeholder="Username"
-                autoComplete="username"
-            />
-            <input
-                name="password"
-                type="password"
-                value={loginCred.password}
-                onChange={loginHandleChange}
-                placeholder="Password"
-                autoComplete="current-password"
-            />
-            <button>Login</button>
+        <form onSubmit={doLogin}>
+            <h2 className="title">Log in to your account</h2>
+            <div className="form-content">
+                <input
+                    type="text"
+                    name="username"
+                    value={loginCred.username}
+                    onChange={loginHandleChange}
+                    placeholder="Username"
+                    autoComplete="username"
+                />
+                <input
+                    name="password"
+                    type="password"
+                    value={loginCred.password}
+                    onChange={loginHandleChange}
+                    placeholder="Password"
+                    autoComplete="current-password"
+                />
+                <button className="login-btn btn suc">Log in</button>
+            </div>
+            <p>Don't have an account yet? <button className="link-like" type="button" onClick={toggleIsLoginShow}>Sign up</button></p>
         </form>
 
     let signupSection =
-        <form className="frm" onSubmit={doSignup}>
-            <h2>Signup</h2>
-            <input
-                type="text"
-                name="fullname"
-                value={signupCred.fullname}
-                onChange={signupHandleChange}
-                placeholder="Full name"
-                autoComplete="fullname"
-            />
-            <input
-                name="password"
-                type="password"
-                value={signupCred.password}
-                onChange={signupHandleChange}
-                placeholder="Password"
-                autoComplete="current-password"
-            />
-            <input
-                type="text"
-                name="username"
-                value={signupCred.username}
-                onChange={signupHandleChange}
-                placeholder="Username"
-                autoComplete="username"
-            />
-            <br />
-            <button>Signup</button>
+        <form onSubmit={doSignup}>
+            <h2 className="title">Sign Up</h2>
+            <div className="form-content">
+                <input
+                    type="text"
+                    name="fullname"
+                    value={signupCred.fullname}
+                    onChange={signupHandleChange}
+                    placeholder="Full name"
+                    autoComplete="fullname"
+                />
+                <input
+                    name="password"
+                    type="password"
+                    value={signupCred.password}
+                    onChange={signupHandleChange}
+                    placeholder="Password"
+                    autoComplete="current-password"
+                />
+                <input
+                    type="text"
+                    name="username"
+                    value={signupCred.username}
+                    onChange={signupHandleChange}
+                    placeholder="Username"
+                    autoComplete="username"
+                />
+                <br />
+                <button className="login-btn btn suc">Sign Up</button>
+            </div>
+            <p>Already have an account? <button className="link-like" type="button" onClick={toggleIsLoginShow}>Sign in</button></p>
         </form>
 
 
     return (
-        <section>
-            {loginSection}
-            {signupSection}
+        <section className="login-signup">
+            {isLoginShow ? loginSection : signupSection}
         </section>
     )
 }
