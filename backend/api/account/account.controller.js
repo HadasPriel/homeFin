@@ -4,8 +4,9 @@ const socketService = require('../../services/socket.service')
 const accountService = require('./account.service')
 
 async function getAccounts(req, res) {
+    loggedinUser = req.session.user
     try {
-        const accounts = await accountService.query(req.query)
+        const accounts = await accountService.query(loggedinUser, req.query)
         res.send(accounts)
     } catch (err) {
         logger.error('Cannot get accounts', err)
@@ -14,7 +15,6 @@ async function getAccounts(req, res) {
 }
 
 async function getAccount(req, res) {
-    console.log('req.query', req.params);
     try {
         const accounts = await accountService.getById(req.params.id)
         res.send(accounts)
@@ -38,23 +38,12 @@ async function deleteAccount(req, res) {
 async function addAccount(req, res) {
     try {
         var account = req.body
-        account.byUserId = req.session.user._id
+        account.byUser = req.session.user
         account = await accountService.add(account)
-
-        var user = await userService.getById(account.byUserId)
-        user = await userService.update(user)
-        account.byUser = user
-        const fullUser = await userService.getById(user._id)
-
-        console.log('CTRL SessionId:', req.sessionID);
-        socketService.broadcast({ type: 'account-added', data: account, userId: account.byUserId })
-        socketService.emitToUser({ type: 'account-about-you', data: account, userId: account.aboutUserId })
-        socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
 
         res.send(account)
 
     } catch (err) {
-        console.log(err)
         logger.error('Failed to add account', err)
         res.status(500).send({ err: 'Failed to add account' })
     }

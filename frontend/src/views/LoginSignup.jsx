@@ -18,6 +18,7 @@ export const LoginSignup = () => {
         dispatch(actions.userActions.signup(signupCred))
         setSignupCred({ username: '', password: '', fullname: '' })
     }
+
     const doLogin = (ev) => {
         ev.preventDefault()
         console.log('doLogin!');
@@ -25,15 +26,18 @@ export const LoginSignup = () => {
         dispatch(actions.userActions.login(loginCred))
         setSignupCred({ username: '', password: '' })
     }
+
     const signupHandleChange = (ev) => {
         const { name, value } = ev.target
         setSignupCred(prevState => { return { ...prevState, [name]: value } })
     }
+
     const loginHandleChange = (ev) => {
         const { name, value } = ev.target
         setLoginCred(prevState => { return { ...prevState, [name]: value } })
     }
-    const toggleIsLoginShow = (ev) => {
+
+    const toggleIsLoginShow = () => {
         setIsLoginShow(prevState => !prevState)
     }
 
@@ -92,7 +96,7 @@ export const LoginSignup = () => {
                     autoComplete="username"
                 />
                 <br />
-                <button className="login-btn btn suc">Sign Up</button>
+                <button className="login-btn btn suc">Sign up</button>
             </div>
             <p>Already have an account? <button className="link-like" type="button" onClick={toggleIsLoginShow}>Sign in</button></p>
         </form>

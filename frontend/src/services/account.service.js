@@ -27,11 +27,6 @@ function remove(accountId) {
 
 }
 async function add(account) {
-  // const addedAccount = await httpService.post(`account`, account)
-
-  // account.byUser = userService.getLoggedinUser()
-  // account.aboutUser = await userService.getById(account.aboutUserId)
-  const addedAccount = storageService.post('account', account)
-
+  const addedAccount = await httpService.post(`account`, account)
   return addedAccount
 }

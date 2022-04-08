@@ -1,12 +1,15 @@
 const dbService = require('../../services/db.service')
+const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 const asyncLocalStorage = require('../../services/als.service')
 
-async function query(filterBy = {}) {
+async function query(loggedinUser, filterBy = {}) {
     try {
-        const criteria = _buildCriteria(filterBy)
+        const criteria = _buildCriteria(loggedinUser, filterBy)
         const collection = await dbService.getCollection('account')
         const accounts = await collection.find(criteria).toArray()
+        console.log('accounts', accounts);
+        console.log('criteria', criteria);
         return accounts
     } catch (err) {
         logger.error('cannot find accounts', err)
@@ -41,12 +44,21 @@ async function remove(accountId) {
 
 async function add(account) {
     try {
-        // peek only updatable fields!
         const accountToAdd = {
-            byUserId: ObjectId(account.byUserId),
-            aboutUserId: ObjectId(account.aboutUserId),
-            txt: account.txt
+            title: account.title,
+            description: '',
+            byUser: account.byUser,
+            members: [account.byUser],
+            methods: [
+                { id: "1", type: "creditCard", code: "2244" },
+                { id: "2", type: "creditCard", code: "1111" },
+                { id: "1", type: "cash" }
+            ],
+            mainCurrency: 'USA',
+            months: []
         }
+        accountToAdd.byUser._id = ObjectId(account.byUser._id)
+        accountToAdd.members[0]._id = ObjectId(accountToAdd.members[0]._id)
         const collection = await dbService.getCollection('account')
         await collection.insertOne(accountToAdd)
         return accountToAdd;
@@ -74,8 +86,9 @@ async function addMonth(accountId, month) {
     }
 }
 
-function _buildCriteria(filterBy) {
+function _buildCriteria(loggedinUser, filterBy) {
     const criteria = {}
+    criteria.members = { $elemMatch: { _id: ObjectId(loggedinUser._id) } }
     return criteria
 }
 

@@ -1,8 +1,5 @@
-// import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-// import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-// var gWatchedUser = null;
 
 export const userService = {
     login,
@@ -43,3 +40,7 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 
+(async function devLogin(userCred = { username: 'lala', password: 'lala' }) {
+    const user = await httpService.post('auth/login', userCred)
+    if (user) return _saveLocalUser(user)
+})()
