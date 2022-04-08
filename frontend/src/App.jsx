@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App flex ">
       <Router>
+        <p>lala</p>
         <AppHeader />
         <main className='app-main'>
           <Provider store={store}>

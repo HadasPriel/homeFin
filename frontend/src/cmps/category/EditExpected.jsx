@@ -7,12 +7,12 @@ export const EditExpected = ({ expected, color, onUpdateCategory, toggleEditExpe
         elExpected.current.focus()
     }, [])
     useEffect(() => {
-        const onKeyDown = (ev)=>{
+        const onKeyDown = (ev) => {
             if (ev.keyCode === 27) toggleEditExpected()
         }
         document.addEventListener('keyup', onKeyDown)
-        
-        return ()=>{
+
+        return () => {
             document.removeEventListener('keydown', onKeyDown)
         }
     }, [])
@@ -30,7 +30,7 @@ export const EditExpected = ({ expected, color, onUpdateCategory, toggleEditExpe
             <div className="first-cell flex">
                 <span className="before" style={{ backgroundColor: `var(--${color})` }} ></span>
                 <input
-                ref={elExpected}
+                    ref={elExpected}
                     className="expected description"
                     type="number"
                     placeholder="Insert expected monthly expense for category"
