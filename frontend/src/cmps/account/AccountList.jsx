@@ -1,11 +1,20 @@
-import { AccountPreview } from "./AccountPreview"
 
-export const AccountList = ({ accounts }) => {
+import { AccountPreview } from "./AccountPreview"
+import { AddAccount } from "./AddAccount"
+
+export const AccountList = ({ accounts, addAccount }) => {
+
+
 
     return (
-        <ul className="account-list flex">
-            <p>account-list:</p>
-            {accounts.map(account => <AccountPreview account={account} key={account._id} />)}
-        </ul>
+        <section className="account-list">
+            <h2 className="title">Boards</h2>
+            <ul className="list-container">
+                {accounts.map(account =>
+                    <AccountPreview account={account} key={account._id} />)
+                }
+                <AddAccount addAccount={addAccount} />
+            </ul>
+        </section>
     )
 }

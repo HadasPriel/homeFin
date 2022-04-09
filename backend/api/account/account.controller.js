@@ -1,6 +1,6 @@
 const logger = require('../../services/logger.service')
-const userService = require('../user/user.service')
-const socketService = require('../../services/socket.service')
+// const userService = require('../user/user.service')
+// const socketService = require('../../services/socket.service')
 const accountService = require('./account.service')
 
 async function getAccounts(req, res) {

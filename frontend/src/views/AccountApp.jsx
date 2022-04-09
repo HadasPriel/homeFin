@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import actions from '../store/actions';
 
 import { AccountList } from '../cmps/account/AccountList';
-import { AddAccount } from '../cmps/account/AddAccount';
 
 
 export const AccountApp = () => {
@@ -22,8 +21,7 @@ export const AccountApp = () => {
 
     return (
         <section>
-            <AccountList accounts={accounts} />
-            <AddAccount addAccount={addAccount} />
+            <AccountList accounts={accounts} addAccount={addAccount} />
         </section>
     )
 }

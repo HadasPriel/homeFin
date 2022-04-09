@@ -1,0 +1,30 @@
+.account-preview, .add-account{
+    cursor: pointer;
+    border-radius: 4px;
+    &:hover{
+        background-color: #dcdfec;
+    }
+    
+    .account-preview-container, .add-account-container{
+        padding: 8px 16px;
+    }
+    
+    
+    
+    .saparator{
+        margin-left: 4px;
+        margin-right: 4px;
+        height: 1px;
+        background-color: $clr4;
+    }
+}
+
+.account-preview, .add-account, .account-list{
+    .account-title{
+        font-size: 18px;
+        font-weight: 400;
+        &::before{
+            margin-inline-end: 12px;
+        }
+    }
+}

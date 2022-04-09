@@ -1,0 +1,21 @@
+.account-list{
+    background-color: $clr6;
+    border-radius: 8px;
+    width: 80vw;
+    margin: 15px auto;
+    padding: 30px;
+    .title{
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding-inline-start: 32px;
+    }
+    
+    .list-container{
+        padding: 16px;
+        border: 1px solid rgb(208, 212, 228)
+        ;
+        border-radius: 8px;
+        // box-shadow: 0px 3px 12px $clr4;
+    }
+}

@@ -85,35 +85,66 @@
 }
 
 //signs
+
+.inherit::after, .inherit::before{
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
 .menu-sign {
     cursor: pointer;
     &::after {
-        font-family: fa;
+        font-family: fa-solid;
         content: "\f141";
     }
 }
 .decline {
     &::after {
-        font-family: fa;
+        font-family: fa-solid;
         content: "\f00d";
     }
 }
 .confirme {
     &::after {
-        font-family: fa;
+        font-family: fa-solid;
         content: "\f00c";
     }
 }
 .prev {
     &::after {
-        font-family: fa;
+        font-family: fa-solid;
         content: "\f104";
     }
 }
 .next {
     &::after {
-        font-family: fa;
+        font-family: fa-solid;
         content: "\f105";
+    }
+}
+.plus {
+    &::before {
+        
+        font-family: fa;
+        content: "\2b";
+    }
+}
+.star {
+    &::after {
+        font-family: fa;
+        content: "\f005";
+    }
+    &.full {
+        &::after {
+            font-family: fa-solid;
+        }
+    }
+}
+.board {
+    &::before {
+        font-family: fa-solid;
+        content: "\f0db";
+        color: $clr7;
     }
 }
 

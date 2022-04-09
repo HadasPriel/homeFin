@@ -42,10 +42,10 @@ async function remove(monthId) {
     }
 }
 
-async function add(accountId, time) {
+async function add(accountId, time, prevmonth, user) {
     try {
         const lastMonth = await _getLastMonth(accountId)
-        const monthToAdd = _createMonth(time, lastMonth)
+        const monthToAdd = _createMonth(time, lastMonth, user)
         const collection = await dbService.getCollection('month')
         let month = await collection.insertOne(monthToAdd)
         month = month.ops[0]
@@ -186,12 +186,12 @@ function _createCategory() {
     }
 }
 
-function _createMonth(time, prevMonth) {
-
-    const categories = _getCategories(prevMonth)
+function _createMonth(time, prevMonth, user) {
+    if (!prevMonth) var categories = []
+    else categories = _getCategories(prevMonth)
     return {
         time,
-        members: prevMonth.members,
+        members: prevMonth?.members || [user], //TODO: no need for members on month...
         categories
     }
 }

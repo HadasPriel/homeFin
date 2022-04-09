@@ -35,10 +35,11 @@ async function deleteMonth(req, res) {
 }
 
 async function addMonth(req, res) {
-    console.log('addMonth is running!');
     try {
+        const user = req.session.user
+        console.log('addMonth is running!');
         var { accountId, time, prevMonth } = req.body
-        month = await monthService.add(accountId, time, prevMonth)
+        month = await monthService.add(accountId, time, prevMonth, user)
         res.send(month)
     } catch (err) {
         console.log(err)

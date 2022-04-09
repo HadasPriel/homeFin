@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
+import { useHistory } from "react-router-dom";
 
 import actions from '../store/actions';
 
@@ -10,21 +11,22 @@ export const LoginSignup = () => {
     const [loginCred, setLoginCred] = useState({ username: '', password: '' });
     const [isLoginShow, setIsLoginShow] = useState(true);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const doSignup = (ev) => {
         ev.preventDefault()
-        console.log('doSignup!');
-        console.log(signupCred);
+        console.log('doSignup!', signupCred);
         dispatch(actions.userActions.signup(signupCred))
         setSignupCred({ username: '', password: '', fullname: '' })
+        history.push("/account");
     }
 
     const doLogin = (ev) => {
         ev.preventDefault()
-        console.log('doLogin!');
-        console.log(loginCred);
+        console.log('doLogin!', loginCred);
         dispatch(actions.userActions.login(loginCred))
         setSignupCred({ username: '', password: '' })
+        history.push("/account");
     }
 
     const signupHandleChange = (ev) => {
