@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import { useToggle } from "../../hooks/useToggle";
 import { format } from 'date-fns'
 import { DatePicker } from "../ui/date-picker";
 import { UserList } from "../ui/UserList";
@@ -9,9 +10,9 @@ import { UserImg } from "../ui/UserImg";
 export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color }) => {
 
     const [expanseToSave, setExpanse] = useState({ ...expense })
-    const [isDateShow, setIsDateShow] = useState(false)
-    const [isEditSum, setIsEditSum] = useState(false)
-    const [isByUserShow, setIsByUserShow] = useState(false)
+    const [isDateShow, setIsDateShow] = useToggle(false)
+    const [isEditSum, setIsEditSum] = useToggle(false)
+    const [isByUserShow, setIsByUserShow] = useToggle(false)
     const account = useSelector(state => state.accountModule.currAcount)
 
 
@@ -84,12 +85,6 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
         deleteExpense(expanseToSave.id)
     }
 
-    const toggleDatePicker = () => {
-        setIsDateShow(prevIsShow => !prevIsShow)
-    }
-    const toggleByUser = () => {
-        setIsByUserShow(prevIsShow => !prevIsShow)
-    }
 
 
     return (
@@ -111,12 +106,12 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
                 </div>
                 <div className="cell flex center">...</div>
                 <div className="cell flex center">
-                    <span className="date flex center" onClick={toggleDatePicker}>
+                    <span className="date flex center" onClick={setIsDateShow}>
                         {format(new Date(expanseToSave.cratedAt), 'dd.MM')}
                     </span>
                     {isDateShow && <DatePicker setIsDateShow={setIsDateShow} eidtExpenseTime={eidtExpenseTime} />}
                 </div>
-                <div className="cell flex center" onClick={toggleByUser}>
+                <div className="cell flex center" onClick={setIsByUserShow}>
                     <UserImg user={expanseToSave.byUser} />
                     {isByUserShow && <UserList members={account.members} expenseMember={expanseToSave.byUser} eidtExpense={onEidtExpense} />}
                 </div>

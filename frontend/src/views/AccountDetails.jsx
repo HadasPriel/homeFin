@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from "react-router-dom";
+import { useToggle } from '../hooks/useToggle';
 
 import actions from '../store/actions';
 
@@ -15,7 +16,7 @@ export const AccountDetails = (props) => {
     let { accountId } = useParams();
     const dispatch = useDispatch();
     const account = useSelector(state => state.accountModule.currAcount)
-    const [isInviteShow, setIsInviteShow] = useState(false);
+    const [isInviteShow, setIsInviteShow] = useToggle(false);
 
     useEffect(() => {
         dispatch(actions.accountActions.loadAccount(accountId))

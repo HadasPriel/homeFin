@@ -1,17 +1,18 @@
 
-import { forwardRef, useCallback, useState } from "react";
+import { forwardRef, useCallback } from "react";
 import { AddExpense } from "../expense/AddExpense"
 import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected";
 import { CategoryMenu } from "./CategoryMenu"
 import { ExpectedPreview } from "./ExpectedPreview";
+import { useToggle } from "../../hooks/useToggle";
 
 
 
 const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory }, ref) => {
 
-    const [isMenuShow, setIsMenuShow] = useState(false)
-    const [isEditExpectedShow, setIsEditExpectedShow] = useState(false)
+    const [isMenuShow, setIsMenuShow] = useToggle(false)
+    const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
 
     const onAddExpense = (expense) => {
         addExpense(category.id, expense)
@@ -40,7 +41,7 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
         var color = ev.target.getAttribute('name')
         categoryToSave.color = color
         updateCtegory(categoryToSave)
-        toggleCategoryMenu()
+        setIsMenuShow()
     }
 
     const onUpdateCategory = (ev, newVal) => {
@@ -49,15 +50,6 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
         categoryToSave[field] = newVal
         updateCtegory(categoryToSave)
         setIsEditExpectedShow(false)
-    }
-
-    const toggleCategoryMenu = () => {
-        setIsMenuShow(prevIsShow => !prevIsShow)
-    }
-
-    const toggleEditExpected = () => {
-        setIsEditExpectedShow(prevIsShow => !prevIsShow)
-        setIsMenuShow(false)
     }
 
     const expensesSum = category.expenses.reduce((acc, expense) => {
@@ -72,14 +64,14 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
     return (
         <section className="category-preview">
             {isMenuShow && <CategoryMenu
-                toggleCategoryMenu={toggleCategoryMenu}
+                toggleCategoryMenu={setIsMenuShow}
                 onDeleteCategory={onDeleteCategory}
                 updateCategoryColor={updateCategoryColor}
-                toggleEditExpected={toggleEditExpected}
+                toggleEditExpected={setIsEditExpectedShow}
             />}
             <header className="flex row-container">
                 <div className="menu-wrapper flex center" >
-                    <div className="menu flex center" onClick={toggleCategoryMenu} style={menuStyle}></div>
+                    <div className="sort-down menu flex center" onClick={setIsMenuShow} style={menuStyle}></div>
                 </div>
                 <div className="first-cell first-cell-title flex" >
                     <h1 className="flex align-center"
@@ -109,8 +101,8 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
                 updateExpense={onUpdateExpense}
                 deleteExpense={onDeleteExpense} />)}
             <AddExpense addExpense={onAddExpense} color={category.color} />
-            {isEditExpectedShow && <EditExpected expected={category.expected} color={category.color} onUpdateCategory={onUpdateCategory} toggleEditExpected={toggleEditExpected} />}
-            <ExpectedPreview expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={toggleEditExpected} />
+            {isEditExpectedShow && <EditExpected expected={category.expected} color={category.color} onUpdateCategory={onUpdateCategory} toggleEditExpected={setIsEditExpectedShow} />}
+            <ExpectedPreview expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={setIsEditExpectedShow} />
         </section>
     )
 }

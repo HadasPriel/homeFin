@@ -1,14 +1,11 @@
 import { useState } from "react";
+import { useToggle } from "../../hooks/useToggle";
 
 
 export const AddAccount = ({ addAccount }) => {
-    const [isAddShow, setIsAddShow] = useState(false);
+    const [isAddShow, setIsAddShow] = useToggle(false);
     const [accountToAdd, setAccountToAdd] = useState({ title: '' });
     // const elTitle = useRef(null)
-
-    const toggleAdd = () => {
-        setIsAddShow(prevState => !prevState)
-    }
 
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -18,7 +15,7 @@ export const AddAccount = ({ addAccount }) => {
     const onAddAccount = (ev) => {
         ev.preventDefault()
         addAccount(accountToAdd)
-        toggleAdd()
+        setIsAddShow()
         setAccountToAdd({ title: '' })
     }
 
@@ -39,7 +36,7 @@ export const AddAccount = ({ addAccount }) => {
                         </label>
                         <button className="btn suc" >Save</button>
                     </form>}
-                {!isAddShow && <h2 onClick={toggleAdd} className="account-title plus inherit">Add board</h2>}
+                {!isAddShow && <h2 onClick={setIsAddShow} className="account-title plus inherit">Add board</h2>}
             </div>
 
         </section>

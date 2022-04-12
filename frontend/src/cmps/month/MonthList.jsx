@@ -1,4 +1,4 @@
-import { MonthPreview } from "./MonthPreview";
+// import { MonthPreview } from "./MonthPreview";
 import { SubComponentsPickers } from "../ui/SubComponentsPickers";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
@@ -29,7 +29,7 @@ export const MonthList = ({ months }) => {
     return (
         <section className="account-details">
             <SubComponentsPickers navToMonth={navToMonth} />
-            {months.map(month => <MonthPreview key={month.time} month={month} />)}
+            {/* {months.map(month => <MonthPreview key={month.time} month={month} />)} */}
         </section>
     )
 }

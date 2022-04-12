@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import { useToggle } from "../hooks/useToggle";
 
 import actions from '../store/actions';
 
@@ -9,7 +10,7 @@ export const LoginSignup = () => {
 
     const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '' });
     const [loginCred, setLoginCred] = useState({ username: '', password: '' });
-    const [isLoginShow, setIsLoginShow] = useState(true);
+    const [isLoginShow, setIsLoginShow] = useToggle(true);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -40,10 +41,6 @@ export const LoginSignup = () => {
         setLoginCred(prevState => { return { ...prevState, [name]: value } })
     }
 
-    const toggleIsLoginShow = () => {
-        setIsLoginShow(prevState => !prevState)
-    }
-
 
     let loginSection =
         <form onSubmit={doLogin}>
@@ -67,7 +64,7 @@ export const LoginSignup = () => {
                 />
                 <button className="login-btn btn suc">Log in</button>
             </div>
-            <p>Don't have an account yet? <button className="link-like" type="button" onClick={toggleIsLoginShow}>Sign up</button></p>
+            <p>Don't have an account yet? <button className="link-like" type="button" onClick={setIsLoginShow}>Sign up</button></p>
         </form>
 
     let signupSection =
@@ -101,7 +98,7 @@ export const LoginSignup = () => {
                 <br />
                 <button className="login-btn btn suc">Sign up</button>
             </div>
-            <p>Already have an account? <button className="link-like" type="button" onClick={toggleIsLoginShow}>Sign in</button></p>
+            <p>Already have an account? <button className="link-like" type="button" onClick={setIsLoginShow}>Sign in</button></p>
         </form>
 
 
