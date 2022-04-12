@@ -7,6 +7,7 @@ export const accountService = {
   getById,
   remove,
   add,
+  toggleMember
 }
 
 
@@ -28,5 +29,9 @@ function remove(accountId) {
 }
 async function add(account) {
   const addedAccount = await httpService.post(`account`, account)
+  return addedAccount
+}
+async function toggleMember(accountId, member) {
+  const addedAccount = await httpService.put(`account/member`, { accountId, member })
   return addedAccount
 }

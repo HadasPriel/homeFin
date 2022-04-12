@@ -30,3 +30,26 @@
         color: $clr6;
     }
 }
+
+.user-preview-small{
+    padding: 4px 0;
+    font-family: roboto-r;
+    font-weight: 600;
+    font-size: 15px;
+    .name{
+        padding-inline-start: 10px;
+    &:hover{
+        cursor: pointer;
+        color: $clr5;
+    }
+    }
+
+    .add-btn{
+        width: 36px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}

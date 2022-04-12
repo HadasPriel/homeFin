@@ -68,6 +68,20 @@ async function add(account) {
     }
 }
 
+async function toggleMember(accountId, member) {
+    try {
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        const idx = account.members.findIndex(accountMember => accountMember._id === member._id)
+        if (idx === -1) account.members.push(member)
+        else account.members.splice(idx, 1)
+        await collection.updateOne({ _id: account._id }, { $set: account })
+    } catch (err) {
+        logger.error('cannot toggle member to account', err)
+        throw err
+    }
+}
+
 async function addMonth(accountId, month) {
     try {
         const monthToAdd = {
@@ -86,6 +100,8 @@ async function addMonth(accountId, month) {
     }
 }
 
+
+
 function _buildCriteria(loggedinUser, filterBy) {
     const criteria = {}
     criteria.members = { $elemMatch: { _id: ObjectId(loggedinUser._id) } }
@@ -97,7 +113,8 @@ module.exports = {
     getById,
     remove,
     add,
-    addMonth
+    addMonth,
+    toggleMember
 }
 
 

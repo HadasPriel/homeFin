@@ -1,0 +1,38 @@
+.add-member{
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background-color: $clr6;
+    padding: 24px 32px;
+    width: 530px;
+    height: 500px;
+    border-radius: 8px;
+    font-family: roboto-l;
+    
+    &>*{
+        margin-bottom: 16px;
+        
+    }
+    .x{
+        font-size: 18px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 15px;
+    }
+    .title{
+        font-size: 24px;
+        font-weight: 300;
+    }
+    .filter{
+        width: 100%;
+        padding: 3px 6px;
+        font-weight: 300;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        &:hover{
+            border: 1px solid $clr7;
+        }
+    }
+    
+}

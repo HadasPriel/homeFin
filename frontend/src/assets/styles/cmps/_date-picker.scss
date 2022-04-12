@@ -7,3 +7,25 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
         rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
 }
+
+
+
+// date picker at monthList style:
+.MuiGrid-root{
+    padding: 0 !important;
+    top: 100px;
+    left: 56px;
+}
+
+.MuiGrid-container{
+    position: relative; 
+    row-gap: 30px;   
+}
+
+.MuiYearPicker-root.css-x1wgng-MuiYearPicker-root, .MuiMonthPicker-root.css-n3vk4j-MuiMonthPicker-root{
+    padding: 0 !important;
+    margin: auto !important;
+    width: fit-content !important;
+    max-width: 330px !important;
+}
+

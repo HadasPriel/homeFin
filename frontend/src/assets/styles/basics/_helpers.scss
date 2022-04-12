@@ -69,20 +69,6 @@
     }
 }
 
-.screen {
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.64);
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-}
 
 //signs
 
@@ -147,11 +133,19 @@
         color: $clr7;
     }
 }
+.x {
+    &::before {
+        font-family: fa-solid;
+        content: "\f00d";
+        font-weight:100 ;
+    }
+}
 
 
 .btn {
     padding: 4px 8px;
-
+    cursor: pointer;
+    border-radius: 4px;
     &.solid {
         &:hover {
             background-color: $clr4;

@@ -15,6 +15,9 @@ export function userReducer(state = initialState, action = {}) {
         ...state,
         users: state.users.filter(user => user._id !== action.userId)
       }
+    case 'SET_USERS':
+      return { ...state, users: action.users }
+
     default:
       return state
   }

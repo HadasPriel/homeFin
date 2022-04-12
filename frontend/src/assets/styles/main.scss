@@ -11,6 +11,7 @@
 @import "cmps/account/accountList";
 @import "cmps/account/accountPreview";
 @import "cmps/account/addAccount";
+@import "cmps/account/addMember";
 @import "cmps/month/month-header";
 @import "cmps/month/table-layout";
 @import "cmps/category/category-preview";
@@ -22,6 +23,7 @@
 @import "cmps/expense/add-expense";
 @import "cmps/date-picker";
 @import "cmps/ui/user";
+@import "cmps/ui/screen";
 
 // Views
 @import "views/accountDetails";

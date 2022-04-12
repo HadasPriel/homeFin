@@ -22,6 +22,16 @@ export function accountReducer(state = initialState, action = {}) {
           account._id === action.account._id ? action.account : account
         )
       }
+    case 'TOGGLE_MEMBER':
+      var members = JSON.parse(JSON.stringify(state.currAcount.members))
+      const idx = state.currAcount.members.findIndex(member =>
+        member._id === action.member._id)
+      if (idx === -1) members.push(action.member)
+      else members.splice(idx, 1)
+      return {
+        ...state,
+        currAcount: { ...state.currAcount, members }
+      }
     default:
       return state
   }

@@ -2,6 +2,7 @@ import { httpService } from './http.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
+    getUsers,
     login,
     logout,
     signup,
@@ -11,6 +12,9 @@ export const userService = {
 
 
 
+async function getUsers() {
+    return await httpService.get(`user`)
+}
 async function update(user) {
     user = await httpService.put(`user/${user._id}`, user)
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)

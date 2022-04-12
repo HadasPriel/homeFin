@@ -5,11 +5,12 @@ const accountActions = {
   loadAccounts,
   loadAccount,
   addAccount,
-  removeAccount
+  removeAccount,
+  toggleMember
 }
 
 
-export function loadAccounts() {
+function loadAccounts() {
   return async dispatch => {
     try {
       const accounts = await accountService.query()
@@ -21,7 +22,7 @@ export function loadAccounts() {
     }
   }
 }
-export function loadAccount(accountId) {
+function loadAccount(accountId) {
   return async dispatch => {
     try {
       const account = await accountService.getById(accountId)
@@ -33,7 +34,7 @@ export function loadAccount(accountId) {
   }
 }
 
-export function addAccount(account) {
+function addAccount(account) {
   return async dispatch => {
     try {
       const addedAccount = await accountService.add(account)
@@ -46,11 +47,22 @@ export function addAccount(account) {
   }
 }
 
-export function removeAccount(accountId) {
+function removeAccount(accountId) {
   return async dispatch => {
     try {
       await accountService.remove(accountId)
       dispatch({ type: 'REMOVE_ACCOUNT', accountId })
+    } catch (err) {
+      console.log('AccountActions: err in removeAccount', err)
+    }
+  }
+}
+
+function toggleMember(accountId, member) {
+  return async dispatch => {
+    try {
+      await accountService.toggleMember(accountId, member)
+      dispatch({ type: 'TOGGLE_MEMBER', member })
     } catch (err) {
       console.log('AccountActions: err in removeAccount', err)
     }

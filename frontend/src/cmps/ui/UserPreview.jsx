@@ -14,7 +14,7 @@ export const UserPreview = ({ user, expenseMember, func }) => {
                 <UserImg user={user} />
                 <p className="user-name">{user.username}</p>
             </div>
-            <span className={user._id === expenseMember._id ? 'confirme' : ''} ></span>
+            {expenseMember && <span className={user._id === expenseMember._id ? 'confirme' : ''} ></span>}
 
         </section>
     )

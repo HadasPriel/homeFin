@@ -49,9 +49,23 @@ async function addAccount(req, res) {
     }
 }
 
+async function toggleMember(req, res) {
+    try {
+        const { accountId, member } = req.body
+        const members = await accountService.toggleMember(accountId, member)
+
+        res.send(members)
+
+    } catch (err) {
+        logger.error('Failed to toggle member on account', err)
+        res.status(500).send({ err: 'Failed to toggle member on account' })
+    }
+}
+
 module.exports = {
     getAccounts,
     getAccount,
     deleteAccount,
-    addAccount
+    addAccount,
+    toggleMember
 }
