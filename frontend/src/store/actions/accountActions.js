@@ -64,7 +64,7 @@ function toggleMember(accountId, member) {
       await accountService.toggleMember(accountId, member)
       dispatch({ type: 'TOGGLE_MEMBER', member })
     } catch (err) {
-      console.log('AccountActions: err in removeAccount', err)
+      console.log('AccountActions: err in toggleMember', err)
     }
   }
 }
