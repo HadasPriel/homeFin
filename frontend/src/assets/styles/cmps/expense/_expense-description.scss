@@ -1,0 +1,26 @@
+.expense-description{
+  position: relative;
+ .cell-input{
+   inset: 5px;
+   left: 15px;
+   text-align: start;
+   padding: 5px;
+ }
+  .btn.edit-btn{
+    visibility:hidden;
+    color: $clr7;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    padding: 2px 8px;
+    margin-inline-start: 8px;
+    &:hover{
+      background-color: $clr2;
+    }
+  }
+  &:hover{
+    .btn.edit-btn{
+      visibility: visible;
+    }
+  }
+}

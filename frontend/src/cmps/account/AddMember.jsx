@@ -32,7 +32,7 @@ export const AddMember = ({ toggleMember, toggleIsInviteShow, accountMembers }) 
 
                 {users && <ul className="list-container">
                     {users.map(user => {
-                        return <UserPreviewSmall user={user} func={toggleMember} accountMembers={accountMembers} />
+                        return <UserPreviewSmall user={user} func={toggleMember} accountMembers={accountMembers} key={user._id} />
                     })}
 
                 </ul>}

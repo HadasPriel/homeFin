@@ -1,15 +1,16 @@
 
-import { forwardRef, useCallback } from "react";
+import { useCallback } from "react";
 import { AddExpense } from "../expense/AddExpense"
 import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected";
 import { CategoryMenu } from "./CategoryMenu"
+import { CategoryTitle } from "./CategoryTitle"
 import { ExpectedPreview } from "./ExpectedPreview";
 import { useToggle } from "../../hooks/useToggle";
 
 
 
-const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory }, ref) => {
+export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
@@ -31,9 +32,10 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
         deleteCategory(category.id)
     }
 
-    const updateCategoryTitle = (ev) => {
-        let newVal = ev.target.innerText
-        onUpdateCategory(ev, newVal)
+    const updateCategoryTitle = (title) => {
+        const categoryToSave = { ...category }
+        categoryToSave.title = title
+        updateCtegory(categoryToSave)
     }
 
     const updateCategoryColor = (ev) => {
@@ -73,16 +75,7 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
                 <div className="menu-wrapper flex center" >
                     <div className="sort-down menu flex center" onClick={setIsMenuShow} style={menuStyle}></div>
                 </div>
-                <div className="first-cell first-cell-title flex" >
-                    <h1 className="flex align-center"
-                        style={{ color: `var(--${category.color})` }}
-                        suppressContentEditableWarning={true}
-                        contentEditable
-                        name="title"
-                        onBlur={updateCategoryTitle}
-                        ref={ref}
-                    >{category.title}</h1>
-                </div>
+                <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 <div className="headers flex">
                     <div className="cell flex center">Repeated</div>
                     <div className="cell flex center">Sum</div>
@@ -107,4 +100,3 @@ const _CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, 
     )
 }
 
-export const CategoryPreview = forwardRef(_CategoryPreview);

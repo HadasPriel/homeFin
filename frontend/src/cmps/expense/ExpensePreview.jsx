@@ -5,80 +5,50 @@ import { format } from 'date-fns'
 import { DatePicker } from "../ui/date-picker";
 import { UserList } from "../ui/UserList";
 import { UserImg } from "../ui/UserImg";
+import { ExpenseSum } from "./ExpenseSum";
+import { ExpenseDescription } from "./ExpenseDescription";
 
 
 export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color }) => {
 
     const [expanseToSave, setExpanse] = useState({ ...expense })
     const [isDateShow, setIsDateShow] = useToggle(false)
-    const [isEditSum, setIsEditSum] = useToggle(false)
     const [isByUserShow, setIsByUserShow] = useToggle(false)
     const account = useSelector(state => state.accountModule.currAcount)
-
-
-    const currency = useRef(null)
-    if (currency.current === null) {
-        switch (expense.sum.currency) {
-            case 'USA':
-                currency.current = '$'
-                break
-            case 'ILS':
-                currency.current = '₪'
-                break
-            default:
-                currency.current = '₪'
-        }
-    }
 
     useEffect(() => {
         // console.log('run', expanseToSave.repeat);
         updateExpense(expanseToSave)
     }, [expanseToSave, updateExpense])
 
-    const eidtExpense = async (ev) => {
-        const name = ev.target.getAttribute('name')
-        if (name === 'amount') {
-            setExpanse((prevState) => {
-                var expense = { ...prevState }
-                expense.sum.amount = +(ev.target.innerText)
-                return expense
-            });
-        }
-        else {
-            setExpanse((prevState) => ({
-                ...prevState,
-                [name]: (ev.target.innerText),
-            }));
-        }
-    }
-
-    const eidtExpenseRepeat = async (date) => {
+    const editExpenseRepeat = async () => {
         setExpanse((prevState) => ({
             ...prevState,
             repeat: !prevState.repeat,
         }));
     }
 
-    const eidtExpenseTime = async (date) => {
+    const editExpenseTime = async (date) => {
         setExpanse((prevState) => ({
             ...prevState,
             cratedAt: date,
         }));
     }
 
-    const eidtExpenseAmount = async (date) => {
-        setExpanse((prevState) => ({
-            ...prevState,
-            cratedAt: date,
-        }));
-    }
-
-    const onEidtExpense = async (ev, newVal) => {
+    const onEditExpense = async (ev, newVal) => {
         const name = ev.target.getAttribute('name')
-        setExpanse((prevState) => ({
-            ...prevState,
-            [name]: newVal,
-        }));
+
+        if (name === 'amount') {
+            setExpanse((prevState) => ({
+                ...prevState,
+                sum: { ...prevState.sum, amount: newVal },
+            }));
+        } else {
+            setExpanse((prevState) => ({
+                ...prevState,
+                [name]: newVal,
+            }));
+        }
     }
 
     const onDeleteExpense = () => {
@@ -92,28 +62,20 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
             <div className="menu-wrapper flex center ">
                 <div className="menu flex center sort-down" onClick={onDeleteExpense}></div>
             </div>
-
-            <div className="first-cell flex align-center" >
-                <span className="before" style={{ backgroundColor: `var(--${color})` }} ></span>
-                <p className="description" name="description" suppressContentEditableWarning={true} contentEditable onBlur={eidtExpense}>{expanseToSave.description}</p>
-            </div>
+            <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />
             <div className=" flex">
-                <div className={`repeated cell flex center ` + ((expanseToSave.repeat) ? 'confirme' : 'decline')} onClick={eidtExpenseRepeat} ></div>
-                <div className={`cell flex center ` + ((currency.current === '$') ? `row-re` : '')}>
-                    {!isEditSum && <div >{expanseToSave.sum.amount}</div>}
-                    {isEditSum && <form onSubmit={eidtExpenseAmount}> <input name="amount" type="number" value={expanseToSave.sum.amount} /></form>}
-                    <div >{currency.current}</div>
-                </div>
+                <div className={`repeated cell flex center ` + ((expanseToSave.repeat) ? 'confirme' : 'decline')} onClick={editExpenseRepeat} ></div>
+                <ExpenseSum expanseToSave={expanseToSave} onEditExpense={onEditExpense} />
                 <div className="cell flex center">...</div>
                 <div className="cell flex center">
                     <span className="date flex center" onClick={setIsDateShow}>
                         {format(new Date(expanseToSave.cratedAt), 'dd.MM')}
                     </span>
-                    {isDateShow && <DatePicker setIsDateShow={setIsDateShow} eidtExpenseTime={eidtExpenseTime} />}
+                    {isDateShow && <DatePicker setIsDateShow={setIsDateShow} editExpenseTime={editExpenseTime} />}
                 </div>
                 <div className="cell flex center" onClick={setIsByUserShow}>
                     <UserImg user={expanseToSave.byUser} />
-                    {isByUserShow && <UserList members={account.members} expenseMember={expanseToSave.byUser} eidtExpense={onEidtExpense} />}
+                    {isByUserShow && <UserList members={account.members} expenseMember={expanseToSave.byUser} editExpense={onEditExpense} />}
                 </div>
             </div>
 

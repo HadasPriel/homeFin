@@ -5,7 +5,6 @@ import { useToggle } from "../../hooks/useToggle";
 export const AddAccount = ({ addAccount }) => {
     const [isAddShow, setIsAddShow] = useToggle(false);
     const [accountToAdd, setAccountToAdd] = useState({ title: '' });
-    // const elTitle = useRef(null)
 
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -27,7 +26,6 @@ export const AddAccount = ({ addAccount }) => {
                         <label>
                             Acoount name:
                             <input
-                                // ref={elTitle} 
                                 type="text"
                                 name="title"
                                 value={accountToAdd.title}

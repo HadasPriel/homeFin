@@ -4,14 +4,14 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CalendarPicker from '@mui/lab/CalendarPicker';
 
 
-export const DatePicker = ({ setIsDateShow, eidtExpenseTime }) => {
+export const DatePicker = ({ setIsDateShow, editExpenseTime }) => {
 
 
     const [date, setDate] = useState(new Date());
 
     const onChangeDate = (newDate) => {
         setDate(newDate)
-        eidtExpenseTime(newDate)
+        editExpenseTime(newDate)
         setIsDateShow()
     }
 

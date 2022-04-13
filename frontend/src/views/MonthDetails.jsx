@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom";
 import { CategoryPreview } from '../cmps/category/CategoryPreview';
@@ -12,7 +12,6 @@ export const MonthDetails = () => {
 
     let { accountId, monthId } = useParams();
     let history = useHistory();
-    const elCategoryTitle = useRef(null)
     const dispatch = useDispatch();
     const month = useSelector(state => state.monthModule.currMonth)
 
@@ -34,8 +33,7 @@ export const MonthDetails = () => {
 
     const addCtegory = async (category) => {
         try {
-            await dispatch(actions.monthActions.addCtegory(monthId, category))
-            elCategoryTitle.current.focus()
+            dispatch(actions.monthActions.addCtegory(monthId, category))
         } catch (err) {
             console.log(err);
         }
@@ -101,7 +99,6 @@ export const MonthDetails = () => {
                 addCtegory={addCtegory}
                 onPrevNextMonth={onPrevNextMonth} />
             {month.categories && month.categories.map(category => <CategoryPreview
-                ref={elCategoryTitle}
                 category={category}
                 key={category.id}
                 updateCtegory={updateCtegory}

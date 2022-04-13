@@ -1,0 +1,35 @@
+.expense-sum{
+    position: relative;
+    .frame{
+        position: absolute;
+        z-index: 0;
+        inset: 5px;
+        &:hover{
+            border: 1px solid rgb(208, 212, 228);
+            cursor: text;
+            
+        }
+        
+        // background-color: #fff;
+    }
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.cell-input{
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  background: $clr6;
+  border: 1px solid $clr5;
+}
