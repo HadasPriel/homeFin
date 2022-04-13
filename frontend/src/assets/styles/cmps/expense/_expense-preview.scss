@@ -13,12 +13,10 @@
         opacity: 0;
         height: 18px;
         width: 18px;
-        background-color: $clr2;
+        background-color: $clr4;
         border-radius: 4px;
         margin-inline-end: 7px;
         &::before {
-            font-family: fa;
-            content: "\f0dd";
             position: relative;
             bottom: 3px;
         }
@@ -47,7 +45,7 @@
     }
 
     &:hover {
-        background-color: #e6e9ef;
+        background-color: $clr4;
 
         .menu {
             opacity: 1;

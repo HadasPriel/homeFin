@@ -1,6 +1,6 @@
 const initialState = {
   accounts: [],
-  currAcount: {}
+  currAcount: null
 }
 
 export function accountReducer(state = initialState, action = {}) {
@@ -32,6 +32,8 @@ export function accountReducer(state = initialState, action = {}) {
         ...state,
         currAcount: { ...state.currAcount, members }
       }
+    case 'SAVE_DESCRIPTION':
+      return { ...state, currAcount: { ...state.currAcount, description: action.description } }
     default:
       return state
   }

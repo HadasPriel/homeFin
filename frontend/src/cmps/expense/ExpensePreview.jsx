@@ -89,8 +89,8 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
 
     return (
         <section className="expense-preview flex row-container ">
-            <div className="menu-wrapper flex center">
-                <div className="menu flex center" onClick={onDeleteExpense}></div>
+            <div className="menu-wrapper flex center ">
+                <div className="menu flex center sort-down" onClick={onDeleteExpense}></div>
             </div>
 
             <div className="first-cell flex align-center" >

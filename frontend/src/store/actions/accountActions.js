@@ -6,7 +6,8 @@ const accountActions = {
   loadAccount,
   addAccount,
   removeAccount,
-  toggleMember
+  toggleMember,
+  saveDescription
 }
 
 
@@ -25,6 +26,7 @@ function loadAccounts() {
 function loadAccount(accountId) {
   return async dispatch => {
     try {
+      console.log('loadAccount');
       const account = await accountService.getById(accountId)
       dispatch({ type: 'SET_ACCOUNT', account })
 
@@ -63,6 +65,17 @@ function toggleMember(accountId, member) {
     try {
       await accountService.toggleMember(accountId, member)
       dispatch({ type: 'TOGGLE_MEMBER', member })
+    } catch (err) {
+      console.log('AccountActions: err in toggleMember', err)
+    }
+  }
+}
+
+function saveDescription(accountId, description) {
+  return async dispatch => {
+    try {
+      await accountService.saveDescription(accountId, description)
+      dispatch({ type: 'SAVE_DESCRIPTION', description })
     } catch (err) {
       console.log('AccountActions: err in toggleMember', err)
     }

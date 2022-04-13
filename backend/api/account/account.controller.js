@@ -62,10 +62,22 @@ async function toggleMember(req, res) {
     }
 }
 
+async function saveDescription(req, res) {
+    try {
+        const { accountId, description } = req.body
+        await accountService.saveDescription(accountId, description)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to save description on account', err)
+        res.status(500).send({ err: 'Failed to save description on account' })
+    }
+}
+
 module.exports = {
     getAccounts,
     getAccount,
     deleteAccount,
     addAccount,
-    toggleMember
+    toggleMember,
+    saveDescription
 }

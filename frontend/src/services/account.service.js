@@ -7,7 +7,8 @@ export const accountService = {
   getById,
   remove,
   add,
-  toggleMember
+  toggleMember,
+  saveDescription
 }
 
 
@@ -18,6 +19,7 @@ export const accountService = {
 async function query(filterBy) {
   return httpService.get(`account`)
 }
+
 function getById(id) {
   return httpService.get(`account/${id}`)
 }
@@ -27,11 +29,15 @@ function remove(accountId) {
   return storageService.delete('account', accountId)
 
 }
+
 async function add(account) {
-  const addedAccount = await httpService.post(`account`, account)
-  return addedAccount
+  return await httpService.post(`account`, account)
 }
+
 async function toggleMember(accountId, member) {
-  const addedAccount = await httpService.put(`account/member`, { accountId, member })
-  return addedAccount
+  return await httpService.put(`account/member`, { accountId, member })
+}
+
+async function saveDescription(accountId, description) {
+  return await httpService.put(`account/description`, { accountId, description })
 }

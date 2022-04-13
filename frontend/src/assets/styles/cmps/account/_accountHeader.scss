@@ -1,0 +1,24 @@
+.account-header {
+    border-bottom: 1px solid $clr4;
+    padding: 12px 0;
+
+    .account-description{
+        margin-block-end: 5px;
+        
+        .description-txt{
+            cursor: pointer;
+        }
+
+        input{
+            border: 1px dashed transparent;
+            font-size: 14px;
+            font-weight: 500;
+            max-width: 490px;
+            width: 100%;
+            padding: 4px;
+            &:hover, &:focus{
+                border-color: rgb(195, 198, 212);
+            }
+        }
+    }
+}

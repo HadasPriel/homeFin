@@ -1,7 +1,32 @@
+import { useState } from 'react';
+import { useToggle } from '../../hooks/useToggle';
 import { Link } from 'react-router-dom'
 
 
-export const AccountHeader = ({ account, accountId, toggleIsInviteShow }) => {
+export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDescription }) => {
+
+    const [desc, setDesc] = useState(account?.description || '')
+    const [isDescriptionShow, setIsDescriptionShow] = useToggle(!!account.description)
+
+    const onSaveDescription = (ev) => {
+        ev.preventDefault()
+        console.log('desc');
+        saveDescription(desc)
+    }
+
+    const handleChange = (ev) => {
+        setDesc(ev.target.value)
+    }
+
+    const descriptionForm = (<form onSubmit={onSaveDescription}>
+        <input
+            type="text"
+            placeholder='Add board description'
+            value={desc}
+            name="desc"
+            onChange={handleChange}
+            onBlur={onSaveDescription} />
+    </form>)
 
     return (
         <header className='account-header'>
@@ -14,7 +39,9 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow }) => {
                     <button className='btn solid menu-sign' ></button>
                 </nav>
             </main>
-            <p className='description'>{account.description}</p>
+            <div className='account-description'>
+                {isDescriptionShow ? <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
+            </div>
 
         </header>
     )

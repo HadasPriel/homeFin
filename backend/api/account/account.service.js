@@ -82,6 +82,20 @@ async function toggleMember(accountId, member) {
     }
 }
 
+async function saveDescription(accountId, description) {
+    try {
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        account.description = description
+        await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
+        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+        console.log('he?', savedAccount);
+    } catch (err) {
+        logger.error('cannot save description to account', err)
+        throw err
+    }
+}
+
 async function addMonth(accountId, month) {
     try {
         const monthToAdd = {
@@ -114,7 +128,8 @@ module.exports = {
     remove,
     add,
     addMonth,
-    toggleMember
+    toggleMember,
+    saveDescription
 }
 
 
