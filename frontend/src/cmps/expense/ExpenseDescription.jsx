@@ -40,7 +40,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
                 </form> :
                 <p className="description" name="description"  >{expanseToSave.description}</p>
             }
-            {!isEditDesc && <button className="edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
+            {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
 
         </section>
 

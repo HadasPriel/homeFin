@@ -5,8 +5,8 @@ import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected";
 import { CategoryMenu } from "./CategoryMenu"
 import { CategoryTitle } from "./CategoryTitle"
-import { ExpectedPreview } from "./ExpectedPreview";
 import { useToggle } from "../../hooks/useToggle";
+import { CategorySummary } from "./CategorySummary";
 
 
 
@@ -95,7 +95,7 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 deleteExpense={onDeleteExpense} />)}
             <AddExpense addExpense={onAddExpense} color={category.color} />
             {isEditExpectedShow && <EditExpected expected={category.expected} color={category.color} onUpdateCategory={onUpdateCategory} toggleEditExpected={setIsEditExpectedShow} />}
-            <ExpectedPreview expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={setIsEditExpectedShow} />
+            <CategorySummary expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={setIsEditExpectedShow} />
         </section>
     )
 }

@@ -5,7 +5,8 @@ export const utilService = {
     makeId,
     getVerbalTime,
     getMMYYYY,
-    getNextPrevTime
+    getNextPrevTime,
+    getCurrency
 }
 
 function delay(ms = 1500) {
@@ -50,12 +51,12 @@ function getVerbalTime(numDate) {
 }
 
 // from new Date() to '11/2021'
-function getMMYYYY(date){
-    let month = (date.getMonth() +1).toString().padStart(2, '0')
+function getMMYYYY(date) {
+    let month = (date.getMonth() + 1).toString().padStart(2, '0')
     let year = date.getFullYear()
     console.log(`${month}/${year}`);
     return `${month}/${year}`
-  }
+}
 
 function getNextPrevTime(time, diff) {
     let [month, year] = time.split('/')
@@ -71,4 +72,15 @@ function getNextPrevTime(time, diff) {
     month = (month.toString())
     month = month.padStart(2, '0')
     return `${month}/${year}`
+}
+
+function getCurrency(currencyCode) {
+    switch (currencyCode) {
+        case 'USA':
+            return '$'
+        case 'ILS':
+            return '₪'
+        default:
+            return '₪'
+    }
 }

@@ -1,7 +1,7 @@
 .category-preview,
 .expense-preview {
     .row-container {
-        height: 40px;
+        height: 33px;
         width: 100%;
     }
     .first-cell {
@@ -13,6 +13,10 @@
         cursor: pointer;
         height: 100%;
         width: $cell-width;
+    }
+    .profile-img{
+        width: 30px;
+        height: 30px;
     }
 }
 

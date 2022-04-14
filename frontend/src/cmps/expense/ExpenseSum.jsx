@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useToggle } from "../../hooks/useToggle";
+import { utilService } from "../../services/util.service";
 
 
 export const ExpenseSum = ({ expanseToSave, onEditExpense }) => {
@@ -15,17 +16,9 @@ export const ExpenseSum = ({ expanseToSave, onEditExpense }) => {
 
     const currency = useRef(null)
     if (currency.current === null) {
-        switch (expanseToSave.sum.currency) {
-            case 'USA':
-                currency.current = '$'
-                break
-            case 'ILS':
-                currency.current = '₪'
-                break
-            default:
-                currency.current = '₪'
-        }
+        currency.current = utilService.getCurrency(expanseToSave.sum.currency)
     }
+
 
     const onUpdateAmount = (ev) => {
         ev.preventDefault()
@@ -39,8 +32,11 @@ export const ExpenseSum = ({ expanseToSave, onEditExpense }) => {
 
     return (
         <section className={`expense-sum cell flex center`}>
-            <div className={`frame flex center ${((currency.current === '$') ? 'row - re' : '')}`} onClick={setIsEditSum} >
-                {!isEditSum && <div  >{amount}{currency.current}</div>}
+            <div className={`frame flex center`} onClick={setIsEditSum} >
+                {!isEditSum &&
+                    <div className={`flex ${((expanseToSave.sum.currency === '$') ? '' : 'row-re')}`} onClick={setIsEditSum} >
+                        <span>{amount}</span> <span>{currency.current}</span>
+                    </div>}
                 {isEditSum &&
                     <form onSubmit={onUpdateAmount} name="amount">
                         <input
