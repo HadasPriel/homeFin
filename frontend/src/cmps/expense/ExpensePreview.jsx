@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useToggle } from "../../hooks/useToggle";
 import { format } from 'date-fns'
@@ -55,8 +55,6 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
         deleteExpense(expanseToSave.id)
     }
 
-
-
     return (
         <section className="expense-preview flex row-container ">
             <div className="menu-wrapper flex center ">
@@ -75,7 +73,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color })
                 </div>
                 <div className="cell flex center" onClick={setIsByUserShow}>
                     <UserImg user={expanseToSave.byUser} />
-                    {isByUserShow && <UserList members={account.members} expenseMember={expanseToSave.byUser} editExpense={onEditExpense} />}
+                    {isByUserShow && <UserList members={account.members} expenseMember={expanseToSave.byUser} func={onEditExpense} />}
                 </div>
             </div>
 

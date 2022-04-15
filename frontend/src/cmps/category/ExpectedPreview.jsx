@@ -6,19 +6,23 @@ export const ExpectedPreview = ({ expected, color, expensesSum, toggleEditExpect
 
     const width = (expensesSum / expected) * 100 || 0
 
+
+
     return (
         <section className="expected-preview flex align-center">
-
-            <section className="outter" onMouseEnter={setIsHover} onMouseLeave={setIsHover} onClick={toggleEditExpected}>
-                {!!expensesSum &&
-                    <section
-                        className="inner flex center"
-                        style={{ backgroundColor: `var(--${color})`, width: width < 100 ? `${width}%` : '100%' }} >
-                    </section>}
-                <span className="txt flex justify-center align-center">
+            <section
+                className="outter"
+                onMouseEnter={setIsHover}
+                onMouseLeave={setIsHover}
+                onClick={toggleEditExpected}
+                style={{
+                    background: `var(--${color})`,
+                    background: `linear-gradient(90deg, var(--${color}) ${width}%, rgba(0,0,0,1) ${width}%)`
+                }} >
+                <p className="txt flex justify-center align-center">
                     {!isHover ? <span>${expensesSum} \ ${expected}</span> :
                         <span >{width.toFixed()}%</span>}
-                </span>
+                </p>
             </section>
         </section>
     )
