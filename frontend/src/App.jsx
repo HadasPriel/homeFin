@@ -13,19 +13,17 @@ function App() {
   return (
     <div className="App flex ">
       <Router>
-        <AppHeader />
-        <main className='app-main'>
-          <Provider store={store}>
+        <Provider store={store}>
+          <AppHeader />
+          <main className='app-main'>
             <Switch>
               <Route path="/account/:accountId" component={AccountDetails} />
               <Route path="/account" component={AccountApp} />
               <Route path="/login" component={LoginSignup} />
               <Route path="/" component={Home} />
             </Switch>
-          </Provider>
-        </main>
-
-
+          </main>
+        </Provider>
       </Router>
     </div>
   );

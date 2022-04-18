@@ -10,7 +10,7 @@ export const UserPreviewSmall = ({ user, accountMembers, func }) => {
 
     const isAcoountMember = () => {
         const isMember = accountMembers.some(member => member._id === user._id)
-        var className = isMember ? 'decline' : 'confirme'
+        var className = isMember ? 'confirme' : 'decline'
         return className + ' add-btn btn solid'
     }
 

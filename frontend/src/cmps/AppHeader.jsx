@@ -1,13 +1,17 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+
+import { UserImg } from './ui/UserImg'
 import lotus from "../assets/img/lotus.png"
 
 
 export const AppHeader = () => {
 
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
 
     return (
-        <header className="app-header flex col">
+        <header className="app-header flex col space-between">
             <nav>
                 <Link to="/">
                     <img src={lotus} alt="lotus" />
@@ -17,8 +21,8 @@ export const AppHeader = () => {
                 </Link>
             </nav>
             <nav>
-                <Link to="/login">
-                    <span>login</span>
+                <Link to="/login" className="login-link" >
+                    <UserImg user={loggedInUser} />
                 </Link>
             </nav>
         </header>

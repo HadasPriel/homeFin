@@ -10,7 +10,7 @@ import { CategorySummary } from "./CategorySummary";
 
 
 
-export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory }) => {
+export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
@@ -63,6 +63,8 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
         backgroundColor: `var(--${category.color})`
     }
 
+    // ['repeated', 'sum', 'labels', 'date', 'person' ]
+
     return (
         <section className="category-preview">
             {isMenuShow && <CategoryMenu
@@ -77,11 +79,13 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 </div>
                 <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 <div className="headers flex">
-                    <div className="cell flex center">Repeated</div>
+
+                    {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
+                    {/* <div className="cell flex center">Repeated</div>
                     <div className="cell flex center">Sum</div>
                     <div className="cell flex center">Labels</div>
                     <div className="cell flex center">Date</div>
-                    <div className="cell flex center">Person</div>
+                    <div className="cell flex center">Person</div> */}
                 </div>
 
             </header>
@@ -92,7 +96,8 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 key={expense.id}
                 expense={expense}
                 updateExpense={onUpdateExpense}
-                deleteExpense={onDeleteExpense} />)}
+                deleteExpense={onDeleteExpense}
+                cols={cols} />)}
             <AddExpense addExpense={onAddExpense} color={category.color} />
             {isEditExpectedShow && <EditExpected expected={category.expected} color={category.color} onUpdateCategory={onUpdateCategory} toggleEditExpected={setIsEditExpectedShow} />}
             <CategorySummary expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={setIsEditExpectedShow} />

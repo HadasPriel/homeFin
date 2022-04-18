@@ -14,6 +14,7 @@ export const MonthDetails = () => {
     let history = useHistory();
     const dispatch = useDispatch();
     const month = useSelector(state => state.monthModule.currMonth)
+    const cols = useSelector(state => state.accountModule.currAcount.cols)
 
     useEffect(() => {
         if (monthId === 'null') return
@@ -54,7 +55,6 @@ export const MonthDetails = () => {
             console.log(err);
         }
     }
-
 
     const addExpense = async (categoryId, expense) => {
         try {
@@ -105,7 +105,8 @@ export const MonthDetails = () => {
                 deleteCategory={deleteCategory}
                 addExpense={addExpense}
                 updateExpense={updateExpense}
-                deleteExpense={deleteExpense} />)}
+                deleteExpense={deleteExpense}
+                cols={cols} />)}
         </section>
     )
 }

@@ -55,7 +55,8 @@ async function add(account) {
                 { id: "1", type: "cash" }
             ],
             mainCurrency: 'USA',
-            months: []
+            months: [],
+            cols: ['repeated', 'sum', 'labels', 'date', 'person']
         }
         accountToAdd.byUser._id = ObjectId(account.byUser._id)
         accountToAdd.members[0]._id = ObjectId(accountToAdd.members[0]._id)

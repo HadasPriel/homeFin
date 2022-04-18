@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
+import { Uploader } from "../cmps/Uploader";
 import { useToggle } from "../hooks/useToggle";
 
 import actions from '../store/actions';
@@ -8,7 +9,7 @@ import actions from '../store/actions';
 
 export const LoginSignup = () => {
 
-    const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '' });
+    const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '', imgUrl: '' });
     const [loginCred, setLoginCred] = useState({ username: '', password: '' });
     const [isLoginShow, setIsLoginShow] = useToggle(true);
 
@@ -19,7 +20,7 @@ export const LoginSignup = () => {
         ev.preventDefault()
         console.log('doSignup!', signupCred);
         dispatch(actions.userActions.signup(signupCred))
-        setSignupCred({ username: '', password: '', fullname: '' })
+        setSignupCred({ username: '', password: '', fullname: '', imgUrl: '' })
         history.push("/account");
     }
 
@@ -31,9 +32,10 @@ export const LoginSignup = () => {
         history.push("/account");
     }
 
-    const signupHandleChange = (ev) => {
+    const signupHandleChange = (ev, url) => {
         const { name, value } = ev.target
-        setSignupCred(prevState => { return { ...prevState, [name]: value } })
+        if (name === 'imgUrl') setSignupCred(prevState => { return { ...prevState, [name]: url } })
+        else setSignupCred(prevState => { return { ...prevState, [name]: value } })
     }
 
     const loginHandleChange = (ev) => {
@@ -71,6 +73,7 @@ export const LoginSignup = () => {
         <form onSubmit={doSignup}>
             <h2 className="title">Sign Up</h2>
             <div className="form-content">
+                <Uploader onUpload={signupHandleChange} />
                 <input
                     type="text"
                     name="fullname"

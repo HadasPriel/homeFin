@@ -6,6 +6,8 @@ import { UserPreviewSmall } from '../ui/user-preview-small';
 
 
 export const AddMember = ({ toggleMember, toggleIsInviteShow, accountMembers }) => {
+
+    console.log(accountMembers);
     const users = useSelector(state => state.userModule.users)
     const dispatch = useDispatch();
 

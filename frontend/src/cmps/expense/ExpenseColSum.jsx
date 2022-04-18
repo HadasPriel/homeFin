@@ -3,7 +3,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { utilService } from "../../services/util.service";
 
 
-export const ExpenseSum = ({ expanseToSave, onEditExpense }) => {
+export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
 
     const [isEditSum, setIsEditSum] = useToggle(false)
     const [amount, setAmount] = useState(expanseToSave.sum.amount)

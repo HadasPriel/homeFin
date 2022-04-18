@@ -58,4 +58,6 @@ input {
 .app-main {
     background-color: $clr2;
     flex-grow: 1;
+    margin-inline-start: 66px;
+    min-height: 100vh;
 }
