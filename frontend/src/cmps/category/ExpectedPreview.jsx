@@ -16,7 +16,6 @@ export const ExpectedPreview = ({ expected, color, expensesSum, toggleEditExpect
                 onMouseLeave={setIsHover}
                 onClick={toggleEditExpected}
                 style={{
-                    background: `var(--${color})`,
                     background: `linear-gradient(90deg, var(--${color}) ${width}%, rgba(0,0,0,1) ${width}%)`
                 }} >
                 <p className="txt flex justify-center align-center">

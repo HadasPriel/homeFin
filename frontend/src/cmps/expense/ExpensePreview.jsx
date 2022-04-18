@@ -8,10 +8,10 @@ import { ExpenseDescription } from "./ExpenseDescription";
 export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols }) => {
 
     const [expanseToSave, setExpanse] = useState({ ...expense })
-    const accountMembers = useSelector(state => state.accountModule.currAcount.members)
+    const account = useSelector(state => state.accountModule.currAcount)
 
     useEffect(() => {
-        // console.log('run', expanseToSave.repeat);
+        // console.log('run', expanseToSave);
         updateExpense(expanseToSave)
     }, [expanseToSave, updateExpense])
 
@@ -59,7 +59,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
                 cols={cols}
                 expanseToSave={expanseToSave}
                 onEditExpense={onEditExpense}
-                accountMembers={accountMembers}
+                account={account}
                 editExpenseTime={editExpenseTime}
                 editExpenseRepeat={editExpenseRepeat} />
         </section>

@@ -21,3 +21,14 @@
         // border: 1px solid red;
     }
 }
+
+.category-label-summary{
+    .label{
+        height: 20px;
+        width: 100%;
+
+        &:hover {
+            height: 90%;
+        }
+    }
+}

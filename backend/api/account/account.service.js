@@ -1,6 +1,7 @@
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const asyncLocalStorage = require('../../services/als.service')
+const utilService = require('../../services/util.service')
 
 const ObjectId = require('mongodb').ObjectId
 
@@ -44,20 +45,7 @@ async function remove(accountId) {
 
 async function add(account) {
     try {
-        const accountToAdd = {
-            title: account.title,
-            description: '',
-            byUser: account.byUser,
-            members: [account.byUser],
-            methods: [
-                { id: "1", type: "creditCard", code: "2244" },
-                { id: "2", type: "creditCard", code: "1111" },
-                { id: "1", type: "cash" }
-            ],
-            mainCurrency: 'USA',
-            months: [],
-            cols: ['repeated', 'sum', 'labels', 'date', 'person']
-        }
+        const accountToAdd = _createAccount(account)
         accountToAdd.byUser._id = ObjectId(account.byUser._id)
         accountToAdd.members[0]._id = ObjectId(accountToAdd.members[0]._id)
         const collection = await dbService.getCollection('account')
@@ -115,7 +103,27 @@ async function addMonth(accountId, month) {
     }
 }
 
-
+function _createAccount(account) {
+    return {
+        title: account.title,
+        description: '',
+        byUser: account.byUser,
+        members: [account.byUser],
+        methods: [
+            { id: "1", type: "creditCard", code: "2244" },
+            { id: "2", type: "creditCard", code: "1111" },
+            { id: "1", type: "cash" }
+        ],
+        mainCurrency: 'USA',
+        months: [],
+        cols: ['repeated', 'sum', 'labels', 'date', 'person'],
+        labels: [
+            { id: utilService.makeId(), txt: 'Done', color: 'rgb(0, 200, 117)' },
+            { id: utilService.makeId(), txt: 'Stuck', color: 'rgb(226, 68, 92)' },
+            { id: utilService.makeId(), txt: 'Working on it', color: 'rgb(253, 171, 61)' }
+        ]
+    }
+}
 
 function _buildCriteria(loggedinUser, filterBy) {
     const criteria = {}

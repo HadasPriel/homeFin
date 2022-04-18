@@ -1,0 +1,29 @@
+
+.expense-label-preview{
+    
+    height: 100%;
+    width: 100%;
+    color: $clr6;
+    font-weight: 400;
+}
+
+.expense-label-edit{
+    position: absolute;
+    top: 40px;
+    z-index: 10;
+    background-color: $clr6;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.32);
+
+    .label-list{
+        padding: 16px 24px 8px;
+    }
+
+    .label-preview{
+        width: 152px;
+        height: 32px;
+        color: $clr6;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+}

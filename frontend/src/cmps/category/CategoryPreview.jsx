@@ -54,16 +54,10 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
         setIsEditExpectedShow(false)
     }
 
-    const expensesSum = category.expenses.reduce((acc, expense) => {
-        return acc + expense.sum.amount
-    }, 0)
-
-
     const menuStyle = {
         backgroundColor: `var(--${category.color})`
     }
 
-    // ['repeated', 'sum', 'labels', 'date', 'person' ]
 
     return (
         <section className="category-preview">
@@ -79,17 +73,9 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 </div>
                 <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 <div className="headers flex">
-
                     {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
-                    {/* <div className="cell flex center">Repeated</div>
-                    <div className="cell flex center">Sum</div>
-                    <div className="cell flex center">Labels</div>
-                    <div className="cell flex center">Date</div>
-                    <div className="cell flex center">Person</div> */}
                 </div>
-
             </header>
-
 
             {category.expenses.map(expense => <ExpensePreview
                 color={category.color}
@@ -98,9 +84,18 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 updateExpense={onUpdateExpense}
                 deleteExpense={onDeleteExpense}
                 cols={cols} />)}
-            <AddExpense addExpense={onAddExpense} color={category.color} />
-            {isEditExpectedShow && <EditExpected expected={category.expected} color={category.color} onUpdateCategory={onUpdateCategory} toggleEditExpected={setIsEditExpectedShow} />}
-            <CategorySummary expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={setIsEditExpectedShow} />
+            <AddExpense
+                addExpense={onAddExpense}
+                color={category.color} />
+            {isEditExpectedShow && <EditExpected
+                expected={category.expected}
+                color={category.color}
+                onUpdateCategory={onUpdateCategory}
+                toggleEditExpected={setIsEditExpectedShow} />}
+            <CategorySummary
+                category={category}
+                toggleEditExpected={setIsEditExpectedShow}
+                cols={cols} />
         </section>
     )
 }
