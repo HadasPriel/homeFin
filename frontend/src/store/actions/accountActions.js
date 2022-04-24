@@ -7,7 +7,9 @@ const accountActions = {
   addAccount,
   removeAccount,
   toggleMember,
-  saveDescription
+  saveDescription,
+  saveLabel,
+  removeLabel
 }
 
 
@@ -77,7 +79,29 @@ function saveDescription(accountId, description) {
       await accountService.saveDescription(accountId, description)
       dispatch({ type: 'SAVE_DESCRIPTION', description })
     } catch (err) {
-      console.log('AccountActions: err in toggleMember', err)
+      console.log('AccountActions: err in saveDescription', err)
+    }
+  }
+}
+
+function saveLabel(accountId, label) {
+  return async dispatch => {
+    try {
+      await accountService.saveLabel(accountId, label)
+      dispatch({ type: 'SAVE_LABEL', label })
+    } catch (err) {
+      console.log('AccountActions: err in saveLabel', err)
+    }
+  }
+}
+
+function removeLabel(accountId, labelId) {
+  return async dispatch => {
+    try {
+      await accountService.removeLabel(accountId, labelId)
+      dispatch({ type: 'REMOVE_LABEL', labelId })
+    } catch (err) {
+      console.log('AccountActions: err in saveLabel', err)
     }
   }
 }

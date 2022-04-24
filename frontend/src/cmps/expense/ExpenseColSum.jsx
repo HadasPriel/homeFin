@@ -5,7 +5,8 @@ import { utilService } from "../../services/util.service";
 
 export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
 
-    const [isEditSum, setIsEditSum] = useToggle(false)
+    const elCmp = useRef(null)
+    const [isEditSum, setIsEditSum] = useToggle(false, elCmp)
     const [amount, setAmount] = useState(expanseToSave.sum.amount)
     const elInput = useRef(null)
 
@@ -38,7 +39,7 @@ export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
                         <span>{amount}</span> <span>{currency.current}</span>
                     </div>}
                 {isEditSum &&
-                    <form onSubmit={onUpdateAmount} name="amount">
+                    <form onSubmit={onUpdateAmount} name="amount" ref={elCmp}>
                         <input
                             className="cell-input"
                             name="amount"

@@ -1,6 +1,5 @@
 
 .expense-label-preview{
-    
     height: 100%;
     width: 100%;
     color: $clr6;
@@ -14,16 +13,67 @@
     background-color: $clr6;
     border-radius: 8px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.32);
-
+    
     .label-list{
         padding: 16px 24px 8px;
+      
     }
-
     .label-preview{
         width: 152px;
         height: 32px;
-        color: $clr6;
         margin-bottom: 8px;
-        cursor: pointer;
+        &.label-show{
+            color: $clr6;
+            cursor: pointer;
+            &:hover{
+                 opacity: 0.85;
+            }
+        }
+        &.label-edit{
+            position: relative;
+            padding: 4px;
+            border-radius: 4px;
+            border: 1px solid $clr4;
+            input{
+                border: none;
+                width: 100%;
+            }
+            .color-picker{
+                width: 24px;
+                height: 24px;
+                border-radius: 4px;
+                margin-inline-end: 4px;
+                &::after{
+                    content:'\f55d';
+                    font-family: fa-solid;
+                    color: $clr6;
+                }
+                &:hover{
+                    opacity: 0.85;
+                }
+            }
+        }
+    }
+
+ 
+    .label-container{
+    .remove-btn{
+        position: absolute;
+        right: 0;
+        padding: 10px;
+        display: none;
+    }
+
+        &:hover .remove-btn{
+            display: block;
+        }
+    }
+
+    
+    .edit-labels-btn{
+        width: 168px;
+        height: 32px;
+        margin: auto;
+        margin-block: 8px;
     }
 }

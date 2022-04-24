@@ -30,6 +30,7 @@ export const AccountDetails = (props) => {
     const saveDescription = (description) => {
         dispatch(actions.accountActions.saveDescription(accountId, description))
     }
+    
 
     if (!account) return <div>Loading...</div>
     return (

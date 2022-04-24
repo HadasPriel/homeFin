@@ -1,5 +1,4 @@
 import { httpService } from './http.service'
-import { storageService } from './async-storage.service'
 // import { userService } from './user.service'
 
 export const accountService = {
@@ -8,26 +7,21 @@ export const accountService = {
   remove,
   add,
   toggleMember,
-  saveDescription
+  saveDescription,
+  saveLabel,
+  removeLabel
 }
-
-
-// More ways to send query params:
-// return axios.get('api/toy/?id=1223&balance=13')
-// return axios.get('api/toy/?', {params: {id: 1223, balanse:13}})
 
 async function query(filterBy) {
-  return httpService.get(`account`)
+  return await httpService.get(`account`)
 }
 
-function getById(id) {
-  return httpService.get(`account/${id}`)
+async function getById(id) {
+  return await httpService.get(`account/${id}`)
 }
 
-function remove(accountId) {
-  // return httpService.delete(`account/${accountId}`)
-  return storageService.delete('account', accountId)
-
+async function remove(accountId) {
+  return httpService.delete('account', accountId)
 }
 
 async function add(account) {
@@ -40,4 +34,12 @@ async function toggleMember(accountId, member) {
 
 async function saveDescription(accountId, description) {
   return await httpService.put(`account/description`, { accountId, description })
+}
+
+async function saveLabel(accountId, label) {
+  return await httpService.put(`account/labels`, { accountId, label })
+}
+
+async function removeLabel(accountId, labelId) {
+  return await httpService.put(`account/label/remove`, { accountId, labelId })
 }

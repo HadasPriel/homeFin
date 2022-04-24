@@ -4,9 +4,9 @@ import { useToggle } from "../../hooks/useToggle";
 
 export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
 
+    const elInput = useRef(null)
     const [isEditDesc, setIsEditDesc] = useToggle(false)
     const [description, setDescription] = useState(expanseToSave.description)
-    const elInput = useRef(null)
 
     useEffect(() => {
         if (!isEditDesc || !elInput.current) return
@@ -28,7 +28,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
         <section className="expense-description first-cell flex align-center">
             <span className="before" style={{ backgroundColor: `var(--${color})` }} ></span>
             {isEditDesc ?
-                <form onSubmit={onUpdateDesc} name="description">
+                <form onSubmit={onUpdateDesc} name="description" >
                     <input
                         className="cell-input"
                         type="text"

@@ -10,7 +10,7 @@ import { CategorySummary } from "./CategorySummary";
 
 
 
-export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols }) => {
+export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
@@ -83,7 +83,9 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 expense={expense}
                 updateExpense={onUpdateExpense}
                 deleteExpense={onDeleteExpense}
-                cols={cols} />)}
+                cols={cols}
+                updateLabel={updateLabel}
+                removeLabel={removeLabel} />)}
             <AddExpense
                 addExpense={onAddExpense}
                 color={category.color} />

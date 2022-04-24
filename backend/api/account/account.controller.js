@@ -73,11 +73,35 @@ async function saveDescription(req, res) {
     }
 }
 
+async function saveLabel(req, res) {
+    try {
+        const { accountId, label } = req.body
+        await accountService.saveLabel(accountId, label)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to save label on account', err)
+        res.status(500).send({ err: 'Failed to save label on account' })
+    }
+}
+
+async function deleteLabel(req, res) {
+    try {
+        const { accountId, labelId } = req.body
+        await accountService.removeLabel(accountId, labelId)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to remove label from account', err)
+        res.status(500).send({ err: 'Failed to remove label from account' })
+    }
+}
+
 module.exports = {
     getAccounts,
     getAccount,
     deleteAccount,
     addAccount,
     toggleMember,
-    saveDescription
+    saveDescription,
+    saveLabel,
+    deleteLabel
 }

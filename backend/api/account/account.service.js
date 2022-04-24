@@ -78,9 +78,40 @@ async function saveDescription(accountId, description) {
         account.description = description
         await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
         const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
-        console.log('he?', savedAccount);
     } catch (err) {
         logger.error('cannot save description to account', err)
+        throw err
+    }
+}
+
+async function saveLabel(accountId, label) {
+    try {
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        const idx = account.labels.findIndex(currLabel => currLabel.id === label.id)
+        console.log('idx:', idx);
+        if (idx === -1){ 
+            label.id = utilService.makeId()    
+            account.labels.push(label)
+        }
+        else account.labels[idx] = label
+        await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
+        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+    } catch (err) {
+        logger.error('cannot save label to account', err)
+        throw err
+    }
+}
+
+async function removeLabel(accountId, labelId) {
+    try {
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        account.labels = account.labels.filter(currLabel => currLabel.id !== labelId)
+        await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
+        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+    } catch (err) {
+        logger.error('cannot save label to account', err)
         throw err
     }
 }
@@ -138,7 +169,9 @@ module.exports = {
     add,
     addMonth,
     toggleMember,
-    saveDescription
+    saveDescription,
+    saveLabel,
+    removeLabel
 }
 
 

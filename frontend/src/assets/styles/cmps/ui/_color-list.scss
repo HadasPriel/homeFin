@@ -1,0 +1,28 @@
+.color-list {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    z-index: 30;
+    padding: 12px;
+    width: 152px;
+    background-color: $clr6;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+
+    .color-label {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        margin: 4px;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    input{
+        display: none;
+    }
+}

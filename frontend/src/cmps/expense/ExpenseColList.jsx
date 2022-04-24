@@ -4,7 +4,7 @@ import { ExpenseColDate } from "./ExpenseColDate";
 import { ExpenseColLabel } from "./ExpenseColLabel";
 import { ExpenseColRepeat } from "./ExpenseColRepeat";
 
-export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, editExpenseTime, editExpenseRepeat }) => {
+export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, editExpenseTime, editExpenseRepeat, updateLabel, removeLabel }) => {
 
     return (
         <div className=" flex">
@@ -15,7 +15,7 @@ export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, ed
                     case 'sum':
                         return <ExpenseColSum expanseToSave={expanseToSave} onEditExpense={onEditExpense} key={col} />
                     case 'labels':
-                        return <ExpenseColLabel key={col} expanseToSave={expanseToSave} accountLabels={account.labels} onEditExpense={onEditExpense} />
+                        return <ExpenseColLabel key={col} expanseToSave={expanseToSave} accountLabels={account.labels} onEditExpense={onEditExpense} updateLabel={updateLabel} removeLabel={removeLabel} />
                     case 'date':
                         return <ExpenseColDate expanseToSave={expanseToSave} editExpenseTime={editExpenseTime} key={col} />
                     case 'person':

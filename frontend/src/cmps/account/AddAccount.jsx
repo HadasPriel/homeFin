@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useRef } from "react";
+
 import { useToggle } from "../../hooks/useToggle";
+import { useForm } from "../../hooks/useForm.js";
 
 
 export const AddAccount = ({ addAccount }) => {
-    const [isAddShow, setIsAddShow] = useToggle(false);
-    const [accountToAdd, setAccountToAdd] = useState({ title: '' });
+    const elCmp = useRef();
+    const [isAddShow, setIsAddShow] = useToggle(false, elCmp);
+    const [accountToAdd, setAccountToAdd] = useForm({ title: '' });
 
-    const handleChange = (ev) => {
-        const { name, value } = ev.target
-        setAccountToAdd(prevState => { return { ...prevState, [name]: value } })
-    }
 
     const onAddAccount = (ev) => {
         ev.preventDefault()
@@ -19,7 +18,7 @@ export const AddAccount = ({ addAccount }) => {
     }
 
     return (
-        <section className="add-account">
+        <section className="add-account" ref={elCmp} >
             <div className='add-account-container flex space-between'>
                 {isAddShow &&
                     <form onSubmit={onAddAccount} >
@@ -29,7 +28,7 @@ export const AddAccount = ({ addAccount }) => {
                                 type="text"
                                 name="title"
                                 value={accountToAdd.title}
-                                onChange={handleChange}
+                                onChange={setAccountToAdd}
                             />
                         </label>
                         <button className="btn suc" >Save</button>

@@ -23,12 +23,14 @@ export const MonthDetails = () => {
         return () => {
             dispatch(actions.monthActions.loadMonth(null))
         }
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
         if (!month || !month._id || monthId === month._id) return
 
         history.push(`/account/${accountId}/${month._id}`)
+        // eslint-disable-next-line
     }, [month])
 
 
@@ -79,6 +81,7 @@ export const MonthDetails = () => {
         } catch (err) {
             console.log(err);
         }
+        // eslint-disable-next-line
     }, [dispatch])
 
     const onPrevNextMonth = async (diff = 1) => {
@@ -91,6 +94,16 @@ export const MonthDetails = () => {
             console.log(err);
         }
     }
+
+    const updateLabel = (label) => {
+        dispatch(actions.accountActions.saveLabel(accountId, label))
+    }
+
+    const removeLabel = (labelId) => {
+        dispatch(actions.accountActions.removeLabel(accountId, labelId))
+    }
+
+
 
     if (!month || !month.time) return <div>Loading...</div>
     return (
@@ -106,7 +119,9 @@ export const MonthDetails = () => {
                 addExpense={addExpense}
                 updateExpense={updateExpense}
                 deleteExpense={deleteExpense}
-                cols={cols} />)}
+                cols={cols}
+                updateLabel={updateLabel}
+                removeLabel={removeLabel} />)}
         </section>
     )
 }

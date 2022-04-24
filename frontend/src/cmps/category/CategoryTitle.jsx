@@ -1,10 +1,10 @@
+
 import { useToggle } from "../../hooks/useToggle";
 import { CategoryTitleEdit } from "./CategoryTitleEdit";
 
 
 
 export const CategoryTitle = ({ updateCategoryTitle, category }) => {
-
     const [isEditTitleShow, setIsEditTitleShow] = useToggle(false)
 
     const updateTitle = (title) => {

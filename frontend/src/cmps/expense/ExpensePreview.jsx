@@ -5,7 +5,7 @@ import { ExpenseDescription } from "./ExpenseDescription";
 
 
 
-export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols }) => {
+export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
 
     const [expanseToSave, setExpanse] = useState({ ...expense })
     const account = useSelector(state => state.accountModule.currAcount)
@@ -61,7 +61,9 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
                 onEditExpense={onEditExpense}
                 account={account}
                 editExpenseTime={editExpenseTime}
-                editExpenseRepeat={editExpenseRepeat} />
+                editExpenseRepeat={editExpenseRepeat}
+                updateLabel={updateLabel}
+                removeLabel={removeLabel} />
         </section>
     )
 }

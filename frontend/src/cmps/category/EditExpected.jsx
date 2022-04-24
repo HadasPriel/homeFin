@@ -15,6 +15,7 @@ export const EditExpected = ({ expected, color, onUpdateCategory, toggleEditExpe
         return () => {
             document.removeEventListener('keydown', onKeyDown)
         }
+        // eslint-disable-next-line
     }, [])
 
     const onSetExpectedToSave = async (ev) => {
