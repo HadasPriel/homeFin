@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useToggle } from "../../hooks/useToggle";
+import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 
 
 export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
@@ -8,7 +9,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
     const [isEditDesc, setIsEditDesc] = useToggle(false)
     const [description, setDescription] = useState(expanseToSave.description)
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         if (!isEditDesc || !elInput.current) return
         elInput.current.focus()
     }, [isEditDesc, elInput])

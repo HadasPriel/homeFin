@@ -19,6 +19,7 @@ export const MonthList = ({ months }) => {
             history.push(`/account/${accountId}/${month._id}`)
         }
         else {
+            console.log('loadMonth...');
             dispatch(actions.monthActions.loadMonthByTime(date))
             history.push(`/account/${accountId}/${'null'}`)
         }

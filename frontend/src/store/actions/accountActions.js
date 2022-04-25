@@ -17,7 +17,6 @@ function loadAccounts() {
   return async dispatch => {
     try {
       const accounts = await accountService.query()
-      console.log(accounts, "accounts");
       dispatch({ type: 'SET_ACCOUNTS', accounts })
 
     } catch (err) {
@@ -28,7 +27,6 @@ function loadAccounts() {
 function loadAccount(accountId) {
   return async dispatch => {
     try {
-      console.log('loadAccount');
       const account = await accountService.getById(accountId)
       dispatch({ type: 'SET_ACCOUNT', account })
 

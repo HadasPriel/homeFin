@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useEffectUpdate } from "../../hooks/useEffectUpdate";
+
 import { ExpenseColList } from "./ExpenseColList";
 import { ExpenseDescription } from "./ExpenseDescription";
 
@@ -10,7 +12,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     const [expanseToSave, setExpanse] = useState({ ...expense })
     const account = useSelector(state => state.accountModule.currAcount)
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         // console.log('run', expanseToSave);
         updateExpense(expanseToSave)
     }, [expanseToSave, updateExpense])

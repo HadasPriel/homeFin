@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom";
+import { useEffectUpdate } from '../hooks/useEffectUpdate';
 import { CategoryPreview } from '../cmps/category/CategoryPreview';
 import { MonthHeader } from '../cmps/month/MonthHeader';
 import { utilService } from '../services/util.service.js';
@@ -26,7 +27,7 @@ export const MonthDetails = () => {
         // eslint-disable-next-line
     }, [])
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         if (!month || !month._id || monthId === month._id) return
 
         history.push(`/account/${accountId}/${month._id}`)
@@ -122,6 +123,7 @@ export const MonthDetails = () => {
                 cols={cols}
                 updateLabel={updateLabel}
                 removeLabel={removeLabel} />)}
+
         </section>
     )
 }

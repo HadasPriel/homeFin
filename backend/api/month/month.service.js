@@ -186,22 +186,25 @@ function _createCategory() {
     }
 }
 
-function _createMonth(time, prevMonth, user) {
-    if (!prevMonth) var categories = []
-    else categories = _getCategories(prevMonth)
+function _createMonth(time, prevMonth = null, user) {
+    categories = _getCategories(prevMonth)
+
     return {
         time,
-        members: prevMonth?.members || [user], //TODO: no need for members on month...
-        categories
+        members: prevMonth?.members || [user], //TODO: no need for members on month, its used on expense & acoount
+        categories,
+        incomes: prevMonth?.incomes || []
     }
 }
 
 function _getCategories(month) {
+    if (!month || !month.categories) return []
     return month.categories.map(categ => {
         categ.expenses = categ.expenses.filter((expense => expense.repeat))
         return categ
     })
 }
+
 
 async function _getLastMonth(accountId) {
     const account = await accountService.getById(accountId)

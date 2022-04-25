@@ -77,7 +77,7 @@ async function saveDescription(accountId, description) {
         const account = await collection.findOne({ _id: ObjectId(accountId) })
         account.description = description
         await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
-        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+        await collection.findOne({ _id: ObjectId(accountId) })
     } catch (err) {
         logger.error('cannot save description to account', err)
         throw err
@@ -90,13 +90,13 @@ async function saveLabel(accountId, label) {
         const account = await collection.findOne({ _id: ObjectId(accountId) })
         const idx = account.labels.findIndex(currLabel => currLabel.id === label.id)
         console.log('idx:', idx);
-        if (idx === -1){ 
-            label.id = utilService.makeId()    
+        if (idx === -1) {
+            label.id = utilService.makeId()
             account.labels.push(label)
         }
         else account.labels[idx] = label
         await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
-        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+        await collection.findOne({ _id: ObjectId(accountId) })
     } catch (err) {
         logger.error('cannot save label to account', err)
         throw err
@@ -109,7 +109,7 @@ async function removeLabel(accountId, labelId) {
         const account = await collection.findOne({ _id: ObjectId(accountId) })
         account.labels = account.labels.filter(currLabel => currLabel.id !== labelId)
         await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
-        const savedAccount = await collection.findOne({ _id: ObjectId(accountId) })
+        await collection.findOne({ _id: ObjectId(accountId) })
     } catch (err) {
         logger.error('cannot save label to account', err)
         throw err
@@ -140,7 +140,7 @@ function _createAccount(account) {
         description: '',
         byUser: account.byUser,
         members: [account.byUser],
-        methods: [
+        methods: [ //TODO: remove, labels got this role...
             { id: "1", type: "creditCard", code: "2244" },
             { id: "2", type: "creditCard", code: "1111" },
             { id: "1", type: "cash" }
@@ -149,9 +149,9 @@ function _createAccount(account) {
         months: [],
         cols: ['repeated', 'sum', 'labels', 'date', 'person'],
         labels: [
-            { id: utilService.makeId(), txt: 'Done', color: 'rgb(0, 200, 117)' },
-            { id: utilService.makeId(), txt: 'Stuck', color: 'rgb(226, 68, 92)' },
-            { id: utilService.makeId(), txt: 'Working on it', color: 'rgb(253, 171, 61)' }
+            { id: utilService.makeId(), txt: 'Done', color: 'lb1' },
+            { id: utilService.makeId(), txt: 'Stuck', color: 'lb12' },
+            { id: utilService.makeId(), txt: 'Working on it', color: 'lb16' }
         ]
     }
 }

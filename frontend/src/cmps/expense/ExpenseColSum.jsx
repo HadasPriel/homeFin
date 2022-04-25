@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useToggle } from "../../hooks/useToggle";
+import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 import { utilService } from "../../services/util.service";
 
 
@@ -10,9 +11,11 @@ export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
     const [amount, setAmount] = useState(expanseToSave.sum.amount)
     const elInput = useRef(null)
 
-    useEffect(() => {
+    useEffectUpdate(() => {
+        console.log('run');
         if (!isEditSum || !elInput.current) return
         elInput.current.focus()
+        // eslint-disable-next-line
     }, [isEditSum, elInput])
 
     const currency = useRef(null)
