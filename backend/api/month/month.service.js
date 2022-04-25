@@ -185,6 +185,18 @@ function _createCategory() {
         expenses: []
     }
 }
+function _createIncomes() {
+    return {
+        id: utilService.makeId(),
+        title: "Income",
+        color: 'lb' + utilService.getRandomIntInclusive(1, 20),
+        description: "",
+        expected: 0,
+        actual: 0,
+        isIncome: true,
+        expenses: []
+    }
+}
 
 function _createMonth(time, prevMonth = null, user) {
     categories = _getCategories(prevMonth)
@@ -198,11 +210,17 @@ function _createMonth(time, prevMonth = null, user) {
 }
 
 function _getCategories(month) {
-    if (!month || !month.categories) return []
-    return month.categories.map(categ => {
+    if (!month || !month.categories) return [_createIncomes()]
+
+    var isIncome = false
+    var categsToReturn = month.categories.map(categ => {
+        if (categ.isIncome) isIncome = true
         categ.expenses = categ.expenses.filter((expense => expense.repeat))
         return categ
     })
+
+    if (!isIncome) { categsToReturn.push(_createIncomes()) }
+    return categsToReturn
 }
 
 
