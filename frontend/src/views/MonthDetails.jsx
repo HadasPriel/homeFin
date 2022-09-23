@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom";
 import { useEffectUpdate } from '../hooks/useEffectUpdate';
@@ -8,14 +8,14 @@ import { utilService } from '../services/util.service.js';
 import actions from '../store/actions';
 
 
-
 export const MonthDetails = () => {
 
-    let { accountId, monthId } = useParams();
-    let history = useHistory();
-    const dispatch = useDispatch();
+    let { accountId, monthId } = useParams()
+    let history = useHistory()
+    const dispatch = useDispatch()
     const month = useSelector(state => state.monthModule.currMonth)
     const cols = useSelector(state => state.accountModule.currAcount.cols)
+
 
     useEffect(() => {
         if (monthId === 'null') return
@@ -27,12 +27,27 @@ export const MonthDetails = () => {
         // eslint-disable-next-line
     }, [])
 
+
     useEffectUpdate(() => {
         if (!month || !month._id || monthId === month._id) return
 
         history.push(`/account/${accountId}/${month._id}`)
         // eslint-disable-next-line
     }, [month])
+
+    const scrollLeft = useRef()
+    useEffect(() => {
+        const scrollFunc = (ev) => {
+            scrollLeft.current = ev.target.scrollLeft
+            // console.log(scrollLeft.current);
+        };
+        const element = document.querySelector('.app-main')
+        element.addEventListener("scroll", scrollFunc)
+
+        return () => {
+            element.removeEventListener("scroll", scrollFunc)
+        }
+    }, [])
 
 
     const addCtegory = async (category) => {
@@ -112,17 +127,20 @@ export const MonthDetails = () => {
             <MonthHeader month={month}
                 addCtegory={addCtegory}
                 onPrevNextMonth={onPrevNextMonth} />
-            {month.categories && month.categories.map(category => <CategoryPreview
-                category={category}
-                key={category.id}
-                updateCtegory={updateCtegory}
-                deleteCategory={deleteCategory}
-                addExpense={addExpense}
-                updateExpense={updateExpense}
-                deleteExpense={deleteExpense}
-                cols={cols}
-                updateLabel={updateLabel}
-                removeLabel={removeLabel} />)}
+            <div className="month-list">
+
+                {month.categories && month.categories.map(category => <CategoryPreview
+                    category={category}
+                    key={category.id}
+                    updateCtegory={updateCtegory}
+                    deleteCategory={deleteCategory}
+                    addExpense={addExpense}
+                    updateExpense={updateExpense}
+                    deleteExpense={deleteExpense}
+                    cols={cols}
+                    updateLabel={updateLabel}
+                    removeLabel={removeLabel} />)}
+            </div>
 
         </section>
     )

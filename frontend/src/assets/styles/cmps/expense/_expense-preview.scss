@@ -1,14 +1,20 @@
 .expense-preview {
-    position: relative;
-    background-color: $clr2;
+    // position: relative;
     border-bottom: 1px solid $clr6;
     cursor: pointer;
     user-select: none;
-
+    width: 100%;
+    
     .menu-wrapper {
         background-color: $clr6;
     }
-
+    
+    .first-cell.expense-description{
+        position: sticky;
+        z-index: 100;
+        // background-color: rgba(253, 253, 250, 0.95);
+    }
+    
     .menu {
         opacity: 0;
         height: 18px;
@@ -37,8 +43,9 @@
     .first-cell {
         border-bottom: 1px solid $clr4;
         border-right: 1px solid $clr6;
+        background-color: $clr2;
     }
-
+    
     .date {
         height: 100%;
         width: 100%;

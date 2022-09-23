@@ -2,21 +2,35 @@
 .expense-preview {
     .row-container {
         height: 33px;
-        width: 100%;
+    }
+    .col-list-container{
+        flex-grow: 1;
     }
     .first-cell {
-        flex: 1;
-        min-width: 150px;
+        flex-basis: 150px;
+        flex-grow: 370px;
     }
-
+    
     .cell {
         cursor: pointer;
         height: 100%;
-        width: $cell-width;
+        // width: $cell-width;
+        flex-basis: $cell-width;
+        flex-shrink: 0;
     }
     .profile-img{
         width: 30px;
         height: 30px;
+    }
+
+    .cell.last-cell{
+        max-width: unset;
+        width: unset;
+        flex-basis: 50px;
+        flex-grow: 1;
+        justify-content: end;
+
+        
     }
 }
 
@@ -28,6 +42,26 @@
     }
 }
 
-.overflow {
-    overflow-x: scroll;
+
+.edit-expected{
+    .first-cell {
+
+    max-width: unset;
+    width: 100%;
+
+        input.description{
+            margin-inline-start: 0;
+        }
+    }
+
+}
+
+.cell.last-cell, .add-expense{
+    &::after{
+        content: '';
+        height: 100%;
+        width: 9px;
+        background-color: #D0D4E4;
+    }
+
 }

@@ -13,7 +13,6 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     const account = useSelector(state => state.accountModule.currAcount)
 
     useEffectUpdate(() => {
-        // console.log('run', expanseToSave);
         updateExpense(expanseToSave)
     }, [expanseToSave, updateExpense])
 

@@ -1,85 +1,55 @@
-.add-expense, .edit-expected {
+.add-expense {
     display: flex;
     background-color: $clr6;
     padding-inline-start: 25px;
-    overflow: hidden;
-    position: sticky;
-    left: 45px;
-    
+    // width: 100%;
     .first-cell {
         border-inline-end: none;
-        min-width: unset;
-        flex: unset;
-        .before{
-            opacity: 0.5;;
-        }
     }
-
-    input {
-        padding-inline-start: 15px;
-        background-color: #fff;
-        height: 31px;
-        border: 1px solid rgb(208, 212, 228);
-        
-        &.description{
-            width: 100%;
-        }
-
-        &:hover {
-            border-color: $clr3;
-        }
-        
-        &:focus {
-            border-color: $clr5;
-            & + .btn-container input{
-                border-color: $clr5;
-            }
-        } 
-    }
-    
     .btn-container {
+        flex-grow: 1;
+        position: relative;
+        right: 1px;
+        border: 1px solid $clr4;
+        border-inline-start: none;
         background-color: $clr2;
-        transition: 0.5s;
     }
-    
     .btn {
         height: 100%;
         position: relative;
         right: 39px;
-        border-radius:0;
+        // width: 100px;
     }
-    
-    &::after, &::before{
-        opacity: 0.5;;
+
+    .first-cell, .cell{
+        background-color: $clr6;
+
     }
-    
+
+    .first-cell {
+        min-width: unset;
+        flex: unset;
+        // input.description {
+        //     margin-inline-start: 0;
+        //     padding-inline-start: 15px;
+        //     background-color: transparent;
+        //     border: none;
+        //     width: 50%;
+        //     height: 100%;
+        //     border: 1px solid transparent;
+
+        //     &:hover,
+        //     &:focus {
+        //         border: 1px solid $clr3;
+        //     }
+        // }
+    }
+
     &:hover {
         cursor: text;
         background-color: $clr6;
-        .first-cell .before,  &::after, &::before{
-            opacity: 1;
-        }
-    }
-    
-}
-
-.add-expense{
-    .btn-container {
-        position: absolute;
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // room = {
 // 	id: string,

@@ -1,5 +1,5 @@
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { AddExpense } from "../expense/AddExpense"
 import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected";
@@ -14,6 +14,10 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
+
+    useEffect(() => {
+        console.log(window.scrollX);
+    }, [window.scrollX])
 
     const onAddExpense = (expense) => {
         addExpense(category.id, expense)
@@ -67,37 +71,40 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 updateCategoryColor={updateCategoryColor}
                 toggleEditExpected={setIsEditExpectedShow}
             />}
-            <header className="flex row-container">
-                <div className="menu-wrapper flex center" >
-                    <div className="sort-down menu flex center" onClick={setIsMenuShow} style={menuStyle}></div>
+            <header className="category-header flex row-container">
+                <div className="flex header-start" >
+                    <div className="menu-wrapper flex center" >
+                        <div className="sort-down menu flex center" onClick={setIsMenuShow} style={menuStyle}></div>
+                    </div>
+                    <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 </div>
-                <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 <div className="headers flex">
-                    {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
+                    {cols.map(col => <div className="cell flex center categ-title" key={col} >{col}</div>)}
                 </div>
             </header>
-
-            {category.expenses.map(expense => <ExpensePreview
-                color={category.color}
-                key={expense.id}
-                expense={expense}
-                updateExpense={onUpdateExpense}
-                deleteExpense={onDeleteExpense}
-                cols={cols}
-                updateLabel={updateLabel}
-                removeLabel={removeLabel} />)}
-            <AddExpense
-                addExpense={onAddExpense}
-                color={category.color} />
-            {isEditExpectedShow && <EditExpected
-                expected={category.expected}
-                color={category.color}
-                onUpdateCategory={onUpdateCategory}
-                toggleEditExpected={setIsEditExpectedShow} />}
-            <CategorySummary
-                category={category}
-                toggleEditExpected={setIsEditExpectedShow}
-                cols={cols} />
+            <main className="category-preview-main" >
+                {category.expenses.map(expense => <ExpensePreview
+                    color={category.color}
+                    key={expense.id}
+                    expense={expense}
+                    updateExpense={onUpdateExpense}
+                    deleteExpense={onDeleteExpense}
+                    cols={cols}
+                    updateLabel={updateLabel}
+                    removeLabel={removeLabel} />)}
+                <AddExpense
+                    addExpense={onAddExpense}
+                    color={category.color} />
+                {isEditExpectedShow && <EditExpected
+                    expected={category.expected}
+                    color={category.color}
+                    onUpdateCategory={onUpdateCategory}
+                    toggleEditExpected={setIsEditExpectedShow} />}
+                <CategorySummary
+                    category={category}
+                    toggleEditExpected={setIsEditExpectedShow}
+                    cols={cols} />
+            </main>
         </section>
     )
 }

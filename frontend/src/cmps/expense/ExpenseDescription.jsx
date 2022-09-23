@@ -9,6 +9,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
     const [isEditDesc, setIsEditDesc] = useToggle(false)
     const [description, setDescription] = useState(expanseToSave.description)
 
+
     useEffectUpdate(() => {
         if (!isEditDesc || !elInput.current) return
         elInput.current.focus()
@@ -24,6 +25,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
     const handleChange = (ev) => {
         setDescription(ev.target.value)
     }
+
 
     return (
         <section className="expense-description first-cell flex align-center">

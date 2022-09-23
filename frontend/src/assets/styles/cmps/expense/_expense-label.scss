@@ -4,6 +4,25 @@
     width: 100%;
     color: $clr6;
     font-weight: 400;
+    position: relative;
+
+    .fold{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        border-width: 0;
+        border-style: solid;
+        background: rgba(0, 0, 0, 0.145);
+        border-color:transparent $clr6 transparent $clr6;
+        // border-color:transparent $clr4 transparent $clr4;
+        transition:0.25s;
+    }
+
+    &:hover{
+        .fold{
+            border-width: 0px 10px 10px 0px;
+        }
+    }
 }
 
 .expense-label-edit{
@@ -16,8 +35,8 @@
     
     .label-list{
         padding: 16px 24px 8px;
-      
     }
+
     .label-preview{
         width: 152px;
         height: 32px;

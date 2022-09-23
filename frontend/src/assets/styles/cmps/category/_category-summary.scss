@@ -1,10 +1,6 @@
 .expense-preview.category-summary {
-    background-color: transparent;
     border: none;
-    // &  *{
-    //     cursor: auto;
-    // }
-
+    
     .expense-sum:hover{
         background-color: $clr4;
         cursor: pointer;
@@ -16,9 +12,14 @@
     
     .cell,
     .first-cell{
+        background-color: transparent;
         border: none;
         border-bottom: none;
-        // border: 1px solid red;
+        max-width: 390px;
+    }
+    
+    &::after{
+        opacity: 0;;
     }
 }
 
@@ -26,6 +27,7 @@
     .label{
         height: 20px;
         width: 100%;
+        transition: 0.1s;
 
         &:hover {
             height: 90%;

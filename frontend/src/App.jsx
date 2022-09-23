@@ -9,13 +9,20 @@ import { AccountApp } from './views/AccountApp'
 import { AccountDetails } from './views/AccountDetails'
 import { LoginSignup } from './views/LoginSignup'
 
+
 function App() {
+
+  const setScroll = (ev) => {
+    console.log('scroll!', ev.target.scrollLeft)
+    //TODO eventBus?
+  }
+
   return (
     <div className="App flex ">
       <Router>
         <Provider store={store}>
           <AppHeader />
-          <main className='app-main'>
+          <main className='app-main' onScroll={setScroll} >
             <Switch>
               <Route path="/account/:accountId" component={AccountDetails} />
               <Route path="/account" component={AccountApp} />

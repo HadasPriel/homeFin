@@ -1,0 +1,10 @@
+.month-details{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .month-list{
+        overflow: auto;
+        flex-grow: 1;
+    }
+}

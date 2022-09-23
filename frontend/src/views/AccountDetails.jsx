@@ -34,9 +34,9 @@ export const AccountDetails = (props) => {
 
     if (!account) return <div>Loading...</div>
     return (
-        <section className="account-details">
+        <section className="account-details" >
             <AccountHeader account={account} accountId={accountId} toggleIsInviteShow={setIsInviteShow} saveDescription={saveDescription} />
-            <main>
+            <main className="main-account-details">
                 <Switch>
                     <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />
                     <MonthList months={account.months} />

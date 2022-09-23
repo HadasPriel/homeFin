@@ -188,7 +188,7 @@ function _createCategory() {
 function _createIncomes() {
     return {
         id: utilService.makeId(),
-        title: "Income",
+        title: "Incomes",
         color: 'lb' + utilService.getRandomIntInclusive(1, 20),
         description: "",
         expected: 0,

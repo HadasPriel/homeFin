@@ -1,7 +1,14 @@
 .category-preview {
     position: relative;
     margin-block-end: 90px;
+    margin-inline: 30px;
+
+    .header-start{
+        position: sticky;
+    }
+
     .first-cell-title {
+        position: sticky;
         line-height: 27px;
         h1 {
             font-weight: 300;
@@ -21,5 +28,9 @@
             position: relative;
             bottom: 2.5px;
         }
+    }
+    .cell.categ-title{
+        color: $clr7;
+        text-transform: capitalize;
     }
 }

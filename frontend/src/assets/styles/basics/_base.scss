@@ -12,6 +12,17 @@ body {
     margin: 0;
     color: $clr3;
     font-size: 14px;
+    // overflow-y: hidden;
+    // overflow-x: hidden;
+}
+
+.app-main {
+    background-color: $clr2;
+    flex-grow: 1;
+    margin-inline-start: 70px;
+    height: 100vh;
+    // overflow-y: auto;
+    // overflow-x: auto;
 }
 
 h1,
@@ -55,9 +66,3 @@ input {
     color: inherit;
 }
 
-.app-main {
-    background-color: $clr2;
-    flex-grow: 1;
-    margin-inline-start: 66px;
-    min-height: 100vh;
-}

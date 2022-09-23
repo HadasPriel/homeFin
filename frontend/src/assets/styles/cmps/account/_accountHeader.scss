@@ -1,6 +1,16 @@
 .account-header {
+    padding: 16px 30px 0;
     border-bottom: 1px solid $clr4;
-    padding: 12px 0;
+    // padding: 12px 0;
+    width: 100%;
+   position: sticky;
+   left: 0;
+    
+    .title {
+        font-size: 32px;
+        font-weight: 500;
+        font-family: roboto-b;
+    }
 
     .account-description{
         margin-block-end: 5px;

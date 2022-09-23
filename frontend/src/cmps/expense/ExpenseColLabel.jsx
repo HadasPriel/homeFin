@@ -18,6 +18,7 @@ export const ExpenseColLabel = ({ expanseToSave, accountLabels, onEditExpense, u
                 className="expense-label-preview flex center"
                 onClick={setIsEditShow}
                 style={{ backgroundColor: color }} >
+                <span className='fold'></span>
                 {labelToShow?.txt}
             </div>
             {isEditShow && <ExpenseLabelEdit

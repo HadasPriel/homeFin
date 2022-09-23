@@ -1,21 +1,22 @@
 .account-details {
-    padding: $inline-padding 30px 0;
+    // padding: $inline-padding 30px 0;
     background-color: $clr6;
     min-height: 100%;
-
+    min-width: 100%;
+    // overflow:hidden;
+   display: flex;
+   flex-direction: column;
     
-
+    
     main {
         margin-bottom: 15px;
-        .title {
-            font-size: 24px;
-            font-weight: 600;
-        }
+        
         .btn {
             padding: 8px;
-            // &:hover {
-            //     background-color: $clr4;
-            // }
         }
+    }
+
+    .main-account-details{
+        flex-grow: 1;
     }
 }
