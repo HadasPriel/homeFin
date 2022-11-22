@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { useToggle } from "../../hooks/useToggle";
 import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 
+import { StartRow } from "../category/StartRow"
+
 
 export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
 
@@ -26,12 +28,11 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
     }
 
     return (
-        <section className="expense-description first-cell flex align-center">
-            <span className="before" style={{ backgroundColor: `var(--${color})` }} ></span>
+        <section className="expense-description flex align-center">
+            <StartRow color={color} />
             {isEditDesc ?
-                <form onSubmit={onUpdateDesc} name="description" >
+                <form onSubmit={onUpdateDesc} name="description" className="description cell flex center" >
                     <input
-                        className="cell-input"
                         type="text"
                         name="description"
                         value={description}
@@ -39,7 +40,7 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
                         onBlur={onUpdateDesc}
                         ref={elInput} />
                 </form> :
-                <p className="description" name="description"  >{expanseToSave.description}</p>
+                <p className="description flex center cell" name="description">{expanseToSave.description}</p>
             }
             {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
 

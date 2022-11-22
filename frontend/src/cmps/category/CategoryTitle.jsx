@@ -16,7 +16,7 @@ export const CategoryTitle = ({ updateCategoryTitle, category }) => {
     return (
         <section className="first-cell first-cell-title flex">
             {isEditTitleShow ? <CategoryTitleEdit updateTitle={updateTitle} categoryTitle={category.title} color={category.color} /> :
-                <h1 onClick={setIsEditTitleShow} className="flex align-center"
+                <h1 onClick={setIsEditTitleShow} className="category-title-txt flex align-center"
                     style={{ color: `var(--${category.color})` }}
                     name="title"
                 >{category.title}</h1>}

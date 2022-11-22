@@ -7,6 +7,8 @@ import { CategoryMenu } from "./CategoryMenu"
 import { CategoryTitle } from "./CategoryTitle"
 import { useToggle } from "../../hooks/useToggle";
 import { CategorySummary } from "./CategorySummary";
+import { SortSign } from "../ui/SortSign"
+import { StartRow } from "./StartRow";
 
 
 
@@ -54,11 +56,6 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
         setIsEditExpectedShow(false)
     }
 
-    const menuStyle = {
-        backgroundColor: `var(--${category.color})`
-    }
-
-
     return (
         <section className="category-preview">
             {isMenuShow && <CategoryMenu
@@ -67,15 +64,19 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 updateCategoryColor={updateCategoryColor}
                 toggleEditExpected={setIsEditExpectedShow}
             />}
-            <header className="flex row-container">
-                <div className="menu-wrapper flex center" >
-                    <div className="sort-down menu flex center" onClick={setIsMenuShow} style={menuStyle}></div>
+            <header className="flex align-center">
+                <div className="menu flex center"  >
+                    <SortSign onClick={setIsMenuShow} color={`var(--${category.color})`} />
                 </div>
                 <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
-                <div className="headers flex">
-                    {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
-                </div>
             </header>
+            <div className="headers row-container">
+                <div className="flex">
+                    <StartRow color={category.color} />
+                    <div className="flex center budget cell">Budget</div>
+                </div>
+                {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
+            </div>
 
             {category.expenses.map(expense => <ExpensePreview
                 color={category.color}

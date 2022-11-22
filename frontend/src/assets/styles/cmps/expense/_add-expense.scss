@@ -1,45 +1,62 @@
 .add-expense {
-    display: flex;
-    background-color: $clr6;
-    padding-inline-start: 25px;
-    .first-cell {
-        border-inline-end: none;
-    }
-    .btn-container {
-        position: relative;
-        right: 1px;
-        border: 1px solid $clr4;
-        border-inline-start: none;
-        background-color: $clr2;
-    }
-    .btn {
-        height: 100%;
-        position: relative;
-        right: 39px;
-        // width: 100px;
-    }
-    .first-cell {
-        input.description {
-            margin-inline-start: 0;
-            padding-inline-start: 15px;
-            background-color: transparent;
-            border: none;
-            width: 50%;
-            height: 100%;
-            border: 1px solid transparent;
 
-            &:hover,
-            &:focus {
-                border: 1px solid $clr3;
-            }
-        }
+    box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
+    
+    &.row-container{
+        grid-template-columns: 400px 1fr;
+        border-bottom: 1px solid $clr8;
     }
 
-    &:hover {
-        cursor: text;
-        background-color: $clr6;
+    .expense-description{
+        padding-inline-start: 35px;
     }
+   
 }
+
+
+
+// .add-expense {
+//     display: flex;
+//     background-color: $clr6;
+//     padding-inline-start: 25px;
+//     .first-cell {
+//         border-inline-end: none;
+//     }
+//     .btn-container {
+//         position: relative;
+//         right: 1px;
+//         border: 1px solid $clr4;
+//         border-inline-start: none;
+//         background-color: $clr2;
+//     }
+//     .btn {
+//         height: 100%;
+//         position: relative;
+//         right: 39px;
+//         // width: 100px;
+//     }
+//     .first-cell {
+//         input.description {
+//             margin-inline-start: 0;
+//             padding-inline-start: 15px;
+//             background-color: transparent;
+//             border: none;
+//             width: 50%;
+//             height: 100%;
+//             border: 1px solid transparent;
+
+//             &:hover,
+//             &:focus {
+//                 border: 1px solid $clr3;
+//             }
+//         }
+//     }
+
+//     &:hover {
+//         cursor: text;
+//         background-color: $clr6;
+//     }
+// }
 
 // room = {
 // 	id: string,

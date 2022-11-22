@@ -1,25 +1,25 @@
 .category-preview {
-    position: relative;
-    margin-block-end: 90px;
-    .first-cell-title {
-        line-height: 27px;
-        h1 {
-            font-weight: 300;
-            font-size: 18px;
-            padding-inline-start: 15px;
+    
+    header {
+        height: 40px;
+        font-family: poppins-r;
+        padding-inline-start: 8px;
+
+        .category-title-txt {
+            font-size: 17px;
+            letter-spacing: 0.3px;
             text-transform: capitalize;
         }
-    }
-
-    header .menu {
-        cursor: pointer;
-        width: 18px;
-        height: 18px;
-        border-radius: 1em;
-        &::before {
+        
+        .menu {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            width: 33px;
+            height: 36px;
+            border-radius: 1em;
             color: $clr2;
-            position: relative;
-            bottom: 2.5px;
+
         }
     }
 }

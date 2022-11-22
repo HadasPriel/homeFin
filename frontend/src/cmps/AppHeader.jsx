@@ -11,6 +11,7 @@ export const AppHeader = () => {
 
 
     return (
+        // <div className="app-header-wrapper">
         <header className="app-header flex col space-between">
             <nav>
                 <Link to="/">
@@ -26,5 +27,6 @@ export const AppHeader = () => {
                 </Link>
             </nav>
         </header>
+        // </div>
     )
 }

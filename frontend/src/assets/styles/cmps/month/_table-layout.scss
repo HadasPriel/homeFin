@@ -1,33 +1,30 @@
-.category-preview,
-.expense-preview {
-    .row-container {
-        height: 33px;
-        width: 100%;
-    }
-    .first-cell {
-        flex: 1;
-        min-width: 150px;
-    }
 
-    .cell {
-        cursor: pointer;
-        height: 100%;
-        width: $cell-width;
-    }
+.cell {
+    cursor: pointer;
+    border-inline-start: 1px solid $clr8;
+}
+
+.row-container {
+    height: 36px;
+    display: grid;
+    grid-template-columns: 400px repeat(auto-fit, 129px);
+    grid-auto-flow: column;
+    grid-auto-columns: 129px;
+    grid-template-rows: 36px;
+    border-top: 1px solid $clr8;
     .profile-img{
-        width: 30px;
-        height: 30px;
-    }
-}
-
-.headers {
-    .cell {
-        &:hover {
-            background-color: $clr2;
+            width: 30px;
+            height: 30px;
         }
-    }
 }
-
-.overflow {
-    overflow-x: scroll;
+    
+.headers {
+    &.row-container{
+        // border-inline-start: 1px solid $clr8;
+        border-top-left-radius: 6px;
+    }
+    .budget{
+        flex-grow: 1;
+        color: $clr7;
+    }
 }

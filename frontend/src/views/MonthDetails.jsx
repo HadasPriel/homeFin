@@ -112,17 +112,19 @@ export const MonthDetails = () => {
             <MonthHeader month={month}
                 addCtegory={addCtegory}
                 onPrevNextMonth={onPrevNextMonth} />
-            {month.categories && month.categories.map(category => <CategoryPreview
-                category={category}
-                key={category.id}
-                updateCtegory={updateCtegory}
-                deleteCategory={deleteCategory}
-                addExpense={addExpense}
-                updateExpense={updateExpense}
-                deleteExpense={deleteExpense}
-                cols={cols}
-                updateLabel={updateLabel}
-                removeLabel={removeLabel} />)}
+            <main className='month-main'>
+                {month.categories && month.categories.map(category => <CategoryPreview
+                    category={category}
+                    key={category.id}
+                    updateCtegory={updateCtegory}
+                    deleteCategory={deleteCategory}
+                    addExpense={addExpense}
+                    updateExpense={updateExpense}
+                    deleteExpense={deleteExpense}
+                    cols={cols}
+                    updateLabel={updateLabel}
+                    removeLabel={removeLabel} />)}
+            </main>
 
         </section>
     )

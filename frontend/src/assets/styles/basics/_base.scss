@@ -49,15 +49,24 @@ textarea {
     resize: none;
     outline: none;
 }
+
 input {
+    padding: 0;
     outline: none;
     font-family: inherit;
     color: inherit;
+    border: none;
+    background-color: transparent;
+}
+
+.App{
+    overflow: hidden;
 }
 
 .app-main {
-    background-color: $clr2;
     flex-grow: 1;
-    margin-inline-start: 66px;
-    min-height: 100vh;
+    position: absolute;
+    inset: 0;
+    left: 66px;
+    overflow: auto;
 }
