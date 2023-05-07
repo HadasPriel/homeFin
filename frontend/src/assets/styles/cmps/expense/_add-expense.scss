@@ -10,6 +10,10 @@
         box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
     } 
 
+    .before-row{
+        opacity: .5;
+    }
+
     .empty{
         flex-grow: 1;
         border-inline-start: none;

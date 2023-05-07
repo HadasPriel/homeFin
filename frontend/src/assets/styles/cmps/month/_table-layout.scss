@@ -38,6 +38,9 @@
     &.row-container{
         // border-inline-start: 1px solid $clr8;
         border-top-left-radius: 6px;
+        .expense-description{
+            opacity: 0.97;
+        }
     }
     .budget{
         flex-grow: 1;
