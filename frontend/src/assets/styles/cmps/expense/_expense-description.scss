@@ -1,10 +1,14 @@
 .expense-description{
   position: relative;
+  background-color: $clr6;
+  border-inline-end: 1px solid $clr8;
+  z-index: 15;
 
-  .description{
+  .description-container{
     height: 100%;
+    width: 100%;
     padding-inline-start: 35px;
-
+    align-items: center;
   }
 
   .btn.edit-btn{

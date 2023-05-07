@@ -24,25 +24,30 @@ export const AddExpense = ({ addExpense, color }) => {
     }
 
     return (
-        <form onSubmit={onAddExpence} className="add-expense row-container">
-            <div className="flex">
-                <StartRow color={color} />
-                <input
-                    className="expense-description cell"
-                    ref={elDescription}
-                    name="description"
-                    type="text"
-                    placeholder="+ Add Budget"
-                    value={description}
-                    onChange={onsetDescription} />
+
+        <form onSubmit={onAddExpence} className="add-expense expense-preview-wrapper ">
+            <div className="row-container" >
+
+                <div className="expense-description flex">
+                    <StartRow color={color} />
+                    <input
+                        className="description-container cell flex"
+                        ref={elDescription}
+                        name="description"
+                        type="text"
+                        placeholder="+ Add Budget"
+                        value={description}
+                        onChange={onsetDescription} />
+                </div>
+                <div className="cell empty"></div>
             </div>
-            <input
-                className="cell"
-                name="sum"
-                type="number"
-                placeholder="Add Sum"
-                value={sum}
-                onChange={onsetSum} />
+            {/* <input
+                    className="cell"
+                    name="sum"
+                    type="number"
+                    placeholder="Add Sum"
+                    value={sum}
+                    onChange={onsetSum} /> */}
             <button className="btn suc" style={{ width: 0, height: 0, padding: 0 }} >Add</button>
         </form>
     )

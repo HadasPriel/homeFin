@@ -30,19 +30,21 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
     return (
         <section className="expense-description flex align-center">
             <StartRow color={color} />
-            {isEditDesc ?
-                <form onSubmit={onUpdateDesc} name="description" className="description cell flex center" >
-                    <input
-                        type="text"
-                        name="description"
-                        value={description}
-                        onChange={handleChange}
-                        onBlur={onUpdateDesc}
-                        ref={elInput} />
-                </form> :
-                <p className="description flex center cell" name="description">{expanseToSave.description}</p>
-            }
-            {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
+            <div className="description-container cell flex" >
+                {isEditDesc ?
+                    <form onSubmit={onUpdateDesc} name="description" className="description " >
+                        <input
+                            type="text"
+                            name="description"
+                            value={description}
+                            onChange={handleChange}
+                            onBlur={onUpdateDesc}
+                            ref={elInput} />
+                    </form> :
+                    <p className="description" name="description">{expanseToSave.description}</p>
+                }
+                {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
+            </div>
 
         </section>
 

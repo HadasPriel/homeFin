@@ -1,6 +1,8 @@
 .expense-preview-wrapper{
     
     position: relative;
+    padding-left: 38px;
+    left: -38px;
     transition: 0.3s;
     
     .expense-preview {
@@ -27,7 +29,6 @@
         
         &:hover{
             background-color: $clr8;
-            
         }
     }
     

@@ -65,17 +65,19 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 toggleEditExpected={setIsEditExpectedShow}
             />}
             <header className="flex align-center">
-                <div className="menu flex center"  >
-                    <SortSign onClick={setIsMenuShow} color={`var(--${category.color})`} />
+                <div className="menu flex center" onClick={setIsMenuShow} >
+                    <SortSign color={`var(--${category.color})`} />
                 </div>
                 <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
             </header>
             <div className="headers row-container">
-                <div className="flex">
+                <div className="flex expense-description">
                     <StartRow color={category.color} />
                     <div className="flex center budget cell">Budget</div>
                 </div>
-                {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
+                <div className="col-list">
+                    {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
+                </div>
             </div>
 
             {category.expenses.map(expense => <ExpensePreview

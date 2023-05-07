@@ -1,23 +1,39 @@
 
 .cell {
     cursor: pointer;
-    border-inline-start: 1px solid $clr8;
+    &:not(:first-child){
+        border-inline-start: 1px solid $clr8;
+    }
+    border-top: 1px solid $clr8;
+    // width: 100%;
 }
 
 .row-container {
     height: 36px;
+    display: flex;
+
+    .profile-img{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .expense-description{
+        width: 400px;
+        position: sticky;
+        left: 38px;
+    }
+}
+
+.col-list{
+    height: 100%;
     display: grid;
-    grid-template-columns: 400px repeat(auto-fit, 129px);
+    
+    grid-template-columns: repeat(auto-fit, 129px);
     grid-auto-flow: column;
     grid-auto-columns: 129px;
-    grid-template-rows: 36px;
-    border-top: 1px solid $clr8;
-    .profile-img{
-            width: 30px;
-            height: 30px;
-        }
+
 }
-    
+
 .headers {
     &.row-container{
         // border-inline-start: 1px solid $clr8;
