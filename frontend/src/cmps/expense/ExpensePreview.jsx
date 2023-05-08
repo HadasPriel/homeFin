@@ -4,6 +4,7 @@ import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 
 import { ExpenseColList } from "./ExpenseColList";
 import { ExpenseDescription } from "./ExpenseDescription";
+import { MenuSign } from "../ui/MenuSign";
 
 
 
@@ -51,20 +52,24 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     }
 
     return (
-        <section className="expense-preview flex row-container ">
-            <div className="menu-wrapper flex center ">
-                <div className="menu flex center sort-down" onClick={onDeleteExpense}></div>
-            </div>
-            <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />
-            <ExpenseColList
-                cols={cols}
-                expanseToSave={expanseToSave}
-                onEditExpense={onEditExpense}
-                account={account}
-                editExpenseTime={editExpenseTime}
-                editExpenseRepeat={editExpenseRepeat}
-                updateLabel={updateLabel}
-                removeLabel={removeLabel} />
+        <section className="expense-preview-wrapper">
+            <button className="menu flex center" onClick={onDeleteExpense}>
+                <MenuSign />
+            </button>
+
+            <section className="expense-preview flex row-container ">
+
+                <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />
+                <ExpenseColList
+                    cols={cols}
+                    expanseToSave={expanseToSave}
+                    onEditExpense={onEditExpense}
+                    account={account}
+                    editExpenseTime={editExpenseTime}
+                    editExpenseRepeat={editExpenseRepeat}
+                    updateLabel={updateLabel}
+                    removeLabel={removeLabel} />
+            </section>
         </section>
     )
 }

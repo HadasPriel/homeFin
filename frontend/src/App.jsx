@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div className="App flex ">
+    <div className="App">
       <Router>
         <Provider store={store}>
           <AppHeader />

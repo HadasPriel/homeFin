@@ -1,36 +1,28 @@
 .category-preview {
     position: relative;
-    margin-block-end: 90px;
-    margin-inline: 30px;
 
-    .header-start{
+    .title-container{
         position: sticky;
+        left: 38px;
     }
+    
+    header {
+        height: 40px;
+        font-family: poppins-r;
+        padding-inline-start: 6px;
 
-    .first-cell-title {
-        position: sticky;
-        line-height: 27px;
-        h1 {
-            font-weight: 300;
-            font-size: 18px;
-            padding-inline-start: 15px;
+        .category-title-txt {
+            font-size: 17px;
+            letter-spacing: 0.3px;
             text-transform: capitalize;
         }
-    }
-
-    header .menu {
-        cursor: pointer;
-        width: 18px;
-        height: 18px;
-        border-radius: 1em;
-        &::before {
+        
+        .menu {
+            cursor: pointer;
+            width: 33px;
+            height: 36px;
+            border-radius: 1em;
             color: $clr2;
-            position: relative;
-            bottom: 2.5px;
         }
-    }
-    .cell.categ-title{
-        color: $clr7;
-        text-transform: capitalize;
     }
 }

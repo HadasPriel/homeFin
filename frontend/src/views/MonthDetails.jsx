@@ -127,8 +127,7 @@ export const MonthDetails = () => {
             <MonthHeader month={month}
                 addCtegory={addCtegory}
                 onPrevNextMonth={onPrevNextMonth} />
-            <div className="month-list">
-
+            <main className='month-main'>
                 {month.categories && month.categories.map(category => <CategoryPreview
                     category={category}
                     key={category.id}
@@ -140,7 +139,7 @@ export const MonthDetails = () => {
                     cols={cols}
                     updateLabel={updateLabel}
                     removeLabel={removeLabel} />)}
-            </div>
+            </main>
 
         </section>
     )

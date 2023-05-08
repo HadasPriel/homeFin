@@ -7,7 +7,7 @@ import { ExpenseColRepeat } from "./ExpenseColRepeat";
 export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, editExpenseTime, editExpenseRepeat, updateLabel, removeLabel }) => {
 
     return (
-        <div className="col-list-container flex">
+        <section className="col-list">
             {cols.map(col => {
                 switch (col) {
                     case 'repeated':
@@ -24,8 +24,7 @@ export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, ed
                         return <div></div>
                 }
             })}
-            <div className='cell flex center last-cell'></div>
-        </div>
+        </section>
     )
 }
 

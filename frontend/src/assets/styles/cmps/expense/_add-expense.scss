@@ -1,17 +1,12 @@
-.add-expense, .edit-expected {
-    display: flex;
-    background-color: $clr6;
-    padding-inline-start: 25px;
-    overflow: hidden;
-    position: sticky;
-    left: 45px;
-    
-    .first-cell {
+.add-expense {
+    height: 36px;
+ 
+    .expense-description{
         border-inline-end: none;
         min-width: unset;
         flex: unset;
         .before{
-            opacity: 0.5;;
+            opacity: 0.5;
         }
     }
 
@@ -37,38 +32,66 @@
         } 
     }
     
-    .btn-container {
-        background-color: $clr2;
-        transition: 0.5s;
-    }
+//     .btn-container {
+//         background-color: $clr2;
+//         transition: 0.5s;
+//     }
     
-    .btn {
-        height: 100%;
-        position: relative;
-        right: 39px;
-        border-radius:0;
-    }
+//     .btn {
+//         height: 100%;
+//         position: relative;
+//         right: 39px;
+//         border-radius:0;
+//     }
     
-    &::after, &::before{
-        opacity: 0.5;;
-    }
+//     &::after, &::before{
+//         opacity: 0.5;;
+//     }
     
-    &:hover {
-        cursor: text;
-        background-color: $clr6;
-        .first-cell .before,  &::after, &::before{
-            opacity: 1;
-        }
-    }
+    // &:hover {
+    //     cursor: text;
+    //     background-color: $clr6;
+    //     .first-cell .before,  &::after, &::before{
+    //         opacity: 1;
+    //     }
+    // }
     
+
+// .add-expense{
+//     .btn-container {
+//         position: absolute;
+
+//     }
+// }
+
+    .cell, .checkbox-wrapper{
+        border-bottom: 1px solid $clr8;
+        box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
+    } 
+
+    .before-row{
+        opacity: .5;
+    }
+
+    .empty{
+        flex-grow: 1;
+        border-inline-start: none;
+    }
+
 }
 
-.add-expense{
-    .btn-container {
-        position: absolute;
 
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,60 +1,39 @@
-.expense-preview {
-    // position: relative;
-    border-bottom: 1px solid $clr6;
-    cursor: pointer;
-    user-select: none;
-    width: 100%;
+.expense-preview-wrapper{
     
-    .menu-wrapper {
-        background-color: $clr6;
-    }
+    position: relative;
+    padding-left: 38px;
+    left: -38px;
+    transition: 0.3s;
     
-    .first-cell.expense-description{
-        position: sticky;
-        z-index: 100;
-        // background-color: rgba(253, 253, 250, 0.95);
+    .expense-preview {
+        cursor: pointer;
+        transition: inherit;
+        
+        &:hover{
+            box-shadow: 4px 3px 6px -3px #c3c6d4;
+            background-color: #F4F5F8;
+        }
     }
     
     .menu {
-        opacity: 0;
-        height: 18px;
-        width: 18px;
-        background-color: $clr4;
+        color: $clr3;
+        position: absolute;
+        left: -33px;
+        top: 7px;
+        width: 21px;
+        height: 21px;
+        padding: 1px 1px;
         border-radius: 4px;
-        margin-inline-end: 7px;
-        &::before {
-            position: relative;
-            bottom: 3px;
+        opacity: 0;
+        transition: inherit;
+        
+        &:hover{
+            background-color: $clr8;
         }
-    }
-
-    .first-cell {
-        .description {
-            margin-inline-start: 15px;
-            line-height: 24px;
-        }
-
-        .before {
-            width: 8px;
-            height: 100%;
-        }
-    }
-    .cell,
-    .first-cell {
-        border-bottom: 1px solid $clr4;
-        border-right: 1px solid $clr6;
-        background-color: $clr2;
     }
     
-    .date {
-        height: 100%;
-        width: 100%;
-    }
-
-    &:hover {
-        background-color: $clr4;
-
-        .menu {
+    &:hover{
+        .menu{
             opacity: 1;
         }
     }

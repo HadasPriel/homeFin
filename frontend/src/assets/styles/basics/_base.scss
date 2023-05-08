@@ -60,9 +60,23 @@ textarea {
     resize: none;
     outline: none;
 }
+
 input {
+    padding: 0;
     outline: none;
     font-family: inherit;
     color: inherit;
+    border: none;
+    background-color: transparent;
 }
 
+.App {
+    overflow: hidden;
+}
+
+.app-main {
+    flex-grow: 1;
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+}

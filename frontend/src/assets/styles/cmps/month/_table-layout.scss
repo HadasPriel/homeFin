@@ -1,59 +1,51 @@
-.category-preview,
-.expense-preview {
-    .row-container {
-        height: 33px;
+
+.cell {
+    cursor: pointer;
+    &:not(:first-child){
+        border-inline-start: 1px solid $clr8;
     }
-    .col-list-container{
-        flex-grow: 1;
-    }
-    .first-cell {
-        flex-basis: 150px;
-        flex-grow: 370px;
-    }
-    
-    .cell {
-        cursor: pointer;
-        height: 100%;
-        // width: $cell-width;
-        flex-basis: $cell-width;
-        flex-shrink: 0;
-    }
+    border-top: 1px solid $clr8;
+    // width: 100%;
+}
+
+.row-container {
+    height: 36px;
+    display: flex;
+
     .profile-img{
         width: 30px;
         height: 30px;
     }
-
-    .cell.last-cell{
-        max-width: unset;
-        width: unset;
-        flex-basis: 50px;
-        flex-grow: 1;
-        justify-content: end;
-
-        
+    
+    .expense-description{
+        width: 400px;
+        position: sticky;
+        left: 38px;
     }
+}
+
+.col-list{
+    height: 100%;
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit, 129px);
+    grid-auto-flow: column;
+    grid-auto-columns: 129px;
+
 }
 
 .headers {
-    .cell {
-        &:hover {
-            background-color: $clr2;
+    &.row-container{
+        // border-inline-start: 1px solid $clr8;
+        border-top-left-radius: 6px;
+        .expense-description{
+            opacity: 0.97;
         }
     }
-}
-
-
-.edit-expected{
-    .first-cell {
-
-    max-width: unset;
-    width: 100%;
-
-        input.description{
-            margin-inline-start: 0;
-        }
+    .budget{
+        flex-grow: 1;
+        color: $clr7;
     }
-
 }
 
 .cell.last-cell, .add-expense{

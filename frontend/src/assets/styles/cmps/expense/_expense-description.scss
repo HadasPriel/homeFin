@@ -1,12 +1,16 @@
 .expense-description{
   position: relative;
-  max-width: 370px;
- .cell-input{
-   inset: 5px;
-   left: 15px;
-   text-align: start;
-   padding: 5px;
- }
+  background-color: $clr6;
+  border-inline-end: 1px solid $clr8;
+  z-index: 15;
+
+  .description-container{
+    height: 100%;
+    width: 100%;
+    padding-inline-start: 35px;
+    align-items: center;
+  }
+
   .btn.edit-btn{
     visibility:hidden;
     color: $clr7;
@@ -19,6 +23,7 @@
       background-color: $clr2;
     }
   }
+
   &:hover{
     .btn.edit-btn{
       visibility: visible;
