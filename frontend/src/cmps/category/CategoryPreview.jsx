@@ -64,11 +64,13 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 updateCategoryColor={updateCategoryColor}
                 toggleEditExpected={setIsEditExpectedShow}
             />}
-            <header className="flex align-center">
-                <div className="menu flex center" onClick={setIsMenuShow} >
-                    <SortSign color={`var(--${category.color})`} />
+            <header className="flex">
+                <div className="title-container flex align-center" >
+                    <div className="menu flex center" onClick={setIsMenuShow} >
+                        <SortSign color={`var(--${category.color})`} />
+                    </div>
+                    <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
                 </div>
-                <CategoryTitle updateCategoryTitle={updateCategoryTitle} category={category} />
             </header>
             <div className="headers row-container">
                 <div className="flex expense-description">

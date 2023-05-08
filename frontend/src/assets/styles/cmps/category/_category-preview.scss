@@ -1,5 +1,10 @@
 .category-preview {
     position: relative;
+
+    .title-container{
+        position: sticky;
+        left: 46px;
+    }
     
     header {
         height: 40px;
