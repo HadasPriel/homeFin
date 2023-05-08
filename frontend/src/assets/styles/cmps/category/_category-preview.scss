@@ -3,13 +3,13 @@
 
     .title-container{
         position: sticky;
-        left: 46px;
+        left: 44px;
     }
     
     header {
         height: 40px;
         font-family: poppins-r;
-        padding-inline-start: 8px;
+        padding-inline-start: 6px;
 
         .category-title-txt {
             font-size: 17px;
@@ -19,13 +19,10 @@
         
         .menu {
             cursor: pointer;
-            width: 18px;
-            height: 18px;
             width: 33px;
             height: 36px;
             border-radius: 1em;
             color: $clr2;
-
         }
     }
 }
