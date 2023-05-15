@@ -5,14 +5,14 @@ import { UserImg } from './ui/UserImg'
 import lotus from "../assets/img/lotus.png"
 
 
-export const AppHeader = () => {
+export const AppHeader = ({isScrolledToTop}) => {
 
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
+    console.log(isScrolledToTop)
 
     return (
-        // <div className="app-header-wrapper">
-        <header className="app-header flex col space-between">
+        <header className={`app-header flex col space-between ${isScrolledToTop? '' : 'scrolled'}`}>
             <nav>
                 <Link to="/">
                     <img src={lotus} alt="lotus" />
@@ -27,6 +27,5 @@ export const AppHeader = () => {
                 </Link>
             </nav>
         </header>
-        // </div>
     )
 }

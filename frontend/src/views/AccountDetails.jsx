@@ -22,7 +22,6 @@ export const AccountDetails = (props) => {
         dispatch(actions.accountActions.loadAccount(accountId))
     }, [dispatch, accountId]);
 
-
     const toggleMember = (ev, member) => {
         dispatch(actions.accountActions.toggleMember(accountId, member))
     }
@@ -35,7 +34,11 @@ export const AccountDetails = (props) => {
     if (!account) return <div>Loading...</div>
     return (
         <section className="account-details" >
-            <AccountHeader account={account} accountId={accountId} toggleIsInviteShow={setIsInviteShow} saveDescription={saveDescription} />
+            <AccountHeader
+                account={account}
+                accountId={accountId}
+                toggleIsInviteShow={setIsInviteShow}
+                saveDescription={saveDescription} />
             <main className="main-account-details">
                 <Switch>
                     <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />

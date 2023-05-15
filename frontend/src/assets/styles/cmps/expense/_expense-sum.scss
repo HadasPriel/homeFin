@@ -5,12 +5,9 @@
         z-index: 0;
         inset: 3px;
         &:hover{
-            border: 1px solid rgb(208, 212, 228);
+            border: 1px solid $clr9;
             cursor: text;
-            
         }
-        
-        // background-color: #fff;
     }
 }
 

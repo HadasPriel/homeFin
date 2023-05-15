@@ -1,5 +1,5 @@
 
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { AddExpense } from "../expense/AddExpense"
 import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected";
@@ -16,10 +16,6 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
-
-    useEffect(() => {
-        console.log(window.scrollX);
-    }, [window.scrollX])
 
     const onAddExpense = (expense) => {
         addExpense(category.id, expense)

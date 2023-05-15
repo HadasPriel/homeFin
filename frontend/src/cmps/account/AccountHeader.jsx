@@ -8,6 +8,7 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
     const [desc, setDesc] = useState(account?.description || '')
     const [isDescriptionShow, setIsDescriptionShow] = useToggle(!!account.description)
 
+
     const onSaveDescription = (ev) => {
         ev.preventDefault()
         console.log('desc');
@@ -33,8 +34,8 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
             <main className='header-set'>
                 <h1 className='title'>{account.title}</h1>
                 <nav>
-                    <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
                     <button className='btn solid'>Activity</button>
+                    <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
                     <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>
                     <button className='btn solid menu-sign' ></button>
                 </nav>
