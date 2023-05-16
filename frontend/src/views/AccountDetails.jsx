@@ -13,10 +13,10 @@ import { AddMember } from '../cmps/account/AddMember';
 
 
 export const AccountDetails = (props) => {
-    let { accountId } = useParams();
-    const dispatch = useDispatch();
+    let { accountId } = useParams()
+    const dispatch = useDispatch()
     const account = useSelector(state => state.accountModule.currAcount)
-    const [isInviteShow, setIsInviteShow] = useToggle(false);
+    const [isInviteShow, setIsInviteShow] = useToggle(false)
 
     useEffect(() => {
         dispatch(actions.accountActions.loadAccount(accountId))
@@ -33,12 +33,13 @@ export const AccountDetails = (props) => {
 
     if (!account) return <div>Loading...</div>
     return (
-        <section className="account-details" >
+        <section className={`account-details`} >
             <AccountHeader
                 account={account}
                 accountId={accountId}
                 toggleIsInviteShow={setIsInviteShow}
-                saveDescription={saveDescription} />
+                saveDescription={saveDescription}
+                isScrolledToTop={props.isScrolledToTop} />
             <main className="main-account-details">
                 <Switch>
                     <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />

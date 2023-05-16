@@ -14,6 +14,7 @@ import { useScrolledToTop } from './hooks/useScrolledToTop.js'
 
 
 function App() {
+  console.log('App is running')
 
   const [isScrolledToTop, setIsScrolledToTop] = useState(true)
 
@@ -29,11 +30,15 @@ function App() {
     <div className="App">
       <Router>
         <Provider store={store}>
-          <AppHeader isScrolledToTop={isScrolledToTop} />
+          <AppHeader />
 
           <main className='app-main' ref={mainRef} >
             <Switch>
-              <Route path="/account/:accountId" component={AccountDetails} />
+              {/* <Route path="/account/:accountId" component={AccountDetails} /> */}
+              <Route 
+                path="/account/:accountId" 
+                  render={(props) => (<AccountDetails {...props} isScrolledToTop={isScrolledToTop} />)} 
+              />
               <Route path="/account" component={AccountApp} />
               <Route path="/login" component={LoginSignup} />
               <Route path="/" component={Home} />

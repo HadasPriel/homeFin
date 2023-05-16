@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 export const useScrolledToTop = (elementRef) => {
   const [isScrolledToTop, setIsScrolledToTop] = useState(true)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isCurrScrolledToTop = elementRef.current.scrollTop === 0
+  const handleScroll = () => {
+    const isCurrScrolledToTop = elementRef.current.scrollTop === 0
       setIsScrolledToTop(isCurrScrolledToTop)
-    }
+  }
 
+  useEffect(() => {
     elementRef.current.addEventListener('scroll', handleScroll)
 
     return () => {
