@@ -5,8 +5,9 @@
     left: 0;
     margin-inline-start: 104px;
     padding-top: 18px;
+    padding-bottom: 1px;
     background-color: $clr6;
-
+    
     .title {
         font-family: poppins-r;
         font-size: 31px;
@@ -14,13 +15,14 @@
         border-radius: 4px;
         padding: 0 4px;
         border: 1px solid transparent;
-        // margin-top: 18px;
-
+        margin-inline-end: 16px;
+        width: fit-content;
+        
         &:hover{
             border-color: #c3c6d4;
         }
     }
-
+    
     .account-description{
         margin-block: 5px;
         
@@ -40,16 +42,15 @@
             }
         }
     }
-
+    
     nav{
         align-self: flex-start;
     }
-
+    
     &.scrolled{
         .title{
             font-size: 24px;
             margin-inline-end: 16px;
-            margin-block-end: 1px;
         }
     }
 
