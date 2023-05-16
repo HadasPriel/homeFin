@@ -38,7 +38,7 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
                         {isDescriptionShow ? <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
                     </div>
                 </div>
-                <nav>
+                <nav className='align-self'>
                     <button className='btn solid'>Activity</button>
                     <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
                     <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>

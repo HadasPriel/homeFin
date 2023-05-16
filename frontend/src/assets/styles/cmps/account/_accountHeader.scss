@@ -41,6 +41,10 @@
         }
     }
 
+    nav{
+        align-self: flex-start;
+    }
+
     &.scrolled{
         .title{
             font-size: 24px;
