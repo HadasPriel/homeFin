@@ -1,5 +1,9 @@
 .month-header {
+    position: sticky;
+    top: 57px;
+    z-index: 200;
     padding: 16px 0;
+    background-color: $clr6;
     
     .month-title {
         margin-block-end: 10px;
