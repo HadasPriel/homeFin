@@ -30,8 +30,8 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
     </form>)
 
     return (
-        <header className={`account-header ${isScrolledToTop? '' : 'scrolled'}`}>
-            <main className='header-set'>
+        <header className={`account-header header-set ${isScrolledToTop? '' : 'scrolled'}`}>
+            {/* <main className='header-set'> */}
                 <div className={`flex ${isScrolledToTop? 'col' : 'align-center'}`}>
                     <h1 className='title'>{account.title}</h1>
                     <div className='account-description'>
@@ -44,7 +44,7 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
                     <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>
                     <button className='btn solid menu-sign' ></button>
                 </nav>
-            </main>
+            {/* </main> */}
 
         </header>
     )

@@ -1,6 +1,7 @@
 .account-header {
     border-bottom: 1px solid $clr9;
     position: fixed;
+    z-index: 200;
     right: 42px;
     left: 0;
     margin-inline-start: 104px;
@@ -24,8 +25,8 @@
     }
     
     .account-description{
-        margin-block: 5px;
         
+        font-family: figtree-m;
         .description-txt{
             cursor: pointer;
         }
@@ -36,7 +37,8 @@
             font-weight: 500;
             max-width: 490px;
             width: 100%;
-            padding: 4px;
+            padding: 8px;
+            border-radius: 4px;
             &:hover, &:focus{
                 border-color: rgb(195, 198, 212);
             }

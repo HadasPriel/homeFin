@@ -14,7 +14,6 @@ import { useScrolledToTop } from './hooks/useScrolledToTop.js'
 
 
 function App() {
-  console.log('App is running')
 
   const [isScrolledToTop, setIsScrolledToTop] = useState(true)
 
