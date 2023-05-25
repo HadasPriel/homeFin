@@ -1,6 +1,6 @@
 
-import { useToggle } from "../../hooks/useToggle";
-import { CategoryTitleEdit } from "./CategoryTitleEdit";
+import { useToggle } from "../../hooks/useToggle"
+import { CategoryTitleEdit } from "./CategoryTitleEdit"
 
 
 

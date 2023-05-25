@@ -1,7 +1,7 @@
 .expense-description{
   position: relative;
   background-color: $clr6;
-  border-inline-end: 1px solid $clr8;
+  border-inline-end: $table-border;
   z-index: 15;
 
   .description-container{

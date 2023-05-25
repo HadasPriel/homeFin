@@ -14,7 +14,7 @@
         padding-inline-start: 15px;
         background-color: #fff;
         height: 31px;
-        border: 1px solid $clr9;
+        border: $table-border;
         
         &.description{
             width: 100%;
@@ -65,7 +65,7 @@
 // }
 
     .cell, .checkbox-wrapper{
-        border-bottom: 1px solid $clr8;
+        border-bottom: $table-border;
         box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
     } 
 

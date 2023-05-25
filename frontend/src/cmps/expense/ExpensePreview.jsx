@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useEffectUpdate } from "../../hooks/useEffectUpdate";
+import { useState } from "react"
+import { useSelector } from "react-redux"
+import { useEffectUpdate } from "../../hooks/useEffectUpdate"
 
-import { ExpenseColList } from "./ExpenseColList";
-import { ExpenseDescription } from "./ExpenseDescription";
-import { MenuSign } from "../ui/MenuSign";
+import { ExpenseColList } from "./ExpenseColList"
+import { ExpenseDescription } from "./ExpenseDescription"
+import { MenuSign } from "../ui/MenuSign"
 
 
 
@@ -56,9 +56,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
             <button className="menu flex center" onClick={onDeleteExpense}>
                 <MenuSign />
             </button>
-
             <section className="expense-preview flex row-container ">
-
                 <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />
                 <ExpenseColList
                     cols={cols}
@@ -69,6 +67,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
                     editExpenseRepeat={editExpenseRepeat}
                     updateLabel={updateLabel}
                     removeLabel={removeLabel} />
+                <div className="last-cell cell flex center"></div>
             </section>
         </section>
     )

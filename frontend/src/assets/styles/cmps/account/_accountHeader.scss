@@ -1,5 +1,5 @@
 .account-header {
-    border-bottom: 1px solid $clr9;
+    border-bottom: $table-border;
     position: fixed;
     z-index: 200;
     right: 42px;
@@ -17,6 +17,7 @@
         padding: 0 4px;
         border: 1px solid transparent;
         margin-inline-end: 16px;
+        margin-block-end: 9px;
         width: fit-content;
         
         &:hover{
@@ -25,16 +26,17 @@
     }
     
     .account-description{
-        
         font-family: figtree-m;
+        font-size: 14px;
+        font-weight: 500;
+
         .description-txt{
             cursor: pointer;
+            padding: 8px;
         }
 
         input{
             border: 1px dashed transparent;
-            font-size: 14px;
-            font-weight: 500;
             max-width: 490px;
             width: 100%;
             padding: 8px;

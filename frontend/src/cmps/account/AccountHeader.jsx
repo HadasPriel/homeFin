@@ -35,7 +35,8 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
                 <div className={`flex ${isScrolledToTop? 'col' : 'align-center'}`}>
                     <h1 className='title'>{account.title}</h1>
                     <div className='account-description'>
-                        {isDescriptionShow ? <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
+                        {isDescriptionShow ? 
+                        <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
                     </div>
                 </div>
                 <nav className='align-self'>

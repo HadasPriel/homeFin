@@ -5,7 +5,7 @@
         z-index: 0;
         inset: 3px;
         &:hover{
-            border: 1px solid $clr9;
+            border: $table-border;
             cursor: text;
         }
     }
