@@ -5,16 +5,7 @@
     left: -38px;
     transition: 0.3s;
     
-    .expense-preview {
-        cursor: pointer;
-        &:hover .cell {
-            box-shadow: 4px 3px 6px -3px #c3c6d4;
-            background-color: $clr2;
-        }
-
-        
-        
-    }
+    
     
     .menu {
         color: $clr3;

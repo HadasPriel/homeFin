@@ -8,7 +8,6 @@ export const AddExpense = ({ addExpense, color }) => {
     const elDescription = useRef(null)
 
     const onAddExpence = (ev) => {
-        console.log('sdd');
         ev.preventDefault()
         addExpense({ description, sum })
         setDescription('')
@@ -24,24 +23,23 @@ export const AddExpense = ({ addExpense, color }) => {
     }
 
     return (
-
         <form onSubmit={onAddExpence} className="add-expense expense-preview-wrapper ">
             <div className="row-container" >
-
                 <div className="expense-description flex">
                     <StartRow color={color} />
-                    <input
-                        className="description-container cell flex"
-                        ref={elDescription}
-                        name="description"
-                        type="text"
-                        placeholder="+ Add Budget"
-                        value={description}
-                        onChange={onsetDescription} />
+                    <div className="description-container cell flex">
+                        <input
+                            className=""
+                            ref={elDescription}
+                            name="description"
+                            type="text"
+                            placeholder="+ Add budget"
+                            value={description}
+                            onChange={onsetDescription} />
+                    </div>
                 </div>
-                <div className="cell empty"></div>
+                <div className="cell last-cell"></div>
             </div>
-            <button className="btn suc" style={{ width: 0, height: 0, padding: 0 }} >Add</button>
         </form>
     )
 }
@@ -78,6 +76,6 @@ export const AddExpense = ({ addExpense, color }) => {
             onChange={onsetSum} />
     </div>
     <div className="btn-container">
-        <button className="btn suc">Add</button>
+        <button className="btn suc" style={{ width: 0, height: 0, padding: 0 }} >Add</button>
     </div>
 </form> */

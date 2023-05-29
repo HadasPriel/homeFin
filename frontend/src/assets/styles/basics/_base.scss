@@ -76,4 +76,14 @@ input {
     position: absolute;
     inset: 0;
     overflow: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #b2b2b2;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
 }

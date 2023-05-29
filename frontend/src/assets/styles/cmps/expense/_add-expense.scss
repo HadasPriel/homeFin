@@ -2,67 +2,24 @@
     height: 36px;
  
     .expense-description{
-        border-inline-end: none;
         min-width: unset;
         flex: unset;
-        .before{
-            opacity: 0.5;
-        }
+        border-inline-end: none;
     }
 
-    input {
-        padding-inline-start: 15px;
-        background-color: #fff;
-        height: 31px;
-        border: $table-border;
-        
-        &.description{
-            width: 100%;
-        }
+    .description-container{
+        padding-inline: 9px;
 
-        &:hover {
-            border-color: $clr3;
-        }
-        
-        &:focus {
-            border-color: $clr5;
-            & + .btn-container input{
-                border-color: $clr5;
-            }
-        } 
     }
-    
-//     .btn-container {
-//         background-color: $clr2;
-//         transition: 0.5s;
-//     }
-    
-//     .btn {
-//         height: 100%;
-//         position: relative;
-//         right: 39px;
-//         border-radius:0;
-//     }
-    
-//     &::after, &::before{
-//         opacity: 0.5;;
-//     }
-    
-    // &:hover {
-    //     cursor: text;
-    //     background-color: $clr6;
-    //     .first-cell .before,  &::after, &::before{
-    //         opacity: 1;
-    //     }
-    // }
-    
 
-// .add-expense{
-//     .btn-container {
-//         position: absolute;
-
-//     }
-// }
+    input{
+        border: 1px solid #c3c6d4;
+        border-radius: 4px;
+        height: 24px;
+        padding-inline-start: 16px;
+        width: 100%;
+        font-family: figtree-m;
+    }
 
     .cell, .checkbox-wrapper{
         border-bottom: $table-border;
@@ -73,8 +30,7 @@
         opacity: .5;
     }
 
-    .empty{
-        flex-grow: 1;
+    .last-cell{
         border-inline-start: none;
     }
 
