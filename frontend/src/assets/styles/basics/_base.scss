@@ -85,5 +85,6 @@ input {
     }
     &::-webkit-scrollbar-track {
         border-radius: 10px;
+        background-color: $clr2;
     }
 }
