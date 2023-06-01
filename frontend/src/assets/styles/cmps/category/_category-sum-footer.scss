@@ -1,0 +1,19 @@
+.category-sum-footer {
+    padding: 6px 16px;
+    
+    .bar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius:2em;
+        
+        .txt{
+            cursor: pointer;
+            color: $clr6;
+            position: absolute;
+            inset: 0;
+            font-size: 13px;
+            font-weight: 400;
+        }   
+    }
+}

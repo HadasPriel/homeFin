@@ -1,0 +1,30 @@
+.category-footer{
+    position: relative;
+    .expense-description{
+        border: none;
+        
+    }
+    
+    .cell{
+        border: none;
+        border-inline-start: $table-border;
+        border-block-end: $table-border;
+    }
+
+    
+}
+
+
+
+.category-label-footer{
+    padding-inline: 8px;
+    flex-direction: row-reverse;
+    .label{
+        height: 24px;
+        transition: 0.1s;
+
+        &:hover {
+            height: 30px;
+        }
+    }
+}

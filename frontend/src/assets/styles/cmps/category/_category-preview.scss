@@ -1,5 +1,6 @@
 .category-preview {
     position: relative;
+    margin-bottom: 40px;
 
     .title-container{
         position: sticky;
@@ -25,4 +26,13 @@
             color: $clr2;
         }
     }
+}
+
+.headers {
+    text-transform: capitalize;
+    
+    .before-row {
+      border-top-left-radius: 6px;
+    }
+
 }

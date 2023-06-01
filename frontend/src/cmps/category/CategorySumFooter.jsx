@@ -1,7 +1,7 @@
 import { useToggle } from "../../hooks/useToggle"
 
 
-export const ExpectedPreview = ({ expected, color, expensesSum, toggleEditExpected }) => {
+export const CategorySumFooter = ({ expected, color, expensesSum, toggleEditExpected }) => {
     const [isHover, setIsHover] = useToggle(false)
 
     const width = (expensesSum / expected) * 100 || 0
@@ -9,9 +9,9 @@ export const ExpectedPreview = ({ expected, color, expensesSum, toggleEditExpect
 
 
     return (
-        <section className="expected-preview flex align-center">
+        <section className="category-sum-footer cell flex align-center">
             <section
-                className="outter"
+                className="bar"
                 onMouseEnter={setIsHover}
                 onMouseLeave={setIsHover}
                 onClick={toggleEditExpected}
@@ -19,8 +19,10 @@ export const ExpectedPreview = ({ expected, color, expensesSum, toggleEditExpect
                 <p className="txt flex justify-center align-center">
                     {expected ?
                         (!isHover ? <span>${expensesSum} \ ${expected}</span> :
-                            <span >{width.toFixed()}%</span>) :
-                        <span>Insert expected sum</span>}
+                            <span>{width.toFixed()}%</span>) 
+                        :
+                        (!isHover ? <span>-</span> : <span>Set Sum</span>) 
+                    }
                 </p>
             </section>
 

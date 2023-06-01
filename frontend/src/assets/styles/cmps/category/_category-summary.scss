@@ -1,36 +1,25 @@
-.expense-preview.category-summary {
-    border: none;
+// .expense-preview.category-summary {
+//     border: none;
     
-    .expense-sum:hover{
-        background-color: $clr4;
-        cursor: pointer;
-    }
+//     .expense-sum:hover{
+//         background-color: $clr4;
+//         cursor: pointer;
+//     }
     
-    &:hover{
-        background-color: transparent;
-    }
+//     &:hover{
+//         background-color: transparent;
+//     }
     
-    .cell,
-    .first-cell{
-        background-color: transparent;
-        border: none;
-        border-bottom: none;
-        max-width: 390px;
-    }
+//     .cell,
+//     .first-cell{
+//         background-color: transparent;
+//         border: none;
+//         border-bottom: none;
+//         max-width: 390px;
+//     }
     
-    &::after{
-        opacity: 0;;
-    }
-}
+//     &::after{
+//         opacity: 0;;
+//     }
+// }
 
-.category-label-summary{
-    .label{
-        height: 20px;
-        width: 100%;
-        transition: 0.1s;
-
-        &:hover {
-            height: 90%;
-        }
-    }
-}

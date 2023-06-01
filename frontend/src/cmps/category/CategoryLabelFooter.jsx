@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-export const CategoryLabelSummary = ({ category }) => {
+export const CategoryLabelFooter = ({ category }) => {
 
     const accountLabels = useSelector(state => state.accountModule.currAcount.labels)
 
@@ -17,7 +17,7 @@ export const CategoryLabelSummary = ({ category }) => {
 
 
     return (
-        <section className="category-label-summary cell flex center">
+        <section className="category-label-footer cell flex center">
             {labelCounts.map(label => {
                 const accountLabel = accountLabels.find(accountLabel => accountLabel.id === label.id)
                 var color = `var(--${accountLabel?.color || 'lb18_bright'})`

@@ -52,25 +52,11 @@
     min-width: 50px;
 }
 
-// .expense-preview-wrapper {
-//     cursor: pointer;
-    .expense-preview:hover .cell, 
-    .expense-preview:hover .start-row,
-    .add-expense:hover .cell,
-    .add-expense:hover .start-row
-    {
-        box-shadow: 0px 3px 6px -3px #c3c6d4;
-        background-color: $clr2;
-    }
-    
-// }
-
-// .cell.last-cell, .add-expense{
-//     &::after{
-//         content: '';
-//         height: 100%;
-//         width: 9px;
-//         background-color: #D0D4E4;
-//     }
-
-// }
+.expense-preview:hover .cell, 
+.expense-preview:hover .start-row,
+.add-expense:hover .cell,
+.add-expense:hover .start-row
+{
+    box-shadow: 0px 3px 6px -3px #c3c6d4;
+    background-color: $clr2;
+}

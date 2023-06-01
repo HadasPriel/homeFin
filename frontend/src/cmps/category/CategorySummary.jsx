@@ -1,5 +1,5 @@
-import { CategoryLabelSummary } from "./CategoryLabelSummary"
-import { ExpectedPreview } from "./ExpectedPreview"
+import { CategoryLabelFooter } from "./CategoryLabelFooter"
+import { CategorySumFooter } from "./CategorySumFooter"
 
 export const CategorySummary = ({ category, toggleEditExpected, cols }) => {
 
@@ -12,7 +12,7 @@ export const CategorySummary = ({ category, toggleEditExpected, cols }) => {
     return (
         <section className="category-summary expense-preview flex row-container">
             <div className="expense-description first-cell flex align-center">
-                <ExpectedPreview expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={toggleEditExpected} />
+                <CategorySumFooter expected={category.expected} color={category.color} expensesSum={expensesSum} toggleEditExpected={toggleEditExpected} />
             </div>
             <div className="flex">
                 {cols.map(col => {
@@ -20,7 +20,7 @@ export const CategorySummary = ({ category, toggleEditExpected, cols }) => {
                         case 'sum':
                             return <div key={col} className="expense-sum cell flex center">{expensesSum}</div>
                         case 'labels':
-                            return <CategoryLabelSummary key={col} category={category} />
+                            return <CategoryLabelFooter key={col} category={category} />
                         default:
                             return <div key={col} className="cell flex center"></div>
                     }

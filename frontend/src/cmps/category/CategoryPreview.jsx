@@ -5,9 +5,10 @@ import { ExpensePreview } from "../expense/ExpensePreview"
 import { EditExpected } from "./EditExpected"
 import { CategoryMenu } from "./CategoryMenu"
 import { useToggle } from "../../hooks/useToggle"
-import { CategorySummary } from "./CategorySummary"
+// import { CategorySummary } from "./CategorySummary"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
+import { CategoryFooter } from "./CategoryFooter"
 
 
 
@@ -93,10 +94,14 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 onUpdateCategory={onUpdateCategory}
                 toggleEditExpected={setIsEditExpectedShow} />}
 
-            <CategorySummary
+            <CategoryFooter
                 category={category}
                 toggleEditExpected={setIsEditExpectedShow}
                 cols={cols} />
+            {/* <CategorySummary
+                category={category}
+                toggleEditExpected={setIsEditExpectedShow}
+                cols={cols} /> */}
 
         </section>
     )

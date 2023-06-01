@@ -8,12 +8,10 @@ html {
 }
 
 body {
-    font-family: roboto-r;
+    font-family: figtree-m;
     margin: 0;
     color: rgb(50, 51, 56);
     font-size: 14px;
-    // overflow-y: hidden;
-    // overflow-x: hidden;
 }
 
 .app-main {
@@ -52,6 +50,9 @@ button {
     outline: none;
     background-color: transparent;
     border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
 textarea {
