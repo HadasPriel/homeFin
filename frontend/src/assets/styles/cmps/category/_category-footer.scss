@@ -1,8 +1,7 @@
 .category-footer{
-    position: relative;
+
     .expense-description{
         border: none;
-        
     }
     
     .cell{
@@ -11,7 +10,10 @@
         border-block-end: $table-border;
     }
 
-    
+    .expense-preview:hover .cell{
+        box-shadow: unset;
+        background-color: unset;
+    }
 }
 
 

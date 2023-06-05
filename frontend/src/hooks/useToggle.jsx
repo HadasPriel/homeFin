@@ -8,14 +8,15 @@ export const useToggle = (initialState = false, ref = null) => {
     useEffect(
         () => {
             if (!ref) return
-            const onClickOutside = (event) => {
-                if (!ref.current || ref.current.contains(event.target)) {
+            const onClickOutside = (ev) => {
+                if (!ref.current || ref.current.contains(ev.target)) {
                     return
                 }
-                setState(false);
+                setState(false)
             };
-            const onClickEsc = (event) => {
-                if (event.key === "Escape") setState(false);
+            const onClickEsc = (ev) => {
+                //for Escape key:
+                if (ev.keyCode === 27) setState(false)
             };
             document.addEventListener("mousedown", onClickOutside);
             document.addEventListener("touchstart", onClickOutside);

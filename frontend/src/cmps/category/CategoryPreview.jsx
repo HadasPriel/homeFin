@@ -2,10 +2,8 @@
 import { useCallback } from "react"
 import { AddExpense } from "../expense/AddExpense"
 import { ExpensePreview } from "../expense/ExpensePreview"
-import { EditExpected } from "./EditExpected"
 import { CategoryMenu } from "./CategoryMenu"
 import { useToggle } from "../../hooks/useToggle"
-// import { CategorySummary } from "./CategorySummary"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
@@ -15,7 +13,6 @@ import { CategoryFooter } from "./CategoryFooter"
 export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
-    const [isEditExpectedShow, setIsEditExpectedShow] = useToggle(false)
 
     const onAddExpense = (expense) => {
         addExpense(category.id, expense)
@@ -49,11 +46,11 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
     }
 
     const onUpdateCategory = (ev, newVal) => {
+        ev.preventDefault()
         const categoryToSave = { ...category }
         var field = ev.target.getAttribute('name')
         categoryToSave[field] = newVal
         updateCtegory(categoryToSave)
-        setIsEditExpectedShow(false)
     }
 
     return (
@@ -62,16 +59,15 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 toggleCategoryMenu={setIsMenuShow}
                 onDeleteCategory={onDeleteCategory}
                 updateCategoryColor={updateCategoryColor}
-                toggleEditExpected={setIsEditExpectedShow}
             />}
 
-            <CategoryHeader 
-                updateCategoryTitle={updateCategoryTitle} 
-                setIsMenuShow={setIsMenuShow} 
+            <CategoryHeader
+                updateCategoryTitle={updateCategoryTitle}
+                setIsMenuShow={setIsMenuShow}
                 category={category} />
 
-            <CategoryColHeaders 
-                color={category.color} 
+            <CategoryColHeaders
+                color={category.color}
                 cols={cols} />
 
             {category.expenses.map(expense => <ExpensePreview
@@ -88,20 +84,10 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 addExpense={onAddExpense}
                 color={category.color} />
 
-            {isEditExpectedShow && <EditExpected
-                expected={category.expected}
-                color={category.color}
-                onUpdateCategory={onUpdateCategory}
-                toggleEditExpected={setIsEditExpectedShow} />}
-
             <CategoryFooter
                 category={category}
-                toggleEditExpected={setIsEditExpectedShow}
+                onUpdateCategory={onUpdateCategory}
                 cols={cols} />
-            {/* <CategorySummary
-                category={category}
-                toggleEditExpected={setIsEditExpectedShow}
-                cols={cols} /> */}
 
         </section>
     )

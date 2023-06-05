@@ -1,6 +1,6 @@
 import { CategoryFooterList } from "./CategoryFooterList"
 
-export const CategoryFooter = ({ category, toggleEditExpected, cols }) => {
+export const CategoryFooter = ({ category, toggleEditExpected, cols, onUpdateCategory }) => {
 
 
     // const expensesSum = category.expenses.reduce((acc, expense) => {
@@ -10,10 +10,14 @@ export const CategoryFooter = ({ category, toggleEditExpected, cols }) => {
 
     return (
         <section className="category-footer expense-preview-wrapper">
-            
+
             <section className="expense-preview flex row-container ">
                 <section className="expense-description" ></section>
-                <CategoryFooterList cols={cols} category={category} toggleEditExpected={toggleEditExpected} />
+                <CategoryFooterList
+                    cols={cols}
+                    category={category}
+                    toggleEditExpected={toggleEditExpected}
+                    onUpdateCategory={onUpdateCategory} />
                 <div className="last-cell cell flex center"></div>
             </section>
         </section>
