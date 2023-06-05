@@ -4,22 +4,17 @@ import { StartRow } from "../category/StartRow"
 
 export const AddExpense = ({ addExpense, color }) => {
     const [description, setDescription] = useState('')
-    const [sum, setSum] = useState('')
     const elDescription = useRef(null)
 
     const onAddExpence = (ev) => {
         ev.preventDefault()
-        addExpense({ description, sum })
+        addExpense({ description })
         setDescription('')
-        setSum('')
         elDescription.current.focus()
     }
 
     const onsetDescription = (ev) => {
         setDescription(ev.target.value)
-    }
-    const onsetSum = (ev) => {
-        setSum(+ev.target.value)
     }
 
     return (
