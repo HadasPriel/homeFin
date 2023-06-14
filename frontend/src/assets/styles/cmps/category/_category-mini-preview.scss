@@ -2,6 +2,10 @@
 
     border-radius: 6px;
 
+    header .menu-sign{
+        left: -35px;
+    }
+
     .expense-description, .expense-description > *{
     display: none;
         .checkbox-label{
@@ -14,6 +18,8 @@
     }
 
     .before-row{
+        position: sticky;
+        left: 38px;
         width: 6px;
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
@@ -22,19 +28,26 @@
     .mini-title{
         width: 400px;
         position: sticky;
-        left: 38px;
+        left: 44px;
+        z-index: 15;
         background-color: #fff;
         border: $table-border;
         
         .budget-num{
             margin-left: 32px;
             color: $clr7;
+            position: relative;
+            top: -5px;
         }
     }
-    
-    .before-row{
-        position: sticky;
-        left: 32px;
+
+    .mini-table{
+        flex-grow: 1;
+    }
+
+    .headers.row-container{
+        height: 24px;
+
     }
 
     .category-footer .cell{

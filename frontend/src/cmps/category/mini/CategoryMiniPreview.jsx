@@ -6,6 +6,7 @@ import { CategoryFooter } from "../CategoryFooter"
 export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPreview, updateCategoryTitle, onUpdateCategory }) => {
 
     let budgetNum = category.expenses.length || 'No'
+    let budgetTxt = (budgetNum === 1) ? 'Budget' : 'Budgets'
 
     return (
         <section className="category-mini-preview">
@@ -18,7 +19,7 @@ export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPr
                         setIsMenuShow={setIsMenuShow}
                         setIsMiniPreview={setIsMiniPreview}
                         category={category} />
-                    <p className="budget-num">{budgetNum} Budgets</p>
+                    <p className="budget-num">{budgetNum} {budgetTxt}</p>
 
                 </div>
                 <div className="mini-table">
