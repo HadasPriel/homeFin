@@ -8,6 +8,7 @@
     }
     
     header {
+        position: relative;
         height: 40px;
         font-family: poppins-r;
         padding-inline-start: 6px;
@@ -18,12 +19,34 @@
             text-transform: capitalize;
         }
         
-        .menu {
+        .sort-sign {
             cursor: pointer;
             width: 33px;
             height: 36px;
             border-radius: 1em;
             color: $clr2;
+        }
+
+        .menu-sign{
+            position: absolute;
+            left: -29px;
+            top: 8px;
+            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            color: transparent;
+            &:hover{
+                background-color: #d0d4e4;
+            }
+            &::after{
+                font-weight: 100;
+            }
+        }
+
+        &:hover{
+           .menu-sign{
+            color: inherit;
+        } 
         }
     }
 }

@@ -1,7 +1,7 @@
 import { StartRow } from "./StartRow"
 
 
-export const CategoryColHeaders = ({color, cols}) => {
+export const CategoryColHeaders = ({ color, cols }) => {
 
     return (
         <section className="headers row-container">
@@ -13,6 +13,6 @@ export const CategoryColHeaders = ({color, cols}) => {
                 {cols.map(col => <div className="cell flex center" key={col} >{col}</div>)}
             </div>
             <div className="last-cell cell flex center"></div>
-        </section> 
+        </section>
     )
 }

@@ -1,0 +1,54 @@
+.category-mini-preview{
+
+    border-radius: 6px;
+
+    .expense-description, .expense-description > *{
+    display: none;
+        .checkbox-label{
+            display: none;
+        }
+    }
+
+    header{
+        padding-inline-start: 0;
+    }
+
+    .before-row{
+        width: 6px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    .mini-title{
+        width: 400px;
+        position: sticky;
+        left: 38px;
+        background-color: #fff;
+        border: $table-border;
+        
+        .budget-num{
+            margin-left: 32px;
+            color: $clr7;
+        }
+    }
+    
+    .before-row{
+        position: sticky;
+        left: 32px;
+    }
+
+    .category-footer .cell{
+        border: none;
+        border-block-end: $table-border;
+    }
+    
+    .headers .cell{
+        border: none;
+        border-block-start: $table-border;
+    }
+    
+    .mini-table .cell:not(.last-cell){
+        border-inline-end: $table-border;
+    }
+
+}

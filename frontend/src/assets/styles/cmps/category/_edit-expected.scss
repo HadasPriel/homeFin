@@ -1,3 +1,11 @@
 .edit-expected {
+    position: absolute;
+    inset: 0;
+    margin: 5px;
+    border: $table-border;
     
+
+    input{
+        padding-inline-start: 4px;
+    }
 }

@@ -7,12 +7,14 @@ import { useToggle } from "../../hooks/useToggle"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
+import { CategoryMiniPreview } from "./mini/CategoryMiniPreview"
 
 
 
 export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
+    const [isMiniPreview, setIsMiniPreview] = useToggle(false)
 
     const onAddExpense = (expense) => {
         addExpense(category.id, expense)
@@ -61,33 +63,46 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 updateCategoryColor={updateCategoryColor}
             />}
 
-            <CategoryHeader
-                updateCategoryTitle={updateCategoryTitle}
-                setIsMenuShow={setIsMenuShow}
-                category={category} />
+            {isMiniPreview ?
+                <CategoryMiniPreview
+                    category={category}
+                    cols={cols}
+                    setIsMenuShow={setIsMenuShow}
+                    setIsMiniPreview={setIsMiniPreview}
+                    onUpdateCategory={onUpdateCategory}
+                    updateCategoryTitle={updateCategoryTitle} />
+                :
+                <div>
+                    <CategoryHeader
+                        updateCategoryTitle={updateCategoryTitle}
+                        setIsMenuShow={setIsMenuShow}
+                        setIsMiniPreview={setIsMiniPreview}
+                        category={category} />
 
-            <CategoryColHeaders
-                color={category.color}
-                cols={cols} />
+                    <CategoryColHeaders
+                        color={category.color}
+                        cols={cols} />
 
-            {category.expenses.map(expense => <ExpensePreview
-                color={category.color}
-                key={expense.id}
-                expense={expense}
-                updateExpense={onUpdateExpense}
-                deleteExpense={onDeleteExpense}
-                cols={cols}
-                updateLabel={updateLabel}
-                removeLabel={removeLabel} />)}
+                    {category.expenses.map(expense => <ExpensePreview
+                        color={category.color}
+                        key={expense.id}
+                        expense={expense}
+                        updateExpense={onUpdateExpense}
+                        deleteExpense={onDeleteExpense}
+                        cols={cols}
+                        updateLabel={updateLabel}
+                        removeLabel={removeLabel} />)}
 
-            <AddExpense
-                addExpense={onAddExpense}
-                color={category.color} />
+                    <AddExpense
+                        addExpense={onAddExpense}
+                        color={category.color} />
 
-            <CategoryFooter
-                category={category}
-                onUpdateCategory={onUpdateCategory}
-                cols={cols} />
+                    <CategoryFooter
+                        category={category}
+                        onUpdateCategory={onUpdateCategory}
+                        cols={cols} />
+                </div>
+            }
 
         </section>
     )

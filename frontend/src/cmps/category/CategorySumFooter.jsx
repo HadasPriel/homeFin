@@ -21,22 +21,24 @@ export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCatego
 
     return (
         <section className="category-sum-footer cell flex align-center" ref={elExpected} >
-            <section
-                className="bar"
-                onMouseEnter={setIsHover}
-                onMouseLeave={setIsHover}
-                onClick={setIsEditExpectedShow}
-                style={{ background: bgColor }} >
-                <p className="txt flex justify-center align-center">
-                    {expected ?
-                        (!isHover ? <span>${expensesSum} \ ${expected}</span> :
-                            <span>{width.toFixed()}%</span>)
-                        :
-                        (!isHover ? <span className="empty-sum" >Set Sum</span> : <span className="empty-sum">-</span>)
-                    }
-                </p>
-            </section>
-            {isEditExpectedShow && <EditExpected onUpdateCategory={updateCategoryExpected} />}
+            {isEditExpectedShow ?
+                <EditExpected onUpdateCategory={updateCategoryExpected} /> :
+                <section
+                    className="bar"
+                    onMouseEnter={setIsHover}
+                    onMouseLeave={setIsHover}
+                    onClick={setIsEditExpectedShow}
+                    style={{ background: bgColor }} >
+                    <p className="txt flex justify-center align-center">
+                        {expected ?
+                            (!isHover ? <span>${expensesSum} \ ${expected}</span> :
+                                <span>{width.toFixed()}%</span>)
+                            :
+                            (!isHover ? <span className="empty-sum" >Set Sum</span> : <span className="empty-sum">-</span>)
+                        }
+                    </p>
+                </section>}
+
 
         </section>
     )

@@ -2,9 +2,11 @@
     height: 36px;
     
     .expense-description{
+        box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
         min-width: unset;
         flex: unset;
         border-inline-end: none;
+        z-index: 16;
     }
     
     .description-container{
@@ -19,6 +21,8 @@
         padding-inline-start: 16px;
         width: 100%;
         font-family: figtree-m;
+        font-size: 14px;
+        font-weight: 500;
     }
     
     .cell, .checkbox-wrapper{
@@ -26,9 +30,9 @@
     } 
 
     &:hover{
-        .cell, .checkbox-wrapper{
-            box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
-        } 
+        // .cell, .checkbox-wrapper{
+        //     box-shadow: 0 8px 8px -8px rgba(0,0,0, 0.1);
+        // } 
         input{
             border-color: #c3c6d4;
         }
@@ -36,6 +40,7 @@
 
     .before-row{
         opacity: .5;
+        border-bottom-left-radius: 6px;
     }
 
     .last-cell{

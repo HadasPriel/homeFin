@@ -18,12 +18,15 @@ export const EditExpected = ({ expected, onUpdateCategory }) => {
     }
 
     return (
-        <form onSubmit={updateExpected} name="expected" >
+        <form
+            className="edit-expected flex align-center"
+            onSubmit={updateExpected}
+            name="expected" >
             <input
                 ref={elExpected}
                 className="expected description"
                 type="number"
-                placeholder="Insert expected monthly expense for category"
+                placeholder="Insert expected"
                 value={expectedToSave}
                 onChange={onSetExpectedToSave} />
         </form>

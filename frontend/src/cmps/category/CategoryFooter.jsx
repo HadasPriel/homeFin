@@ -2,12 +2,6 @@ import { CategoryFooterList } from "./CategoryFooterList"
 
 export const CategoryFooter = ({ category, toggleEditExpected, cols, onUpdateCategory }) => {
 
-
-    // const expensesSum = category.expenses.reduce((acc, expense) => {
-    //     return acc + expense.sum.amount
-    // }, 0)
-
-
     return (
         <section className="category-footer expense-preview-wrapper">
 
