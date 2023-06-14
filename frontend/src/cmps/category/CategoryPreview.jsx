@@ -7,7 +7,7 @@ import { useToggle } from "../../hooks/useToggle"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
-import { CategoryMiniPreview } from "./mini/CategoryMiniPreview"
+import { CategoryMiniPreview } from "./CategoryMiniPreview"
 
 
 

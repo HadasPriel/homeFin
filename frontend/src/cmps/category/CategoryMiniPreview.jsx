@@ -1,6 +1,6 @@
-import { CategoryHeader } from "../CategoryHeader"
-import { CategoryColHeaders } from "../CategoryColHeaders"
-import { CategoryFooter } from "../CategoryFooter"
+import { CategoryHeader } from "./CategoryHeader"
+import { CategoryColHeaders } from "./CategoryColHeaders"
+import { CategoryFooter } from "./CategoryFooter"
 
 
 export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPreview, updateCategoryTitle, onUpdateCategory }) => {
