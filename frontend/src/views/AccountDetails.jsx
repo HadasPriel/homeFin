@@ -10,6 +10,7 @@ import { MonthList } from '../cmps/month/MonthList';
 import { MonthDetails } from './MonthDetails';
 import { AccountHeader } from '../cmps/account/AccountHeader';
 import { AddMember } from '../cmps/account/AddMember';
+import { AccountMenu } from '../cmps/account/AccountMenu';
 
 
 export const AccountDetails = (props) => {
@@ -33,20 +34,28 @@ export const AccountDetails = (props) => {
 
     if (!account) return <div>Loading...</div>
     return (
-        <section className={`account-details`} >
-            <AccountHeader
-                account={account}
-                accountId={accountId}
-                toggleIsInviteShow={setIsInviteShow}
-                saveDescription={saveDescription}
-                isScrolledToTop={props.isScrolledToTop} />
-            <main className="main-account-details">
-                <Switch>
-                    <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />
-                    <MonthList months={account.months} />
-                </Switch>
-            </main>
-            {isInviteShow && <AddMember toggleMember={toggleMember} toggleIsInviteShow={setIsInviteShow} accountMembers={account.members} />}
+        <section className='account-details-wrapper flex' >
+            <AccountMenu
+                account={account} />
+
+            <section className='account-details-scroll' >
+                <div className={`account-details`}>
+
+                    <AccountHeader
+                        account={account}
+                        accountId={accountId}
+                        toggleIsInviteShow={setIsInviteShow}
+                        saveDescription={saveDescription}
+                        isScrolledToTop={props.isScrolledToTop} />
+                    <main className="main-account-details">
+                        <Switch>
+                            <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />
+                            <MonthList months={account.months} />
+                        </Switch>
+                    </main>
+                    {isInviteShow && <AddMember toggleMember={toggleMember} toggleIsInviteShow={setIsInviteShow} accountMembers={account.members} />}
+                </div>
+            </section>
         </section>
     )
 }

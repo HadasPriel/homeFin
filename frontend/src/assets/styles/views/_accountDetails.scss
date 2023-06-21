@@ -1,20 +1,26 @@
 .account-details {
-    // padding:  30px 0 60px $inline-padding;
-    padding-left: 38px;
     background-color: $clr6;
     min-height: 100%;
     min-width: 100%;
     position: absolute;
+
     
     main {
-        // margin-bottom: 15px;
-        
+
         .btn {
             padding: 8px;
         }
     }
-
+    
     .main-account-details{
-        flex-grow: 1;
+        padding-left: 40px;
+        // flex-grow: 1;
     }
+}
+
+.account-details-scroll{
+    position: absolute;
+    inset: 0;
+    left: 30px;
+    overflow: auto;
 }

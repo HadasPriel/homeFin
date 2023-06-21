@@ -4,7 +4,7 @@
     z-index: 200;
     right: 42px;
     left: 0;
-    margin-inline-start: 104px;
+    margin-inline-start:calc(66px + 70px);
     padding-top: 18px;
     padding-bottom: 1px;
     background-color: $clr6;
@@ -42,7 +42,7 @@
             padding: 8px;
             border-radius: 4px;
             &:hover, &:focus{
-                border-color: rgb(195, 198, 212);
+                border-color: #c3c6d4;
             }
         }
     }

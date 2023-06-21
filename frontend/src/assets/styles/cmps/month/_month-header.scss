@@ -4,8 +4,8 @@
     z-index: 199;
     padding: 16px 0;
     background-color: $clr6;
-    width: calc(100vw - 140px);
-    left: 38px;
+    width: calc(100vw - 140px - 30px);
+    left: 40px;
     
     .month-title {
         margin-block-end: 10px;

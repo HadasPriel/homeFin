@@ -1,0 +1,34 @@
+.account-menu{
+    width: 30px;
+    height: 100vh;
+    background-color: #f6f7fb;
+    border-right: $table-border;
+    
+    .collapse-btn{
+        width: 26px;
+        height: 24px;
+        border-radius: 20px;
+        background-color: #fff;
+        border: $table-border;
+        }
+}
+
+
+// .account-menu{
+//     position: sticky;
+//     left: 0;
+//     height: #{calc(100vh - 15px)};
+//     z-index: 210;
+//     width: 30px;
+//     background-color: #f6f7fb;
+//     border-right: $table-border;
+
+//     .collapse-btn{
+//         width: 26px;
+//         height: 24px;
+//         border-radius: 20px;
+//         background-color: #fff;
+//         border: $table-border;
+//     }
+// }// 
+
