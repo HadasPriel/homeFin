@@ -13,22 +13,30 @@
         }
 }
 
+.menu-show{ 
+    .account-menu{
+        width: 254px;
+    }
+    .account-details-scroll{
+        left: 254px; 
+    }
+    .account-header {
+        margin-inline-start:calc(66px + 40px + 254px);
+    }
+    .month-header {
+        width: calc(100vw - 140px - 30px - 254px);
+    }
+}
 
-// .account-menu{
-//     position: sticky;
-//     left: 0;
-//     height: #{calc(100vh - 15px)};
-//     z-index: 210;
-//     width: 30px;
-//     background-color: #f6f7fb;
-//     border-right: $table-border;
-
-//     .collapse-btn{
-//         width: 26px;
-//         height: 24px;
-//         border-radius: 20px;
-//         background-color: #fff;
-//         border: $table-border;
-//     }
-// }// 
-
+.account-menu{
+    transition: width 1s;
+}
+.account-details-scroll{
+    transition: left 1s;
+}
+.account-header {
+    transition: margin 1s;
+}
+.month-header {
+    transition: width 1s;
+}

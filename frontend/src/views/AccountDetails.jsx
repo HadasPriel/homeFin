@@ -18,6 +18,8 @@ export const AccountDetails = (props) => {
     const dispatch = useDispatch()
     const account = useSelector(state => state.accountModule.currAcount)
     const [isInviteShow, setIsInviteShow] = useToggle(false)
+    const [isMenuShow, setIsMenuShow] = useToggle(false)
+
 
     useEffect(() => {
         dispatch(actions.accountActions.loadAccount(accountId))
@@ -34,9 +36,10 @@ export const AccountDetails = (props) => {
 
     if (!account) return <div>Loading...</div>
     return (
-        <section className='account-details-wrapper flex' >
+        <section className={`account-details-wrapper flex ${isMenuShow ? 'menu-show' : ''}`} >
             <AccountMenu
-                account={account} />
+                account={account}
+                setIsMenuShow={setIsMenuShow} />
 
             <section className='account-details-scroll' >
                 <div className={`account-details`}>

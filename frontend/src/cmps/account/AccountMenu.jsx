@@ -1,14 +1,12 @@
-import { useToggle } from "../../hooks/useToggle"
 
-export const AccountMenu = () => {
+export const AccountMenu = ({ setIsMenuShow }) => {
 
-    const [isMenuOpen, setIsMenuOpen] = useToggle(false)
 
 
 
     return (
-        <section className={`account-menu ${isMenuOpen}`} >
-            <button className="collapse-btn" onClick={setIsMenuOpen} ></button>
+        <section className={`account-menu`} >
+            <button className="collapse-btn" onClick={setIsMenuShow} ></button>
 
 
         </section>
