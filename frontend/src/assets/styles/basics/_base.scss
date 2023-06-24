@@ -79,7 +79,9 @@ input {
     inset: 0;
     overflow: hidden;
     // overflow: auto;
+}
 
+*{
     &::-webkit-scrollbar {
         width: 10px;
         height: 15px;

@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: #f6f7fb;
     border-right: $table-border;
+    position: relative;
     
     .collapse-btn{
         width: 26px;
@@ -10,9 +11,75 @@
         border-radius: 20px;
         background-color: #fff;
         border: $table-border;
+        position: absolute;
+        left: calc(100% - 13px);
+        top: 20px;
+        z-index: 203;
+        transition: width .1s;
+        color: $clr3;
+        
+        &:hover{
+            color: #fff;
+            width: 35px;
+            background-color: rgb(0, 115, 234);  
         }
+    }
+
+    .workspace{
+        height: 38px;
+        width: 222px;
+        border: 1px solid $clr7;
+        padding: 6px;
+        font-family: figtree-l;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        border-radius: 4px;
+        margin: auto;
+        margin-top: 50px;
+
+        .workspace-letter{
+            width: 20px;
+            height: 20px;
+            background-color: #f279f2;
+            border-radius: 6px;
+            color: #fff;
+            margin-inline-end: 8px;
+        }
+        .workspace-title{
+            font-size: 16px;
+        }
+    }
+
+    .workspace-menu{
+        margin-top: 12px;
+        padding: 0px 16px 16px 14px;
+        
+        .item{
+            height: 34px;
+            display: flex;
+            align-items: center;
+            padding-left: 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            
+            &:hover{
+                background-color: #dcdfec;;
+            }
+        }
+    }
+    
+    .spacer{
+        border-bottom: 1px solid $clr9;
+        margin-inline: 16px;
+    }
+
+    .content{
+        display: none;
+    }
 }
 
+
+// The menu collapse effect:
 .menu-show{ 
     .account-menu{
         width: 254px;
@@ -26,17 +93,20 @@
     .month-header {
         width: calc(100vw - 140px - 30px - 254px);
     }
+    .content{
+        display: unset;
+    }
 }
 
 .account-menu{
-    transition: width 1s;
+    transition: width .5s;
 }
 .account-details-scroll{
-    transition: left 1s;
+    transition: left .5s;
 }
 .account-header {
-    transition: margin 1s;
+    transition: margin .5s;
 }
 .month-header {
-    transition: width 1s;
+    transition: width .5s;
 }
