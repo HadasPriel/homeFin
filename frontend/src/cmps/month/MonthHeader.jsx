@@ -1,4 +1,5 @@
 import { utilService } from "../../services/util.service.js"
+import { Icon } from "../ui/Icon"
 
 
 export const MonthHeader = ({ month, addCtegory, onPrevNextMonth }) => {
@@ -14,8 +15,12 @@ export const MonthHeader = ({ month, addCtegory, onPrevNextMonth }) => {
             <header className="header-set">
                 <h1 className="month-title">{utilService.getVerbalTime(month.time)}</h1>
                 <nav className="flex">
-                    <button className="flex center btn solid circel prev" onClick={onPrev} title='previous month' ></button>
-                    <button className="flex center btn solid circel next" onClick={onNext} title='next month' ></button>
+                    <button className="flex center btn solid circel prev" onClick={onPrev} title='previous month' >
+                        <Icon name="arrow-icon" />
+                    </button>
+                    <button className="flex center btn solid circel next" onClick={onNext} title='next month' >
+                        <Icon name="arrow-icon" />
+                    </button>
                 </nav>
             </header>
             <nav>

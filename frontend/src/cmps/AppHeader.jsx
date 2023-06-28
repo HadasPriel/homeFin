@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 
 import { UserImg } from './ui/UserImg'
 import lotus from "../assets/img/lotus.png"
+import { Icon } from './ui/Icon'
 
 
 export const AppHeader = () => {
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
-    
+
     return (
         <header className={`app-header flex col space-between`}>
             <nav>
@@ -15,7 +16,8 @@ export const AppHeader = () => {
                     <img src={lotus} alt="lotus" />
                 </Link>
                 <Link to="/account">
-                    <span className='account'></span>
+                    <Icon name="table-icon" />
+                    {/* <span className='account'></span> */}
                 </Link>
             </nav>
             <nav>

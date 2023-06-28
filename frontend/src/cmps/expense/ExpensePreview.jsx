@@ -4,7 +4,7 @@ import { useEffectUpdate } from "../../hooks/useEffectUpdate"
 
 import { ExpenseColList } from "./ExpenseColList"
 import { ExpenseDescription } from "./ExpenseDescription"
-import { MenuSign } from "../ui/MenuSign"
+import { Icon } from "../ui/Icon"
 
 
 
@@ -54,7 +54,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     return (
         <section className="expense-preview-wrapper">
             <button className="menu flex center" onClick={onDeleteExpense}>
-                <MenuSign />
+                <Icon name="menu-icon" />
             </button>
             <section className="expense-preview flex row-container ">
                 <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />

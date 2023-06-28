@@ -1,4 +1,4 @@
-import { ReactComponent as Img } from '../../assets/img/icon/sortSign.svg'
+import { ReactComponent as Img } from '../../assets/img/sortSign.svg'
 
 export const SortSign = ({ color }) => {
 

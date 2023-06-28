@@ -26,13 +26,6 @@
         content: "\f0dd";
     }
 }
-.sort-right {
-    cursor: pointer;
-    &::before {
-        font-family: fa-solid;
-        content: "\f054";
-    }
-}
 
 .decline {
     &::after {
@@ -45,20 +38,6 @@
     &::after {
         font-family: fa-solid;
         content: "\f00c";
-    }
-}
-
-.prev {
-    &::after {
-        font-family: fa-solid;
-        content: "\f104";
-    }
-}
-
-.next {
-    &::after {
-        font-family: fa-solid;
-        content: "\f105";
     }
 }
 

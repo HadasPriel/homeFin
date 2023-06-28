@@ -12,7 +12,6 @@ import { AccountHeader } from '../cmps/account/AccountHeader';
 import { AddMember } from '../cmps/account/AddMember';
 import { AccountMenu } from '../cmps/account/AccountMenu';
 
-
 export const AccountDetails = (props) => {
     let { accountId } = useParams()
     const dispatch = useDispatch()

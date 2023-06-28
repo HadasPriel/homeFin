@@ -30,23 +30,20 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
     </form>)
 
     return (
-        <header className={`account-header header-set ${isScrolledToTop? '' : 'scrolled'}`}>
-            {/* <main className='header-set'> */}
-                <div className={`flex ${isScrolledToTop? 'col' : 'align-center'}`}>
-                    <h1 className='title'>{account.title}</h1>
-                    <div className='account-description'>
-                        {isDescriptionShow ? 
+        <header className={`account-header header-set ${isScrolledToTop ? '' : 'scrolled'}`}>
+            <div className={`flex ${isScrolledToTop ? 'col' : 'align-center'}`}>
+                <h1 className='title'>{account.title}</h1>
+                <div className='account-description'>
+                    {isDescriptionShow ?
                         <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
-                    </div>
                 </div>
-                <nav className='align-self'>
-                    <button className='btn solid'>Activity</button>
-                    <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
-                    <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>
-                    <button className='btn solid menu-sign' ></button>
-                </nav>
-            {/* </main> */}
-
+            </div>
+            <nav className='align-self'>
+                <button className='btn solid'>Activity</button>
+                <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
+                <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>
+                <button className='btn solid menu-sign' ></button>
+            </nav>
         </header>
     )
 }

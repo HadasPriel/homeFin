@@ -6,6 +6,7 @@
     position: relative;
     
     .collapse-btn{
+        position: relative;
         width: 26px;
         height: 24px;
         border-radius: 20px;
@@ -17,6 +18,15 @@
         z-index: 203;
         transition: width .1s;
         color: $clr3;
+
+        .cmp-arrow-icon{
+            transform: scale(-1, 1);
+            width: 11px;
+            height: 11px;
+            position: absolute;
+            top: 5px;
+            right: 8px;
+        }
         
         &:hover{
             color: #fff;
@@ -66,6 +76,13 @@
                 background-color: #dcdfec;;
             }
         }
+
+        .cmp-board-icon{
+            width: 18px;
+        }
+        .icon{
+            margin-right: 9px;
+        }
     }
     
     .spacer{
@@ -95,6 +112,9 @@
     }
     .content{
         display: unset;
+    }
+    .account-menu .collapse-btn .cmp-arrow-icon{
+        transform: unset;
     }
 }
 

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import actions from '../../store/actions';
 
+import { Icon } from '../ui/Icon'
+
 export const AccountMenu = ({ setIsMenuShow }) => {
 
     const accounts = useSelector(state => state.accountModule.accounts)
@@ -15,10 +17,11 @@ export const AccountMenu = ({ setIsMenuShow }) => {
 
     return (
         <section className={`account-menu`} >
-            <button className="collapse-btn" onClick={setIsMenuShow} ></button>
+            <button className="collapse-btn" onClick={setIsMenuShow} >
+                <Icon name="arrow-icon" />
+            </button>
 
             <main className='content'>
-
                 <div className='workspace flex align-center' >
                     <div className='workspace-letter flex center' >
                         <span>M</span>
@@ -28,12 +31,14 @@ export const AccountMenu = ({ setIsMenuShow }) => {
 
                 <div className='workspace-menu' >
                     <div className='item' >
+                        <Icon name="add-icon" />
                         <p>Add</p>
                     </div>
                     {/* <div className='item' >
-                    <p>Filter</p>
-                </div> */}
+                        <p>Filter</p>
+                    </div> */}
                     <div className='item' >
+                        <Icon name="search-icon" />
                         <p>Search</p>
                     </div>
                 </div>
@@ -41,7 +46,7 @@ export const AccountMenu = ({ setIsMenuShow }) => {
                 <div className='spacer' ></div>
 
                 <ul className='workspace-menu'>
-                    {accounts.map(account => <li className='item' key={account._id}>{account.title}</li>)}
+                    {accounts.map(account => <li className='item flex align-center' key={account._id}> <Icon name="board-icon" /><span> {account.title}</span></li>)}
                 </ul>
             </main>
 

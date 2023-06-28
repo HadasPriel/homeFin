@@ -17,6 +17,10 @@
         height: 25px;
     }
 
+    .next{
+        transform: scale(-1, 1);
+    }
+
     nav {
         .btn {
             border-radius: 4px;

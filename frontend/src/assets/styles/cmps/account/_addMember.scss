@@ -1,5 +1,5 @@
 .add-member{
-    position: absolute;
+    position: fixed;
     inset: 0;
     margin: auto;
     background-color: $clr6;
@@ -8,6 +8,7 @@
     height: 500px;
     border-radius: 8px;
     font-family: roboto-l;
+    z-index: 301;
     
     &>*{
         margin-bottom: 16px;
