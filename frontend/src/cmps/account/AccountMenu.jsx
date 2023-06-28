@@ -18,7 +18,7 @@ export const AccountMenu = ({ setIsMenuShow }) => {
     return (
         <section className={`account-menu`} >
             <button className="collapse-btn" onClick={setIsMenuShow} >
-                <Icon name="arrow-icon" />
+                <Icon name="arrow" />
             </button>
 
             <main className='content'>
@@ -31,14 +31,14 @@ export const AccountMenu = ({ setIsMenuShow }) => {
 
                 <div className='workspace-menu' >
                     <div className='item' >
-                        <Icon name="add-icon" />
+                        <Icon name="add" />
                         <p>Add</p>
                     </div>
                     {/* <div className='item' >
                         <p>Filter</p>
                     </div> */}
                     <div className='item' >
-                        <Icon name="search-icon" />
+                        <Icon name="search" />
                         <p>Search</p>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ export const AccountMenu = ({ setIsMenuShow }) => {
                 <div className='spacer' ></div>
 
                 <ul className='workspace-menu'>
-                    {accounts.map(account => <li className='item flex align-center' key={account._id}> <Icon name="board-icon" /><span> {account.title}</span></li>)}
+                    {accounts.map(account => <li className='item flex align-center' key={account._id}> <Icon name="board" /><span> {account.title}</span></li>)}
                 </ul>
             </main>
 

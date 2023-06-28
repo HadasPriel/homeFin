@@ -54,7 +54,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     return (
         <section className="expense-preview-wrapper">
             <button className="menu flex center" onClick={onDeleteExpense}>
-                <Icon name="menu-icon" />
+                <Icon name="menu" />
             </button>
             <section className="expense-preview flex row-container ">
                 <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />

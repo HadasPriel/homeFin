@@ -16,7 +16,7 @@ export const AppHeader = () => {
                     <img src={lotus} alt="lotus" />
                 </Link>
                 <Link to="/account">
-                    <Icon name="table-icon" />
+                    <Icon name="table" />
                     {/* <span className='account'></span> */}
                 </Link>
             </nav>

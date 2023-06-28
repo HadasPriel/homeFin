@@ -16,10 +16,10 @@ export const MonthHeader = ({ month, addCtegory, onPrevNextMonth }) => {
                 <h1 className="month-title">{utilService.getVerbalTime(month.time)}</h1>
                 <nav className="flex">
                     <button className="flex center btn solid circel prev" onClick={onPrev} title='previous month' >
-                        <Icon name="arrow-icon" />
+                        <Icon name="arrow" />
                     </button>
                     <button className="flex center btn solid circel next" onClick={onNext} title='next month' >
-                        <Icon name="arrow-icon" />
+                        <Icon name="arrow" />
                     </button>
                 </nav>
             </header>

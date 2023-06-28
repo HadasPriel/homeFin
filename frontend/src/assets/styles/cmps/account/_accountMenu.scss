@@ -19,7 +19,7 @@
         transition: width .1s;
         color: $clr3;
 
-        .cmp-arrow-icon{
+        .arrow-icon{
             transform: scale(-1, 1);
             width: 11px;
             height: 11px;
@@ -77,7 +77,7 @@
             }
         }
 
-        .cmp-board-icon{
+        .board-icon{
             width: 18px;
         }
         .icon{
@@ -113,7 +113,7 @@
     .content{
         display: unset;
     }
-    .account-menu .collapse-btn .cmp-arrow-icon{
+    .account-menu .collapse-btn .arrow-icon{
         transform: unset;
     }
 }
