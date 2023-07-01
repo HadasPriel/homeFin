@@ -1,6 +1,4 @@
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
-
-import { useState, useRef, useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 
@@ -10,19 +8,10 @@ import { AccountApp } from './views/AccountApp'
 import { AccountDetails } from './views/AccountDetails'
 import { LoginSignup } from './views/LoginSignup'
 
-import { useScrolledToTop } from './hooks/useScrolledToTop.js'
-
 
 function App() {
 
-  const [isScrolledToTop, setIsScrolledToTop] = useState(true)
 
-  const mainRef = useRef(null)
-  const scrolledToTop = useScrolledToTop(mainRef)
-
-  useEffect(() => {
-    setIsScrolledToTop(scrolledToTop)
-  }, [scrolledToTop])
 
 
   return (
@@ -31,13 +20,13 @@ function App() {
         <Provider store={store}>
           <AppHeader />
 
-          <main className='app-main' ref={mainRef} >
+          <main className='app-main' >
             <Switch>
-              {/* <Route path="/account/:accountId" component={AccountDetails} /> */}
-              <Route 
-                path="/account/:accountId" 
-                  render={(props) => (<AccountDetails {...props} isScrolledToTop={isScrolledToTop} />)} 
-              />
+              <Route path="/account/:accountId" component={AccountDetails} />
+              {/* <Route
+                path="/account/:accountId"
+                render={(props) => (<AccountDetails {...props} />)}
+              /> */}
               <Route path="/account" component={AccountApp} />
               <Route path="/login" component={LoginSignup} />
               <Route path="/" component={Home} />

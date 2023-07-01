@@ -108,13 +108,16 @@
         margin-inline-start:calc(66px + 40px + 254px);
     }
     .month-header {
-        width: calc(100vw - 140px - 30px - 254px);
+        width: calc(100vw - 140px - 254px);
     }
     .content{
         display: unset;
     }
     .account-menu .collapse-btn .arrow-icon{
         transform: unset;
+    }
+    .collapse-btn:hover .arrow-icon{
+        right: 17px;
     }
 }
 
