@@ -5,12 +5,10 @@
     left: -38px;
     transition: 0.3s;
     
-    
-    
     .menu {
         color: $clr3;
         position: absolute;
-        left: -33px;
+        left: 9px;
         top: 7px;
         width: 21px;
         height: 21px;
@@ -18,15 +16,19 @@
         border-radius: 4px;
         opacity: 0;
         transition: inherit;
+        z-index: 1000;
         
         &:hover{
             background-color: $clr8;
         }
     }
+
+    .menu-icon{
+        height: 27px;
+        width: 36px;
+    }
     
-    &:hover{
-        .menu{
-            opacity: 1;
-        }
+    &:hover .menu{
+        opacity: 1;
     }
 }

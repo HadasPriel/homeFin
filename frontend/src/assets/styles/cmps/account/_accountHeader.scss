@@ -50,6 +50,11 @@
     nav{
         align-self: flex-start;
     }
+
+    .menu-icon{
+        height: 27px;
+        width: 34px;
+    }
     
     &.scrolled{
         .title{
@@ -62,4 +67,6 @@
         opacity: 0.95;
         transition: 50ms;
     }
+
 }
+

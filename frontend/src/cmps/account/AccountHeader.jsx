@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useToggle } from '../../hooks/useToggle';
 import { Link } from 'react-router-dom'
+import { Icon } from '../ui/Icon';
 
 
 export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDescription, isScrolledToTop }) => {
@@ -38,11 +39,11 @@ export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDesc
                         <p className='description-txt' onClick={setIsDescriptionShow} >{account.description}</p> : descriptionForm}
                 </div>
             </div>
-            <nav className='align-self'>
+            <nav className='flex align-self'>
                 <button className='btn solid'>Activity</button>
                 <button className='btn solid' onClick={toggleIsInviteShow} >Invite</button>
                 <Link className='btn solid' to={`/account/${accountId}`} >Months</Link>
-                <button className='btn solid menu-sign' ></button>
+                <Icon name="menu" classNames="btn solid" />
             </nav>
         </header>
     )

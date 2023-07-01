@@ -10,7 +10,7 @@ export const UserPreview = ({ user, expenseMember, func }) => {
 
     return (
         <section className="user-preview flex header-set" name="byUser" onClick={clickHandler} >
-            <div className="flex center">
+            <div className="flex center" name="byUser">
                 <UserImg user={user} />
                 <p className="user-name">{user.username}</p>
             </div>

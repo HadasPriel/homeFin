@@ -5,13 +5,6 @@
     font-weight: inherit;
 }
 
-.menu-sign {
-    cursor: pointer;
-    &::after {
-        font-family: fa-solid;
-        content: "\f141";
-    }
-}
 .sort-up {
     cursor: pointer;
     &::before {

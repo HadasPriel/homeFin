@@ -63,6 +63,8 @@ export const AccountDetails = (props) => {
             <section className='account-details-scroll'
                 ref={elAccountDetails} >
                 <div className={`account-details`}>
+                    <div className='side-wrapper' ></div>
+                    <div className='top-wrapper' ></div>
 
                     <AccountHeader
                         account={account}

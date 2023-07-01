@@ -13,6 +13,8 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     const [expanseToSave, setExpanse] = useState({ ...expense })
     const account = useSelector(state => state.accountModule.currAcount)
 
+    window.expanseToSave = expanseToSave
+
     useEffectUpdate(() => {
         updateExpense(expanseToSave)
     }, [expanseToSave, updateExpense])
@@ -32,7 +34,9 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     }
 
     const onEditExpense = async (ev, newVal) => {
+        // console.log('newVal', newVal);
         const name = ev.target.getAttribute('name')
+        console.log('name', name);
 
         if (name === 'amount') {
             setExpanse((prevState) => ({
