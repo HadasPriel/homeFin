@@ -37,9 +37,20 @@ async function deleteMonth(req, res) {
 async function addMonth(req, res) {
     try {
         const user = req.session.user
-        console.log('addMonth is running!');
         var { accountId, time, prevMonth } = req.body
         month = await monthService.add(accountId, time, prevMonth, user)
+        res.send(month)
+    } catch (err) {
+        console.log(err)
+        logger.error('Failed to add month', err)
+        res.status(500).send({ err: 'Failed to add month' })
+    }
+}
+
+async function updateMonth(req, res) {
+    try {
+        var { monthToSave } = req.body
+        month = await monthService.update(monthToSave)
         res.send(month)
     } catch (err) {
         console.log(err)
@@ -130,6 +141,7 @@ module.exports = {
     getMonth,
     deleteMonth,
     addMonth,
+    updateMonth,
     addCategory,
     updateCategory,
     deleteCategory,

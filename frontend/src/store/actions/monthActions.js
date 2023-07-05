@@ -7,6 +7,7 @@ const monthActions = {
   loadMonths,
   loadMonth,
   loadMonthByTime,
+  updateMonth,
   addCtegory,
   updateCtegory,
   removeCategory,
@@ -66,12 +67,34 @@ function loadMonthByTime(time) {
   }
 }
 
-
-function addCtegory(monthId, category) {
+function removeMonth(monthId) {
   return async dispatch => {
     try {
-      const month = await monthService.addCtegory(monthId, category)
-      dispatch({ type: 'SET_MONTH', month })
+      await monthService.remove(monthId)
+      dispatch({ type: 'REMOVE_MONTH', monthId })
+    } catch (err) {
+      console.log('MonthActions: err in removeMonth', err)
+    }
+  }
+}
+
+function updateMonth(monthToSave) {
+  return async dispatch => {
+    try {
+      const month = await monthService.update(monthToSave)
+      dispatch({ type: 'UPDATE_MONTH', month })
+
+    } catch (err) {
+      console.log('MonthActions: err in loadMonths', err)
+    }
+  }
+}
+
+function addCtegory(monthId, categoryToSave) {
+  return async dispatch => {
+    try {
+      const category = await monthService.addCtegory(monthId, categoryToSave)
+      dispatch({ type: 'ADD_CATEGORY', category })
 
     } catch (err) {
       console.log('MonthActions: err in addCtegory', err)
@@ -79,11 +102,11 @@ function addCtegory(monthId, category) {
   }
 }
 
-function updateCtegory(monthId, category) {
+function updateCtegory(monthId, categoryToSave) {
   return async dispatch => {
     try {
-      const month = await monthService.updateCtegory(monthId, category)
-      dispatch({ type: 'UPDATE_MONTH', month })
+      const category = await monthService.updateCtegory(monthId, categoryToSave)
+      dispatch({ type: 'UPDATE_CATEGORY', category })
 
     } catch (err) {
       console.log('MonthActions: err in loadMonths', err)
@@ -94,8 +117,8 @@ function updateCtegory(monthId, category) {
 function removeCategory(monthId, categoryId) {
   return async dispatch => {
     try {
-      const month = await monthService.removeCategory(monthId, categoryId)
-      dispatch({ type: 'SET_MONTH', month })
+      await monthService.removeCategory(monthId, categoryId)
+      dispatch({ type: 'REMOVE_CATEGORY', categoryId })
 
     } catch (err) {
       console.log('MonthActions: err in removeCategory', err)
@@ -139,17 +162,6 @@ function updateExpense(monthId, categoryId, expense) {
   }
 }
 
-
-function removeMonth(monthId) {
-  return async dispatch => {
-    try {
-      await monthService.remove(monthId)
-      dispatch({ type: 'REMOVE_MONTH', monthId })
-    } catch (err) {
-      console.log('MonthActions: err in removeMonth', err)
-    }
-  }
-}
 
 
 export default monthActions

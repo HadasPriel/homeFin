@@ -8,6 +8,7 @@ export const monthService = {
     getPrevNext,
     remove,
     add,
+    update,
     addCtegory,
     updateCtegory,
     removeCategory,
@@ -31,12 +32,15 @@ async function getPrevNext(monthId, diff) {
 function remove(monthId) {
     // return httpService.delete(`month/${monthId}`)
     return storageService.delete('month', monthId)
-
 }
 
 async function add(accountId, time) {
     // month.byUser = userService.getLoggedinUser()
     return await httpService.post('month', { accountId, time })
+}
+async function update(monthToSave) {
+    // month.byUser = userService.getLoggedinUser()
+    return await httpService.put('month', { monthToSave })
 }
 
 async function addCtegory(monthId) {

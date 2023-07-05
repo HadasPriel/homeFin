@@ -50,7 +50,18 @@ async function add(accountId, time, prevmonth, user) {
         let month = await collection.insertOne(monthToAdd)
         month = month.ops[0]
         accountService.addMonth(accountId, month)
-        return month;
+        return month
+    } catch (err) {
+        logger.error('cannot insert month', err)
+        throw err
+    }
+}
+async function update(monthToSave) {
+    try {
+        const collection = await dbService.getCollection('month')
+        let month = await collection.updateOne({ _id: month._id }, { $set: monthToSave })
+        month = month.ops[0]
+        return month
     } catch (err) {
         logger.error('cannot insert month', err)
         throw err
@@ -60,12 +71,12 @@ async function add(accountId, time, prevmonth, user) {
 async function addCategory(monthId) {
     try {
         const collection = await dbService.getCollection('month')
-        let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
-
         const categoryToAdd = _createCategory()
-        monthToSave.categories.unshift(categoryToAdd)
-        await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        await collection.updateOne(
+            { _id: ObjectId(monthId) },
+            { $push: { categories: { $each: [categoryToAdd], $position: 0 } } }
+        )
+        return categoryToAdd;
     } catch (err) {
         logger.error('cannot insert category', err)
         throw err
@@ -75,12 +86,11 @@ async function addCategory(monthId) {
 async function updateCategory(monthId, category) {
     try {
         const collection = await dbService.getCollection('month')
-        let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
-
-        monthToSave.categories = monthToSave.categories.map(categ => categ.id === category.id ? category : categ)
-
-        await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        await collection.updateOne(
+            { _id: ObjectId(monthId), categories: { $elemMatch: { id: category.id } } },
+            { $set: { 'categories.$': category } }
+        )
+        return category
     } catch (err) {
         logger.error('cannot update category', err)
         throw err
@@ -90,12 +100,11 @@ async function updateCategory(monthId, category) {
 async function removeCategory(monthId, categoryId) {
     try {
         const collection = await dbService.getCollection('month')
-        let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
-
-        monthToSave.categories = monthToSave.categories.filter(categ => categ.id !== categoryId)
-
-        await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        await collection.updateOne(
+            { _id: ObjectId(monthId) },
+            { $pull: { categories: { id: categoryId } } }
+        )
+        return categoryId
     } catch (err) {
         logger.error('cannot remove category', err)
         throw err
@@ -245,6 +254,7 @@ module.exports = {
     getById,
     remove,
     add,
+    update,
     addCategory,
     updateCategory,
     removeCategory,

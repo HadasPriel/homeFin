@@ -13,12 +13,27 @@ export function monthReducer(state = initialState, action = {}) {
     case 'REMOVE_MONTH':
       return { ...state, months: state.months.filter(month => month._id !== action.monthId) }
     case 'UPDATE_MONTH':
+      return { ...state, currMonth: action.month }
+    case 'ADD_CATEGORY':
+      return { ...state, currMonth: { ...state.currMonth, categories: [action.category, ...state.currMonth.categories] } }
+    case 'UPDATE_CATEGORY':
       return {
         ...state,
-        currMonth: action.month
-        // months: state.months.map(month =>
-        //   month._id === action.month._id ? action.month : month
-        // )
+        currMonth: {
+          ...state.currMonth,
+          categories: state.currMonth.categories.map(category => {
+            if (category.id === action.category.id) return action.category
+            else return category
+          })
+        }
+      }
+    case 'REMOVE_CATEGORY':
+      return {
+        ...state,
+        currMonth: {
+          ...state.currMonth,
+          categories: state.currMonth.categories.filter(category => category.id !== action.categoryId)
+        }
       }
     default:
       return state
