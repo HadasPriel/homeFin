@@ -2,7 +2,7 @@
 
     border-radius: 6px;
 
-    header .menu-sign{
+    header .menu-icon{
         left: -35px;
     }
 
@@ -19,6 +19,7 @@
 
     .before-row{
         position: sticky;
+        z-index: 30;
         left: 40px;
         width: 6px;
         border-top-left-radius: 6px;

@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useHistory } from "react-router-dom";
-import { useEffectUpdate } from '../hooks/useEffectUpdate';
-import { CategoryPreview } from '../cmps/category/CategoryPreview';
-import { MonthHeader } from '../cmps/month/MonthHeader';
-import { utilService } from '../services/util.service.js';
-import actions from '../store/actions';
+import { useParams, useHistory } from "react-router-dom"
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { MonthHeader } from '../cmps/month/MonthHeader'
+import { utilService } from '../services/util.service.js'
+import actions from '../store/actions'
+import { CategoryList } from '../cmps/category/CategoryList'
 
 
 export const MonthDetails = () => {
@@ -54,7 +54,7 @@ export const MonthDetails = () => {
         try {
             dispatch(actions.monthActions.addCtegory(monthId, category))
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -62,7 +62,7 @@ export const MonthDetails = () => {
         try {
             dispatch(actions.monthActions.removeCategory(monthId, categoryId))
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -70,7 +70,7 @@ export const MonthDetails = () => {
         try {
             dispatch(actions.monthActions.updateCtegory(monthId, category))
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -78,7 +78,7 @@ export const MonthDetails = () => {
         try {
             dispatch(actions.monthActions.addExpense(monthId, categoryId, expense))
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -86,7 +86,7 @@ export const MonthDetails = () => {
         try {
             dispatch(actions.monthActions.removeExpense(monthId, categoryId, expenseId))
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -95,7 +95,8 @@ export const MonthDetails = () => {
             if (monthId === 'null') return
             dispatch(actions.monthActions.updateExpense(monthId, categoryId, expense))
         } catch (err) {
-            console.log(err);
+
+            console.log(err)
         }
         // eslint-disable-next-line
     }, [dispatch])
@@ -107,7 +108,7 @@ export const MonthDetails = () => {
             dispatch(actions.monthActions.loadMonthByTime(nextPrevTime))
 
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -128,9 +129,8 @@ export const MonthDetails = () => {
                 addCtegory={addCtegory}
                 onPrevNextMonth={onPrevNextMonth} />
             <main className='month-main'>
-                {month.categories && month.categories.map(category => <CategoryPreview
-                    category={category}
-                    key={category.id}
+                {month.categories && <CategoryList
+                    categories={month.categories}
                     updateCtegory={updateCtegory}
                     deleteCategory={deleteCategory}
                     addExpense={addExpense}
@@ -138,7 +138,7 @@ export const MonthDetails = () => {
                     deleteExpense={deleteExpense}
                     cols={cols}
                     updateLabel={updateLabel}
-                    removeLabel={removeLabel} />)}
+                    removeLabel={removeLabel} />}
             </main>
 
         </section>

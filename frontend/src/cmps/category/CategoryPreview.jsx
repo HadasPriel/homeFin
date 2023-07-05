@@ -1,14 +1,13 @@
 
 import { useCallback } from "react"
 import { AddExpense } from "../expense/AddExpense"
-import { ExpensePreview } from "../expense/ExpensePreview"
 import { CategoryMenu } from "./CategoryMenu"
 import { useToggle } from "../../hooks/useToggle"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
 import { CategoryMiniPreview } from "./CategoryMiniPreview"
-
+import { ExpenseList } from "../expense/ExpenseList"
 
 
 export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel }) => {
@@ -23,7 +22,6 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
     const onUpdateExpense = useCallback((expense) => {
         updateExpense(category.id, expense)
     }, [category.id, updateExpense])
-
 
     const onDeleteExpense = (expenseId) => {
         deleteExpense(category.id, expenseId)
@@ -83,15 +81,13 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                         color={category.color}
                         cols={cols} />
 
-                    {category.expenses.map(expense => <ExpensePreview
-                        color={category.color}
-                        key={expense.id}
-                        expense={expense}
+                    <ExpenseList category={category}
                         updateExpense={onUpdateExpense}
                         deleteExpense={onDeleteExpense}
                         cols={cols}
                         updateLabel={updateLabel}
-                        removeLabel={removeLabel} />)}
+                        removeLabel={removeLabel}
+                        updateCtegory={updateCtegory} />
 
                     <AddExpense
                         addExpense={onAddExpense}
