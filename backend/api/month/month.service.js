@@ -56,11 +56,12 @@ async function add(accountId, time, prevmonth, user) {
         throw err
     }
 }
-async function update(monthToSave) {
+
+async function update(month) {
     try {
         const collection = await dbService.getCollection('month')
-        let month = await collection.updateOne({ _id: month._id }, { $set: monthToSave })
-        month = month.ops[0]
+        month._id = ObjectId(month._id)
+        await collection.updateOne({ _id: month._id }, { $set: month })
         return month
     } catch (err) {
         logger.error('cannot insert month', err)

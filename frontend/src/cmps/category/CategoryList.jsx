@@ -1,7 +1,7 @@
 import { CategoryPreview } from './CategoryPreview'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-export const CategoryList = ({ categories, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateLabel, removeLabel }) => {
+export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateLabel, removeLabel }) => {
 
 
     const onDragEnd = (res) => {
@@ -11,7 +11,7 @@ export const CategoryList = ({ categories, updateCtegory, deleteCategory, addExp
         const dragedCategory = categoriesToSave.splice(res.source.index, 1)[0]
         categoriesToSave.splice(res.destination.index, 0, dragedCategory)
         // setExpaensesToShow(categoryToSave.expenses)
-        // props.updateCtegory(categoriesToSave)
+        updateMonth('categories', categoriesToSave)
     }
 
 

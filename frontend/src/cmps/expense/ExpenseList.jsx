@@ -5,7 +5,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export const ExpenseList = (props) => {
 
-    const [expaensesToShow, setExpaensesToShow] = useState(props.category.expenses)
+    // const [expaensesToShow, setExpaensesToShow] = useState(props.category.expenses)
 
     const onDragEnd = (res) => {
         if (!res.destination) return
@@ -13,13 +13,10 @@ export const ExpenseList = (props) => {
         const categoryToSave = JSON.parse(JSON.stringify(props.category))
         const dragedExpense = categoryToSave.expenses.splice(res.source.index, 1)[0]
         categoryToSave.expenses.splice(res.destination.index, 0, dragedExpense)
-        setExpaensesToShow(categoryToSave.expenses)
+        // setExpaensesToShow(categoryToSave.expenses)
         props.updateCtegory(categoryToSave)
     }
 
-    useEffect(() => {
-        setExpaensesToShow(props.category.expenses)
-    }, [props.category])
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
@@ -30,7 +27,7 @@ export const ExpenseList = (props) => {
                         ref={provided.innerRef}
                     // style={getListStyle(snapshot.isDraggingOver)}
                     >
-                        {expaensesToShow.map((expense, index) => (
+                        {props.category.expenses.map((expense, index) => (
                             <Draggable key={expense.id} draggableId={expense.id} index={index}>
                                 {(provided, snapshot) => (
                                     <div

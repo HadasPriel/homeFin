@@ -49,6 +49,17 @@ export const MonthDetails = () => {
         }
     }, [])
 
+    const updateMonth = async (field, value) => {
+        try {
+            const monthToSave = {
+                ...month,
+                [field]: value
+            }
+            dispatch(actions.monthActions.updateMonth(monthToSave))
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const addCtegory = async (category) => {
         try {
@@ -130,6 +141,7 @@ export const MonthDetails = () => {
                 onPrevNextMonth={onPrevNextMonth} />
             <main className='month-main'>
                 {month.categories && <CategoryList
+                    updateMonth={updateMonth}
                     categories={month.categories}
                     updateCtegory={updateCtegory}
                     deleteCategory={deleteCategory}

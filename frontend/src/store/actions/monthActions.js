@@ -41,7 +41,7 @@ function loadMonth(monthId) {
         dispatch({ type: 'SET_MONTH', month: null })
       }
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      console.log('MonthActions: err in loadMonth', err)
     }
   }
 }
@@ -62,7 +62,7 @@ function loadMonthByTime(time) {
       }
       dispatch({ type: 'SET_MONTH', month })
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      console.log('MonthActions: err in loadMonthByTime', err)
     }
   }
 }
@@ -80,12 +80,14 @@ function removeMonth(monthId) {
 
 function updateMonth(monthToSave) {
   return async dispatch => {
+    // Use optimistic updates to enhance user experience
+    const prevMonth = store.getState().monthModule.currMonth
     try {
-      const month = await monthService.update(monthToSave)
-      dispatch({ type: 'UPDATE_MONTH', month })
-
+      dispatch({ type: 'UPDATE_MONTH', month: monthToSave })
+      await monthService.update(monthToSave)
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      dispatch({ type: 'UPDATE_MONTH', month: prevMonth })
+      console.log('MonthActions: err in updateMonth', err)
     }
   }
 }
@@ -103,13 +105,15 @@ function addCtegory(monthId, categoryToSave) {
 }
 
 function updateCtegory(monthId, categoryToSave) {
+  // Use optimistic updates to enhance user experience
+  const prevCategory = store.getState().monthModule.currMonth.categories.find(ca => ca.id === categoryToSave.id)
   return async dispatch => {
     try {
-      const category = await monthService.updateCtegory(monthId, categoryToSave)
-      dispatch({ type: 'UPDATE_CATEGORY', category })
-
+      dispatch({ type: 'UPDATE_CATEGORY', category: categoryToSave })
+      await monthService.updateCtegory(monthId, categoryToSave)
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      dispatch({ type: 'UPDATE_CATEGORY', category: prevCategory })
+      console.log('MonthActions: err in updateCtegory', err)
     }
   }
 }
@@ -133,7 +137,7 @@ function addExpense(monthId, categoryId, expense) {
       dispatch({ type: 'SET_MONTH', month })
 
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      console.log('MonthActions: err in addExpense', err)
     }
   }
 }
@@ -145,7 +149,7 @@ function removeExpense(monthId, categoryId, expenseId) {
       dispatch({ type: 'SET_MONTH', month })
 
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      console.log('MonthActions: err in removeExpense', err)
     }
   }
 }
@@ -157,7 +161,7 @@ function updateExpense(monthId, categoryId, expense) {
       dispatch({ type: 'UPDATE_MONTH', month })
 
     } catch (err) {
-      console.log('MonthActions: err in loadMonths', err)
+      console.log('MonthActions: err in updateExpense', err)
     }
   }
 }
