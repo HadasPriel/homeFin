@@ -8,7 +8,7 @@ export const Icon = ({ name, handler, classNames }) => {
     }
 
     return (
-        <svg className={`icon ${name}-icon ${classNames}`} onClick={func} >
+        <svg className={`icon ${name}-icon ${classNames ? classNames : ''}`} onClick={func} >
             <use xlinkHref={`${icons}#${name}`} />
         </svg>
     );

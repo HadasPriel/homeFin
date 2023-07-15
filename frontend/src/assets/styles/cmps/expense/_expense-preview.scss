@@ -7,7 +7,7 @@
     
     .menu {
         color: $clr3;
-        position: absolute;
+        position: absolute; //TODO: change to fixed for scroll
         left: 9px;
         top: 7px;
         width: 21px;
@@ -30,5 +30,19 @@
     
     &:hover .menu{
         opacity: 1;
+    }
+}
+
+
+.dragging{
+    opacity: 0.8;
+    .checkbox-wrapper, .cell{
+        background-color: rgb(222, 222, 232);
+    }
+    .expense-preview{
+        transform: rotate(1deg);
+    }
+    .cell, .checkbox-wrapper{
+        border-color: rgba(255, 255, 255, 0.8);
     }
 }

@@ -10,7 +10,7 @@ import { CategoryMiniPreview } from "./CategoryMiniPreview"
 import { ExpenseList } from "../expense/ExpenseList"
 
 
-export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel }) => {
+export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExpense, updateCtegory, deleteCategory, cols, updateLabel, removeLabel, dragHandleProps }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [isMiniPreview, setIsMiniPreview] = useToggle(false)
@@ -72,6 +72,7 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 :
                 <div>
                     <CategoryHeader
+                        dragHandleProps={dragHandleProps}
                         updateCategoryTitle={updateCategoryTitle}
                         setIsMenuShow={setIsMenuShow}
                         setIsMiniPreview={setIsMiniPreview}

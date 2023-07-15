@@ -1,6 +1,6 @@
-
 .cell {
     cursor: pointer;
+    background-color: #fff;
     &:not(:first-child){
         border-inline-start: $table-border;
     }
@@ -10,7 +10,7 @@
 .row-container {
     height: 36px;
     display: flex;
-
+    
     .profile-img{
         width: 30px;
         height: 30px;
@@ -22,6 +22,7 @@
         left: 40px;
     }
 }
+ 
 
 .col-list{
     height: 100%;
@@ -30,7 +31,6 @@
     grid-auto-flow: column;
     grid-auto-columns: 129px;
 }
-
 
 
 .headers {
@@ -52,11 +52,18 @@
     min-width: 50px;
 }
 
-.expense-preview:hover .cell, 
-.expense-preview:hover .start-row,
-.add-expense:hover .cell,
-.add-expense:hover .start-row
+
+.expense-preview:hover.row-container, 
+.expense-preview:hover.row-container
 {
     box-shadow: 0px 3px 6px -3px #c3c6d4;
+    position: relative;
+    z-index: 19;
+}
+.expense-preview:hover .cell, 
+.expense-preview:hover .expense-description,
+.add-expense:hover .cell,
+.add-expense:hover .expense-description
+{
     background-color: $clr2;
 }

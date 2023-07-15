@@ -24,14 +24,15 @@
 
     .side-wrapper{
         position: fixed;
-        width: 100px;
+        width: 39px;
+        z-index: 20;
         height: calc(#{100vh} - #{15px});
         background-color: #fff;
     }
     .top-wrapper{
         position: fixed;
         z-index: 10;
-        width: calc(#{100vw} - #{15px});
+        width: calc(#{100vw} - #{106px});
         height: 149px;
         background-color: #fff;
     }

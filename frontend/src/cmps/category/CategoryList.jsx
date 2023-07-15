@@ -3,18 +3,22 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateLabel, removeLabel }) => {
 
-
     const onDragEnd = (res) => {
         if (!res.destination) return
+        if (res.destination.index === res.source.index) return
+
 
         const categoriesToSave = JSON.parse(JSON.stringify(categories))
         const dragedCategory = categoriesToSave.splice(res.source.index, 1)[0]
         categoriesToSave.splice(res.destination.index, 0, dragedCategory)
-        // setExpaensesToShow(categoryToSave.expenses)
         updateMonth('categories', categoriesToSave)
     }
 
 
+    const getItemStyle = (snap, x, style) => {
+        console.log(snap);
+        return style
+    }
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="droppable">
@@ -30,11 +34,12 @@ export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCat
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                    // style={getItemStyle(
-                                    //     snapshot.isDragging,
-                                    //     provided.draggableProps.style
-                                    // )}
+
+                                        style={getItemStyle(
+                                            snapshot,
+                                            snapshot.isDragging,
+                                            provided.draggableProps.style
+                                        )}
                                     >
                                         <CategoryPreview
                                             key={category.id}
@@ -46,7 +51,8 @@ export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCat
                                             deleteExpense={deleteExpense}
                                             cols={cols}
                                             updateLabel={updateLabel}
-                                            removeLabel={removeLabel} />
+                                            removeLabel={removeLabel}
+                                            dragHandleProps={{ ...provided.dragHandleProps }} />
                                     </div>
                                 )}
                             </Draggable>
