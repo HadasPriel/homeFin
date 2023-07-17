@@ -1,15 +1,18 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useEffectUpdate } from "../../hooks/useEffectUpdate"
+import { useToggle } from "../../hooks/useToggle"
 
 import { ExpenseColList } from "./ExpenseColList"
 import { ExpenseDescription } from "./ExpenseDescription"
+import { ExpenseMenu } from "./ExpenseMenu"
 import { Icon } from "../ui/Icon"
 
 
 
 export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
 
+    const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [expanseToSave, setExpanse] = useState({ ...expense })
     const account = useSelector(state => state.accountModule.currAcount)
 
@@ -34,7 +37,6 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     }
 
     const onEditExpense = async (ev, newVal) => {
-        // console.log('newVal', newVal);
         const name = ev.target.getAttribute('name')
         console.log('name', name);
 
@@ -57,7 +59,9 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
 
     return (
         <section className="expense-preview-wrapper">
-            <button className="menu flex center" onClick={onDeleteExpense}>
+
+            {isMenuShow && <ExpenseMenu toggleExpenseMenu={setIsMenuShow} onDeleteExpense={onDeleteExpense} expenseDescription={expense.description} />}
+            <button className="menu flex center" onClick={setIsMenuShow}>
                 <Icon name="menu" />
             </button>
             <section className="expense-preview flex row-container ">

@@ -12,8 +12,7 @@ export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCateg
     }
 
     return (
-        <section className="category-menu" onMouseLeave={toggleCategoryMenu}>
-            {/* <section className="category-menu" > */}
+        <section className="category-menu floating-menu" onMouseLeave={toggleCategoryMenu}>
             <div className="change-color menu-item" onMouseEnter={setIsColorShow} onMouseLeave={setIsColorShow} >
                 {isColorShow && <CategoryColorList updateCategoryColor={updateCategoryColor} />}
                 Change color
