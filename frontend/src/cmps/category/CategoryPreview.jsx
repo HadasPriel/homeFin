@@ -62,13 +62,15 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
             />}
 
             {isMiniPreview ?
+                // {isDragging || isMiniPreview ?
                 <CategoryMiniPreview
                     category={category}
                     cols={cols}
                     setIsMenuShow={setIsMenuShow}
                     setIsMiniPreview={setIsMiniPreview}
                     onUpdateCategory={onUpdateCategory}
-                    updateCategoryTitle={updateCategoryTitle} />
+                    updateCategoryTitle={updateCategoryTitle}
+                    dragHandleProps={dragHandleProps} />
                 :
                 <div>
                     <CategoryHeader

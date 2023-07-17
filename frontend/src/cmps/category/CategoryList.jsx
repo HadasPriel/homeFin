@@ -1,9 +1,13 @@
 import { CategoryPreview } from './CategoryPreview'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useState } from 'react';
 
 export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateLabel, removeLabel }) => {
 
+    const [isDragging, setIsDragging] = useState(false)
+
     const onDragEnd = (res) => {
+        setIsDragging(false)
         if (!res.destination) return
         if (res.destination.index === res.source.index) return
 
@@ -14,32 +18,25 @@ export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCat
         updateMonth('categories', categoriesToSave)
     }
 
-
-    const getItemStyle = (snap, x, style) => {
-        console.log(snap);
-        return style
+    const onDragStart = () => {
+        setIsDragging(true)
     }
+
+
+
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={onDragEnd} onBeforeDragStart={onDragStart}>
             <Droppable droppableId="droppable">
                 {(provided, snapshot) => (
                     <ul
                         {...provided.droppableProps}
-                        ref={provided.innerRef}
-                    // style={getListStyle(snapshot.isDraggingOver)}
-                    >
+                        ref={provided.innerRef}>
                         {categories.map((category, index) => (
                             <Draggable key={category.id} draggableId={category.id} index={index}>
                                 {(provided, snapshot) => (
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
-
-                                        style={getItemStyle(
-                                            snapshot,
-                                            snapshot.isDragging,
-                                            provided.draggableProps.style
-                                        )}
                                     >
                                         <CategoryPreview
                                             key={category.id}
@@ -52,7 +49,8 @@ export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCat
                                             cols={cols}
                                             updateLabel={updateLabel}
                                             removeLabel={removeLabel}
-                                            dragHandleProps={{ ...provided.dragHandleProps }} />
+                                            dragHandleProps={{ ...provided.dragHandleProps }}
+                                            isDragging={isDragging} />
                                     </div>
                                 )}
                             </Draggable>

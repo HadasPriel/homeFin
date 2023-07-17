@@ -3,7 +3,7 @@ import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
 
 
-export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPreview, updateCategoryTitle, onUpdateCategory }) => {
+export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPreview, updateCategoryTitle, onUpdateCategory, dragHandleProps }) => {
 
     let budgetNum = category.expenses.length || 'No'
     let budgetTxt = (budgetNum === 1) ? 'Budget' : 'Budgets'
@@ -18,7 +18,8 @@ export const CategoryMiniPreview = ({ category, cols, setIsMenuShow, setIsMiniPr
                         updateCategoryTitle={updateCategoryTitle}
                         setIsMenuShow={setIsMenuShow}
                         setIsMiniPreview={setIsMiniPreview}
-                        category={category} />
+                        category={category}
+                        dragHandleProps={dragHandleProps} />
                     <p className="budget-num">{budgetNum} {budgetTxt}</p>
 
                 </div>
