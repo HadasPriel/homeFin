@@ -30,8 +30,8 @@ export const Sky = () => {
                         right: `${utilService.getRandomInt(skyPadding, elSky.current?.clientWidth - skyPadding)}px`,
                         '--animation-delay': idx * 200
                     }} >
-                    <span className='before' style={{ width: getWidth(idx) }}></span>
-                    <span className='after' style={{ width: getWidth(idx) }}></span>
+                    <span className='vertical' style={{ width: getWidth(idx) }}></span>
+                    <span className='horizontal' style={{ width: getWidth(idx) }}></span>
                 </div>)}
         </div>
     )
