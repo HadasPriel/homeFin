@@ -37,7 +37,7 @@ $wide-breakpoint: 1500px;
 
 .main-layout {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: 10px 1fr 10px;
 
     > * {
         grid-column: 2;
@@ -50,25 +50,25 @@ $wide-breakpoint: 1500px;
     @include for-narrow-layout {
         grid-template-columns:
             minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
+            minmax(auto, $mobile-breakpoint + 150)
             minmax(20px, 1fr);
     }
     @include for-normal-layout {
         grid-template-columns:
             minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
+            minmax(auto, $narrow-breakpoint + 150)
             minmax(20px, 1fr);
     }
     @include for-wide-layout {
         grid-template-columns:
             minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
+            minmax(auto, $normal-breakpoint + 150)
             minmax(20px, 1fr);
     }
     @include for-wider-layout {
         grid-template-columns:
             minmax(20px, 1fr)
-            minmax(auto, $wide-breakpoint)
+            minmax(auto, $wide-breakpoint + 150)
             minmax(20px, 1fr);
     }
 }

@@ -19,6 +19,7 @@
         position:absolute;
         animation: starAnimation 3s ease-in-out infinite;
         animation-delay: calc(var(--animation-delay) * 1ms);
+        
         .before{
             position:absolute;
             background:#fff;

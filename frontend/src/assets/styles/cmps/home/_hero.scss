@@ -5,7 +5,7 @@
 .hero{
     position: relative;
     color: $clr6;
-    height: 80vh;
+    height: 100vh;
     text-align: center;
     padding-top: 55px;
 
@@ -51,6 +51,18 @@
 
         &:hover{
             background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
+        }
+    }
+
+    .bold-me{
+        position: relative;
+        .underline{
+            position: absolute;
+            height: 1px;
+            width: 105px;
+            top: 35px;
+            right: -5px;
+            background: linear-gradient(90deg,transparent,#fff);
         }
     }
 }
