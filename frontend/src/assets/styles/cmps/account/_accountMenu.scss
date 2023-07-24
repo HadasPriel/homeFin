@@ -91,7 +91,7 @@
     }
 
     .content{
-        display: none;
+        visibility: hidden;
     }
 }
 
@@ -111,7 +111,7 @@
         width: calc(100vw - 140px - 254px);
     }
     .content{
-        display: unset;
+        visibility: visible;
     }
     .account-menu .collapse-btn .arrow-icon{
         transform: unset;

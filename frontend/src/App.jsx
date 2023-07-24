@@ -13,7 +13,6 @@ function App() {
 
 
 
-
   return (
     <div className="App">
       <Router>
@@ -23,10 +22,6 @@ function App() {
           <main className='app-main' >
             <Switch>
               <Route path="/account/:accountId" component={AccountDetails} />
-              {/* <Route
-                path="/account/:accountId"
-                render={(props) => (<AccountDetails {...props} />)}
-              /> */}
               <Route path="/account" component={AccountApp} />
               <Route path="/login" component={LoginSignup} />
               <Route path="/" component={Home} />
@@ -35,7 +30,7 @@ function App() {
         </Provider>
       </Router>
     </div>
-  );
+  )
 }
 
 export default App;

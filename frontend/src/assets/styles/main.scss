@@ -35,6 +35,10 @@
 @import "cmps/expense/add-expense";
 @import "cmps/expense/expense-label";
 
+@import "cmps/home/home-header";
+@import "cmps/home/hero";
+@import "cmps/home/sky";
+
 @import "cmps/date-picker";
 @import "cmps/ui/user";
 @import "cmps/ui/screen";
@@ -43,5 +47,7 @@
 
 // Views
 @import "views/accountDetails";
+@import "views/expense-details";
 @import "views/month-details";
 @import "views/loginSignup";
+@import "views/home";

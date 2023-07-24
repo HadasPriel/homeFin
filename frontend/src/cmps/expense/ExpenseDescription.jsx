@@ -3,10 +3,12 @@ import { useToggle } from "../../hooks/useToggle";
 import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 
 import { StartRow } from "../category/StartRow"
+// import { useParams } from "react-router";
+// import { Link } from "react-router-dom";
 
 
 export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
-
+    // let { accountId, monthId } = useParams()
     const elInput = useRef(null)
     const [isEditDesc, setIsEditDesc] = useToggle(false)
     const [description, setDescription] = useState(expanseToSave.description)
@@ -43,7 +45,10 @@ export const ExpenseDescription = ({ expanseToSave, onEditExpense, color }) => {
                             onBlur={onUpdateDesc}
                             ref={elInput} />
                     </form> :
-                    <p className="description" name="description">{expanseToSave.description}</p>
+                    <p className="description" name="description">
+                        {expanseToSave.description}
+                        {/* <Link to={`/account/${accountId}/${monthId}/${expanseToSave.id}`}>{expanseToSave.description}</Link> */}
+                    </p>
                 }
                 {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}
             </div>

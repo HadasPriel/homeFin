@@ -1,0 +1,37 @@
+
+@keyframes starAnimation {
+    0% {
+      transform: scale(0.2);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.2);
+    }
+  }
+
+.sky{
+    position: absolute;
+    inset: 0;
+    
+    .stary{
+        position:absolute;
+        animation: starAnimation 3s ease-in-out infinite;
+        animation-delay: calc(var(--animation-delay) * 1ms);
+        .before{
+            position:absolute;
+            background:#fff;
+            aspect-ratio: 1 / 1.15;
+            transform:rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+        }
+        
+        .after{
+            position:absolute;
+            background:#fff;
+            aspect-ratio: 1 / 1.15;
+            transform:rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+        }
+    }
+    
+}

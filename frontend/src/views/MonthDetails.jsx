@@ -2,20 +2,22 @@ import React, { useCallback, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom"
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { MonthHeader } from '../cmps/month/MonthHeader'
+
 import { utilService } from '../services/util.service.js'
 import actions from '../store/actions'
+
+// import { ExpenseDetails } from './ExpenseDetails'
+import { MonthHeader } from '../cmps/month/MonthHeader'
 import { CategoryList } from '../cmps/category/CategoryList'
 
 
-export const MonthDetails = () => {
+export const MonthDetails = (props) => {
 
     let { accountId, monthId } = useParams()
     let history = useHistory()
     const dispatch = useDispatch()
     const month = useSelector(state => state.monthModule.currMonth)
     const cols = useSelector(state => state.accountModule.currAcount.cols)
-
 
     useEffect(() => {
         if (monthId === 'null') return
@@ -152,7 +154,9 @@ export const MonthDetails = () => {
                     updateLabel={updateLabel}
                     removeLabel={removeLabel} />}
             </main>
-
+            {/* <Switch>
+                <Route path={`${props.match.path}/:expenseId`} > <ExpenseDetails /> </Route>
+            </Switch> */}
         </section>
     )
 }

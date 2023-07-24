@@ -1,0 +1,56 @@
+.hero-wrapper{
+    background-color: #05063a;
+}
+
+.hero{
+    position: relative;
+    color: $clr6;
+    height: 80vh;
+    text-align: center;
+    padding-top: 55px;
+
+    &>*{
+
+        font-family: poppins-l;
+        font-weight: 100;
+    }
+    
+    .main-title{
+        font-size: 72px;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    h2{
+        margin-top: 30px;
+    }
+    
+    .see-demo-btn{
+        margin: auto;
+        margin-top: 60px;
+        background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
+        padding: 16px 20px 16px 31px;
+        border-radius: 2em;
+        position: relative;
+        z-index: 10;
+
+        span{
+            font-size: 16px;
+            line-height: 17px;
+            font-weight: 500;
+            text-transform: capitalize;
+
+        }
+
+        svg{
+            width: 37px;
+            height: 16px;
+            position: relative;
+            top: 2px;
+        }
+
+        &:hover{
+            background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
+        }
+    }
+}

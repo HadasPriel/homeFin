@@ -40,6 +40,7 @@ export const ExpenseList = (props) => {
                     return total + curr.clientHeight + marginBottom
                 }, 0)
 
+
         setPlaceholderProps({
             clientHeight,
             clientWidth,
@@ -49,6 +50,7 @@ export const ExpenseList = (props) => {
             ),
         })
     }
+
 
     return (
         <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate}>

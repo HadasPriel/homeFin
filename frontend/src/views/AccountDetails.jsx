@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from "react-router-dom"
 import { useToggle } from '../hooks/useToggle'
 
 import actions from '../store/actions'
@@ -11,6 +10,7 @@ import { MonthDetails } from './MonthDetails'
 import { AccountHeader } from '../cmps/account/AccountHeader'
 import { AddMember } from '../cmps/account/AddMember'
 import { AccountMenu } from '../cmps/account/AccountMenu'
+import { ExpenseDetails } from './ExpenseDetails'
 
 export const AccountDetails = (props) => {
     let { accountId } = useParams()
@@ -55,32 +55,41 @@ export const AccountDetails = (props) => {
 
     if (!account) return <div>Loading...</div>
     return (
-        <section className={`account-details-wrapper flex ${isMenuShow ? 'menu-show' : ''}`} >
-            <AccountMenu
-                account={account}
-                setIsMenuShow={setIsMenuShow} />
+        <main className='account-layout'>
+            <section className={`account-details-wrapper flex ${isMenuShow ? 'menu-show' : ''}`} >
+                {/* <section className={`account-details-wrapper flex ${isMenuShow ? 'menu-show' : ''} ${expenseId ? 'expense-details-show' : ''}`} > */}
+                <AccountMenu
+                    account={account}
+                    setIsMenuShow={setIsMenuShow} />
+                <Switch>
+                    <Route path={`${props.match.path}/:monthId/:expenseId`} > <ExpenseDetails /> </Route>
+                </Switch>
+                <section className='account-details-scroll'
+                    ref={elAccountDetails} >
+                    <div className={`account-details`}>
+                        <div className='side-wrapper' ></div>
+                        <div className='top-wrapper' ></div>
 
-            <section className='account-details-scroll'
-                ref={elAccountDetails} >
-                <div className={`account-details`}>
-                    <div className='side-wrapper' ></div>
-                    <div className='top-wrapper' ></div>
+                        <AccountHeader
+                            account={account}
+                            accountId={accountId}
+                            toggleIsInviteShow={setIsInviteShow}
+                            saveDescription={saveDescription}
+                            isScrolledToTop={isScrolledToTop} />
 
-                    <AccountHeader
-                        account={account}
-                        accountId={accountId}
-                        toggleIsInviteShow={setIsInviteShow}
-                        saveDescription={saveDescription}
-                        isScrolledToTop={isScrolledToTop} />
-                    <main className="main-account-details" >
-                        <Switch>
-                            <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />
-                            <MonthList months={account.months} />
-                        </Switch>
-                    </main>
-                    {isInviteShow && <AddMember toggleMember={toggleMember} toggleIsInviteShow={setIsInviteShow} accountMembers={account.members} />}
-                </div>
+                        <main className="main-account-details" >
+                            <Switch>
+                                <Route path={`${props.match.path}/:monthId`} component={MonthDetails} />
+                                <MonthList months={account.months} />
+                            </Switch>
+                        </main>
+
+
+                        {isInviteShow && <AddMember toggleMember={toggleMember} toggleIsInviteShow={setIsInviteShow} accountMembers={account.members} />}
+                    </div>
+                </section>
+
             </section>
-        </section>
+        </main>
     )
 }

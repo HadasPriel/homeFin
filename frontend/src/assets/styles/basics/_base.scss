@@ -12,14 +12,15 @@ body {
     margin: 0;
     color: rgb(50, 51, 56);
     font-size: 14px;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
-.app-main {
+.account-layout {
     background-color: $clr2;
     flex-grow: 1;
     margin-inline-start: 66px;
     height: 100vh;
+    
 }
 
 h1,
@@ -43,6 +44,7 @@ img {
 
 svg{
     width: 20px;
+    height: 20px;
 }
 
 a {
@@ -75,10 +77,10 @@ input {
 }
 
 .App {
-    overflow: hidden;
+    // overflow: hidden;
 }
 
-.app-main {
+.account-layout {
     position: absolute;
     inset: 0;
     overflow: hidden;
