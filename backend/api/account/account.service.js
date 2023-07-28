@@ -162,6 +162,19 @@ function _buildCriteria(loggedinUser, filterBy) {
     return criteria
 }
 
+
+async function saveCols(accountId, cols) {
+    try {
+        const collection = await dbService.getCollection('account')
+        await collection.updateOne(
+            { _id: ObjectId(accountId) },
+            { $set: { cols } })
+    } catch (err) {
+        logger.error('cannot save cols to account', err)
+        throw err
+    }
+}
+
 module.exports = {
     query,
     getById,
@@ -171,7 +184,8 @@ module.exports = {
     toggleMember,
     saveDescription,
     saveLabel,
-    removeLabel
+    removeLabel,
+    saveCols
 }
 
 

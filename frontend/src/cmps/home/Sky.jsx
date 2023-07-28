@@ -9,7 +9,7 @@ export const Sky = () => {
 
     useEffect(() => {
         setIsSky(!!elSky)
-    }, [elSky.current])
+    }, [elSky])
 
     const skyPadding = 20
 

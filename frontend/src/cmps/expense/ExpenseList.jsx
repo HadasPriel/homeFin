@@ -89,10 +89,10 @@ export const ExpenseList = (props) => {
                             <div
                                 style={{
                                     position: "absolute",
-                                    top: placeholderProps.clientY + 76,
-                                    left: placeholderProps.clientX + 6,
-                                    height: placeholderProps.clientHeight,
-                                    width: placeholderProps.clientWidth,
+                                    top: placeholderProps.clientY + 76 || 0,
+                                    left: placeholderProps.clientX + 6 || 0,
+                                    height: placeholderProps.clientHeight || 0,
+                                    width: placeholderProps.clientWidth || 0,
                                     zIndex: 25,
                                     border: '0.5px dashed rgb(164, 171, 190)'
                                 }}

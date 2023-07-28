@@ -108,7 +108,6 @@ export const MonthDetails = (props) => {
             if (monthId === 'null') return
             dispatch(actions.monthActions.updateExpense(monthId, categoryId, expense))
         } catch (err) {
-
             console.log(err)
         }
         // eslint-disable-next-line
@@ -133,6 +132,14 @@ export const MonthDetails = (props) => {
         dispatch(actions.accountActions.removeLabel(accountId, labelId))
     }
 
+    const updateCols = async (cols) => {
+        try {
+            dispatch(actions.accountActions.updateCols(accountId, cols))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
 
     if (!month || !month.time) return <div>Loading...</div>
@@ -151,6 +158,7 @@ export const MonthDetails = (props) => {
                     updateExpense={updateExpense}
                     deleteExpense={deleteExpense}
                     cols={cols}
+                    updateCols={updateCols}
                     updateLabel={updateLabel}
                     removeLabel={removeLabel} />}
             </main>

@@ -95,6 +95,17 @@ async function deleteLabel(req, res) {
     }
 }
 
+async function updateCols(req, res) {
+    try {
+        const { accountId, cols } = req.body
+        await accountService.saveCols(accountId, cols)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to update account cols', err)
+        res.status(500).send({ err: 'Failed to update account cols' })
+    }
+}
+
 module.exports = {
     getAccounts,
     getAccount,
@@ -103,5 +114,6 @@ module.exports = {
     toggleMember,
     saveDescription,
     saveLabel,
-    deleteLabel
+    deleteLabel,
+    updateCols
 }

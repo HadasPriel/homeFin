@@ -57,6 +57,11 @@
 
 .headers {
     text-transform: capitalize;
+
+    .cell{
+        height: 100%;
+        
+    }
     
     .before-row {
       border-top-left-radius: 6px;

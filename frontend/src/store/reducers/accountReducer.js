@@ -48,6 +48,12 @@ export function accountReducer(state = initialState, action = {}) {
     case 'REMOVE_LABEL':
       return { ...state, currAcount: { ...state.currAcount, labels: state.currAcount.labels.filter(label => label.id !== action.labelId) } }
 
+    case 'UPDATE_COLS':
+      return {
+        ...state,
+        currAcount: { ...state.currAcount, cols: action.cols }
+      }
+
     default:
       return state
   }

@@ -6,6 +6,7 @@ import { ExpenseColRepeat } from "./ExpenseColRepeat";
 
 export const ExpenseColList = ({ cols, expanseToSave, onEditExpense, account, editExpenseTime, editExpenseRepeat, updateLabel, removeLabel }) => {
 
+
     return (
         <section className="col-list">
             {cols.map(col => {

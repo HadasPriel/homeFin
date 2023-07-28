@@ -2,7 +2,7 @@ import { CategoryPreview } from './CategoryPreview'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from 'react';
 
-export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateLabel, removeLabel }) => {
+export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCategory, addExpense, updateExpense, deleteExpense, cols, updateCols, updateLabel, removeLabel }) => {
 
     const [isDragging, setIsDragging] = useState(false)
 
@@ -47,6 +47,7 @@ export const CategoryList = ({ categories, updateMonth, updateCtegory, deleteCat
                                             updateExpense={updateExpense}
                                             deleteExpense={deleteExpense}
                                             cols={cols}
+                                            updateCols={updateCols}
                                             updateLabel={updateLabel}
                                             removeLabel={removeLabel}
                                             dragHandleProps={{ ...provided.dragHandleProps }}

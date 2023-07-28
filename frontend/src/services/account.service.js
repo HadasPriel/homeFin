@@ -9,7 +9,8 @@ export const accountService = {
   toggleMember,
   saveDescription,
   saveLabel,
-  removeLabel
+  removeLabel,
+  updateCols
 }
 
 async function query(filterBy) {
@@ -42,4 +43,8 @@ async function saveLabel(accountId, label) {
 
 async function removeLabel(accountId, labelId) {
   return await httpService.put(`account/label/remove`, { accountId, labelId })
+}
+
+async function updateCols(accountId, cols) {
+  return await httpService.put(`account/cols`, { accountId, cols })
 }

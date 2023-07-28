@@ -1,4 +1,5 @@
 import { accountService } from '../../services/account.service'
+import { store } from '../store'
 // import { userService } from '../../services/user.service'
 
 const accountActions = {
@@ -9,7 +10,8 @@ const accountActions = {
   toggleMember,
   saveDescription,
   saveLabel,
-  removeLabel
+  removeLabel,
+  updateCols
 }
 
 
@@ -99,7 +101,21 @@ function removeLabel(accountId, labelId) {
       await accountService.removeLabel(accountId, labelId)
       dispatch({ type: 'REMOVE_LABEL', labelId })
     } catch (err) {
-      console.log('AccountActions: err in saveLabel', err)
+      console.log('AccountActions: err in removeLabel', err)
+    }
+  }
+}
+
+function updateCols(accountId, cols) {
+  // Use optimistic updates to enhance user experience
+  const prevCols = store.getState().accountModule.currAcount.cols
+  return async dispatch => {
+    try {
+      dispatch({ type: 'UPDATE_COLS', cols })
+      await accountService.updateCols(accountId, cols)
+    } catch (err) {
+      dispatch({ type: 'UPDATE_COLS', cols: prevCols })
+      console.log('AccountActions: err in updateCols', err)
     }
   }
 }
