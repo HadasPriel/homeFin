@@ -4,11 +4,13 @@ export const useDndPlaceholder = (initialProps = {}) => {
     const [placeholderProps, setPlaceholderProps] = useState(initialProps)
 
     const updatePlaceholderProps = (update) => {
-        const destinationIdx = update.destination?.index || update.source?.index
+        let destinationIdx = update.destination?.index
+        if (!update.destination) destinationIdx = update.source?.index
+
         const elDragged = document.querySelector(
             `[data-rbd-drag-handle-draggable-id='${update.draggableId}']`
         )
-
+        
         if (!elDragged) return
         const { clientHeight, clientWidth } = elDragged
 
@@ -39,6 +41,7 @@ export const useDndPlaceholder = (initialProps = {}) => {
             ),
             leftVertical
         })
+
     }
 
     const resetPlaceholderProps = () => {setPlaceholderProps({})}
