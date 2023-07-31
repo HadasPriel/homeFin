@@ -1,9 +1,9 @@
-import React, { useState } from "react"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { ExpensePreview } from "../expense/ExpensePreview"
+import { useDndPlaceholder } from '../../hooks/useDndPlaceholder.js'
 
 export const ExpenseList = (props) => {
-    const [placeholderProps, setPlaceholderProps] = useState({})
+    const [placeholderProps, setPlaceholderProps, resetPlaceholderProps] = useDndPlaceholder({})
 
     const onDragEnd = (result) => {
         if (!result.destination) return
@@ -14,41 +14,12 @@ export const ExpenseList = (props) => {
         categoryToSave.expenses.splice(result.destination.index, 0, draggedExpense)
         props.updateCtegory(categoryToSave)
 
-        setPlaceholderProps({})
+        resetPlaceholderProps()    
     }
 
     const onDragUpdate = (update) => {
         if (!update.destination) return
-        const draggableId = update.draggableId
-        const destinationIndex = update.destination.index
-
-        const domQuery = `[data-rbd-drag-handle-draggable-id='${draggableId}']`
-        const draggedDOM = document.querySelector(domQuery)
-
-        if (!draggedDOM) return
-        const { clientHeight, clientWidth } = draggedDOM
-
-        const clientY =
-            parseFloat(
-                window.getComputedStyle(draggedDOM.parentNode).paddingTop
-            ) +
-            [...draggedDOM.parentNode.children]
-                .slice(0, destinationIndex)
-                .reduce((total, curr) => {
-                    const style = curr.currentStyle || window.getComputedStyle(curr)
-                    const marginBottom = parseFloat(style.marginBottom)
-                    return total + curr.clientHeight + marginBottom
-                }, 0)
-
-
-        setPlaceholderProps({
-            clientHeight,
-            clientWidth,
-            clientY,
-            clientX: parseFloat(
-                window.getComputedStyle(draggedDOM.parentNode).paddingLeft
-            ),
-        })
+        setPlaceholderProps(update)
     }
 
 
@@ -89,10 +60,10 @@ export const ExpenseList = (props) => {
                             <div
                                 style={{
                                     position: "absolute",
-                                    top: placeholderProps.clientY + 76 || 0,
-                                    left: placeholderProps.clientX + 6 || 0,
-                                    height: placeholderProps.clientHeight || 0,
-                                    width: placeholderProps.clientWidth || 0,
+                                    top: placeholderProps.top + 76 || 0,
+                                    left: placeholderProps.left + 6 || 0,
+                                    height: placeholderProps.height || 0,
+                                    width: placeholderProps.width || 0,
                                     zIndex: 25,
                                     border: '0.5px dashed rgb(164, 171, 190)'
                                 }}

@@ -32,21 +32,6 @@
     grid-auto-columns: 129px;
 }
 
-
-.headers {
-    &.row-container{
-        border-top-left-radius: 6px;
-        margin-inline-end: 38px;
-        .expense-description{
-            opacity: 0.97;
-        }
-    }
-    .budget{
-        flex-grow: 1;
-        color: $clr7;
-    }
-}
-
 .last-cell{
     flex-grow: 1;
     min-width: 50px;

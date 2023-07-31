@@ -58,13 +58,37 @@
 .headers {
     text-transform: capitalize;
 
+    &.row-container{
+        border-top-left-radius: 6px;
+        margin-inline-end: 38px;
+        .expense-description{
+            opacity: 0.97;
+        }
+    }
+
     .cell{
         height: 100%;
-        
     }
     
     .before-row {
       border-top-left-radius: 6px;
+    }
+
+    .budget{
+        flex-grow: 1;
+        color: $clr7;
+    }
+
+}
+
+.col-dragging{
+
+    &.cell{
+        height: 160px !important; 
+        border: $table-border;
+        opacity: 0.7;
+        align-items: unset;
+        padding-top: 12px;
     }
 
 }
