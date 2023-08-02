@@ -1,9 +1,9 @@
 
-export const ExpenseColRepeat = ({ expanseToSave, editExpenseRepeat }) => {
+export const ExpenseColRepeat = ({ expenseToSave, editExpenseRepeat }) => {
 
     return (
         <div
-            className={`repeated cell flex center ` + ((expanseToSave.repeat) ? 'confirme' : 'decline')}
+            className={`repeated cell flex center ` + ((expenseToSave.repeat) ? 'confirme' : 'decline')}
             onClick={editExpenseRepeat} >
 
         </div>

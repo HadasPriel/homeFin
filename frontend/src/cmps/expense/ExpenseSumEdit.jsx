@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useToggle } from "../../hooks/useToggle";
 
 
-export const ExpenseSum = ({ expanseToSave, onEditExpense }) => {
+export const ExpenseSum = ({ expenseToSave, onEditExpense }) => {
 
     const [isEditSum, setIsEditSum] = useToggle(false)
-    const [amount, setAmount] = useState(expanseToSave.sum.amount)
+    const [amount, setAmount] = useState(expenseToSave.sum.amount)
 
 
     const onUpdateAmount = (ev) => {

@@ -13,22 +13,22 @@ import { Icon } from "../ui/Icon"
 export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
-    const [expanseToSave, setExpanse] = useState({ ...expense })
+    const [expenseToSave, setExpense] = useState({ ...expense })
     const account = useSelector(state => state.accountModule.currAcount)
 
     useEffectUpdate(() => {
-        updateExpense(expanseToSave)
-    }, [expanseToSave, updateExpense])
+        updateExpense(expenseToSave)
+    }, [expenseToSave, updateExpense])
 
     const editExpenseRepeat = async () => {
-        setExpanse((prevState) => ({
+        setExpense((prevState) => ({
             ...prevState,
             repeat: !prevState.repeat,
         }));
     }
 
     const editExpenseTime = async (date) => {
-        setExpanse((prevState) => ({
+        setExpense((prevState) => ({
             ...prevState,
             cratedAt: date,
         }));
@@ -38,12 +38,12 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
         const name = ev.target.getAttribute('name')
 
         if (name === 'amount') {
-            setExpanse((prevState) => ({
+            setExpense((prevState) => ({
                 ...prevState,
                 sum: { ...prevState.sum, amount: newVal },
             }));
         } else {
-            setExpanse((prevState) => ({
+            setExpense((prevState) => ({
                 ...prevState,
                 [name]: newVal,
             }));
@@ -51,7 +51,7 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     }
 
     const onDeleteExpense = () => {
-        deleteExpense(expanseToSave.id)
+        deleteExpense(expenseToSave.id)
     }
 
     return (
@@ -62,10 +62,10 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
                 <Icon name="menu" />
             </button>
             <section className="expense-preview flex row-container ">
-                <ExpenseDescription expanseToSave={expanseToSave} onEditExpense={onEditExpense} color={color} />
+                <ExpenseDescription expenseToSave={expenseToSave} onEditExpense={onEditExpense} color={color} />
                 <ExpenseColList
                     cols={cols}
-                    expanseToSave={expanseToSave}
+                    expenseToSave={expenseToSave}
                     onEditExpense={onEditExpense}
                     account={account}
                     editExpenseTime={editExpenseTime}

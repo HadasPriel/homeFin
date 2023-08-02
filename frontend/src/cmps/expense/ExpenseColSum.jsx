@@ -4,15 +4,14 @@ import { useEffectUpdate } from "../../hooks/useEffectUpdate";
 import { utilService } from "../../services/util.service";
 
 
-export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
+export const ExpenseColSum = ({ expenseToSave, onEditExpense }) => {
 
     const elCmp = useRef(null)
     const [isEditSum, setIsEditSum] = useToggle(false, elCmp)
-    const [amount, setAmount] = useState(expanseToSave.sum.amount)
+    const [amount, setAmount] = useState(expenseToSave.sum.amount)
     const elInput = useRef(null)
 
     useEffectUpdate(() => {
-        console.log('run');
         if (!isEditSum || !elInput.current) return
         elInput.current.focus()
         // eslint-disable-next-line
@@ -20,13 +19,13 @@ export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
 
     const currency = useRef(null)
     if (currency.current === null) {
-        currency.current = utilService.getCurrency(expanseToSave.sum.currency)
+        currency.current = utilService.getCurrency(expenseToSave.sum.currency)
     }
 
 
     const onUpdateAmount = (ev) => {
         ev.preventDefault()
-        if (amount !== expanseToSave.sum.amount) onEditExpense(ev, amount)
+        if (amount !== expenseToSave.sum.amount) onEditExpense(ev, amount)
         setIsEditSum()
     }
 
@@ -38,7 +37,7 @@ export const ExpenseColSum = ({ expanseToSave, onEditExpense }) => {
         <section className={`expense-sum cell flex center`}>
             <div className={`frame flex center`} onClick={setIsEditSum} >
                 {!isEditSum &&
-                    <div className={`flex ${((expanseToSave.sum.currency === '$') ? '' : 'row-re')}`} onClick={setIsEditSum} >
+                    <div className={`flex ${((expenseToSave.sum.currency === '$') ? '' : 'row-re')}`} onClick={setIsEditSum} >
                         <span>{amount}</span> <span>{currency.current}</span>
                     </div>}
                 {isEditSum &&

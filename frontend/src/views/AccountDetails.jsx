@@ -61,9 +61,7 @@ export const AccountDetails = (props) => {
                 <AccountMenu
                     account={account}
                     setIsMenuShow={setIsMenuShow} />
-                <Switch>
-                    <Route path={`${props.match.path}/:monthId/:expenseId`} > <ExpenseDetails /> </Route>
-                </Switch>
+                
                 <section className='account-details-scroll'
                     ref={elAccountDetails} >
                     <div className={`account-details`}>
@@ -83,12 +81,12 @@ export const AccountDetails = (props) => {
                                 <MonthList months={account.months} />
                             </Switch>
                         </main>
-
-
                         {isInviteShow && <AddMember toggleMember={toggleMember} toggleIsInviteShow={setIsInviteShow} accountMembers={account.members} />}
                     </div>
                 </section>
-
+                <Switch>
+                    <Route path={`${props.match.path}/:monthId/:expenseId`} > <ExpenseDetails /> </Route>
+                </Switch>
             </section>
         </main>
     )

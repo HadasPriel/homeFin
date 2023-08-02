@@ -6,7 +6,6 @@ import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { utilService } from '../services/util.service.js'
 import actions from '../store/actions'
 
-// import { ExpenseDetails } from './ExpenseDetails'
 import { MonthHeader } from '../cmps/month/MonthHeader'
 import { CategoryList } from '../cmps/category/CategoryList'
 
@@ -162,9 +161,6 @@ export const MonthDetails = (props) => {
                     updateLabel={updateLabel}
                     removeLabel={removeLabel} />}
             </main>
-            {/* <Switch>
-                <Route path={`${props.match.path}/:expenseId`} > <ExpenseDetails /> </Route>
-            </Switch> */}
         </section>
     )
 }
