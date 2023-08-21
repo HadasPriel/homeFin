@@ -1,4 +1,4 @@
-.category-preview {
+.category-preview, .category-mini-preview  {
     position: relative;
     margin-bottom: 40px;
 
@@ -22,11 +22,15 @@
         }
         
         .sort-sign {
-            cursor: pointer;
             width: 33px;
             height: 36px;
-            border-radius: 1em;
-            color: $clr2;
+        }
+        
+        .arrow-icon{
+            cursor: pointer;
+            transform: rotate(180deg);
+            width: 13px;
+            height: 13px;
         }
 
         .menu-icon{
@@ -50,7 +54,7 @@
         &:hover{
            .menu-icon{
             color: inherit;
-        } 
+            } 
         }
     }
 }

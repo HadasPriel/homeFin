@@ -57,7 +57,10 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     return (
         <section className="expense-preview-wrapper">
 
-            {isMenuShow && <ExpenseMenu toggleExpenseMenu={setIsMenuShow} onDeleteExpense={onDeleteExpense} expenseDescription={expense.description} />}
+            {isMenuShow && <ExpenseMenu 
+            toggleExpenseMenu={setIsMenuShow} 
+            onDeleteExpense={onDeleteExpense} 
+            expenseDescription={expense.description} />}
             <button className="menu flex center" onClick={setIsMenuShow}>
                 <Icon name="menu" />
             </button>

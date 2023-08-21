@@ -59,6 +59,9 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 toggleCategoryMenu={setIsMenuShow}
                 onDeleteCategory={onDeleteCategory}
                 updateCategoryColor={updateCategoryColor}
+                color={category.color}
+                isMiniPreview={isMiniPreview}
+                setIsMiniPreview={setIsMiniPreview}
             />}
 
             {isMiniPreview ?
@@ -85,7 +88,8 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                         cols={cols}
                         updateCols={updateCols} />
 
-                    <ExpenseList category={category}
+                    <ExpenseList 
+                        category={category}
                         updateExpense={onUpdateExpense}
                         deleteExpense={onDeleteExpense}
                         cols={cols}

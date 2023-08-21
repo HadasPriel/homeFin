@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import actions from '../../store/actions';
 import { Screen } from '../ui/Screen';
-import { UserPreviewSmall } from '../ui/user-preview-small';
+import { UserPreviewSmall } from '../ui/UserPreviewSmall';
 
 
 export const AddMember = ({ toggleMember, toggleIsInviteShow, accountMembers }) => {

@@ -5,6 +5,9 @@
     header .menu-icon{
         left: -35px;
     }
+    header .arrow-icon{
+        transform: rotate(270deg);
+    }
 
     .expense-description, .expense-description > *{
     display: none;

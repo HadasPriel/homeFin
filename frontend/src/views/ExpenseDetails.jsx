@@ -1,26 +1,36 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+
+import { ExpenseDetailsHeader } from "../cmps/expense/ExpenseDetailsHeader"
 
 
 export const ExpenseDetails = () => {
 
-    let { accountId, monthId, expenseId } = useParams()
+    let { expenseId } = useParams()
     const [expense, setExpense] = useState(null)
+    const [tab, setTab] = useState('updates')
     const month = useSelector(state => state.monthModule.currMonth)
 
+    useEffect(() => {
+        var currExpanse = null
+        month.categories?.forEach((categ) => {
+            if (currExpanse) return
+            currExpanse = (categ.expenses.find((expense) => {
+                return expense.id === expenseId
+            }))
+            if (currExpanse) setExpense(currExpanse)
+        })
+    }, [month, expenseId])
 
-    // useEffect(() => {
-    //     month.categories?.forEach(()=>{
-    //         categ.expenses.find((expense)=>{
-    //             if(expense.id === expenseId)
-    //         })
-    //     })
-    // }, [month])
 
+    if (!expense) return <div>Loading...</div>
     return (
         <section className="expense-details">
-            <h1>HHIII!</h1>
+            <ExpenseDetailsHeader setTab={setTab} description={expense.description} byUser={expense.byUser} />
+            <main>
+                {tab}
+            </main>
         </section>
     )
 }
