@@ -22,23 +22,36 @@
         }
         
         .header-set{
-            margin-bottom: 24px;
+            margin-bottom: 15px;
         }
         
         .title{
             font-family: poppins-r;
-            font-size: 18px;        
+            font-size: 18px;
+            padding: 4px 8px;     
         }
 
         .expense-details-nav{
-            margin-bottom: 1px;
+            margin-bottom: 4px;
             .nav-item{
-                padding: 8px;
                 border-radius: 4px;
+                box-shadow: 9px 0px 0px -8px #dcdfec;
+                padding: 7px 14px;
+                position: relative;
                 
                 &:hover{
                     cursor: pointer;
                     background-color: #dcdfec;
+                    box-shadow: none;
+                }
+
+                .active-border{
+                    position: absolute;
+                    inset: 0;
+                    top: unset;
+                    bottom: -4px;
+                    height: 2px;
+                    background-color: $clr5;
                 }
             }
         }

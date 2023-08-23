@@ -27,7 +27,11 @@ export const ExpenseDetails = () => {
     if (!expense) return <div>Loading...</div>
     return (
         <section className="expense-details">
-            <ExpenseDetailsHeader setTab={setTab} description={expense.description} byUser={expense.byUser} />
+            <ExpenseDetailsHeader
+                setTab={setTab}
+                description={expense.description}
+                byUser={expense.byUser}
+                currTab={tab} />
             <main>
                 {tab}
             </main>

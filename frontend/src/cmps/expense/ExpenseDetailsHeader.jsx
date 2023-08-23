@@ -2,7 +2,7 @@ import { Icon } from '../ui/Icon'
 import { UserImg } from '../ui/UserImg'
 
 
-export const ExpenseDetailsHeader = ({ description, byUser, setTab }) => {
+export const ExpenseDetailsHeader = ({ description, byUser, setTab, currTab }) => {
 
     const tabs = [
         { val: 'updates', title: 'Updates' },
@@ -31,6 +31,7 @@ export const ExpenseDetailsHeader = ({ description, byUser, setTab }) => {
                     <label className="nav-item" key={tab.val}>
                         <input type="radio" name="tab" value={tab.val} onInput={onTab} hidden />
                         <span>{tab.title}</span>
+                        {(currTab === tab.val) && <div className='active-border'></div>}
                     </label>
                 )}
             </div>
