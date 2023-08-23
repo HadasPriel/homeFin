@@ -1,0 +1,49 @@
+.expense-details-header{
+    padding: 20px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid $clr9;
+
+    .close{
+        .x-icon{
+            width: 14px;
+            // height: 25px;
+            color: rgb(119, 119, 119);
+            stroke-width: 0px;
+        }
+    }
+    
+    .header-set{
+        margin-bottom: 15px;
+    }
+    
+    .title{
+        font-family: poppins-r;
+        font-size: 18px;
+        padding: 4px 8px;     
+    }
+
+    .expense-details-nav{
+        margin-bottom: 4px;
+        .nav-item{
+            border-radius: 4px;
+            box-shadow: 9px 0px 0px -8px #dcdfec;
+            padding: 7px 14px;
+            position: relative;
+            
+            &:hover{
+                cursor: pointer;
+                background-color: #dcdfec;
+                box-shadow: none;
+            }
+
+            .active-border{
+                position: absolute;
+                inset: 0;
+                top: unset;
+                bottom: -4px;
+                height: 2px;
+                background-color: $clr5;
+            }
+        }
+    }
+}
