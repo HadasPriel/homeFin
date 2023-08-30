@@ -14,7 +14,7 @@ export const ExpenseList = (props) => {
         categoryToSave.expenses.splice(result.destination.index, 0, draggedExpense)
         props.updateCtegory(categoryToSave)
 
-        resetPlaceholderProps()    
+        resetPlaceholderProps()
     }
 
     const onDragUpdate = (update) => {
@@ -43,6 +43,7 @@ export const ExpenseList = (props) => {
                                     >
                                         <ExpensePreview
                                             color={props.category.color}
+                                            cotegoryId={props.category.id}
                                             key={expense.id}
                                             expense={expense}
                                             updateExpense={props.updateExpense}

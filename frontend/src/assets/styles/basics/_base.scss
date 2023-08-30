@@ -12,7 +12,6 @@ body {
     margin: 0;
     color: rgb(50, 51, 56);
     font-size: 14px;
-    // overflow: hidden;
 }
 
 .account-layout {
@@ -65,10 +64,9 @@ button {
 
 textarea {
     resize: none;
-    outline: none;
 }
 
-input {
+input, textarea {
     padding: 0;
     outline: none;
     font-family: inherit;
@@ -77,15 +75,10 @@ input {
     background-color: transparent;
 }
 
-.App {
-    // overflow: hidden;
-}
-
 .account-layout {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    // overflow: auto;
 }
 
 *{

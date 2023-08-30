@@ -14,7 +14,8 @@ const monthActions = {
   addExpense,
   updateExpense,
   removeExpense,
-  removeMonth
+  removeMonth,
+  addComment
 }
 
 
@@ -159,6 +160,19 @@ function updateExpense(monthId, categoryId, expense) {
     try {
       const month = await monthService.updateExpense(monthId, categoryId, expense)
       dispatch({ type: 'UPDATE_MONTH', month })
+
+    } catch (err) {
+      console.log('MonthActions: err in updateExpense', err)
+    }
+  }
+}
+
+function addComment(monthId, cotegoryId, expenseId, comment) {
+  return async dispatch => {
+    try {
+      console.log('monthId, expenseId, comment:', monthId)
+      const category = await monthService.addComment(monthId, cotegoryId, expenseId, comment)
+      dispatch({ type: 'UPDATE_CATEGORY', category })
 
     } catch (err) {
       console.log('MonthActions: err in updateExpense', err)

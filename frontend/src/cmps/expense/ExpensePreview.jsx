@@ -10,7 +10,7 @@ import { Icon } from "../ui/Icon"
 
 
 
-export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
+export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [expenseToSave, setExpense] = useState({ ...expense })
@@ -57,15 +57,15 @@ export const ExpensePreview = ({ expense, updateExpense, deleteExpense, color, c
     return (
         <section className="expense-preview-wrapper">
 
-            {isMenuShow && <ExpenseMenu 
-            toggleExpenseMenu={setIsMenuShow} 
-            onDeleteExpense={onDeleteExpense} 
-            expenseDescription={expense.description} />}
+            {isMenuShow && <ExpenseMenu
+                toggleExpenseMenu={setIsMenuShow}
+                onDeleteExpense={onDeleteExpense}
+                expenseDescription={expense.description} />}
             <button className="menu flex center" onClick={setIsMenuShow}>
                 <Icon name="menu" />
             </button>
             <section className="expense-preview flex row-container ">
-                <ExpenseDescription expenseToSave={expenseToSave} onEditExpense={onEditExpense} color={color} />
+                <ExpenseDescription expenseToSave={expenseToSave} onEditExpense={onEditExpense} color={color} cotegoryId={cotegoryId} />
                 <ExpenseColList
                     cols={cols}
                     expenseToSave={expenseToSave}

@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 
-export const ExpenseDescription = ({ expenseToSave, onEditExpense, color }) => {
+export const ExpenseDescription = ({ expenseToSave, onEditExpense, color, cotegoryId }) => {
     let { accountId, monthId } = useParams()
     const elInput = useRef(null)
     const [isEditDesc, setIsEditDesc] = useToggle(false)
@@ -47,7 +47,7 @@ export const ExpenseDescription = ({ expenseToSave, onEditExpense, color }) => {
                     </form> :
                     <p className="description" name="description">
                         {/* {expenseToSave.description} */}
-                        <Link to={`/account/${accountId}/${monthId}/${expenseToSave.id}`}>{expenseToSave.description}</Link>
+                        <Link to={`/account/${accountId}/${monthId}/${cotegoryId}/${expenseToSave.id}`}>{expenseToSave.description}</Link>
                     </p>
                 }
                 {!isEditDesc && <button className="flex align-center edit-btn btn solid" onClick={setIsEditDesc} >Edit</button>}

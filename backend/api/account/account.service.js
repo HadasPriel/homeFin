@@ -134,6 +134,18 @@ async function addMonth(accountId, month) {
     }
 }
 
+async function saveCols(accountId, cols) {
+    try {
+        const collection = await dbService.getCollection('account')
+        await collection.updateOne(
+            { _id: ObjectId(accountId) },
+            { $set: { cols } })
+    } catch (err) {
+        logger.error('cannot save cols to account', err)
+        throw err
+    }
+}
+
 function _createAccount(account) {
     return {
         title: account.title,
@@ -163,17 +175,6 @@ function _buildCriteria(loggedinUser, filterBy) {
 }
 
 
-async function saveCols(accountId, cols) {
-    try {
-        const collection = await dbService.getCollection('account')
-        await collection.updateOne(
-            { _id: ObjectId(accountId) },
-            { $set: { cols } })
-    } catch (err) {
-        logger.error('cannot save cols to account', err)
-        throw err
-    }
-}
 
 module.exports = {
     query,

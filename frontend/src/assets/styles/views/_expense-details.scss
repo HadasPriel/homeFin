@@ -6,6 +6,29 @@
     z-index: 999;
     background-color: #fff;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+
+    .expense-details-main{
+        padding: 20px;
+    }
     
-    
+    .expense-comment{
+
+        .comment-editor{
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid rgb(130, 183, 236);
+        }
+
+        textarea{
+            transition: 0.2s;
+            padding: 10px 20px;
+            font-size: 16px;
+            height: 40px;
+
+            &:focus{
+                height: 110px;
+            }
+        }
+
+    }
 }

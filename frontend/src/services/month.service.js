@@ -14,7 +14,8 @@ export const monthService = {
     removeCategory,
     addExpense,
     updateExpense,
-    removeExpense
+    removeExpense,
+    addComment
 }
 
 async function query(filterBy) {
@@ -66,5 +67,9 @@ async function removeExpense(monthId, categoryId, expenseId) {
 
 async function updateExpense(monthId, categoryId, expense) {
     return await httpService.put(`month/${monthId}/expense`, { categoryId, expense, monthId })
+}
+
+async function addComment(monthId, cotegoryId, expenseId, comment) {
+    return await httpService.post(`month/${monthId}/expense/comment`, { cotegoryId, expenseId, comment })
 }
 

@@ -88,7 +88,7 @@ async function updateCategory(monthId, category) {
     try {
         const collection = await dbService.getCollection('month')
         await collection.updateOne(
-            { _id: ObjectId(monthId), categories: { $elemMatch: { id: category.id } } },
+            { _id: ObjectId(monthId), 'categories.id': category.id },
             { $set: { 'categories.$': category } }
         )
         return category
@@ -121,7 +121,7 @@ async function addExpense(monthId, categoryId, expense) {
         const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
         monthToSave.categories[categoryIdx].expenses.push(expenseToAdd)
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        return monthToSave
     } catch (err) {
         logger.error('cannot insert month', err)
         throw err
@@ -137,7 +137,7 @@ async function updateExpense(monthId, categoryId, expenseToSave) {
         monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.map(expense => (expense.id === expenseToSave.id) ? expenseToSave : expense)
 
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        return monthToSave
     } catch (err) {
         logger.error('cannot update expense', err)
         throw err
@@ -153,12 +153,37 @@ async function removeExpense(monthId, categoryId, expenseId) {
         monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.filter(expense => expense.id !== expenseId)
 
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
-        return monthToSave;
+        return monthToSave
     } catch (err) {
         logger.error('cannot insert expense', err)
         throw err
     }
 }
+
+async function addComment(monthId, categoryId, expenseId, comment) {
+    try {
+        const collection = await dbService.getCollection('month')
+        let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
+
+        const category = monthToSave.categories.find(categ => categ.id === categoryId)
+        const expense = category.expenses.find(expense => expense.id === expenseId)
+        expense.comments.push(comment)
+
+        await collection.updateOne(
+            { _id: ObjectId(monthId), 'categories.id': categoryId },
+            { $set: { 'categories.$': category } }
+        )
+        return category
+    } catch (err) {
+        logger.error('cannot insert comment', err)
+        throw err
+    }
+}
+
+
+
+
+
 
 function _buildCriteria(filterBy) {
     const criteria = {}
@@ -179,7 +204,8 @@ function _createExpense({ description, sum }) {
             _id: 'u101',
             username: 'hadas',
             imgUrl: 'https://res.cloudinary.com/dtg8d5gnc/image/upload/v1641632564/homeFin/profile1_qvcffx.jpg'
-        }
+        },
+        comments: []
     }
 }
 
@@ -261,7 +287,8 @@ module.exports = {
     removeCategory,
     addExpense,
     updateExpense,
-    removeExpense
+    removeExpense,
+    addComment
 }
 
 

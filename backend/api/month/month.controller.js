@@ -136,6 +136,23 @@ async function deleteExpense(req, res) {
     }
 }
 
+async function addComment(req, res) {
+    try {
+        var { cotegoryId, expenseId, comment } = req.body
+        var commentToAdd = {
+            txt: comment,
+            byUser: req.session.user || null,
+            createdAt: Date.now()
+        }
+        comment = await monthService.addComment(req.params.id, cotegoryId, expenseId, commentToAdd)
+        res.send(comment)
+    } catch (err) {
+        console.log(err)
+        logger.error('Failed to add comment', err)
+        res.status(500).send({ err: 'Failed to add comment' })
+    }
+}
+
 module.exports = {
     getMonths,
     getMonth,
@@ -147,5 +164,6 @@ module.exports = {
     deleteCategory,
     addExpense,
     updateExpense,
-    deleteExpense
+    deleteExpense,
+    addComment
 }
