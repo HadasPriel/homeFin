@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ExpenseDetailsHeader } from "../cmps/expense/expenseDetails/ExpenseDetailsHeader"
 import { ExpenseComment } from "../cmps/expense/expenseDetails/ExpenseComment"
 import actions from "../store/actions"
+import { Construction } from "../cmps/ui/Construction"
 
 
 export const ExpenseDetails = () => {
@@ -48,6 +49,8 @@ export const ExpenseDetails = () => {
                     <ExpenseComment
                         expense={expense}
                         addComment={addComment} />}
+                {(tab === 'files') && <Construction />}
+                {(tab === 'activityLog') && <Construction />}
             </main>
         </section>
     )
