@@ -27,7 +27,8 @@ h2,
 h3,
 h4,
 h5,
-p {
+p,
+pre {
     margin: 0;
 }
 
@@ -66,7 +67,7 @@ textarea {
     resize: none;
 }
 
-input, textarea {
+input, textarea, pre {
     padding: 0;
     outline: none;
     font-family: inherit;

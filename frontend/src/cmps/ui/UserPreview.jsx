@@ -8,6 +8,13 @@ export const UserPreview = ({ user, expenseMember, func }) => {
         func(ev, user)
     }
 
+    if (!user) user = {
+        _id: '123',
+        username: 'Guest',
+        fullname: 'Guest',
+        imgUrl: ''
+    }
+
     return (
         <section className="user-preview flex header-set" name="byUser" onClick={clickHandler} >
             <div className="flex center" name="byUser">

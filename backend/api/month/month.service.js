@@ -165,6 +165,7 @@ async function addComment(monthId, categoryId, expenseId, comment) {
         const collection = await dbService.getCollection('month')
         let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
 
+        comment.id = utilService.makeId()
         const category = monthToSave.categories.find(categ => categ.id === categoryId)
         const expense = category.expenses.find(expense => expense.id === expenseId)
         expense.comments.push(comment)

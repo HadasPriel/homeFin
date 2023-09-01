@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
 
-import { ExpenseDetailsHeader } from "../cmps/expense/ExpenseDetailsHeader"
-import { ExpenseComment } from "../cmps/expense/ExpenseComment"
+import { ExpenseDetailsHeader } from "../cmps/expense/expenseDetails/ExpenseDetailsHeader"
+import { ExpenseComment } from "../cmps/expense/expenseDetails/ExpenseComment"
 import actions from "../store/actions"
 
 
@@ -44,7 +44,7 @@ export const ExpenseDetails = () => {
                 currTab={tab} />
 
             <main className="expense-details-main">
-                {tab === 'comments' &&
+                {(tab === 'comments') &&
                     <ExpenseComment
                         expense={expense}
                         addComment={addComment} />}

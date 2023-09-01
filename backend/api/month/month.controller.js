@@ -139,6 +139,9 @@ async function deleteExpense(req, res) {
 async function addComment(req, res) {
     try {
         var { cotegoryId, expenseId, comment } = req.body
+        var guest = {
+
+        }
         var commentToAdd = {
             txt: comment,
             byUser: req.session.user || null,

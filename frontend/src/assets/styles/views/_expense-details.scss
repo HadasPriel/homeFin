@@ -13,21 +13,96 @@
     
     .expense-comment{
 
-        .comment-editor{
+        .comment-editor, .write-comment{
             width: 100%;
             border-radius: 8px;
             border: 1px solid rgb(130, 183, 236);
+            margin-bottom: 5px;
         }
 
-        textarea{
-            transition: 0.2s;
+        .comment-form, .write-comment{
+            margin-bottom: 65px;
+        }
+
+
+        textarea, .write-comment{
             padding: 10px 20px;
             font-size: 16px;
             height: 40px;
+            height: 110px;
+        }
 
-            &:focus{
-                height: 110px;
+        .write-comment{
+            height: unset;
+            cursor:text;
+            color: rgba(50, 51, 56, 0.8);
+        }
+
+        .update-btn{
+            line-height: 22px;
+            align-self: flex-end;
+        }
+
+        .user-preview{
+            padding: 0;
+
+            .user-name:hover{
+                text-decoration: underline;
             }
+            
+            
+            &:hover{
+                background-color: unset;
+                color: unset;
+                cursor: unset;
+            }
+        }
+        
+        .comment-preview{
+            font-size: 16px;
+            border: 1px solid $clr9;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            
+            .comment-header{
+                padding: 16px;
+            }
+
+             .time{
+                font-size: 14px;
+                color: $clr7;
+            }
+
+            pre{
+                font-size: inherit;
+                padding: 0px 16px 16px;
+            }
+
+            .btn-wrapper{
+                width: 50%;
+                border-top: 1px solid $clr9;
+                padding: 4px;
+
+                .btn{
+                    width: 100%;
+                }
+
+                &:first-child{
+                    border-right: 1px solid $clr9;
+                }
+            }
+
+            .icon{
+                width: 18px;
+                height: 18px;
+                align-self: center;
+                margin-right: 5px;
+            }
+
+            .like-icon{
+                fill: transparent;
+            }
+
         }
 
     }

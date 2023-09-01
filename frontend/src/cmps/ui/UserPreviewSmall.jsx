@@ -14,13 +14,20 @@ export const UserPreviewSmall = ({ user, accountMembers, func }) => {
         return className + ' add-btn btn solid'
     }
 
+    if (!user) user = {
+        _id: '123',
+        username: 'Guest',
+        fullname: 'Guest',
+        imgUrl: ''
+    }
+
     return (
         <li className='user-preview-small flex space-between align-center' key={user._id}>
             <div className='flex align-center'>
                 <UserImg user={user} />
                 <span className='name' onClick={clickHandler} >{user.username}</span>
             </div>
-            <span className={isAcoountMember()} onClick={clickHandler} ></span>
+            {accountMembers && <span className={isAcoountMember()} onClick={clickHandler} ></span>}
         </li>
     )
 }
