@@ -98,9 +98,9 @@ async function updateCategory(req, res) {
 
 async function addExpense(req, res) {
     try {
-        const { categoryId, expense } = req.body
+        const { categoryId, expense, isIncome } = req.body
         // month.byUserId = req.session.user._id
-        month = await monthService.addExpense(req.params.id, categoryId, expense)
+        month = await monthService.addExpense(req.params.id, categoryId, expense, isIncome)
         res.send(month)
 
     } catch (err) {
@@ -112,9 +112,9 @@ async function addExpense(req, res) {
 
 async function updateExpense(req, res) {
     try {
-        const { categoryId, expense } = req.body
+        const { categoryId, expense, isIncome } = req.body
         // month.byUserId = req.session.user._id
-        month = await monthService.updateExpense(req.params.id, categoryId, expense)
+        month = await monthService.updateExpense(req.params.id, categoryId, expense, isIncome)
         res.send(month)
 
     } catch (err) {

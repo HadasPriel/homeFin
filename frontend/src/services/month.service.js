@@ -56,8 +56,8 @@ async function removeCategory(monthId, categoryId) {
     return await httpService.delete(`month/${monthId}/category`, { categoryId, monthId })
 }
 
-async function addExpense(monthId, categoryId, expense) {
-    const addedMonth = await httpService.post(`month/${monthId}/expense`, { categoryId, expense })
+async function addExpense(monthId, categoryId, expense, isIncome) {
+    const addedMonth = await httpService.post(`month/${monthId}/expense`, { categoryId, expense, isIncome })
     return addedMonth
 }
 
@@ -65,8 +65,8 @@ async function removeExpense(monthId, categoryId, expenseId) {
     return await httpService.delete(`month/${monthId}/expense`, { categoryId, expenseId })
 }
 
-async function updateExpense(monthId, categoryId, expense) {
-    return await httpService.put(`month/${monthId}/expense`, { categoryId, expense, monthId })
+async function updateExpense(monthId, categoryId, expense, isIncome) {
+    return await httpService.put(`month/${monthId}/expense`, { categoryId, expense, monthId, isIncome })
 }
 
 async function addComment(monthId, cotegoryId, expenseId, comment) {

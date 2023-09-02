@@ -1,9 +1,9 @@
 import { useToggle } from "../../hooks/useToggle"
 import { CategoryColorList } from "./CategoryColorList"
-import { Icon } from "../ui/Icon";
+import { Icon } from "../ui/Icon"
 
 
-export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCategoryColor, toggleEditExpected, color, isMiniPreview, setIsMiniPreview}) => {
+export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCategoryColor, toggleEditExpected, color, isMiniPreview, setIsMiniPreview }) => {
 
     const [isColorShow, setIsColorShow] = useToggle(false)
 
@@ -20,7 +20,7 @@ export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCateg
     return (
         <section className="category-menu floating-menu" onMouseLeave={toggleCategoryMenu}>
             <div className="menu-item" onClick={onSetIsMiniPreview}>
-                <Icon name={isMiniPreview? 'expand' : 'collapse'} />
+                <Icon name={isMiniPreview ? 'expand' : 'collapse'} />
                 <span>Collapse this category</span>
             </div>
             {/* <div className="menu-item" onClick={onToggleEditExpected}>

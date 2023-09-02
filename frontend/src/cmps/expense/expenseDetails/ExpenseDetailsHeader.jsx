@@ -1,9 +1,14 @@
-import { Icon } from '../../ui/Icon'
+import { useHistory } from 'react-router-dom'
+import { useToggle } from '../../../hooks/useToggle'
 import { UserImg } from '../../ui/UserImg'
+import { Icon } from '../../ui/Icon'
+import { ExpenseMenu } from './ExpenseMenu'
 
 
-export const ExpenseDetailsHeader = ({ description, byUser, setTab, currTab }) => {
+export const ExpenseDetailsHeader = ({ description, byUser, setTab, currTab, deleteExpense, updateExpense }) => {
 
+    const history = useHistory()
+    const [isMenuShow, setIsMenuShow] = useToggle(false)
 
     const tabs = [
         { val: 'comments', title: 'Updates' },
@@ -15,17 +20,33 @@ export const ExpenseDetailsHeader = ({ description, byUser, setTab, currTab }) =
         setTab(ev.target.value)
     }
 
+    const goBack = () => {
+        history.goBack()
+    }
+
+    const onUpdateExpense = (ev) => {
+        updateExpense(ev.target.innerText)
+    }
 
     return (
         <header className="expense-details-header" >
             <div>
-                <button className="close btn solid flex center" > <Icon name="x" /> </button>
+                <button className="close btn solid flex center" onClick={goBack} > <Icon name="x" /> </button>
             </div>
             <div className="header-set">
-                <h1 className="title" >{description}</h1>
+                <h1 className="title"
+                    contentEditable="true"
+                    name="description"
+                    onBlur={onUpdateExpense}
+                    suppressContentEditableWarning={true} >
+                    {description}
+                </h1>
                 <div className="flex" >
                     <button className="flex" > <UserImg user={byUser} /> </button>
-                    <button> <Icon name="menu" /> </button>
+                    <button className="btn solid menu-btn" onClick={setIsMenuShow} >
+                        {isMenuShow && <ExpenseMenu deleteExpense={deleteExpense} toggleMenu={setIsMenuShow} />}
+                        <Icon name="menu" />
+                    </button>
                 </div>
             </div>
             <div className="expense-details-nav flex" >

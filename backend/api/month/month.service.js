@@ -112,14 +112,22 @@ async function removeCategory(monthId, categoryId) {
     }
 }
 
-async function addExpense(monthId, categoryId, expense) {
+async function addExpense(monthId, categoryId, expense, isIncome) {
     try {
         const collection = await dbService.getCollection('month')
         let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
+        console.log('monthToSave:', monthToSave)
+        console.log('isIncome:', isIncome)
+        console.log('monthToSave.income:', monthToSave.income)
 
         const expenseToAdd = _createExpense(expense)
-        const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
-        monthToSave.categories[categoryIdx].expenses.push(expenseToAdd)
+
+        if (isIncome) monthToSave.income.expenses.push(expenseToAdd)
+        else {
+            const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
+            monthToSave.categories[categoryIdx].expenses.push(expenseToAdd)
+        }
+
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
         return monthToSave
     } catch (err) {
@@ -128,13 +136,17 @@ async function addExpense(monthId, categoryId, expense) {
     }
 }
 
-async function updateExpense(monthId, categoryId, expenseToSave) {
+async function updateExpense(monthId, categoryId, expenseToSave, isIncome) {
     try {
         const collection = await dbService.getCollection('month')
         let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
 
-        const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
-        monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.map(expense => (expense.id === expenseToSave.id) ? expenseToSave : expense)
+        if (isIncome) {
+            monthToSave.income.expenses = monthToSave.income.expenses.map(expense => (expense.id === expenseToSave.id) ? expenseToSave : expense)
+        } else {
+            const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
+            monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.map(expense => (expense.id === expenseToSave.id) ? expenseToSave : expense)
+        }
 
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
         return monthToSave
@@ -222,7 +234,7 @@ function _createCategory() {
         expenses: []
     }
 }
-function _createIncomes() {
+function _createIncome() {
     return {
         id: utilService.makeId(),
         title: "Incomes",
@@ -242,21 +254,21 @@ function _createMonth(time, prevMonth = null, user) {
         time,
         members: prevMonth?.members || [user], //TODO: no need for members on month, its used on expense & acoount
         categories,
-        incomes: prevMonth?.incomes || []
+        income: prevMonth?.income || _createIncome()
     }
 }
 
 function _getCategories(month) {
-    if (!month || !month.categories) return [_createIncomes()]
+    if (!month || !month.categories) return []
 
-    var isIncome = false
+    // var isIncome = false
     var categsToReturn = month.categories.map(categ => {
-        if (categ.isIncome) isIncome = true
+        // if (categ.isIncome) isIncome = true
         categ.expenses = categ.expenses.filter((expense => expense.repeat))
         return categ
     })
 
-    if (!isIncome) { categsToReturn.push(_createIncomes()) }
+    // if (!isIncome) { categsToReturn.push(_createIncome()) }
     return categsToReturn
 }
 

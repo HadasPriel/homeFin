@@ -86,9 +86,9 @@ export const MonthDetails = (props) => {
         }
     }
 
-    const addExpense = async (categoryId, expense) => {
+    const addExpense = async (categoryId, expense, isIncome = false) => {
         try {
-            dispatch(actions.monthActions.addExpense(monthId, categoryId, expense))
+            dispatch(actions.monthActions.addExpense(monthId, categoryId, expense, isIncome))
         } catch (err) {
             console.log(err)
         }
@@ -102,10 +102,10 @@ export const MonthDetails = (props) => {
         }
     }
 
-    const updateExpense = useCallback(async (categoryId, expense) => {
+    const updateExpense = useCallback(async (categoryId, expense, isIncome) => {
         try {
             if (monthId === 'null') return
-            dispatch(actions.monthActions.updateExpense(monthId, categoryId, expense))
+            dispatch(actions.monthActions.updateExpense(monthId, categoryId, expense, isIncome))
         } catch (err) {
             console.log(err)
         }
@@ -159,7 +159,9 @@ export const MonthDetails = (props) => {
                     cols={cols}
                     updateCols={updateCols}
                     updateLabel={updateLabel}
-                    removeLabel={removeLabel} />}
+                    removeLabel={removeLabel}
+                    income={month.income}
+                />}
             </main>
         </section>
     )

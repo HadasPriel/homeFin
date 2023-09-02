@@ -131,10 +131,10 @@ function removeCategory(monthId, categoryId) {
   }
 }
 
-function addExpense(monthId, categoryId, expense) {
+function addExpense(monthId, categoryId, expense, isIncome) {
   return async dispatch => {
     try {
-      const month = await monthService.addExpense(monthId, categoryId, expense)
+      const month = await monthService.addExpense(monthId, categoryId, expense, isIncome)
       dispatch({ type: 'SET_MONTH', month })
 
     } catch (err) {
@@ -155,10 +155,10 @@ function removeExpense(monthId, categoryId, expenseId) {
   }
 }
 
-function updateExpense(monthId, categoryId, expense) {
+function updateExpense(monthId, categoryId, expense, isIncome) {
   return async dispatch => {
     try {
-      const month = await monthService.updateExpense(monthId, categoryId, expense)
+      const month = await monthService.updateExpense(monthId, categoryId, expense, isIncome)
       dispatch({ type: 'UPDATE_MONTH', month })
 
     } catch (err) {

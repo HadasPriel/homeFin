@@ -16,12 +16,13 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
     const [isMiniPreview, setIsMiniPreview] = useToggle(false)
 
     const onAddExpense = (expense) => {
-        addExpense(category.id, expense)
+        const { isIncome } = category
+        addExpense(category.id, expense, isIncome)
     }
 
     const onUpdateExpense = useCallback((expense) => {
-        updateExpense(category.id, expense)
-    }, [category.id, updateExpense])
+        updateExpense(category.id, expense, category.isIncome)
+    }, [category.id, category.isIncome, updateExpense])
 
     const onDeleteExpense = (expenseId) => {
         deleteExpense(category.id, expenseId)
@@ -88,7 +89,7 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                         cols={cols}
                         updateCols={updateCols} />
 
-                    <ExpenseList 
+                    <ExpenseList
                         category={category}
                         updateExpense={onUpdateExpense}
                         deleteExpense={onDeleteExpense}

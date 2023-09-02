@@ -10,7 +10,7 @@ import { Construction } from "../cmps/ui/Construction"
 
 export const ExpenseDetails = () => {
 
-    let { cotegoryId, expenseId } = useParams()
+    let { monthId, cotegoryId, expenseId } = useParams()
     const [expense, setExpense] = useState(null)
     const [tab, setTab] = useState('comments')
     const month = useSelector(state => state.monthModule.currMonth)
@@ -34,6 +34,26 @@ export const ExpenseDetails = () => {
         dispatch(actions.monthActions.addComment(month._id, cotegoryId, expenseId, comment))
     }
 
+    const deleteExpense = async (categoryId, expenseId) => {
+        try {
+            dispatch(actions.monthActions.removeExpense(monthId, categoryId, expenseId))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const updateExpense = async (descriptionToSave) => {
+        try {
+            const expenseToSave = JSON.parse(JSON.stringify(expense))
+            expenseToSave.description = descriptionToSave
+            dispatch(actions.monthActions.updateExpense(monthId, cotegoryId, expenseToSave))
+        } catch (err) {
+            console.log(err)
+        }
+        // eslint-disable-next-line
+    }
+
+
 
     if (!expense) return <div>Loading...</div>
     return (
@@ -42,7 +62,9 @@ export const ExpenseDetails = () => {
                 setTab={setTab}
                 description={expense.description}
                 byUser={expense.byUser}
-                currTab={tab} />
+                currTab={tab}
+                deleteExpense={deleteExpense}
+                updateExpense={updateExpense} />
 
             <main className="expense-details-main">
                 {(tab === 'comments') &&
