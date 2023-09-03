@@ -67,7 +67,7 @@ textarea {
     resize: none;
 }
 
-input, textarea, pre {
+input, textarea, pre, fieldset {
     padding: 0;
     outline: none;
     font-family: inherit;
@@ -75,6 +75,7 @@ input, textarea, pre {
     border: none;
     background-color: transparent;
 }
+
 
 .account-layout {
     position: absolute;

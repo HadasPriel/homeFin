@@ -1,24 +1,34 @@
 .category-sum-footer {
-    padding: 6px 16px;
-    position: relative;
-    
-    .bar {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        border-radius:2em;
-        background-color: $clr8;
-        &:hover {
-            background-color: rgb(171, 171, 171);
-        }
-        
-        .txt{
-            cursor: pointer;
-            color: $clr6;
-            position: absolute;
-            inset: 0;
-            font-size: 13px;
-            font-weight: 400;
-        }   
+
+    .measure-unit{
+        color: rgb(103, 104, 121);
+        font-size: 12px;
     }
+
 }
+
+
+// .category-sum-footer {
+//     padding: 6px 16px;
+//     position: relative;
+    
+//     .bar {
+//         position: relative;
+//         width: 100%;
+//         height: 100%;
+//         border-radius:2em;
+//         background-color: $clr8;
+//         &:hover {
+//             background-color: rgb(171, 171, 171);
+//         }
+        
+//         .txt{
+//             cursor: pointer;
+//             color: $clr6;
+//             position: absolute;
+//             inset: 0;
+//             font-size: 13px;
+//             font-weight: 400;
+//         }   
+//     }
+// }

@@ -1,11 +1,83 @@
-.edit-expected {
+.category-sum-menu{
     position: absolute;
-    inset: 0;
-    margin: 5px;
-    border: $table-border;
+    background-color: #fff;
+    box-shadow: 0 4px 17px 6px rgba(0,0,0,.1);
+    padding: 10px;
+    border-radius: 8px;
+    top: 0;
+    right: 129px;
+    z-index: 20;
+
+    .field{
+        margin-bottom: 20px;
+
+    }
+
+    .title{
+        margin-bottom: 10px;
+        font-family: figtree-l;
+        font-size: 15px;
+    }
+    
+    .input-item{
+        padding: 3px 7px;
+        border-block:1px solid rgb(195, 198, 212) ;
+        border-right: 1px solid rgb(195, 198, 212);
+        
+        &:first-child{
+            border-left: 1px solid rgb(195, 198, 212);
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+        &:last-child{
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        &:hover{
+            color: $clr5;
+        }
+        
+        &.active{
+            color: $clr5;
+            border-color: $clr5;
+        }
+
+        
+        &:has(+ .acvite){
+            color: red;
+            border-right-color: $clr5;
+        }
+    }
+
+    label{
+        cursor: pointer;
+    }
     
 
-    input{
-        padding-inline-start: 4px;
+    .sum-menu-footer{
+        border-top: 2px solid $clr9;
+        padding-top: 10px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+// .edit-expected {
+//     position: absolute;
+//     inset: 0;
+//     margin: 5px;
+//     border: $table-border;
+    
+
+//     input{
+//         padding-inline-start: 4px;
+//     }
+// }

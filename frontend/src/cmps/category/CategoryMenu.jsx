@@ -3,7 +3,7 @@ import { CategoryColorList } from "./CategoryColorList"
 import { Icon } from "../ui/Icon"
 
 
-export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCategoryColor, toggleEditExpected, color, isMiniPreview, setIsMiniPreview }) => {
+export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCategoryColor, toggleEditExpected, color, isMiniPreview, setIsMiniPreview, isIncome }) => {
 
     const [isColorShow, setIsColorShow] = useToggle(false)
 
@@ -36,10 +36,12 @@ export const CategoryMenu = ({ toggleCategoryMenu, onDeleteCategory, updateCateg
                 <Icon name="duplicate" />
                 <span>Duplicate</span>
             </div>
-            <div className="delete menu-item" onClick={onDeleteCategory}>
-                <Icon name="delete" />
-                <span>Delete</span>
-            </div>
+            {(!isIncome) &&
+                <div className="delete menu-item" onClick={onDeleteCategory}>
+                    <Icon name="delete" />
+                    <span>Delete</span>
+                </div>
+            }
         </section>
     )
 }

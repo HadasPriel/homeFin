@@ -116,9 +116,6 @@ async function addExpense(monthId, categoryId, expense, isIncome) {
     try {
         const collection = await dbService.getCollection('month')
         let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
-        console.log('monthToSave:', monthToSave)
-        console.log('isIncome:', isIncome)
-        console.log('monthToSave.income:', monthToSave.income)
 
         const expenseToAdd = _createExpense(expense)
 

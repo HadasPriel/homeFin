@@ -63,6 +63,7 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
                 color={category.color}
                 isMiniPreview={isMiniPreview}
                 setIsMiniPreview={setIsMiniPreview}
+                isIncome={category.isIncome}
             />}
 
             {isMiniPreview ?

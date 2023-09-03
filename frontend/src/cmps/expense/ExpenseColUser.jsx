@@ -9,7 +9,7 @@ export const ExpenseColUser = ({ expenseToSave, accountMembers, onEditExpense })
     const [isByUserShow, setIsByUserShow] = useToggle(false, elCmp)
 
     return (
-        <div className="cell flex center" onClick={setIsByUserShow} ref={elCmp}>
+        <div className="expense-cell-user cell flex center" onClick={setIsByUserShow} ref={elCmp}>
             <UserImg user={expenseToSave.byUser} />
             {isByUserShow && <UserList members={accountMembers} expenseMember={expenseToSave.byUser} func={onEditExpense} />}
         </div>
