@@ -17,6 +17,15 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
         updateCategoryExpected(ev, +expectedToSave)
     }
 
+    var accountCurrency = { symbol: '₪', code: 'USD' }
+
+    const currencies = [
+        { symbol: '$', code: 'USD' },
+        { symbol: '€', code: 'EUR' },
+        { symbol: '₪', code: 'NIS' },
+        { symbol: '£', code: 'Pound' },
+    ]
+
     return (
         <form
             className="category-sum-menu"
@@ -26,7 +35,6 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
             <fieldset className="field">
                 <legend className="title" >Expexted expense</legend>
                 <div className="input-container">
-
                     <input
                         ref={elExpected}
                         className="input-item"
@@ -40,19 +48,12 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
             <fieldset className="field">
                 <legend className="title">Currency</legend>
                 <div className="input-container flex">
-                    <label className="input-item">$
-                        <input type="radio" value="USD" hidden />
-                    </label>
-                    <label className="input-item">€
-                        <input type="radio" value="EUR" hidden />
-                    </label>
-                    <label className="input-item">₪
-                        <input type="radio" value="NIS" hidden />
-                    </label>
-                    <label className="input-item">£
-                        <input type="radio" value="Pound" hidden />
-                    </label>
-                    <label className="input-item active">
+                    {currencies.map(currency =>
+                        <label className={`input-item ${accountCurrency.code === currency.code ? 'active' : ''} `} key={currency.code}> {currency.symbol}
+                            <input type="radio" value={currency.code} hidden />
+                        </label>
+                    )}
+                    <label className="input-item">
                         <input type="text" placeholder="type your own" />
                     </label>
                 </div>
