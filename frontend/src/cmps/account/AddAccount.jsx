@@ -1,12 +1,11 @@
-import { useRef } from "react";
 
 import { useToggle } from "../../hooks/useToggle";
 import { useForm } from "../../hooks/useForm.js";
 
 
 export const AddAccount = ({ addAccount }) => {
-    const elCmp = useRef();
-    const [isAddShow, setIsAddShow] = useToggle(false, elCmp);
+
+    const [isAddShow, setIsAddShow] = useToggle(false);
     const [accountToAdd, setAccountToAdd] = useForm({ title: '' });
 
 
@@ -18,7 +17,7 @@ export const AddAccount = ({ addAccount }) => {
     }
 
     return (
-        <section className="add-account" ref={elCmp} >
+        <section className="add-account" >
             <div className='add-account-container flex space-between'>
                 {isAddShow &&
                     <form onSubmit={onAddAccount} >

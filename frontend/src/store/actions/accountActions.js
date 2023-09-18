@@ -11,7 +11,8 @@ const accountActions = {
   saveDescription,
   saveLabel,
   removeLabel,
-  updateCols
+  updateCols,
+  updateCurrency
 }
 
 
@@ -116,6 +117,17 @@ function updateCols(accountId, cols) {
     } catch (err) {
       dispatch({ type: 'UPDATE_COLS', cols: prevCols })
       console.log('AccountActions: err in updateCols', err)
+    }
+  }
+}
+
+function updateCurrency(accountId, currency) {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'UPDATE_CURRENCY', currency })
+      await accountService.updateCurrency(accountId, currency)
+    } catch (err) {
+      console.log('AccountActions: err in updateCurrency', err)
     }
   }
 }

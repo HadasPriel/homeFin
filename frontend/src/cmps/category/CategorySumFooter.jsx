@@ -1,13 +1,10 @@
-import { useRef } from "react"
-
 import { useToggle } from "../../hooks/useToggle"
 import { CategorySumMenu } from "./CategorySumMenu";
 
 
-export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCategory }) => {
+export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCategory, currency, updateCurrency }) => {
 
-    const elExpected = useRef(null)
-    const [isMenuShow, setIsMenuShow] = useToggle(false, elExpected)
+    const [isMenuShow, setIsMenuShow] = useToggle(false)
 
 
     const updateCategoryExpected = (ev, expectedToSave) => {
@@ -15,16 +12,28 @@ export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCatego
         setIsMenuShow(false)
     }
 
+    const codeSymbolCurrencyMap = {
+        USD: '$', EUR: '€', NIS: '₪', Pound: '£'
+    }
 
     return (
-        <section className="category-sum-footer cell flex center" ref={elExpected} >
+        <section className="category-sum-footer cell flex center"  >
             {isMenuShow &&
                 <CategorySumMenu
                     updateCategoryExpected={updateCategoryExpected}
                     expensesSum={expensesSum}
+                    expected={expected}
+                    accountCurrency={currency}
+                    codeSymbolCurrencyMap={codeSymbolCurrencyMap}
+                    updateCurrency={updateCurrency}
+                    setIsMenuShow={setIsMenuShow}
                 />}
-            <section className="flex col center" onClick={setIsMenuShow}>
-                ${expensesSum} <span className="measure-unit" >sum</span>
+            <section className="sum flex col center" onClick={setIsMenuShow}>
+                <span>
+                    <span>{codeSymbolCurrencyMap[currency]}</span>
+                    <span>{expensesSum}</span>
+                </span>
+                <span className="measure-unit" >sum</span>
             </section>
 
 

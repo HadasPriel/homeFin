@@ -10,7 +10,8 @@ export const accountService = {
   saveDescription,
   saveLabel,
   removeLabel,
-  updateCols
+  updateCols,
+  updateCurrency
 }
 
 async function query(filterBy) {
@@ -47,4 +48,8 @@ async function removeLabel(accountId, labelId) {
 
 async function updateCols(accountId, cols) {
   return await httpService.put(`account/cols`, { accountId, cols })
+}
+
+async function updateCurrency(accountId, currency) {
+  return await httpService.put(`account/currency`, { accountId, currency })
 }

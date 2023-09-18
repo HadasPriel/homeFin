@@ -53,6 +53,11 @@ export function accountReducer(state = initialState, action = {}) {
         ...state,
         currAcount: { ...state.currAcount, cols: action.cols }
       }
+    case 'UPDATE_CURRENCY':
+      return {
+        ...state,
+        currAcount: { ...state.currAcount, currencyCode: action.currency }
+      }
 
     default:
       return state

@@ -146,6 +146,23 @@ async function saveCols(accountId, cols) {
     }
 }
 
+async function saveCurrency(accountId, currencyCode) {
+    try {
+        const collection = await dbService.getCollection('account')
+        await collection.updateOne(
+            { _id: ObjectId(accountId) },
+            { $set: { currencyCode } })
+    } catch (err) {
+        logger.error('cannot save currency to account', err)
+        throw err
+    }
+}
+
+
+
+
+
+
 function _createAccount(account) {
     return {
         title: account.title,
@@ -157,7 +174,7 @@ function _createAccount(account) {
             { id: "2", type: "creditCard", code: "1111" },
             { id: "1", type: "cash" }
         ],
-        mainCurrency: 'USA',
+        currencyCode: 'USA',
         months: [],
         cols: ['repeated', 'sum', 'labels', 'date', 'person'],
         labels: [

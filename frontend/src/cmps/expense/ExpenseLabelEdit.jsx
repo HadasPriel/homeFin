@@ -1,10 +1,13 @@
 import { ExpenseLabelPreview } from "./ExpenseLabelPreview"
 import { useToggle } from "../../hooks/useToggle"
+import { useClickOutside } from "../../hooks/useClickOutside.js"
 
 
 export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, updateLabel, removeLabel }) => {
     const [isEditLabelShow, setIsEditLabelShow] = useToggle(false)
     const [isAddLabel, setIsAddLabel] = useToggle(false)
+
+    const elMenu = useClickOutside(setIsEditShow)
 
 
     const emptyLabel = { id: 'l101', txt: '', color: 'lb18_bright' }
@@ -17,7 +20,7 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
 
 
     return (
-        <section className="expense-label-edit">
+        <section className="expense-label-edit" ref={elMenu}>
 
             <div className={'label-list'}>
                 {accountLabels.map(label =>

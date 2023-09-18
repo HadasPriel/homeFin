@@ -106,6 +106,17 @@ async function updateCols(req, res) {
     }
 }
 
+async function updateCurrency(req, res) {
+    try {
+        const { accountId, currency } = req.body
+        await accountService.saveCurrency(accountId, currency)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to update account currency', err)
+        res.status(500).send({ err: 'Failed to update account currency' })
+    }
+}
+
 module.exports = {
     getAccounts,
     getAccount,
@@ -115,5 +126,6 @@ module.exports = {
     saveDescription,
     saveLabel,
     deleteLabel,
-    updateCols
+    updateCols,
+    updateCurrency
 }

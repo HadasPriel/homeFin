@@ -4,7 +4,7 @@
 import { CategoryLabelFooter } from "./CategoryLabelFooter";
 import { CategorySumFooter } from "./CategorySumFooter";
 
-export const CategoryFooterList = ({ cols, category, toggleEditExpected, onUpdateCategory }) => {
+export const CategoryFooterList = ({ cols, category, toggleEditExpected, onUpdateCategory, currency, updateCurrency }) => {
 
     const expensesSum = category.expenses.reduce((acc, expense) => {
         return acc + expense.sum.amount
@@ -20,7 +20,9 @@ export const CategoryFooterList = ({ cols, category, toggleEditExpected, onUpdat
                             expected={category.expected}
                             color={category.color}
                             expensesSum={expensesSum}
-                            onUpdateCategory={onUpdateCategory} />
+                            onUpdateCategory={onUpdateCategory}
+                            currency={currency}
+                            updateCurrency={updateCurrency} />
                     case 'labels':
                         return <CategoryLabelFooter category={category} key={col} />
                     default:

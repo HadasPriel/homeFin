@@ -1,6 +1,8 @@
 import { useRef, useState } from "react"
 import { useToggle } from "../../../hooks/useToggle"
+import { useClickOutside } from "../../../hooks/useClickOutside.js"
 import { CommentList } from "./CommentList"
+import { ExpenseCommentEditor } from "./ExpenseCommentEditor"
 
 
 export const ExpenseComment = ({ expense, addComment }) => {
@@ -8,8 +10,8 @@ export const ExpenseComment = ({ expense, addComment }) => {
 
     const [comment, setComment] = useState('')
 
-    const elForm = useRef(null)
-    const [isEditorShow, toggleIsEditorShow] = useToggle(false, elForm)
+    const [isEditorShow, toggleIsEditorShow] = useToggle(false)
+    // const elForm = useClickOutside(toggleIsEditorShow)
 
     const onAddComment = (ev) => {
         ev.preventDefault()
@@ -25,12 +27,7 @@ export const ExpenseComment = ({ expense, addComment }) => {
     return (
         <section className="expense-comment" >
             {isEditorShow ?
-                <form onSubmit={onAddComment} className="comment-form flex col" ref={elForm}>
-                    <div className="comment-editor flex col">
-                        <textarea onChange={commentHandleChange} placeholder="Write an update" />
-                    </div>
-                    <button className="update-btn btn suc" >Update</button>
-                </form>
+                <ExpenseCommentEditor toggleIsEditorShow={toggleIsEditorShow} onAddComment={onAddComment} />
                 :
                 <div className="write-comment" onClick={toggleIsEditorShow} >
                     <p>Write an update</p>

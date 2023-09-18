@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from "react"
+import { useClickOutside } from "../../hooks/useClickOutside.js"
 
-export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum }) => {
+export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpected, expensesSum, codeSymbolCurrencyMap, accountCurrency, updateCurrency }) => {
 
     const [expectedToSave, setExpectedToSave] = useState(expected || '')
+
+    var elMenu = useClickOutside(setIsMenuShow)
+
     const elExpected = useRef(null)
     useEffect(() => {
         elExpected.current.focus()
@@ -12,25 +16,25 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
         setExpectedToSave(ev.target.value)
     }
 
-    const updateExpected = async (ev) => {
+    const onUpdateExpected = async (ev) => {
         ev.preventDefault()
         updateCategoryExpected(ev, +expectedToSave)
     }
 
-    var accountCurrency = { symbol: '₪', code: 'USD' }
+    const onUpdateCurrency = async (ev) => {
+        console.log('??');
+        // updateCurrency(ev.value)
+    }
 
-    const currencies = [
-        { symbol: '$', code: 'USD' },
-        { symbol: '€', code: 'EUR' },
-        { symbol: '₪', code: 'NIS' },
-        { symbol: '£', code: 'Pound' },
-    ]
+    var currencyCodes = Object.keys(codeSymbolCurrencyMap)
+    var currencySymbols = Object.values(codeSymbolCurrencyMap)
+
 
     return (
         <form
             className="category-sum-menu"
-            onSubmit={updateExpected}
-            name="expected" >
+            name="expected"
+            ref={elMenu}>
 
             <fieldset className="field">
                 <legend className="title" >Expexted expense</legend>
@@ -40,17 +44,19 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
                         className="input-item"
                         type="number"
                         placeholder="Insert expected sum"
+                        name="expected"
                         value={expectedToSave}
-                        onChange={onSetExpectedToSave} />
+                        onChange={onSetExpectedToSave}
+                        onBlur={onUpdateExpected} />
                 </div>
             </fieldset>
 
             <fieldset className="field">
                 <legend className="title">Currency</legend>
                 <div className="input-container flex">
-                    {currencies.map(currency =>
-                        <label className={`input-item ${accountCurrency.code === currency.code ? 'active' : ''} `} key={currency.code}> {currency.symbol}
-                            <input type="radio" value={currency.code} hidden />
+                    {currencyCodes.map((currency, idx) =>
+                        <label className={`input-item ${accountCurrency === currency ? 'active' : ''} `} key={currency} onClick={onUpdateCurrency}> {currencySymbols[idx]}
+                            <input type="radio" value={currency} onChange={onUpdateCurrency} hidden />
                         </label>
                     )}
                     <label className="input-item">
@@ -61,6 +67,7 @@ export const CategorySumMenu = ({ expected, updateCategoryExpected, expensesSum 
 
             <footer className="sum-menu-footer">
                 <p className="title">Overall sum of column: {expensesSum} </p>
+
             </footer>
 
         </form>

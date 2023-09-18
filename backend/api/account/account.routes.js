@@ -1,6 +1,6 @@
 const express = require('express')
 const { log } = require('../../middlewares/logger.middleware')
-const { addAccount, getAccounts, getAccount, deleteAccount, toggleMember, saveDescription, saveLabel, deleteLabel, updateCols } = require('./account.controller')
+const { addAccount, getAccounts, getAccount, deleteAccount, toggleMember, saveDescription, saveLabel, deleteLabel, updateCols, updateCurrency } = require('./account.controller')
 const router = express.Router()
 
 // middleware that is specific to this router
@@ -15,5 +15,6 @@ router.put(`/description`, saveDescription)
 router.put(`/labels`, saveLabel)
 router.put(`/label/remove`, deleteLabel)
 router.put(`/cols`, updateCols)
+router.put(`/currency`, updateCurrency)
 
 module.exports = router

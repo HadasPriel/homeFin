@@ -10,13 +10,14 @@ import { MonthHeader } from '../cmps/month/MonthHeader'
 import { CategoryList } from '../cmps/category/CategoryList'
 
 
-export const MonthDetails = (props) => {
+export const MonthDetails = () => {
 
     let { accountId, monthId } = useParams()
     let history = useHistory()
     const dispatch = useDispatch()
     const month = useSelector(state => state.monthModule.currMonth)
     const cols = useSelector(state => state.accountModule.currAcount.cols)
+    const currency = useSelector(state => state.accountModule.currAcount.currencyCode)
 
     useEffect(() => {
         if (monthId === 'null') return
@@ -139,6 +140,15 @@ export const MonthDetails = (props) => {
         }
     }
 
+    const updateCurrency = async (currency) => {
+        try {
+            console.log('here?', currency);
+            dispatch(actions.accountActions.updateCurrency(accountId, currency))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
 
     if (!month || !month.time) return <div>Loading...</div>
@@ -157,7 +167,9 @@ export const MonthDetails = (props) => {
                     updateExpense={updateExpense}
                     deleteExpense={deleteExpense}
                     cols={cols}
+                    currency={currency}
                     updateCols={updateCols}
+                    updateCurrency={updateCurrency}
                     updateLabel={updateLabel}
                     removeLabel={removeLabel}
                     income={month.income}
