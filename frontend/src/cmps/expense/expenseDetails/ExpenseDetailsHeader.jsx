@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import { useToggle } from '../../../hooks/useToggle'
+import { useToggle } from '../../../hooks/useToggle.js'
 import { UserImg } from '../../ui/UserImg'
 import { Icon } from '../../ui/Icon'
 import { ExpenseMenu } from './ExpenseMenu'

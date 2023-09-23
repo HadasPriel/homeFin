@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useRef } from "react"
 
-import { UserList } from "../ui/UserList";
-import { UserImg } from "../ui/UserImg";
-import { useToggle } from "../../hooks/useToggle"
+import { UserList } from "../ui/UserList"
+import { UserImg } from "../ui/UserImg"
+import { useToggle } from "../../hooks/useToggle.js"
 
 export const ExpenseColUser = ({ expenseToSave, accountMembers, onEditExpense }) => {
     const elCmp = useRef();

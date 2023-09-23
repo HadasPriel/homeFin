@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useToggle } from '../../hooks/useToggle';
+import { useState } from 'react'
+import { useToggle } from '../../hooks/useToggle.js'
 import { Link } from 'react-router-dom'
-import { Icon } from '../ui/Icon';
+import { Icon } from '../ui/Icon'
 
 
 export const AccountHeader = ({ account, accountId, toggleIsInviteShow, saveDescription, isScrolledToTop }) => {

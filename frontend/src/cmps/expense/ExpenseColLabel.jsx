@@ -1,5 +1,5 @@
 
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { ExpenseLabelEdit } from "./ExpenseLabelEdit"
 
 export const ExpenseColLabel = ({ expenseToSave, accountLabels, onEditExpense, updateLabel, removeLabel }) => {

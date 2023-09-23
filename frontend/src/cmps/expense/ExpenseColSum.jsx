@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
-import { useToggle } from "../../hooks/useToggle";
-import { useEffectUpdate } from "../../hooks/useEffectUpdate";
-import { utilService } from "../../services/util.service";
+import { useState, useRef } from "react"
+import { useToggle } from "../../hooks/useToggle.js"
+import { useEffectUpdate } from "../../hooks/useEffectUpdate"
+import { PricePreview } from "../ui/PricePreview"
 
 
-export const ExpenseColSum = ({ expenseToSave, onEditExpense }) => {
+export const ExpenseColSum = ({ expenseToSave, onEditExpense, currency }) => {
 
     const [isEditSum, setIsEditSum] = useToggle(false)
     const [amount, setAmount] = useState(expenseToSave.sum.amount)
@@ -15,11 +15,6 @@ export const ExpenseColSum = ({ expenseToSave, onEditExpense }) => {
         elInput.current.focus()
         // eslint-disable-next-line
     }, [isEditSum, elInput])
-
-    const currency = useRef(null)
-    if (currency.current === null) {
-        currency.current = utilService.getCurrency(expenseToSave.sum.currency)
-    }
 
 
     const onUpdateAmount = (ev) => {
@@ -35,11 +30,7 @@ export const ExpenseColSum = ({ expenseToSave, onEditExpense }) => {
     return (
         <section className={`expense-sum cell flex center`}>
             <div className={`frame flex center`} onClick={setIsEditSum} >
-                {!isEditSum &&
-                    <div className={`flex ${((expenseToSave.sum.currency === '$') ? '' : 'row-re')}`} onClick={setIsEditSum} >
-                        <span>{amount}</span> <span>{currency.current}</span>
-                    </div>}
-                {isEditSum &&
+                {isEditSum ?
                     <form onSubmit={onUpdateAmount} name="amount" >
                         <input
                             className="cell-input"
@@ -47,9 +38,11 @@ export const ExpenseColSum = ({ expenseToSave, onEditExpense }) => {
                             type="number"
                             onChange={handleChange}
                             onBlur={onUpdateAmount}
-                            value={amount}
+                            value={amount || ''}
                             ref={elInput} />
-                    </form>}
+                    </form>
+                    :
+                    <PricePreview sum={amount} currency={currency} />}
             </div>
         </section>
 

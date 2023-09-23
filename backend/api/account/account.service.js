@@ -203,7 +203,8 @@ module.exports = {
     saveDescription,
     saveLabel,
     removeLabel,
-    saveCols
+    saveCols,
+    saveCurrency
 }
 
 

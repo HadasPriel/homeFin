@@ -1,4 +1,4 @@
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { CategoryColorList } from "./CategoryColorList"
 import { Icon } from "../ui/Icon"
 

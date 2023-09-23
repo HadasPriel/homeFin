@@ -51,6 +51,7 @@ export const ExpenseList = (props) => {
                                             cols={props.cols}
                                             updateLabel={props.updateLabel}
                                             removeLabel={props.removeLabel}
+                                            currency={props.currency}
                                         />
                                     </div>
                                 )}

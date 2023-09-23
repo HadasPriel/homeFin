@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { useHistory } from "react-router-dom";
-import { Uploader } from "../cmps/Uploader";
-import { useToggle } from "../hooks/useToggle";
+import { useHistory } from "react-router-dom"
+import { Uploader } from "../cmps/Uploader"
+import { useToggle } from "../hooks/useToggle.js"
 
-import actions from '../store/actions';
+import actions from '../store/actions'
 
 
 export const LoginSignup = () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useToggle } from '../hooks/useToggle'
+import { useToggle } from '../hooks/useToggle.js'
 import { cloudinaryService } from '../services/cloudinary.service.js'
 
 export const Uploader = ({ onUpload }) => {

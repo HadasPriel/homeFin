@@ -2,7 +2,7 @@
 import { useCallback } from "react"
 import { AddExpense } from "../expense/AddExpense"
 import { CategoryMenu } from "./CategoryMenu"
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { CategoryHeader } from "./CategoryHeader"
 import { CategoryColHeaders } from "./CategoryColHeaders"
 import { CategoryFooter } from "./CategoryFooter"
@@ -51,6 +51,7 @@ export const CategoryPreview = ({ category, addExpense, updateExpense, deleteExp
         const categoryToSave = { ...category }
         var field = ev.target.getAttribute('name')
         categoryToSave[field] = newVal
+        // console.log(newVal, field, categoryToSave[field] )
         updateCtegory(categoryToSave)
     }
 

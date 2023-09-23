@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { useToggle } from "../../hooks/useToggle";
+import { useState, useEffect, useRef } from "react"
+import { useToggle } from "../../hooks/useToggle.js"
 
 
 export const ExpenseSum = ({ expenseToSave, onEditExpense }) => {

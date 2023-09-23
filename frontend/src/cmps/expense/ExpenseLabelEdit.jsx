@@ -1,5 +1,5 @@
 import { ExpenseLabelPreview } from "./ExpenseLabelPreview"
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { useClickOutside } from "../../hooks/useClickOutside.js"
 
 

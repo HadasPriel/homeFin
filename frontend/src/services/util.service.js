@@ -74,9 +74,10 @@ function getNextPrevTime(time, diff) {
     return `${month}/${year}`
 }
 
+
 function getCurrency(currencyCode) {
     switch (currencyCode) {
-        case 'USA':
+        case 'USD':
             return '$'
         case 'ILS':
             return '₪'

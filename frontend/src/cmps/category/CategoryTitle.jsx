@@ -1,5 +1,5 @@
 
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { CategoryTitleEdit } from "./CategoryTitleEdit"
 
 

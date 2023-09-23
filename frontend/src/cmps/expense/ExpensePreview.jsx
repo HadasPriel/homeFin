@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useEffectUpdate } from "../../hooks/useEffectUpdate"
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 
 import { ExpenseColList } from "./ExpenseColList"
 import { ExpenseDescription } from "./ExpenseDescription"
@@ -10,7 +10,7 @@ import { Icon } from "../ui/Icon"
 
 
 
-export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel }) => {
+export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel, currency }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [expenseToSave, setExpense] = useState({ ...expense })
@@ -74,7 +74,8 @@ export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpen
                     editExpenseTime={editExpenseTime}
                     editExpenseRepeat={editExpenseRepeat}
                     updateLabel={updateLabel}
-                    removeLabel={removeLabel} />
+                    removeLabel={removeLabel}
+                    currency={currency} />
                 <div className="last-cell cell flex center"></div>
             </section>
         </section>

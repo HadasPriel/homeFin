@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Switch, Route, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useToggle } from '../hooks/useToggle'
+import { useToggle } from '../hooks/useToggle.js'
 
 import actions from '../store/actions'
 

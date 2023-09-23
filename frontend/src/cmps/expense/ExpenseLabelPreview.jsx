@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useForm.js"
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 import { ColorList } from "../ui/ColorList"
 
 

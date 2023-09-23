@@ -1,6 +1,6 @@
 import { DatePicker } from "../ui/date-picker"
 import { format } from 'date-fns'
-import { useToggle } from "../../hooks/useToggle"
+import { useToggle } from "../../hooks/useToggle.js"
 
 export const ExpenseColDate = ({ expenseToSave, editExpenseTime }) => {
 

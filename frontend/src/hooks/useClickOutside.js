@@ -9,7 +9,7 @@ export const useClickOutside = (func) => {
 
 
         const onClickOutside = (ev) => {
-            if (ref.current || !ref.current.contains(ev.target)) {
+            if (!ref.current || !ref.current.contains(ev.target)) {
                 func()
             }
         }

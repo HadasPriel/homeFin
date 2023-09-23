@@ -1,5 +1,6 @@
-import { useToggle } from "../../hooks/useToggle"
-import { CategorySumMenu } from "./CategorySumMenu";
+import { useToggle } from "../../hooks/useToggle.js"
+import { PricePreview } from "../ui/PricePreview"
+import { CategorySumMenu } from "./CategorySumMenu"
 
 
 export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCategory, currency, updateCurrency }) => {
@@ -29,11 +30,8 @@ export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCatego
                     setIsMenuShow={setIsMenuShow}
                 />}
             <section className="sum flex col center" onClick={setIsMenuShow}>
-                <span>
-                    <span>{codeSymbolCurrencyMap[currency]}</span>
-                    <span>{expensesSum}</span>
-                </span>
-                <span className="measure-unit" >sum</span>
+                <PricePreview sum={expensesSum} currency={currency} />
+                <span className="measure-unit" >expected: {expected}</span>
             </section>
 
 

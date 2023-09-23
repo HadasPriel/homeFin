@@ -1,11 +1,8 @@
-import { useRef, useState } from "react"
-import { useToggle } from "../../../hooks/useToggle"
+import { useState } from "react"
 import { useClickOutside } from "../../../hooks/useClickOutside.js"
-import { CommentList } from "./CommentList"
 
 
 export const ExpenseCommentEditor = ({ toggleIsEditorShow, onAddComment }) => {
-
 
     const [comment, setComment] = useState('')
 
@@ -15,15 +12,20 @@ export const ExpenseCommentEditor = ({ toggleIsEditorShow, onAddComment }) => {
         setComment(ev.target.value)
     }
 
+    const addComment = (ev) => {
+        ev.preventDefault()
+        onAddComment(ev.target.value)
+    }
+
 
     return (
-        
-        <form onSubmit={onAddComment} className="comment-form flex col" ref={elForm}>
+
+        <form onSubmit={addComment} className="comment-form flex col" ref={elForm}>
             <div className="comment-editor flex col">
-                <textarea onChange={commentHandleChange} placeholder="Write an update" />
+                <textarea onChange={commentHandleChange} placeholder="Write an update" value={comment} />
             </div>
             <button className="update-btn btn suc" >Update</button>
         </form>
-                
+
     )
 }

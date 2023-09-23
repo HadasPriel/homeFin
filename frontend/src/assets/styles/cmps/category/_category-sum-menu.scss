@@ -43,6 +43,11 @@
             border-color: $clr5;
         }
 
+        &.expected{
+            border: 1px solid rgb(195, 198, 212);
+            border-radius: 4px;
+        }
+
     }
 
     .active + label {
@@ -54,6 +59,17 @@
         cursor: pointer;
     }
     
+    .expected-field{
+        .input-container{
+            display: flex;
+            height: 24px;
+        }
+        
+        .btn{
+            padding: 0px 8px;
+            margin-inline-start: 5px;
+        }
+    }
 
     .sum-menu-footer{
         border-top: 2px solid $clr9;

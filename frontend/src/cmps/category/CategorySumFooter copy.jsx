@@ -1,7 +1,7 @@
 import { useRef } from "react"
 
-import { useToggle } from "../../hooks/useToggle"
-import { EditExpected } from "./EditExpected";
+import { useToggle } from "../../hooks/useToggle.js"
+import { EditExpected } from "./EditExpected"
 
 
 export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCategory }) => {

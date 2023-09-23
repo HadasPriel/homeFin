@@ -12,18 +12,16 @@ export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpecte
         elExpected.current.focus()
     }, [])
 
-    const onSetExpectedToSave = async (ev) => {
+    const onSetExpectedToSave = (ev) => {
         setExpectedToSave(ev.target.value)
     }
 
     const onUpdateExpected = async (ev) => {
-        ev.preventDefault()
         updateCategoryExpected(ev, +expectedToSave)
     }
 
     const onUpdateCurrency = async (ev) => {
-        console.log('??');
-        // updateCurrency(ev.value)
+        updateCurrency(ev.target.value)
     }
 
     var currencyCodes = Object.keys(codeSymbolCurrencyMap)
@@ -34,20 +32,21 @@ export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpecte
         <form
             className="category-sum-menu"
             name="expected"
-            ref={elMenu}>
+            ref={elMenu} >
 
-            <fieldset className="field">
+            <fieldset className="field expected-field">
                 <legend className="title" >Expexted expense</legend>
                 <div className="input-container">
                     <input
                         ref={elExpected}
-                        className="input-item"
+                        className="input-item expected"
                         type="number"
                         placeholder="Insert expected sum"
                         name="expected"
                         value={expectedToSave}
                         onChange={onSetExpectedToSave}
-                        onBlur={onUpdateExpected} />
+                    />
+                    <button className="btn suc" type="button" name="expected" onClick={onUpdateExpected} > set </button>
                 </div>
             </fieldset>
 
@@ -67,7 +66,6 @@ export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpecte
 
             <footer className="sum-menu-footer">
                 <p className="title">Overall sum of column: {expensesSum} </p>
-
             </footer>
 
         </form>

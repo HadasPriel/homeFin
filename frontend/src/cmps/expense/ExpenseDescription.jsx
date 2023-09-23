@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
-import { useToggle } from "../../hooks/useToggle";
-import { useEffectUpdate } from "../../hooks/useEffectUpdate";
+import { useState, useRef } from "react"
+import { useToggle } from "../../hooks/useToggle.js"
+import { useEffectUpdate } from "../../hooks/useEffectUpdate"
 
 import { StartRow } from "../category/StartRow"
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router"
+import { Link } from "react-router-dom"
 
 
 export const ExpenseDescription = ({ expenseToSave, onEditExpense, color, cotegoryId }) => {
