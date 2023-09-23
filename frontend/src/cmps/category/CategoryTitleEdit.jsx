@@ -1,14 +1,12 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
+import { useAutoFocus } from "../../hooks/useAutoFocus.js"
 
 
 export const CategoryTitleEdit = ({ updateTitle, categoryTitle, color }) => {
 
     const [title, setTitle] = useState(categoryTitle)
-    const elTitle = useRef(null)
 
-    useEffect(() => {
-        elTitle.current.focus()
-    }, [])
+    const elTitle = useAutoFocus()
 
     const handleChange = (ev) => {
         setTitle(ev.target.value)

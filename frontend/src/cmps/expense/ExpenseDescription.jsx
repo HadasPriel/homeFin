@@ -1,23 +1,23 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { useToggle } from "../../hooks/useToggle.js"
-import { useEffectUpdate } from "../../hooks/useEffectUpdate"
 
 import { StartRow } from "../category/StartRow"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
+import { useAutoFocus } from "../../hooks/useAutoFocus.js"
 
 
 export const ExpenseDescription = ({ expenseToSave, onEditExpense, color, cotegoryId }) => {
     let { accountId, monthId } = useParams()
-    const elInput = useRef(null)
     const [isEditDesc, setIsEditDesc] = useToggle(false)
     const [description, setDescription] = useState(expenseToSave.description)
+    const elInput = useAutoFocus()
 
-
-    useEffectUpdate(() => {
-        if (!isEditDesc || !elInput.current) return
-        elInput.current.focus()
-    }, [isEditDesc, elInput])
+    // const elInput = useRef(null)
+    // useEffectUpdate(() => {
+    //     if (!isEditDesc || !elInput.current) return
+    //     elInput.current.focus()
+    // }, [isEditDesc, elInput])
 
 
     const onUpdateDesc = (ev) => {

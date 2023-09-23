@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { useClickOutside } from "../../hooks/useClickOutside.js"
+import { useAutoFocus } from "../../hooks/useAutoFocus.js"
 
 export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpected, expensesSum, codeSymbolCurrencyMap, accountCurrency, updateCurrency }) => {
 
@@ -7,10 +8,7 @@ export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpecte
 
     var elMenu = useClickOutside(setIsMenuShow)
 
-    const elExpected = useRef(null)
-    useEffect(() => {
-        elExpected.current.focus()
-    }, [])
+    const elExpected = useAutoFocus()
 
     const onSetExpectedToSave = (ev) => {
         setExpectedToSave(ev.target.value)

@@ -1,12 +1,11 @@
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
+import { useAutoFocus } from "../../hooks/useAutoFocus.js"
 
 export const EditExpected = ({ expected, onUpdateCategory }) => {
 
     const [expectedToSave, setExpectedToSave] = useState(expected || '')
-    const elExpected = useRef(null)
-    useEffect(() => {
-        elExpected.current.focus()
-    }, [])
+
+    const elExpected = useAutoFocus()
 
     const onSetExpectedToSave = async (ev) => {
         setExpectedToSave(ev.target.value)
