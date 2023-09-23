@@ -5,13 +5,9 @@ import { ExpenseCommentEditor } from "./ExpenseCommentEditor"
 
 export const ExpenseComment = ({ expense, addComment }) => {
 
-
-
     const [isEditorShow, toggleIsEditorShow] = useToggle(false)
-    // const elForm = useClickOutside(toggleIsEditorShow)
 
     const onAddComment = (comment) => {
-
         addComment(comment)
         toggleIsEditorShow()
     }
