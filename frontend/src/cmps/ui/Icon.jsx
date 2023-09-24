@@ -3,7 +3,7 @@ import icons from '../../assets/img/icons.svg';
 
 export const Icon = ({ name, handler, classNames, color }) => {
 
-    const func = () => {
+    const func = (ev) => {
         if (handler) handler()
     }
 

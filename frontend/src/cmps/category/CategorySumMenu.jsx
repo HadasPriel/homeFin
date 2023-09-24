@@ -33,7 +33,7 @@ export const CategorySumMenu = ({ setIsMenuShow, expected, updateCategoryExpecte
             ref={elMenu} >
 
             <fieldset className="field expected-field">
-                <legend className="title" >Expexted expense</legend>
+                <legend className="title" >Expexted budget</legend>
                 <div className="input-container">
                     <input
                         ref={elExpected}

@@ -63,11 +63,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
     nav > * {
         margin-inline-start: 8px;
     }
+    
+    &.resp{
+        nav{
+            display: none;
+            flex-direction: column;
+            &.open{
+                display: flex;
+            }
+        }
+        
+        @include for-normal-layout{
+            .menu-btn{
+                display: none;
+            }
+            nav{
+                position: unset;
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
 }
+
 
 .all{
     height: 100%;
@@ -98,3 +120,5 @@
     padding: 0;
     font-size: inherit;
 }
+
+

@@ -4,30 +4,56 @@ import { useClickOutside } from "../../hooks/useClickOutside.js"
 
 
 export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, updateLabel, removeLabel }) => {
+
     const [isEditLabelShow, setIsEditLabelShow] = useToggle(false)
     const [isAddLabel, setIsAddLabel] = useToggle(false)
 
     const elMenu = useClickOutside(setIsEditShow)
 
 
-    const emptyLabel = { id: 'l101', txt: '', color: 'lb18_bright' }
+    const defaultLabel = { id: 'l101', txt: 'Default Label', color: 'lb18_bright' }
     const newLabel = { id: '', txt: '', color: 'lb18_bright' }
 
     const onAddLabel = (label) => {
         updateLabel(label)
-        setIsAddLabel()
+        setIsAddLabel(false)
     }
 
 
     return (
         <section className="expense-label-edit" ref={elMenu}>
 
-            <div className={'label-list'}>
+            <div className='label-list'>
                 {accountLabels.map(label =>
-                    <ExpenseLabelPreview isEditLabelShow={isEditLabelShow} label={label} onEditExpense={onEditExpense} setIsEditShow={setIsEditShow} updateLabel={updateLabel} key={label.id} removeLabel={removeLabel} />
-                )}
-                <ExpenseLabelPreview isEditLabelShow={isEditLabelShow} label={emptyLabel} onEditExpense={onEditExpense} setIsEditShow={setIsEditShow} updateLabel={updateLabel} key={emptyLabel.id} />
-                {isAddLabel && <ExpenseLabelPreview isEditLabelShow={isEditLabelShow} label={newLabel} onEditExpense={onEditExpense} setIsEditShow={setIsEditShow} updateLabel={onAddLabel} key={newLabel.id} />}
+                    <ExpenseLabelPreview
+                        key={label.id}
+                        isEditLabelShow={isEditLabelShow}
+                        label={label}
+                        onEditExpense={onEditExpense}
+                        setIsEditShow={setIsEditShow}
+                        updateLabel={updateLabel}
+                        removeLabel={removeLabel}
+                    />)}
+
+                <ExpenseLabelPreview
+                    key={defaultLabel.id}
+                    isEditLabelShow={isEditLabelShow}
+                    label={defaultLabel}
+                    onEditExpense={onEditExpense}
+                    setIsEditShow={setIsEditShow}
+                    updateLabel={updateLabel}
+                />
+
+                {isAddLabel &&
+                    <ExpenseLabelPreview
+                        key={newLabel.id}
+                        isEditLabelShow={isEditLabelShow}
+                        label={newLabel}
+                        onEditExpense={onEditExpense}
+                        setIsEditShow={setIsEditShow}
+                        updateLabel={onAddLabel}
+                    />}
+
                 {isEditLabelShow && <button onClick={setIsAddLabel} className="label-preview label-edit flex center btn solid">New label</button>}
             </div>
 

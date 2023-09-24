@@ -39,7 +39,7 @@ export const ExpenseLabelPreview = ({ isEditLabelShow, label, onEditExpense, set
                         onChange={onEditLabel}
                         className="label-preview label-show flex justify-center align-center"
                         style={{ backgroundColor: bgColor }} >
-                        {label.txt}
+                        {(label.id === 'l101')? '' : label.txt}
                         <input
                             name="label"
                             type="radio"
@@ -57,10 +57,10 @@ export const ExpenseLabelPreview = ({ isEditLabelShow, label, onEditExpense, set
                         value={labelToEdit.txt}
                         name='txt'
                         onChange={setLabelToEdit}
-                        placeholder="Default Label"
+                        placeholder="Add Label"
                         onBlur={onUpdateLabel} >
                     </input>
-                    {isColorShow && <ColorList func={onEditLabelColor} />}
+                    {isColorShow && <ColorList func={onEditLabelColor} setIsListShow={setIsColorShow} />}
                 </div>
             }
         </section>

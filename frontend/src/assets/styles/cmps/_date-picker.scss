@@ -14,12 +14,12 @@
 .MuiGrid-root{
     padding: 0 !important;
     top: 100px;
-    left: 56px;
+    // left: 56px;
 }
 
 .MuiGrid-container{
     position: relative; 
-    row-gap: 30px;   
+    row-gap: 30px;
 }
 
 .MuiYearPicker-root.css-x1wgng-MuiYearPicker-root, .MuiMonthPicker-root.css-n3vk4j-MuiMonthPicker-root{
@@ -29,3 +29,22 @@
     max-width: 330px !important;
 }
 
+.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-12.css-1fh410u-MuiGrid-root{
+    margin: auto;
+    margin-top: 1px;
+    width: 800px;
+    
+    @include for-mobile-layout{
+        width: 100%;
+    }
+    @include for-narrow-layout{
+        width: 100%;
+        & > *{
+            font-size: 12px;
+        }
+    }
+    @include for-normal-layout{
+        width: 700px;
+    }
+
+}

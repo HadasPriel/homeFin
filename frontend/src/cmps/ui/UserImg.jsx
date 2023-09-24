@@ -4,6 +4,7 @@ export const UserImg = ({ user }) => {
 
     return (
         <img 
+            name="byUser" 
             className="profile-img" 
             src={user?.imgUrl || profileImg} 
             alt="profile-img" 

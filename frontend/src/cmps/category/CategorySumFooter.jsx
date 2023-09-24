@@ -31,7 +31,7 @@ export const CategorySumFooter = ({ expected, color, expensesSum, onUpdateCatego
                 />}
             <section className="sum flex col center" onClick={setIsMenuShow}>
                 <PricePreview sum={expensesSum} currency={currency} />
-                <span className="measure-unit" >expected: {expected}</span>
+                <span className="measure-unit" >budget: {expected}</span>
             </section>
 
 

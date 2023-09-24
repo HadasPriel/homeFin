@@ -1,9 +1,14 @@
-export const ColorList = ({ className, func }) => {
+import { useClickOutside } from '../../hooks/useClickOutside.js'
+
+export const ColorList = ({ className, func, setIsListShow }) => {
+
+    
+    var elList = useClickOutside(setIsListShow)
 
 
 
     return (
-        <section className={`color-list flex ${className}`} >
+        <section className={`color-list flex ${className}`} ref={elList} >
 
             {[...Array(20)].map((val, idx) => <label
                 className="color-label"

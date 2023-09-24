@@ -13,6 +13,10 @@
     
     .main-account-details{
         padding-left: 40px;
+
+        @include for-mobile-layout{
+            padding-left: 0px;
+        }
     }
 }
 
@@ -29,6 +33,10 @@
         z-index: 20;
         height: calc(#{100vh} - #{15px});
         background-color: #fff;
+
+        @include for-mobile-layout{
+            width: 0px;
+        }
     }
     .top-wrapper{
         position: fixed;
@@ -37,10 +45,30 @@
         height: 149px;
         background-color: #fff;
     }
+    
 }
 
 .expense-details-show{
     .account-details-scroll{
         right: 590px;
+    }
+}
+
+.account-details .main-account-details{
+    @include for-mobile-layout{
+        padding-left: 0px;
+    }
+}
+
+.account-details-scroll {
+    .side-wrapper{
+        @include for-mobile-layout{
+            width: 0px;
+        }
+    }
+    .top-wrapper{
+        @include for-mobile-layout{
+            width: calc(#{100vw} - #{96px});
+        }
     }
 }

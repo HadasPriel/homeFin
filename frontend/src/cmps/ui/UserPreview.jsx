@@ -1,11 +1,12 @@
 import { UserImg } from "./UserImg"
 
 
-
-export const UserPreview = ({ user, expenseMember, func }) => {
+export const UserPreview = ({ user, expenseMember, func, setIsListShow }) => {
 
     const clickHandler = (ev) => {
+        ev.stopPropagation()
         func(ev, user)
+        if(setIsListShow) setIsListShow(false)
     }
 
     if (!user) user = {
@@ -17,9 +18,9 @@ export const UserPreview = ({ user, expenseMember, func }) => {
 
     return (
         <section className="user-preview flex header-set" name="byUser" onClick={clickHandler} >
-            <div className="flex center" name="byUser">
+            <div className="flex center" name="byUser" >
                 <UserImg user={user} />
-                <p className="user-name">{user.username}</p>
+                <p className="user-name" name="byUser" >{user.username}</p>
             </div>
             {expenseMember && <span className={user._id === expenseMember._id ? 'confirme' : ''} ></span>}
 

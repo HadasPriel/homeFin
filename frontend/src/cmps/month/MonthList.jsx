@@ -28,7 +28,7 @@ export const MonthList = ({ months }) => {
 
     if (!months) return <div>Loading...</div>
     return (
-        <section className="account-details">
+        <section className="month-list">
             <SubComponentsPickers navToMonth={navToMonth} />
             {/* {months.map(month => <MonthPreview key={month.time} month={month} />)} */}
         </section>

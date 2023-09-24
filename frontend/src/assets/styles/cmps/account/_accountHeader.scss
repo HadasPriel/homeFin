@@ -2,22 +2,22 @@
     border-bottom: $table-border;
     position: fixed;
     z-index: 200;
-    right: 42px;
     left: 0;
-    margin-inline-start:calc(66px + 70px);
+    right: 20px;
+    margin-inline-start:calc(66px + 40px);
     padding-top: 18px;
     padding-bottom: 1px;
     background-color: $clr6;
     
     .title {
         font-family: poppins-r;
-        font-size: 31px;
+        font-size: 24px;
         letter-spacing: -0.2px;
         border-radius: 4px;
         padding: 0 4px;
         border: 1px solid transparent;
         margin-inline-end: 16px;
-        margin-block-end: 9px;
+        // margin-block-end: 9px;
         width: fit-content;
         
         &:hover{
@@ -47,8 +47,9 @@
         }
     }
     
-    nav{
+    &:not(.scrolled) nav{
         align-self: flex-start;
+        margin-block-start: 5px;
     }
 
     .menu-icon{
@@ -68,5 +69,42 @@
         transition: 50ms;
     }
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    nav > * {
+        margin-inline-start: 8px;
+    }
+    
+    &.resp{
+
+        nav{
+            right: 10px;
+            top: 70px;
+            left: unset;
+            
+            &.open{
+                .menu-item{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @include for-normal-layout {
+        margin-inline-start:calc(66px + 70px);
+        right: 42px;
+
+        .title{
+            font-size: 31px;
+        }
+        
+        
+    }
+
 }
 
+// .account-header {
+//     margin-inline-start:calc(66px + 40px);
+// }
