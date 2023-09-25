@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import actions from '../../store/actions';
+import actions from '../../store/actions'
 
 import { Icon } from '../ui/Icon'
 
@@ -46,7 +47,13 @@ export const AccountMenu = ({ setIsMenuShow }) => {
                 <div className='spacer' ></div>
 
                 <ul className='workspace-menu'>
-                    {accounts.map(account => <li className='item flex align-center' key={account._id}> <Icon name="board" /><span> {account.title}</span></li>)}
+                    {accounts.map(account => 
+                        <Link to={`/account/${account._id}`} key={account._id} >
+                            <li className='item flex align-center' > 
+                                <Icon name="board" />
+                                <span> {account.title}</span>
+                            </li>
+                        </Link>)}
                 </ul>
             </main>
 
