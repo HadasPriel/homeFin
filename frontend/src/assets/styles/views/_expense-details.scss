@@ -2,7 +2,7 @@
     position: absolute;
     inset: 0;
     left: unset;
-    width: 620px;
+    width: calc(100vw - 66px);
     z-index: 999;
     background-color: #fff;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
@@ -108,10 +108,8 @@
     }
 
 
-    @include for-narrow-layout {
-        width: calc(100vw - 66px);
+    @include for-normal-layout {
+        width: 620px;
     }
-    @include for-mobile-layout {
-        width: calc(100vw - 66px);
-    }
+    
 }

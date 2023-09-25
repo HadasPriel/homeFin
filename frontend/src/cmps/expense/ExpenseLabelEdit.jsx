@@ -1,3 +1,4 @@
+import { utilService } from "../../services/util.service.js"
 import { ExpenseLabelPreview } from "./ExpenseLabelPreview"
 import { useToggle } from "../../hooks/useToggle.js"
 import { useClickOutside } from "../../hooks/useClickOutside.js"
@@ -11,8 +12,8 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
     const elMenu = useClickOutside(setIsEditShow)
 
 
-    const defaultLabel = { id: 'l101', txt: 'Default Label', color: 'lb18_bright' }
-    const newLabel = { id: '', txt: '', color: 'lb18_bright' }
+    // const defaultLabel = { id: 'l101', txt: 'Default Label', color: 'lb18_bright' }
+    const newLabel = { id: utilService.makeId(), txt: '', color: 'lb18_bright' }
 
     const onAddLabel = (label) => {
         updateLabel(label)
@@ -35,14 +36,14 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
                         removeLabel={removeLabel}
                     />)}
 
-                <ExpenseLabelPreview
+                {/* <ExpenseLabelPreview
                     key={defaultLabel.id}
                     isEditLabelShow={isEditLabelShow}
                     label={defaultLabel}
                     onEditExpense={onEditExpense}
                     setIsEditShow={setIsEditShow}
                     updateLabel={updateLabel}
-                />
+                /> */}
 
                 {isAddLabel &&
                     <ExpenseLabelPreview
@@ -57,8 +58,10 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
                 {isEditLabelShow && <button onClick={setIsAddLabel} className="label-preview label-edit flex center btn solid">New label</button>}
             </div>
 
-            <button className="edit-labels-btn btn solid flex center"
-                onClick={setIsEditLabelShow}>{isEditLabelShow ? 'Applay' : 'Edit labels'}
+            <button 
+                className="edit-labels-btn btn solid flex center"
+                onClick={setIsEditLabelShow}>
+                    {isEditLabelShow ? 'Applay' : 'Edit labels'}
             </button>
 
         </section>

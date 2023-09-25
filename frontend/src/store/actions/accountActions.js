@@ -86,11 +86,14 @@ function saveDescription(accountId, description) {
 }
 
 function saveLabel(accountId, label) {
+  // Use optimistic updates to enhance user experience
+  const prevLabels = store.getState().accountModule.currAcount.labels
   return async dispatch => {
     try {
-      await accountService.saveLabel(accountId, label)
       dispatch({ type: 'SAVE_LABEL', label })
+      await accountService.saveLabel(accountId, label)
     } catch (err) {
+      dispatch({ type: 'SAVE_LABEL', label: prevLabels })
       console.log('AccountActions: err in saveLabel', err)
     }
   }

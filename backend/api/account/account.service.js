@@ -91,12 +91,11 @@ async function saveLabel(accountId, label) {
         const idx = account.labels.findIndex(currLabel => currLabel.id === label.id)
         console.log('idx:', idx);
         if (idx === -1) {
-            label.id = utilService.makeId()
             account.labels.push(label)
         }
         else account.labels[idx] = label
         await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
-        await collection.findOne({ _id: ObjectId(accountId) })
+        return label
     } catch (err) {
         logger.error('cannot save label to account', err)
         throw err
@@ -180,7 +179,8 @@ function _createAccount(account) {
         labels: [
             { id: utilService.makeId(), txt: 'Done', color: 'lb1' },
             { id: utilService.makeId(), txt: 'Stuck', color: 'lb12' },
-            { id: utilService.makeId(), txt: 'Working on it', color: 'lb16' }
+            { id: utilService.makeId(), txt: 'Working on it', color: 'lb16' },
+            { id: 'l101', txt: 'Default Label', color: 'lb18_bright' }
         ]
     }
 }

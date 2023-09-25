@@ -9,7 +9,7 @@ export const PricePreview = ({ sum, currency }) => {
     return (
         <span className={`flex ${((currency === 'USD') ? 'row-re' : '')}`}>
             <span>{sum}  </span>
-            <span>{codeSymbolCurrencyMap[currency]}</span>
+            <span>{codeSymbolCurrencyMap[currency] || '$'}</span>
         </span>
     )
 }

@@ -16,7 +16,7 @@ export const ExpenseColLabel = ({ expenseToSave, accountLabels, onEditExpense, u
                 onClick={setIsEditShow}
                 style={{ backgroundColor: color }} >
                 <span className='fold'></span>
-                {labelToShow?.txt}
+                {(labelToShow?.id === 'l101') ? '' : labelToShow?.txt}
             </div>
             {isEditShow && <ExpenseLabelEdit
                 accountLabels={accountLabels}
