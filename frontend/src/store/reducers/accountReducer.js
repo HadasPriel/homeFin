@@ -38,6 +38,9 @@ export function accountReducer(state = initialState, action = {}) {
     case 'SAVE_DESCRIPTION':
       return { ...state, currAcount: { ...state.currAcount, description: action.description } }
 
+    case 'SAVE_TITLE':
+      return { ...state, currAcount: { ...state.currAcount, title: action.title } }
+
     case 'SAVE_LABEL':
       var labels = JSON.parse(JSON.stringify(state.currAcount.labels))
       idx = state.currAcount.labels.findIndex(label => label.id === action.label.id)

@@ -86,10 +86,27 @@ async function addCategory(monthId) {
 
 async function updateCategory(monthId, category) {
     try {
+        if (category.id === 'in101') _updateIncome(monthId, category)
+        else {
+            const collection = await dbService.getCollection('month')
+            await collection.updateOne(
+                { _id: ObjectId(monthId), 'categories.id': category.id },
+                { $set: { 'categories.$': category } }
+            )
+            return category
+        }
+    } catch (err) {
+        logger.error('cannot update category', err)
+        throw err
+    }
+}
+
+async function _updateIncome(monthId, category) {
+    try {
         const collection = await dbService.getCollection('month')
         await collection.updateOne(
-            { _id: ObjectId(monthId), 'categories.id': category.id },
-            { $set: { 'categories.$': category } }
+            { _id: ObjectId(monthId) },
+            { $set: { 'income': category } }
         )
         return category
     } catch (err) {
@@ -100,6 +117,8 @@ async function updateCategory(monthId, category) {
 
 async function removeCategory(monthId, categoryId) {
     try {
+        if (categoryId === 'in101') return Promise.reject('Income category cannot be deleted')
+
         const collection = await dbService.getCollection('month')
         await collection.updateOne(
             { _id: ObjectId(monthId) },
@@ -158,8 +177,11 @@ async function removeExpense(monthId, categoryId, expenseId) {
         const collection = await dbService.getCollection('month')
         let monthToSave = await collection.findOne({ _id: ObjectId(monthId) })
 
-        const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
-        monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.filter(expense => expense.id !== expenseId)
+        if (categoryId === 'in101') monthToSave.income.expenses = monthToSave.income.expenses.filter(expense => expense.id !== expenseId)
+        else {
+            const categoryIdx = monthToSave.categories.findIndex(categ => categ.id === categoryId)
+            monthToSave.categories[categoryIdx].expenses = monthToSave.categories[categoryIdx].expenses.filter(expense => expense.id !== expenseId)
+        }
 
         await collection.updateOne({ _id: monthToSave._id }, { $set: monthToSave })
         return monthToSave
@@ -233,7 +255,7 @@ function _createCategory() {
 }
 function _createIncome() {
     return {
-        id: utilService.makeId(),
+        id: 'in101',
         title: "Incomes",
         color: 'lb' + utilService.getRandomIntInclusive(1, 20),
         description: "",

@@ -84,6 +84,18 @@ async function saveDescription(accountId, description) {
     }
 }
 
+async function saveTitle(accountId, title) {
+    try {
+        const collection = await dbService.getCollection('account')
+        const account = await collection.findOne({ _id: ObjectId(accountId) })
+        account.title = title
+        await collection.updateOne({ _id: ObjectId(account._id) }, { $set: account })
+    } catch (err) {
+        logger.error('cannot save title to account', err)
+        throw err
+    }
+}
+
 async function saveLabel(accountId, label) {
     try {
         const collection = await dbService.getCollection('account')
@@ -201,6 +213,7 @@ module.exports = {
     addMonth,
     toggleMember,
     saveDescription,
+    saveTitle,
     saveLabel,
     removeLabel,
     saveCols,

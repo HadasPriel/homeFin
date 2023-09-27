@@ -9,6 +9,7 @@ const accountActions = {
   removeAccount,
   toggleMember,
   saveDescription,
+  saveTitle,
   saveLabel,
   removeLabel,
   updateCols,
@@ -81,6 +82,17 @@ function saveDescription(accountId, description) {
       dispatch({ type: 'SAVE_DESCRIPTION', description })
     } catch (err) {
       console.log('AccountActions: err in saveDescription', err)
+    }
+  }
+}
+
+function saveTitle(accountId, title) {
+  return async dispatch => {
+    try {
+      await accountService.saveTitle(accountId, title)
+      dispatch({ type: 'SAVE_TITLE', title })
+    } catch (err) {
+      console.log('AccountActions: err in saveTitle', err)
     }
   }
 }

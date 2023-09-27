@@ -36,15 +36,6 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
                         removeLabel={removeLabel}
                     />)}
 
-                {/* <ExpenseLabelPreview
-                    key={defaultLabel.id}
-                    isEditLabelShow={isEditLabelShow}
-                    label={defaultLabel}
-                    onEditExpense={onEditExpense}
-                    setIsEditShow={setIsEditShow}
-                    updateLabel={updateLabel}
-                /> */}
-
                 {isAddLabel &&
                     <ExpenseLabelPreview
                         key={newLabel.id}
@@ -58,10 +49,10 @@ export const ExpenseLabelEdit = ({ accountLabels, onEditExpense, setIsEditShow, 
                 {isEditLabelShow && <button onClick={setIsAddLabel} className="label-preview label-edit flex center btn solid">New label</button>}
             </div>
 
-            <button 
+            <button
                 className="edit-labels-btn btn solid flex center"
                 onClick={setIsEditLabelShow}>
-                    {isEditLabelShow ? 'Applay' : 'Edit labels'}
+                {isEditLabelShow ? 'Applay' : 'Edit labels'}
             </button>
 
         </section>

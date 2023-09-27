@@ -43,7 +43,7 @@ export const ExpenseLabelPreview = ({ isEditLabelShow, label, onEditExpense, set
                             style={{ display: 'none' }}
                             value={label} />
                     </label>
-                    {removeLabel && <button className="remove-btn x" onClick={onRemoveLabel}></button>}
+                    {removeLabel && (label.id !== 'l101') && <button className="remove-btn x" onClick={onRemoveLabel}></button>}
                 </div>
             }
             {isEditLabelShow &&

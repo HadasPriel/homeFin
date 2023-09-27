@@ -73,6 +73,17 @@ async function saveDescription(req, res) {
     }
 }
 
+async function saveTitle(req, res) {
+    try {
+        const { accountId, title } = req.body
+        await accountService.saveTitle(accountId, title)
+        res.send()
+    } catch (err) {
+        logger.error('Failed to save title on account', err)
+        res.status(500).send({ err: 'Failed to save title on account' })
+    }
+}
+
 async function saveLabel(req, res) {
     try {
         const { accountId, label } = req.body
@@ -124,6 +135,7 @@ module.exports = {
     addAccount,
     toggleMember,
     saveDescription,
+    saveTitle,
     saveLabel,
     deleteLabel,
     updateCols,

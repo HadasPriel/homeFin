@@ -27,6 +27,14 @@ export function monthReducer(state = initialState, action = {}) {
           })
         }
       }
+    case 'UPDATE_CATEGORY_iNCOME':
+      return {
+        ...state,
+        currMonth: {
+          ...state.currMonth,
+          income: action.category
+        }
+      }
     case 'REMOVE_CATEGORY':
       return {
         ...state,

@@ -110,10 +110,12 @@ function updateCtegory(monthId, categoryToSave) {
   const prevCategory = store.getState().monthModule.currMonth.categories.find(ca => ca.id === categoryToSave.id)
   return async dispatch => {
     try {
-      dispatch({ type: 'UPDATE_CATEGORY', category: categoryToSave })
+      if (categoryToSave.id === 'in101') dispatch({ type: 'UPDATE_CATEGORY_iNCOME', category: categoryToSave })
+      else dispatch({ type: 'UPDATE_CATEGORY', category: categoryToSave })
       await monthService.updateCtegory(monthId, categoryToSave)
     } catch (err) {
-      dispatch({ type: 'UPDATE_CATEGORY', category: prevCategory })
+      if (categoryToSave.id === 'in101') dispatch({ type: 'UPDATE_CATEGORY_iNCOME', category: prevCategory })
+      else dispatch({ type: 'UPDATE_CATEGORY', category: prevCategory })
       console.log('MonthActions: err in updateCtegory', err)
     }
   }

@@ -32,6 +32,10 @@ export const AccountDetails = (props) => {
         dispatch(actions.accountActions.saveDescription(accountId, description))
     }
 
+    const saveTitle = (title) => {
+        dispatch(actions.accountActions.saveTitle(accountId, title))
+    }
+
     //scroll:
     const [isScrolledToTop, setIsScrolledToTop] = useState(true)
     const elAccountDetails = useRef(null)
@@ -73,7 +77,8 @@ export const AccountDetails = (props) => {
                             accountId={accountId}
                             toggleIsInviteShow={setIsInviteShow}
                             saveDescription={saveDescription}
-                            isScrolledToTop={isScrolledToTop} />
+                            isScrolledToTop={isScrolledToTop}
+                            saveTitle={saveTitle} />
 
                         <main className="main-account-details" >
                             <Switch>

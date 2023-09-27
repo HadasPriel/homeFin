@@ -8,6 +8,7 @@ export const accountService = {
   add,
   toggleMember,
   saveDescription,
+  saveTitle,
   saveLabel,
   removeLabel,
   updateCols,
@@ -36,6 +37,10 @@ async function toggleMember(accountId, member) {
 
 async function saveDescription(accountId, description) {
   return await httpService.put(`account/description`, { accountId, description })
+}
+
+async function saveTitle(accountId, title) {
+  return await httpService.put(`account/title`, { accountId, title })
 }
 
 async function saveLabel(accountId, label) {
