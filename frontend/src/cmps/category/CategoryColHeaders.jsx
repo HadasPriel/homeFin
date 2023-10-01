@@ -9,12 +9,12 @@ export const CategoryColHeaders = ({ color, cols, updateCols }) => {
     const onDragEnd = (res) => {
         if (!res.destination) return
         if (res.destination.index === res.source.index) return
-        
+
         const colsToSave = [...cols]
         const draggedCol = colsToSave.splice(res.source.index, 1)[0]
         colsToSave.splice(res.destination.index, 0, draggedCol)
         updateCols(colsToSave)
-        
+
         resetPlaceholderProps()
     }
 
@@ -47,7 +47,7 @@ export const CategoryColHeaders = ({ color, cols, updateCols }) => {
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                         >
-                                            {col}
+                                            {(col === 'txt') ? 'text' : col}
                                         </div>
                                     )}
                                 </Draggable>

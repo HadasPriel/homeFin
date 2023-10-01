@@ -1,4 +1,5 @@
 import { ExpenseColSum } from "./ExpenseColSum";
+import { ExpenseColTxt } from "./ExpenseColTxt";
 import { ExpenseColUser } from "./ExpenseColUser";
 import { ExpenseColDate } from "./ExpenseColDate";
 import { ExpenseColLabel } from "./ExpenseColLabel";
@@ -15,7 +16,9 @@ export const ExpenseColList = ({ cols, expenseToSave, onEditExpense, account, ed
                     case 'repeated':
                         return <ExpenseColRepeat expenseToSave={expenseToSave} editExpenseRepeat={editExpenseRepeat} key={col} />
                     case 'sum':
-                        return <ExpenseColSum expenseToSave={expenseToSave} onEditExpense={onEditExpense} key={col} currency={currency} />
+                        return <ExpenseColSum expenseToSave={expenseToSave} onEditExpense={onEditExpense} key={col} />
+                    case 'txt':
+                        return <ExpenseColTxt expenseToSave={expenseToSave} onEditExpense={onEditExpense} currency={currency} key={col} />
                     case 'labels':
                         return <ExpenseColLabel expenseToSave={expenseToSave} accountLabels={account.labels} onEditExpense={onEditExpense} updateLabel={updateLabel} removeLabel={removeLabel} key={col} />
                     case 'date':
