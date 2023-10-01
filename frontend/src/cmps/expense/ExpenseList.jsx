@@ -44,6 +44,7 @@ export const ExpenseList = (props) => {
                                         <ExpensePreview
                                             color={props.category.color}
                                             cotegoryId={props.category.id}
+                                            categoryExpected={props.category.expected}
                                             key={expense.id}
                                             expense={expense}
                                             updateExpense={props.updateExpense}

@@ -27,9 +27,9 @@
 .col-list{
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 129px);
+    grid-template-columns: repeat(auto-fit, 139px);
     grid-auto-flow: column;
-    grid-auto-columns: 129px;
+    grid-auto-columns: 139px;
 }
 
 .last-cell{

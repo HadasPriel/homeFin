@@ -1,6 +1,7 @@
 // import { ExpenseColSum } from "./ExpenseColSum";
 // import { ExpenseColUser } from "./ExpenseColUser";
 // import { ExpenseColDate } from "./ExpenseColDate";
+import { CategoryExpected } from "./CategoryExpected";
 import { CategoryLabelFooter } from "./CategoryLabelFooter";
 import { CategorySumFooter } from "./CategorySumFooter";
 
@@ -25,6 +26,15 @@ export const CategoryFooterList = ({ cols, category, toggleEditExpected, onUpdat
                             updateCurrency={updateCurrency} />
                     case 'labels':
                         return <CategoryLabelFooter category={category} key={col} />
+                    case 'expected':
+                        return <CategoryExpected
+                            expected={category.expected}
+                            color={category.color}
+                            expensesSum={expensesSum}
+                            isFooter={true}
+                            onUpdateCategory={onUpdateCategory}
+                            currency={currency}
+                            key={col} />
                     default:
                         return <div className="cell" key={col}></div>
                 }

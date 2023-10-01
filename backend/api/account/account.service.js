@@ -187,7 +187,7 @@ function _createAccount(account) {
         ],
         currencyCode: 'USA',
         months: [],
-        cols: ['repeated', 'sum', 'labels', 'date', 'person'],
+        cols: ['repeated', 'sum', 'labels', 'date', 'person', 'expected'],
         labels: [
             { id: utilService.makeId(), txt: 'Done', color: 'lb1' },
             { id: utilService.makeId(), txt: 'Stuck', color: 'lb12' },

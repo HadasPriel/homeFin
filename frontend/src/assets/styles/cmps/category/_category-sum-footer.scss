@@ -13,27 +13,36 @@
 }
 
 
-// .category-sum-footer {
-//     padding: 6px 16px;
-//     position: relative;
+.expected-preview {
+    padding: 6px 16px;
+    position: relative;
+    height: 100%;
     
-//     .bar {
-//         position: relative;
-//         width: 100%;
-//         height: 100%;
-//         border-radius:2em;
-//         background-color: $clr8;
-//         &:hover {
-//             background-color: rgb(171, 171, 171);
-//         }
+    .bar {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius:2em;
+        background-color: $clr8;
+        &:hover {
+            background-color: rgb(171, 171, 171);
+        }
         
-//         .txt{
-//             cursor: pointer;
-//             color: $clr6;
-//             position: absolute;
-//             inset: 0;
-//             font-size: 13px;
-//             font-weight: 400;
-//         }   
-//     }
-// }
+        .txt{
+            cursor: pointer;
+            color: $clr6;
+            position: absolute;
+            inset: 0;
+            font-size: 13px;
+            font-weight: 400;
+        }   
+    
+        .portion-nums{
+            gap: 4px;
+        }
+    }
+
+    &.border-red{
+        border: 2px solid #e2445c !important;
+    }
+}

@@ -10,7 +10,7 @@ import { Icon } from "../ui/Icon"
 
 
 
-export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel, currency }) => {
+export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpense, color, cols, updateLabel, removeLabel, currency, categoryExpected }) => {
 
     const [isMenuShow, setIsMenuShow] = useToggle(false)
     const [expenseToSave, setExpense] = useState({ ...expense })
@@ -75,7 +75,9 @@ export const ExpensePreview = ({ expense, cotegoryId, updateExpense, deleteExpen
                     editExpenseRepeat={editExpenseRepeat}
                     updateLabel={updateLabel}
                     removeLabel={removeLabel}
-                    currency={currency} />
+                    currency={currency}
+                    categoryColor={color}
+                    categoryExpected={categoryExpected} />
                 <div className="last-cell cell flex center"></div>
             </section>
         </section>
