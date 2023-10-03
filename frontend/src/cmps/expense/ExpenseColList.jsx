@@ -16,7 +16,7 @@ export const ExpenseColList = ({ cols, expenseToSave, onEditExpense, account, ed
                     case 'repeated':
                         return <ExpenseColRepeat expenseToSave={expenseToSave} editExpenseRepeat={editExpenseRepeat} key={col} />
                     case 'sum':
-                        return <ExpenseColSum expenseToSave={expenseToSave} onEditExpense={onEditExpense} key={col} />
+                        return <ExpenseColSum expenseToSave={expenseToSave} onEditExpense={onEditExpense} currency={currency} key={col} />
                     case 'txt':
                         return <ExpenseColTxt expenseToSave={expenseToSave} onEditExpense={onEditExpense} currency={currency} key={col} />
                     case 'labels':

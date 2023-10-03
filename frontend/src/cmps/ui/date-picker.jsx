@@ -11,6 +11,8 @@ export const DatePicker = ({ setIsDateShow, editExpenseTime }) => {
 
     var elDatePicker = useClickOutside(setIsDateShow)
 
+    console.log(new Date(Date.now()).getMonth());
+
 
     const [date, setDate] = useState(new Date());
 
@@ -24,10 +26,9 @@ export const DatePicker = ({ setIsDateShow, editExpenseTime }) => {
         <section className="date-picker" ref={elDatePicker}>
 
             <LocalizationProvider dateAdapter={AdapterDateFns} >
-                <CalendarPicker date={date} onChange={onChangeDate} />
+                <CalendarPicker date={date} onChange={onChangeDate} defaultCalendarMonth={new Date(992145202456)} />
             </LocalizationProvider>
 
         </section>
     )
 }
-

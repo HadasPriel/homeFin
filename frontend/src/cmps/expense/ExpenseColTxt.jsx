@@ -27,8 +27,8 @@ export const ExpenseColTxt = ({ expenseToSave, onEditExpense }) => {
     }
 
     return (
-        <section className={`expense-sum cell flex center`}>
-            <div className={`frame flex center`} onClick={setIsEditTxt} >
+        <section className={`expense-sum expense-txt cell flex center`}>
+            <div className={`frame flex align-center`} onClick={setIsEditTxt} >
                 {isEditTxt ?
                     <form onSubmit={onUpdateTxt} name="txt" >
                         <input

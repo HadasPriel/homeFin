@@ -42,7 +42,8 @@ export const ExpenseColSum = ({ expenseToSave, onEditExpense, currency }) => {
                             ref={elInput} />
                     </form>
                     :
-                    <PricePreview sum={amount} currency={currency} />}
+                    <PricePreview sum={amount} currency={currency} />
+                }
             </div>
         </section>
 

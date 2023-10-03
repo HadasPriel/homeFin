@@ -4,10 +4,19 @@
         position: absolute;
         z-index: 0;
         inset: 3px;
+        padding: 0 4px;
+        border: 1px solid transparent;
         &:hover{
-            border: $table-border;
+          border: $table-border;
             cursor: text;
         }
+    }
+    p{
+      width: 121px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 13px;
     }
 }
 

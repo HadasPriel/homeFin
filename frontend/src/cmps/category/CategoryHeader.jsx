@@ -1,7 +1,7 @@
 import { CategoryTitle } from "./CategoryTitle"
 // import { SortSign } from "../ui/SortSign"
 import { Icon } from "../ui/Icon"
-import { CategoryExpected } from "./CategoryExpected"
+// import { CategoryExpected } from "./CategoryExpected"
 
 
 export const CategoryHeader = ({ updateCategoryTitle, setIsMenuShow, setIsMiniPreview, category, dragHandleProps }) => {
