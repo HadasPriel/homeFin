@@ -16,7 +16,7 @@ export const HomeHeader = () => {
                     <button className='btn solid'>Log In</button>
                 </Link>
                 {/* <button className='btn solid'  >Invite</button> */}
-                <Link to="account/64ee548b1963c24748c0dad1/65156c99db70716a24fd2964" >
+                <Link to="account/651a6cc8bfc7a6494cf1cb0a/651a6cd3bfc7a6494cf1cb0c" >
                     <button className='btn cta flex center'>
                         Get started
                         <Icon name="full-arrow" />
@@ -27,3 +27,6 @@ export const HomeHeader = () => {
         </header>
     )
 }
+
+//my tasks:
+// account/64ee548b1963c24748c0dad1/65156c99db70716a24fd2964
