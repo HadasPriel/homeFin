@@ -19,7 +19,7 @@ export const Hero = () => {
 
                 {/* <TemplateList /> */}
 
-                <Link to="account/650ec0e2d940ac41305c096d/650ec106d940ac41305c096f">
+                <Link to="account">
                     <button className='see-demo-btn flex'>
                         <span>Get started</span>
                         <Icon name='full-arrow' />

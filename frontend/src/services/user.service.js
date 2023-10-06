@@ -44,7 +44,7 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 
-(async function devLogin(userCred = { username: 'lala', password: 'lala' }) {
-    const user = await httpService.post('auth/login', userCred)
-    if (user) return _saveLocalUser(user)
-})()
+// (async function devLogin(userCred = { username: 'lala', password: 'lala' }) {
+//     const user = await httpService.post('auth/login', userCred)
+//     if (user) return _saveLocalUser(user)
+// })()
