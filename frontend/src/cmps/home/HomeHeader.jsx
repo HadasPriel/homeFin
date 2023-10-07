@@ -1,11 +1,28 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/img/lotus.png'
 import { Icon } from '../ui/Icon'
-import {useToggle} from '../../hooks/useToggle.js'
+import { useToggle } from '../../hooks/useToggle.js'
 
 export const HomeHeader = () => {
 
     const [isMobileMenuShow, setIsMobileMenuShow] = useToggle(false)
+
+
+    const mediaQuery = window.matchMedia('(max-width: 760px)')
+
+    const handleMediaQueryChange = (ev) => {
+        //   console.log(ev.matches)
+        setIsMobileMenuShow(false)
+    }
+
+    useEffect(() => {
+        mediaQuery.addEventListener('change', handleMediaQueryChange)
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleMediaQueryChange)
+        }
+    }, [])
 
 
     return (
@@ -20,9 +37,10 @@ export const HomeHeader = () => {
                     <button className='btn solid'>Log In</button>
                 </Link>
                 <Link to="account/650ec0e2d940ac41305c096d/650ec106d940ac41305c096f" >
-                    <button className='btn cta flex center'>
+                    {/* <button className='btn cta flex center'> */}
+                    <button className={`btn flex center ${isMobileMenuShow ? '' : 'cta'}`}>
                         See Demo
-                        <Icon name="full-arrow" />
+                        {!isMobileMenuShow && <Icon name="full-arrow" />}
                     </button>
                 </Link>
             </nav>

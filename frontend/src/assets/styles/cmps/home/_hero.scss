@@ -65,4 +65,22 @@
             background: linear-gradient(90deg,transparent,#fff);
         }
     }
+
+
+
+    @include for-mobile-layout{
+        .main-title{
+            font-size: 35px;
+        }
+    }
+    @include for-narrow-layout{
+        .main-title{
+            font-size: 50px;
+        }
+    }
+    @include for-normal-layout{
+        .main-title{
+            font-size: 60px;
+        }
+    }
 }

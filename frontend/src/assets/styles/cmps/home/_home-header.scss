@@ -1,4 +1,6 @@
 .home-header{
+    position: relative;
+
     & > * {
         font-family: poppins-l;
     }
@@ -51,4 +53,30 @@
     a{
         display: flex;
     }
-   }
+
+    .menu-btn{
+        width: 37px;
+        height: 37px;
+    }
+
+    .floating-menu{
+        right: 15px;
+        left: unset;
+        width: unset;
+    }
+
+
+
+    // background-color: #34b5ff;
+
+    @include for-mobile-layout{
+        
+    }
+    @include for-narrow-layout{
+        // background-color: #5034FF;
+        
+    }
+    @include for-normal-layout{
+    }
+
+}
