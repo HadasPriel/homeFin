@@ -12,7 +12,6 @@ export const HomeHeader = () => {
     const mediaQuery = window.matchMedia('(max-width: 760px)')
 
     const handleMediaQueryChange = (ev) => {
-        //   console.log(ev.matches)
         setIsMobileMenuShow(false)
     }
 
