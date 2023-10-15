@@ -1,25 +1,33 @@
 
 .start-row{
-    height: 100%;
-    
-    .before-row {
-      width: 6px;
-    }
-
-      .checkbox-wrapper{
-        width: 33px;
+  height: 100%;
+  
+  .before-row {
+    width: 6px;
+  }
+  
+  .checkbox-wrapper{
+        width: 0px;
         height: 100%;
         border-top: 1px solid #d0d4e4;
-
+        
         .checkbox-label{
-          width: 16px;
+          width: 0px;
           height: 16px;
-          border: $table-border;
           border-radius: 2px;
           cursor: pointer;
-    
+          
           input{
             visibility: hidden;
+          }
+        }
+        
+        @include for-narrow-layout{
+          width: 33px;
+          .checkbox-label{
+            width: 16px;
+            border: $table-border;
+
           }
         }
       }

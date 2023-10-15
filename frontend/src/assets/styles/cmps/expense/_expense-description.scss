@@ -7,8 +7,12 @@
   .description-container{
     height: 100%;
     width: 100%;
-    padding-inline-start: 35px;
+    padding-inline-start: 10px;
     align-items: center;
+    
+    @include for-narrow-layout{
+      padding-inline-start: 35px;
+  }
   }
 
   .btn.edit-btn{

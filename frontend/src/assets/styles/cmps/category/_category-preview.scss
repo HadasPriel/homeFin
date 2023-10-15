@@ -57,6 +57,13 @@
             } 
         }
     }
+
+    @include for-mobile-layout{
+        .title-container{
+            left: 0;
+            font-size: 15px;
+        }
+    }
 }
 
 .headers {

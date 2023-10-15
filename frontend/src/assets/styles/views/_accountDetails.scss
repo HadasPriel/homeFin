@@ -30,17 +30,14 @@
     .side-wrapper{
         position: fixed;
         width: 39px;
-        z-index: 20;
+        z-index: 15;
         height: calc(#{100vh} - #{15px});
         background-color: #fff;
 
-        @include for-mobile-layout{
-            width: 0px;
-        }
     }
     .top-wrapper{
         position: fixed;
-        z-index: 10;
+        z-index: 22;
         width: calc(#{100vw} - #{106px});
         height: 149px;
         background-color: #fff;
@@ -61,14 +58,9 @@
 }
 
 .account-details-scroll {
-    .side-wrapper{
-        @include for-mobile-layout{
-            width: 0px;
-        }
-    }
-    .top-wrapper{
-        @include for-mobile-layout{
-            width: calc(#{100vw} - #{96px});
-        }
-    }
+    // .side-wrapper{
+    //     @include for-mobile-layout{
+    //         width: 0px;
+    //     }
+    // }
 }

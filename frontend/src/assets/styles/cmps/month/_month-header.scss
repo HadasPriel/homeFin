@@ -5,7 +5,7 @@
     padding: 16px 0;
     background-color: $clr6;
     width: calc(100vw - 140px - 30px);
-    left: 40px;
+    left: 10px;
     
     .month-title {
         margin-block-end: 10px;
@@ -26,5 +26,16 @@
             border-radius: 4px;
             margin-inline-end: 15px;
         }
+    }
+
+    @include for-normal-layout{
+        left: 40px;
+    }
+    @include for-mobile-layout{
+        nav{
+            .btn.solid{
+                display: none;
+            }
+        }    
     }
 }

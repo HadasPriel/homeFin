@@ -11,7 +11,7 @@
     
     .title {
         font-family: poppins-r;
-        font-size: 24px;
+        font-size: 20px;
         letter-spacing: -0.2px;
         border-radius: 4px;
         padding: 0 4px;
@@ -19,6 +19,10 @@
         margin-inline-end: 16px;
         // margin-block-end: 9px;
         width: fit-content;
+        max-width: 178px;
+        overflow: hidden;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
         
         &:hover{
             border-color: #c3c6d4;
@@ -59,8 +63,15 @@
     
     &.scrolled{
         .title{
-            font-size: 24px;
+            font-size: 16px;
             margin-inline-end: 16px;
+            max-width: 165px;
+            overflow: hidden;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
+        .account-description{
+            display: none;
         }
     }
     
@@ -93,13 +104,34 @@
     }
 
     @include for-normal-layout {
-        margin-inline-start:calc(66px + 70px);
+        margin-inline-start: calc(66px + 70px);
         right: 42px;
 
         .title{
             font-size: 31px;
         }
         
+        &.scrolled .title{
+            font-size: 24px;
+        }
+        
+    }
+    @include for-narrow-layout {
+        margin-inline-start: calc(66px + 70px);
+        right: 42px;
+
+        .title{
+            font-size: 24px;
+            max-width: 600px;
+        }
+        
+        &.scrolled .title{
+            font-size: 21px;
+            max-width: unset;
+            overflow: unset;
+            text-wrap: unset;
+            text-overflow: unset;
+        }
         
     }
 

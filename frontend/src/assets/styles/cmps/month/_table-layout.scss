@@ -17,9 +17,24 @@
     }
     
     .expense-description{
-        width: 400px;
+        width: 200px;
         position: sticky;
-        left: 40px;
+        left: 10px;
+        overflow: hidden;
+        p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-wrap: nowrap;
+            max-width: 140px;
+        }
+        
+        @include for-narrow-layout{
+            left: 40px;
+            width: 400px;
+            p{
+                max-width: 275px;
+            }
+        }
     }
 }
  

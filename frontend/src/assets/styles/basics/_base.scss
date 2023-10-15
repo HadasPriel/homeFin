@@ -12,6 +12,10 @@ body {
     margin: 0;
     color: rgb(50, 51, 56);
     font-size: 14px;
+    
+    @include for-mobile-layout{
+        font-size: 13px;
+    }
 }
 
 .account-layout {
