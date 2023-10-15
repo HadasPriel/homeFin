@@ -63,6 +63,10 @@
             top: 35px;
             right: 0px;
             background: linear-gradient(90deg,transparent,#fff);
+
+            @include for-mobile-layout{
+                top: 27px;
+            }
         }
     }
 

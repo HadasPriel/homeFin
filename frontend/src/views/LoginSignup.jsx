@@ -1,35 +1,44 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
+import { useSelector } from 'react-redux'
 import { Uploader } from "../cmps/Uploader"
 import { useToggle } from "../hooks/useToggle.js"
+import { UserProfile } from "./UserProfile"
 
 import actions from '../store/actions'
 
 
 export const LoginSignup = () => {
 
-    const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '', imgUrl: '' });
-    const [loginCred, setLoginCred] = useState({ username: '', password: '' });
-    const [isLoginShow, setIsLoginShow] = useToggle(true);
+    const [signupCred, setSignupCred] = useState({ username: '', password: '', fullname: '', imgUrl: '' })
+    const [loginCred, setLoginCred] = useState({ username: '', password: '' })
+    const [isLoginShow, setIsLoginShow] = useToggle(true)
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     const doSignup = (ev) => {
         ev.preventDefault()
-        console.log('doSignup!', signupCred);
+        console.log('doSignup!', signupCred)
         dispatch(actions.userActions.signup(signupCred))
         setSignupCred({ username: '', password: '', fullname: '', imgUrl: '' })
-        history.push("/account");
+        history.push("/account")
     }
 
     const doLogin = (ev) => {
         ev.preventDefault()
-        console.log('doLogin!', loginCred);
+        console.log('doLogin!', loginCred)
         dispatch(actions.userActions.login(loginCred))
         setSignupCred({ username: '', password: '' })
-        history.push("/account");
+        history.push("/account")
+    }
+
+    const doLogout = () => {
+        console.log('doLogout!')
+        dispatch(actions.userActions.logout())
+        history.push("/")
     }
 
     const signupHandleChange = (ev, url) => {
@@ -107,7 +116,11 @@ export const LoginSignup = () => {
 
     return (
         <section className="login-signup">
-            {isLoginShow ? loginSection : signupSection}
+            {loggedInUser ?
+                <UserProfile user={loggedInUser} doLogout={doLogout} />
+                :
+                isLoginShow ? loginSection : signupSection
+            }
         </section>
     )
 }

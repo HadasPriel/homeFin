@@ -18,18 +18,16 @@ export const AddAccount = ({ addAccount }) => {
 
     return (
         <section className="add-account" >
-            <div className='add-account-container flex space-between'>
+            <div className='add-account-container'>
                 {isAddShow &&
-                    <form onSubmit={onAddAccount} >
-                        <label>
-                            Acoount name:
+                    <form className="flex space-between" onSubmit={onAddAccount} >
                             <input
                                 type="text"
                                 name="title"
                                 value={accountToAdd.title}
                                 onChange={setAccountToAdd}
+                                placeholder="Add Account"
                             />
-                        </label>
                         <button className="btn suc" >Save</button>
                     </form>}
                 {!isAddShow && <h2 onClick={setIsAddShow} className="account-title plus inherit">Add board</h2>}

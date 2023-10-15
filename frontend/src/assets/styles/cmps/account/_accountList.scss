@@ -17,4 +17,8 @@
         border-radius: 8px;
         // box-shadow: 0px 3px 12px $clr4;
     }
+
+    @include for-mobile-layout{
+        margin-left: 66px;
+    }
 }

@@ -5,6 +5,12 @@ const utilService = require('../../services/util.service')
 
 const ObjectId = require('mongodb').ObjectId
 
+const GUEST = {
+    _id: '652be826aa52995fa05e3b85',
+    username: 'Guest',
+    fullname: 'Guest',
+    imgUrl: ''
+}
 
 async function query(loggedinUser, filterBy = {}) {
     try {
@@ -46,10 +52,12 @@ async function remove(accountId) {
 async function add(account) {
     try {
         const accountToAdd = _createAccount(account)
-        accountToAdd.byUser._id = ObjectId(account.byUser._id)
+        console.log('accountToAdd:',accountToAdd)
+        accountToAdd.byUser._id = ObjectId(accountToAdd.byUser._id)
         accountToAdd.members[0]._id = ObjectId(accountToAdd.members[0]._id)
         const collection = await dbService.getCollection('account')
         await collection.insertOne(accountToAdd)
+        console.log('addedd!! account:', account)
         return accountToAdd;
     } catch (err) {
         logger.error('cannot insert account', err)
@@ -175,11 +183,12 @@ async function saveCurrency(accountId, currencyCode) {
 
 
 function _createAccount(account) {
+
     return {
         title: account.title,
         description: '',
-        byUser: account.byUser,
-        members: [account.byUser],
+        byUser: account.byUser || GUEST,
+        members: [account.byUser || GUEST],
         methods: [ //TODO: remove, labels got this role...
             { id: "1", type: "creditCard", code: "2244" },
             { id: "2", type: "creditCard", code: "1111" },
@@ -199,7 +208,7 @@ function _createAccount(account) {
 
 function _buildCriteria(loggedinUser, filterBy) {
     const criteria = {}
-    criteria.members = { $elemMatch: { _id: ObjectId(loggedinUser._id) } }
+    criteria.members = { $elemMatch: { _id: ObjectId(loggedinUser?._id || '652be826aa52995fa05e3b85') } }
     return criteria
 }
 

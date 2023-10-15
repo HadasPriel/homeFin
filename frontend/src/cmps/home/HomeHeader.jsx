@@ -1,13 +1,16 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useToggle } from '../../hooks/useToggle.js'
 import logo from '../../assets/img/lotus.png'
 import { Icon } from '../ui/Icon'
-import { useToggle } from '../../hooks/useToggle.js'
+import { UserImg } from '../ui/UserImg'
+
 
 export const HomeHeader = () => {
 
     const [isMobileMenuShow, setIsMobileMenuShow] = useToggle(false)
-
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
     const mediaQuery = window.matchMedia('(max-width: 760px)')
 
@@ -33,7 +36,10 @@ export const HomeHeader = () => {
             <Icon name="menu" classNames="btn solid menu-btn" handler={setIsMobileMenuShow} />
             <nav className={`${isMobileMenuShow ? 'open floating-menu' : ''} flex align-self`}>
                 <Link to="login">
-                    <button className='btn solid'>Log In</button>
+                    {loggedInUser ?
+                        <UserImg user={loggedInUser} />
+                        :
+                        <button className='btn solid'>Log In</button>}
                 </Link>
                 <Link to="account/650ec0e2d940ac41305c096d/650ec106d940ac41305c096f" >
                     {/* <button className='btn cta flex center'> */}

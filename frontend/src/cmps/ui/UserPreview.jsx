@@ -5,8 +5,9 @@ export const UserPreview = ({ user, expenseMember, func, setIsListShow }) => {
 
     const clickHandler = (ev) => {
         ev.stopPropagation()
+        if (!func) return
         func(ev, user)
-        if(setIsListShow) setIsListShow(false)
+        if (setIsListShow) setIsListShow(false)
     }
 
     if (!user) user = {

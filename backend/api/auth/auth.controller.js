@@ -32,7 +32,7 @@ async function signup(req, res) {
 
 async function logout(req, res) {
     try {
-        // req.session.destroy()
+        req.session.destroy()
         req.session.user = null;
         res.send({ msg: 'Logged out successfully' })
     } catch (err) {

@@ -20,6 +20,7 @@
 .MuiGrid-container{
     position: relative; 
     row-gap: 30px;
+    z-index: 15;
 }
 
 .MuiYearPicker-root.css-x1wgng-MuiYearPicker-root, .MuiMonthPicker-root.css-n3vk4j-MuiMonthPicker-root{
