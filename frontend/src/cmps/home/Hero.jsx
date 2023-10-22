@@ -17,7 +17,7 @@ export const Hero = () => {
                     </span> with homefin.com
                 </h2>
 
-                {/* <TemplateList /> */}
+                <TemplateList />
 
                 <Link to="account">
                     <button className='see-demo-btn flex'>
